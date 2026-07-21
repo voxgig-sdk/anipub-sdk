@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "search": {
+      "SEARCH00": {
+        "aired": "sa0",
+        "cover": "sa1",
+        "descrip_tion": "sa2",
+        "duration": "sa3",
+        "ep_count": "sa4",
+        "finder": "sa5",
+        "genre": [],
+        "id": "SEARCH00",
+        "image_path": "sa8",
+        "mal_score": "sa9",
+        "name": "saa",
+        "premiered": "sab",
+        "ratings_num": "sac",
+        "status": "sad",
+        "studio": "sae",
+        "synonym": "saf"
+      },
+      "SEARCH01": {
+        "aired": "s140",
+        "cover": "s141",
+        "descrip_tion": "s142",
+        "duration": "s143",
+        "ep_count": "s144",
+        "finder": "s145",
+        "genre": [],
+        "id": "SEARCH01",
+        "image_path": "s148",
+        "mal_score": "s149",
+        "name": "s14a",
+        "premiered": "s14b",
+        "ratings_num": "s14c",
+        "status": "s14d",
+        "studio": "s14e",
+        "synonym": "s14f"
+      },
+      "SEARCH02": {
+        "aired": "s1e0",
+        "cover": "s1e1",
+        "descrip_tion": "s1e2",
+        "duration": "s1e3",
+        "ep_count": "s1e4",
+        "finder": "s1e5",
+        "genre": [],
+        "id": "SEARCH02",
+        "image_path": "s1e8",
+        "mal_score": "s1e9",
+        "name": "s1ea",
+        "premiered": "s1eb",
+        "ratings_num": "s1ec",
+        "status": "s1ed",
+        "studio": "s1ee",
+        "synonym": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "search": {
+      "search_ref01": {
+        "aired": "s280",
+        "cover": "s281",
+        "descrip_tion": "s282",
+        "duration": "s283",
+        "ep_count": "s284",
+        "finder": "s285",
+        "genre": [],
+        "image_path": "s288",
+        "mal_score": "s289",
+        "name": "s28a",
+        "premiered": "s28b",
+        "ratings_num": "s28c",
+        "status": "s28d",
+        "studio": "s28e",
+        "synonym": "s28f"
+      }
+    }
+  }
+}

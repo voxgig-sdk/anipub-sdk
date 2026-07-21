@@ -1,0 +1,36 @@
+# BasicAnimeFlow
+
+main: kit: flow: BasicAnimeFlow:
+{
+  entity: "anime",
+  kind: "basic",
+  name: "BasicAnimeFlow",
+  step: [
+    {
+      input: {
+        ref: "anime_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "anime_ref01",
+        srcdatavar: "anime_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-anime_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAnimeFlow"
+}

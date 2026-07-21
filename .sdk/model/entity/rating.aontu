@@ -1,0 +1,135 @@
+# Entity: rating
+
+main: kit: entity: rating: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "aired"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cover"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "descrip_tion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ep_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "finder"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "genre"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image_path"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mal_score"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ratings_num"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "studio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "synonym"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "rating"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/findbyrating"
+          parts: [
+            "api"
+            "findbyrating"
+          ]
+          select: {
+            exist: [
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

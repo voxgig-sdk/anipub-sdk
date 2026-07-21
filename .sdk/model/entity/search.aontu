@@ -1,0 +1,140 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "aired"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cover"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "descrip_tion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ep_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "finder"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "genre"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image_path"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mal_score"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ratings_num"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "studio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "synonym"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "search"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/search/{name}"
+          parts: [
+            "api"
+            "search"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              name: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

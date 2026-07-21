@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://api.anipub.xyz/"
+      }
+      description: "AniPub API provides comprehensive metadata on anime, including streaming links, character details, and MAL integration. It allows users to search, filter, and sort anime data seamlessly through various endpoints. The API is free to use with no authentication required."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://anipub.xyz"
+        }
+      ]
+      summary: "AniPub API provides comprehensive metadata on anime, including streaming links, character details, and MAL integration."
+      title: "AniPub API"
+      version: "1.0.0"
+      website: "https://anipub.xyz"
+    }
+  }
+}
+

@@ -1,0 +1,10 @@
+# Flows
+
+@"BasicAnimeFlow.aontu"
+@"BasicFindFlow.aontu"
+@"BasicFullAnimeDetailFlow.aontu"
+@"BasicInfoFlow.aontu"
+@"BasicPaginatedAnimeListFlow.aontu"
+@"BasicRatingFlow.aontu"
+@"BasicSearchFlow.aontu"
+@"BasicStreamingDetailFlow.aontu"

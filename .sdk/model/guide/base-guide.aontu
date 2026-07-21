@@ -1,0 +1,70 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 8
+  metrics: count: path: 12
+  metrics: count: method: 12
+
+  entity: anime: {
+    path: "/api/check": {
+      op: create: method: *POST
+    }
+    path: "/api/getAll": {
+      op: load: method: *GET
+    }
+    path: "/api/getlast": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: find: {
+    path: "/api/find/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: full_anime_detail: {
+    path: "/anime/api/details/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: info: {
+    path: "/api/info/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_anime_list: {
+    path: "/api/findbyGenre/{genre}": {
+      op: load: method: *GET
+    }
+    path: "/api/searchall/{name}": {
+      op: load: method: *GET
+    }
+    path: "/api/sort": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rating: {
+    path: "/api/findbyrating": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/api/search/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: streaming_detail: {
+    path: "/v1/api/details/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

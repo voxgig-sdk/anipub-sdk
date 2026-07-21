@@ -1,0 +1,32 @@
+# BasicStreamingDetailFlow
+
+main: kit: flow: BasicStreamingDetailFlow:
+{
+  entity: "streaming_detail",
+  kind: "basic",
+  name: "BasicStreamingDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "streaming_detail_ref01",
+        srcdatavar: "streaming_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "streaming_detail01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-streaming_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStreamingDetailFlow"
+}

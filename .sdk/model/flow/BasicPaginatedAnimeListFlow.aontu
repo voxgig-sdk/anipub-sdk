@@ -1,0 +1,44 @@
+# BasicPaginatedAnimeListFlow
+
+main: kit: flow: BasicPaginatedAnimeListFlow:
+{
+  entity: "paginated_anime_list",
+  kind: "basic",
+  name: "BasicPaginatedAnimeListFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_anime_list_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "paginated_anime_list_ref01",
+        srcdatavar: "paginated_anime_list_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "paginated_anime_list01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_anime_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedAnimeListFlow"
+}

@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "streaming_detail": {
+      "STREAMING_DETAIL00": {
+        "local": {},
+        "id": "STREAMING_DETAIL00"
+      },
+      "STREAMING_DETAIL01": {
+        "local": {},
+        "id": "STREAMING_DETAIL01"
+      },
+      "STREAMING_DETAIL02": {
+        "local": {},
+        "id": "STREAMING_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "streaming_detail": {
+      "streaming_detail_ref01": {
+        "local": {}
+      }
+    }
+  }
+}

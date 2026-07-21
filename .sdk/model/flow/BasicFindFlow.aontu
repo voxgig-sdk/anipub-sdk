@@ -1,0 +1,32 @@
+# BasicFindFlow
+
+main: kit: flow: BasicFindFlow:
+{
+  entity: "find",
+  kind: "basic",
+  name: "BasicFindFlow",
+  step: [
+    {
+      input: {
+        ref: "find_ref01",
+        srcdatavar: "find_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "find01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-find_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFindFlow"
+}

@@ -1,0 +1,136 @@
+# Entity: info
+
+main: kit: entity: info: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "aired"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cover"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "descrip_tion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ep_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "finder"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "genre"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image_path"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mal_score"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ratings_num"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "studio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "synonym"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "info"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "black-clover"
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/info/{id}"
+          parts: [
+            "api"
+            "info"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

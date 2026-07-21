@@ -1,0 +1,278 @@
+# Entity: paginated_anime_list
+
+main: kit: entity: paginated_anime_list: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "aired"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cover"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "current_page"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "descrip_tion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ep_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "finder"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "genre"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image_path"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mal_score"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ratings_num"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "studio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "synonym"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "whole_page"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "paginated_anime_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Action"
+                kind: "query"
+                name: "genre"
+                orig: "genre"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "One Piece"
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "ratefrom"
+                orig: "ratefrom"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "rateto"
+                orig: "rateto"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/sort"
+          parts: [
+            "api"
+            "sort"
+          ]
+          select: {
+            exist: [
+              "genre"
+              "name"
+              "page"
+              "ratefrom"
+              "rateto"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "harem"
+                kind: "param"
+                name: "genre"
+                orig: "genre"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/findbyGenre/{genre}"
+          parts: [
+            "api"
+            "findbyGenre"
+            "{genre}"
+          ]
+          select: {
+            exist: [
+              "genre"
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "name"
+                orig: "name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/searchall/{name}"
+          parts: [
+            "api"
+            "searchall"
+            "{name}"
+          ]
+          select: {
+            exist: [
+              "name"
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "findby_genre"
+      ]
+      [
+        "searchall"
+      ]
+    ]
+  }
+
+
+
+}

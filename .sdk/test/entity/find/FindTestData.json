@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "find": {
+      "FIND00": {
+        "ep": "s1e",
+        "exist": false,
+        "id": "FIND00"
+      },
+      "FIND01": {
+        "ep": "s3c",
+        "exist": false,
+        "id": "FIND01"
+      },
+      "FIND02": {
+        "ep": "s5a",
+        "exist": false,
+        "id": "FIND02"
+      }
+    }
+  },
+  "new": {
+    "find": {
+      "find_ref01": {
+        "ep": "s78",
+        "exist": false
+      }
+    }
+  }
+}

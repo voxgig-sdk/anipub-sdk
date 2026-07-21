@@ -1,0 +1,32 @@
+# BasicFullAnimeDetailFlow
+
+main: kit: flow: BasicFullAnimeDetailFlow:
+{
+  entity: "full_anime_detail",
+  kind: "basic",
+  name: "BasicFullAnimeDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "full_anime_detail_ref01",
+        srcdatavar: "full_anime_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "full_anime_detail01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-full_anime_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFullAnimeDetailFlow"
+}

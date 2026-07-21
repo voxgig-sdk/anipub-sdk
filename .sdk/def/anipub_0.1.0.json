@@ -1,0 +1,1037 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AniPub API",
+    "description": "AniPub API provides comprehensive metadata on anime, including streaming links, character details, and MAL integration. It allows users to search, filter, and sort anime data seamlessly through various endpoints. The API is free to use with no authentication required.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://api.anipub.xyz/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://anipub.xyz",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/info/{id}": {
+      "get": {
+        "summary": "Get Anime Info",
+        "description": "Full metadata for one anime. ID can be an integer or a kebab-case slug (spaces → hyphens, no special chars, lowercase).",
+        "operationId": "getAnimeInfo",
+        "tags": [
+          "Anime"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Numeric ID like 61 or slug like black-clover, one-piece, high-school-dxd",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "example": "black-clover"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with anime metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnimeInfo"
+                },
+                "example": {
+                  "_id": 61,
+                  "Name": "Black Clover",
+                  "ImagePath": "https://...",
+                  "Cover": "https://...",
+                  "Synonyms": "...",
+                  "Aired": "Oct 3, 2017 to Mar 30, 2021",
+                  "Premiered": "Fall 2017",
+                  "RatingsNum": 45,
+                  "Genres": [
+                    "action",
+                    "fantasy",
+                    "magic"
+                  ],
+                  "Studios": "Pierrot",
+                  "DescripTion": "...",
+                  "Duration": "25m",
+                  "MALScore": "8.88",
+                  "Status": "Finished Airing",
+                  "epCount": 170
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No anime with that ID or name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getAll": {
+      "get": {
+        "summary": "Get Total Count",
+        "description": "Returns a plain integer — total anime in the database. Use to determine valid ID range for /api/info/:id",
+        "operationId": "getTotalCount",
+        "tags": [
+          "Anime"
+        ],
+        "responses": {
+          "200": {
+            "description": "Total number of anime in database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "example": 153
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/find/{name}": {
+      "get": {
+        "summary": "Find Anime by Name",
+        "description": "Check if an anime exists. Returns existence status, ID, and episode count.",
+        "operationId": "findAnimeByName",
+        "tags": [
+          "Anime"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "URL-encoded anime name — spaces as %20",
+            "schema": {
+              "type": "string"
+            },
+            "example": "One Piece"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Anime found or not found response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindResult"
+                },
+                "examples": {
+                  "found": {
+                    "value": {
+                      "exist": true,
+                      "id": 10,
+                      "ep": 1155
+                    }
+                  },
+                  "notFound": {
+                    "value": {
+                      "exist": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/api/details/{id}": {
+      "get": {
+        "summary": "Get Streaming Links",
+        "description": "Returns iframe streaming links per episode. Strip the src= prefix from each link value to get the raw iframe URL. Episode mapping: local.link (top-level) = Episode 1. The local.ep[] array starts from Episode 2 onwards.",
+        "operationId": "getStreamingLinks",
+        "tags": [
+          "Streaming"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Anime ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": 119
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Streaming links for episodes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingDetails"
+                },
+                "example": {
+                  "local": {
+                    "name": "Black Clover",
+                    "link": "src=https://...",
+                    "ep": [
+                      {
+                        "link": "src=https://..."
+                      },
+                      {
+                        "link": "src=https://..."
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Anime not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anime/api/details/{id}": {
+      "get": {
+        "summary": "Get Full Details with MAL and Characters",
+        "description": "Returns local (metadata), jikan (MAL data), and characters (cast + voice actors). The most complete endpoint.",
+        "operationId": "getFullDetails",
+        "tags": [
+          "Anime",
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Anime ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": 119
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full anime details including MAL data and characters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullAnimeDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Anime not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/findbyGenre/{genre}": {
+      "get": {
+        "summary": "Browse by Genre",
+        "description": "Paginated anime list by genre. Add ?Page=2 for next pages.",
+        "operationId": "findByGenre",
+        "tags": [
+          "Anime",
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "description": "Genre name (e.g., harem, action, romance)",
+            "schema": {
+              "type": "string"
+            },
+            "example": "harem"
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "required": false,
+            "description": "Page number, default 1",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of anime by genre",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedAnimeList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/check": {
+      "post": {
+        "summary": "Check Name & Genre",
+        "description": "Verifies an anime exists by name and genre. Genre accepts a string or an array of strings.",
+        "operationId": "checkAnime",
+        "tags": [
+          "Anime"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckRequest"
+              },
+              "examples": {
+                "singleGenre": {
+                  "value": {
+                    "Name": "Black Clover",
+                    "Genre": "Action"
+                  }
+                },
+                "multipleGenres": {
+                  "value": {
+                    "Name": "Jujutsu Kaisen",
+                    "Genre": [
+                      "Action",
+                      "Drama"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Check result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "exists": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/findbyrating": {
+      "get": {
+        "summary": "Browse by Rating",
+        "description": "Returns a paginated list of top-rated anime, sorted by MAL score descending.",
+        "operationId": "findByRating",
+        "tags": [
+          "Anime",
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number, default 1",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of top-rated anime",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingResponse"
+                },
+                "example": {
+                  "currentPage": 1,
+                  "AniData": [
+                    {
+                      "_id": 2454,
+                      "Name": "Frieren: Beyond Journey's End",
+                      "ImagePath": "https://...",
+                      "MALScore": "9.36",
+                      "RatingsNum": 50,
+                      "DescripTion": "...",
+                      "finder": "frieren-beyond-journeys-end"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search/{name}": {
+      "get": {
+        "summary": "Quick Search",
+        "description": "Fast search by anime name. Returns a flat array of matching results — ideal for autocomplete, search boxes, and quick lookups. No pagination.",
+        "operationId": "quickSearch",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Search query — URL-encode spaces as %20",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of matching anime",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimeInfo"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/searchall/{name}": {
+      "get": {
+        "summary": "Full Paginated Search",
+        "description": "Paginated full search by anime name.",
+        "operationId": "searchAll",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Search query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number, default 1",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedAnimeList"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getlast": {
+      "get": {
+        "summary": "Get Last Document ID",
+        "description": "Returns the last document ID in the database.",
+        "operationId": "getLastId",
+        "tags": [
+          "Anime"
+        ],
+        "responses": {
+          "200": {
+            "description": "Last document ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sort": {
+      "get": {
+        "summary": "Advanced Filter and Sort",
+        "description": "Advanced filtering by name, genre, rating range, and pagination.",
+        "operationId": "sortAnime",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Anime name filter",
+            "schema": {
+              "type": "string"
+            },
+            "example": "One Piece"
+          },
+          {
+            "name": "genre",
+            "in": "query",
+            "required": false,
+            "description": "Genre filter",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Action"
+          },
+          {
+            "name": "ratefrom",
+            "in": "query",
+            "required": false,
+            "description": "Minimum rating",
+            "schema": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "example": 0
+          },
+          {
+            "name": "rateto",
+            "in": "query",
+            "required": false,
+            "description": "Maximum rating",
+            "schema": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "example": 10
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Filtered and sorted anime list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedAnimeList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnimeInfo": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "integer",
+            "description": "Anime ID"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Anime name"
+          },
+          "ImagePath": {
+            "type": "string",
+            "description": "Image path or URL. Prepend https://anipub.xyz/ if relative"
+          },
+          "Cover": {
+            "type": "string",
+            "description": "Cover image path or URL. Prepend https://anipub.xyz/ if relative"
+          },
+          "Synonyms": {
+            "type": "string",
+            "description": "Alternative names"
+          },
+          "Aired": {
+            "type": "string",
+            "description": "Air date range"
+          },
+          "Premiered": {
+            "type": "string",
+            "description": "Premiere season"
+          },
+          "RatingsNum": {
+            "type": "integer",
+            "description": "Number of ratings"
+          },
+          "Genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of genres"
+          },
+          "Studios": {
+            "type": "string",
+            "description": "Production studio"
+          },
+          "DescripTion": {
+            "type": "string",
+            "description": "Anime description"
+          },
+          "Duration": {
+            "type": "string",
+            "description": "Episode duration"
+          },
+          "MALScore": {
+            "type": "string",
+            "description": "MyAnimeList score"
+          },
+          "Status": {
+            "type": "string",
+            "description": "Airing status"
+          },
+          "epCount": {
+            "type": "integer",
+            "description": "Episode count"
+          },
+          "finder": {
+            "type": "string",
+            "description": "Slug identifier"
+          }
+        }
+      },
+      "FindResult": {
+        "type": "object",
+        "properties": {
+          "exist": {
+            "type": "boolean",
+            "description": "Whether anime exists"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Anime ID if found"
+          },
+          "ep": {
+            "type": "integer",
+            "description": "Episode count if found"
+          }
+        },
+        "required": [
+          "exist"
+        ]
+      },
+      "StreamingDetails": {
+        "type": "object",
+        "properties": {
+          "local": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Anime name"
+              },
+              "link": {
+                "type": "string",
+                "description": "Episode 1 streaming link with src= prefix"
+              },
+              "ep": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string",
+                      "description": "Episode streaming link with src= prefix. Array index 0 = Episode 2, index 1 = Episode 3, etc."
+                    }
+                  }
+                },
+                "description": "Episodes 2+ streaming links"
+              }
+            }
+          }
+        }
+      },
+      "Character": {
+        "type": "object",
+        "properties": {
+          "character": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "image_url": {
+                "type": "string"
+              }
+            }
+          },
+          "role": {
+            "type": "string",
+            "description": "Character role (e.g., Main, Supporting)"
+          },
+          "voice_actors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "person": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "FullAnimeDetails": {
+        "type": "object",
+        "properties": {
+          "local": {
+            "$ref": "#/components/schemas/AnimeInfo"
+          },
+          "jikan": {
+            "type": "object",
+            "description": "MyAnimeList data from Jikan API",
+            "properties": {
+              "synopsis": {
+                "type": "string"
+              },
+              "score": {
+                "type": "number"
+              },
+              "scored_by": {
+                "type": "integer"
+              },
+              "rank": {
+                "type": "integer"
+              },
+              "popularity": {
+                "type": "integer"
+              }
+            }
+          },
+          "characters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Character"
+            }
+          }
+        }
+      },
+      "PaginatedAnimeList": {
+        "type": "object",
+        "properties": {
+          "currentPage": {
+            "type": "integer",
+            "description": "Current page number"
+          },
+          "wholePage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnimeInfo"
+            },
+            "description": "Array of anime on current page"
+          }
+        }
+      },
+      "RatingResponse": {
+        "type": "object",
+        "properties": {
+          "currentPage": {
+            "type": "integer",
+            "description": "Current page number"
+          },
+          "AniData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnimeInfo"
+            },
+            "description": "Array of top-rated anime"
+          }
+        }
+      },
+      "CheckRequest": {
+        "type": "object",
+        "required": [
+          "Name",
+          "Genre"
+        ],
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Anime name to match"
+          },
+          "Genre": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "Genre as string or array of strings"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Anime",
+      "description": "Endpoints for retrieving anime information"
+    },
+    {
+      "name": "Search",
+      "description": "Endpoints for searching and filtering anime"
+    },
+    {
+      "name": "Streaming",
+      "description": "Endpoints for streaming links"
+    },
+    {
+      "name": "Characters",
+      "description": "Endpoints for character and voice actor information"
+    }
+  ],
+  "x-cors-enabled": true
+}

@@ -63,13 +63,13 @@ describe('PaginatedAnimeListEntity', async () => {
     const paginated_anime_list_ref01_ent = client.PaginatedAnimeList()
     const paginated_anime_list_ref01_match: any = {}
 
-    const paginated_anime_list_ref01_list = await paginated_anime_list_ref01_ent.list(paginated_anime_list_ref01_match)
+    const paginated_anime_list_ref01_list = (await paginated_anime_list_ref01_ent.list(paginated_anime_list_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const paginated_anime_list_ref01_match_dt0: any = {}
     paginated_anime_list_ref01_match_dt0.id = paginated_anime_list_ref01_data.id
-    const paginated_anime_list_ref01_data_dt0 = await paginated_anime_list_ref01_ent.load(paginated_anime_list_ref01_match_dt0)
+    const paginated_anime_list_ref01_data_dt0 = (await paginated_anime_list_ref01_ent.load(paginated_anime_list_ref01_match_dt0)).data()
     assert(paginated_anime_list_ref01_data_dt0.id === paginated_anime_list_ref01_data.id)
 
 

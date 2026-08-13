@@ -49,7 +49,7 @@ describe("InfoEntity", function()
     }
     local info_ref01_data_dt0_loaded, err = info_ref01_ent:load(info_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local info_ref01_data_dt0_load_result = helpers.to_map(info_ref01_data_dt0_loaded)
+    local info_ref01_data_dt0_load_result = helpers.to_map(type(info_ref01_data_dt0_loaded) == 'table' and info_ref01_data_dt0_loaded.data_get and info_ref01_data_dt0_loaded:data_get() or info_ref01_data_dt0_loaded)
     assert.is_not_nil(info_ref01_data_dt0_load_result)
     assert.are.equal(info_ref01_data_dt0_load_result["id"], info_ref01_data["id"])
 

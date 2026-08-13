@@ -41,7 +41,7 @@ describe("AnimeEntity", function()
 
     local anime_ref01_data_result, err = anime_ref01_ent:create(anime_ref01_data, nil)
     assert.is_nil(err)
-    anime_ref01_data = helpers.to_map(anime_ref01_data_result)
+    anime_ref01_data = helpers.to_map(type(anime_ref01_data_result) == 'table' and anime_ref01_data_result.data_get and anime_ref01_data_result:data_get() or anime_ref01_data_result)
     assert.is_not_nil(anime_ref01_data)
 
     -- LOAD

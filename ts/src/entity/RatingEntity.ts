@@ -37,7 +37,7 @@ class RatingEntity extends AnipubEntityBase<Rating> {
 
 
 
-  async list(this: any, reqmatch?: RatingListMatch, ctrl?: Control): Promise<Rating[]> {
+  async list(this: any, reqmatch?: RatingListMatch, ctrl?: Control): Promise<RatingEntity[]> {
 
     const utility = this._utility
 

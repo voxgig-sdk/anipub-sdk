@@ -153,8 +153,29 @@ class AnipubSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('AnipubSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -215,59 +236,129 @@ class AnipubSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('AnipubSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('AnipubSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Anime().list()` / `client.Anime().load({ id })`.
-  Anime(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Anime(entopts?: Record<string, any>) {
     const self = this
-    return new AnimeEntity(self,data)
+    return new AnimeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Find().list()` / `client.Find().load({ id })`.
-  Find(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Find(entopts?: Record<string, any>) {
     const self = this
-    return new FindEntity(self,data)
+    return new FindEntity(self, entopts)
   }
 
 
   // Entity access: `client.FullAnimeDetail().list()` / `client.FullAnimeDetail().load({ id })`.
-  FullAnimeDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FullAnimeDetail(entopts?: Record<string, any>) {
     const self = this
-    return new FullAnimeDetailEntity(self,data)
+    return new FullAnimeDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.Info().list()` / `client.Info().load({ id })`.
-  Info(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Info(entopts?: Record<string, any>) {
     const self = this
-    return new InfoEntity(self,data)
+    return new InfoEntity(self, entopts)
   }
 
 
   // Entity access: `client.PaginatedAnimeList().list()` / `client.PaginatedAnimeList().load({ id })`.
-  PaginatedAnimeList(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PaginatedAnimeList(entopts?: Record<string, any>) {
     const self = this
-    return new PaginatedAnimeListEntity(self,data)
+    return new PaginatedAnimeListEntity(self, entopts)
   }
 
 
   // Entity access: `client.Rating().list()` / `client.Rating().load({ id })`.
-  Rating(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Rating(entopts?: Record<string, any>) {
     const self = this
-    return new RatingEntity(self,data)
+    return new RatingEntity(self, entopts)
   }
 
 
   // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
-  Search(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Search(entopts?: Record<string, any>) {
     const self = this
-    return new SearchEntity(self,data)
+    return new SearchEntity(self, entopts)
   }
 
 
   // Entity access: `client.StreamingDetail().list()` / `client.StreamingDetail().load({ id })`.
-  StreamingDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  StreamingDetail(entopts?: Record<string, any>) {
     const self = this
-    return new StreamingDetailEntity(self,data)
+    return new StreamingDetailEntity(self, entopts)
   }
 
 

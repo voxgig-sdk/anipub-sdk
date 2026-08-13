@@ -10,52 +10,52 @@
 
 # Anime entity data model.
 #
-# @!attribute [rw] exist
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] genre
+# @!attribute [rw] Genre
 #   @return [Object]
 #
-# @!attribute [rw] name
+# @!attribute [rw] Name
 #   @return [String]
+#
+# @!attribute [rw] exists
+#   @return [Boolean, nil]
 Anime = Struct.new(
-  :exist,
-  :genre,
-  :name,
+  :Genre,
+  :Name,
+  :exists,
   keyword_init: true
 )
 
 # Request payload for Anime#load.
 #
-# @!attribute [rw] exist
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] genre
+# @!attribute [rw] Genre
 #   @return [Object, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] Name
 #   @return [String, nil]
+#
+# @!attribute [rw] exists
+#   @return [Boolean, nil]
 AnimeLoadMatch = Struct.new(
-  :exist,
-  :genre,
-  :name,
+  :Genre,
+  :Name,
+  :exists,
   keyword_init: true
 )
 
 # Request payload for Anime#create.
 #
-# @!attribute [rw] exist
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] genre
+# @!attribute [rw] Genre
 #   @return [Object]
 #
-# @!attribute [rw] name
+# @!attribute [rw] Name
 #   @return [String]
+#
+# @!attribute [rw] exists
+#   @return [Boolean, nil]
 AnimeCreateData = Struct.new(
-  :exist,
-  :genre,
-  :name,
+  :Genre,
+  :Name,
+  :exists,
   keyword_init: true
 )
 
@@ -87,7 +87,7 @@ FindLoadMatch = Struct.new(
 
 # FullAnimeDetail entity data model.
 #
-# @!attribute [rw] character
+# @!attribute [rw] characters
 #   @return [Array, nil]
 #
 # @!attribute [rw] jikan
@@ -96,7 +96,7 @@ FindLoadMatch = Struct.new(
 # @!attribute [rw] local
 #   @return [Hash, nil]
 FullAnimeDetail = Struct.new(
-  :character,
+  :characters,
   :jikan,
   :local,
   keyword_init: true
@@ -113,70 +113,70 @@ FullAnimeDetailLoadMatch = Struct.new(
 
 # Info entity data model.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] DescripTion
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Duration
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
+#   @return [Integer, nil]
+#
+# @!attribute [rw] Status
+#   @return [String, nil]
+#
+# @!attribute [rw] Studios
+#   @return [String, nil]
+#
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
-#
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
 Info = Struct.new(
-  :aired,
-  :cover,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
   keyword_init: true
 )
 
@@ -191,78 +191,78 @@ InfoLoadMatch = Struct.new(
 
 # PaginatedAnimeList entity data model.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] current_page
+# @!attribute [rw] DescripTion
+#   @return [String, nil]
+#
+# @!attribute [rw] Duration
+#   @return [String, nil]
+#
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
 #   @return [Integer, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] Status
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Studios
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] currentPage
+#   @return [Integer, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
-#
-# @!attribute [rw] whole_page
+# @!attribute [rw] wholePage
 #   @return [Array, nil]
 PaginatedAnimeList = Struct.new(
-  :aired,
-  :cover,
-  :current_page,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :currentPage,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
-  :whole_page,
+  :wholePage,
   keyword_init: true
 )
 
@@ -281,285 +281,285 @@ PaginatedAnimeListLoadMatch = Struct.new(
 
 # Request payload for PaginatedAnimeList#list.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] current_page
+# @!attribute [rw] DescripTion
+#   @return [String, nil]
+#
+# @!attribute [rw] Duration
+#   @return [String, nil]
+#
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
 #   @return [Integer, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] Status
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Studios
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] currentPage
+#   @return [Integer, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
-#
-# @!attribute [rw] whole_page
+# @!attribute [rw] wholePage
 #   @return [Array, nil]
 PaginatedAnimeListListMatch = Struct.new(
-  :aired,
-  :cover,
-  :current_page,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :currentPage,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
-  :whole_page,
+  :wholePage,
   keyword_init: true
 )
 
 # Rating entity data model.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] DescripTion
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Duration
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
+#   @return [Integer, nil]
+#
+# @!attribute [rw] Status
+#   @return [String, nil]
+#
+# @!attribute [rw] Studios
+#   @return [String, nil]
+#
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
-#
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
 Rating = Struct.new(
-  :aired,
-  :cover,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
   keyword_init: true
 )
 
 # Request payload for Rating#list.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] DescripTion
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Duration
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
+#   @return [Integer, nil]
+#
+# @!attribute [rw] Status
+#   @return [String, nil]
+#
+# @!attribute [rw] Studios
+#   @return [String, nil]
+#
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
-#
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
 RatingListMatch = Struct.new(
-  :aired,
-  :cover,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
   keyword_init: true
 )
 
 # Search entity data model.
 #
-# @!attribute [rw] aired
+# @!attribute [rw] Aired
 #   @return [String, nil]
 #
-# @!attribute [rw] cover
+# @!attribute [rw] Cover
 #   @return [String, nil]
 #
-# @!attribute [rw] descrip_tion
+# @!attribute [rw] DescripTion
 #   @return [String, nil]
 #
-# @!attribute [rw] duration
+# @!attribute [rw] Duration
 #   @return [String, nil]
 #
-# @!attribute [rw] ep_count
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
+#   @return [Integer, nil]
+#
+# @!attribute [rw] Status
+#   @return [String, nil]
+#
+# @!attribute [rw] Studios
+#   @return [String, nil]
+#
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] epCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] finder
 #   @return [String, nil]
 #
-# @!attribute [rw] genre
-#   @return [Array, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
-#
-# @!attribute [rw] image_path
-#   @return [String, nil]
-#
-# @!attribute [rw] mal_score
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] ratings_num
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] studio
-#   @return [String, nil]
-#
-# @!attribute [rw] synonym
-#   @return [String, nil]
 Search = Struct.new(
-  :aired,
-  :cover,
-  :descrip_tion,
-  :duration,
-  :ep_count,
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :epCount,
   :finder,
-  :genre,
   :id,
-  :image_path,
-  :mal_score,
-  :name,
-  :premiered,
-  :ratings_num,
-  :status,
-  :studio,
-  :synonym,
   keyword_init: true
 )
 
@@ -574,10 +574,18 @@ SearchLoadMatch = Struct.new(
 
 # StreamingDetail entity data model.
 #
-# @!attribute [rw] local
-#   @return [Hash, nil]
+# @!attribute [rw] ep
+#   @return [Array, nil]
+#
+# @!attribute [rw] link
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
 StreamingDetail = Struct.new(
-  :local,
+  :ep,
+  :link,
+  :name,
   keyword_init: true
 )
 

@@ -58,7 +58,7 @@ func main() {
     fmt.Println(anime)
 
     // Create a anime.
-    created, err := client.Anime(nil).Create(map[string]any{"genre": "example_genre", "name": "example_name"}, nil)
+    created, err := client.Anime(nil).Create(map[string]any{"Genre": "example_Genre", "Name": "example_Name"}, nil)
     if err != nil {
         panic(err)
     }
@@ -73,12 +73,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-anime, err := client.Anime(nil).Load(nil, nil)
+ratings, err := client.Rating(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = anime
+_ = ratings
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -142,13 +142,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-anime, err := client.Anime(nil).Load(
+rating, err := client.Rating(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(anime) // the returned mock data
+fmt.Println(rating) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -275,9 +275,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"exist"` |  |
-| `"genre"` |  |
-| `"name"` |  |
+| `"Genre"` |  |
+| `"Name"` |  |
+| `"exists"` |  |
 
 Operations: Create, Load.
 
@@ -299,7 +299,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `"character"` |  |
+| `"characters"` |  |
 | `"jikan"` |  |
 | `"local"` |  |
 
@@ -311,22 +311,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `"aired"` |  |
-| `"cover"` |  |
-| `"descrip_tion"` |  |
-| `"duration"` |  |
-| `"ep_count"` |  |
+| `"Aired"` |  |
+| `"Cover"` |  |
+| `"DescripTion"` |  |
+| `"Duration"` |  |
+| `"Genres"` |  |
+| `"ImagePath"` |  |
+| `"MALScore"` |  |
+| `"Name"` |  |
+| `"Premiered"` |  |
+| `"RatingsNum"` |  |
+| `"Status"` |  |
+| `"Studios"` |  |
+| `"Synonyms"` |  |
+| `"epCount"` |  |
 | `"finder"` |  |
-| `"genre"` |  |
 | `"id"` |  |
-| `"image_path"` |  |
-| `"mal_score"` |  |
-| `"name"` |  |
-| `"premiered"` |  |
-| `"ratings_num"` |  |
-| `"status"` |  |
-| `"studio"` |  |
-| `"synonym"` |  |
 
 Operations: Load.
 
@@ -336,24 +336,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `"aired"` |  |
-| `"cover"` |  |
-| `"current_page"` |  |
-| `"descrip_tion"` |  |
-| `"duration"` |  |
-| `"ep_count"` |  |
+| `"Aired"` |  |
+| `"Cover"` |  |
+| `"DescripTion"` |  |
+| `"Duration"` |  |
+| `"Genres"` |  |
+| `"ImagePath"` |  |
+| `"MALScore"` |  |
+| `"Name"` |  |
+| `"Premiered"` |  |
+| `"RatingsNum"` |  |
+| `"Status"` |  |
+| `"Studios"` |  |
+| `"Synonyms"` |  |
+| `"currentPage"` |  |
+| `"epCount"` |  |
 | `"finder"` |  |
-| `"genre"` |  |
 | `"id"` |  |
-| `"image_path"` |  |
-| `"mal_score"` |  |
-| `"name"` |  |
-| `"premiered"` |  |
-| `"ratings_num"` |  |
-| `"status"` |  |
-| `"studio"` |  |
-| `"synonym"` |  |
-| `"whole_page"` |  |
+| `"wholePage"` |  |
 
 Operations: List, Load.
 
@@ -363,22 +363,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `"aired"` |  |
-| `"cover"` |  |
-| `"descrip_tion"` |  |
-| `"duration"` |  |
-| `"ep_count"` |  |
+| `"Aired"` |  |
+| `"Cover"` |  |
+| `"DescripTion"` |  |
+| `"Duration"` |  |
+| `"Genres"` |  |
+| `"ImagePath"` |  |
+| `"MALScore"` |  |
+| `"Name"` |  |
+| `"Premiered"` |  |
+| `"RatingsNum"` |  |
+| `"Status"` |  |
+| `"Studios"` |  |
+| `"Synonyms"` |  |
+| `"epCount"` |  |
 | `"finder"` |  |
-| `"genre"` |  |
 | `"id"` |  |
-| `"image_path"` |  |
-| `"mal_score"` |  |
-| `"name"` |  |
-| `"premiered"` |  |
-| `"ratings_num"` |  |
-| `"status"` |  |
-| `"studio"` |  |
-| `"synonym"` |  |
 
 Operations: List.
 
@@ -388,22 +388,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `"aired"` |  |
-| `"cover"` |  |
-| `"descrip_tion"` |  |
-| `"duration"` |  |
-| `"ep_count"` |  |
+| `"Aired"` |  |
+| `"Cover"` |  |
+| `"DescripTion"` |  |
+| `"Duration"` |  |
+| `"Genres"` |  |
+| `"ImagePath"` |  |
+| `"MALScore"` |  |
+| `"Name"` |  |
+| `"Premiered"` |  |
+| `"RatingsNum"` |  |
+| `"Status"` |  |
+| `"Studios"` |  |
+| `"Synonyms"` |  |
+| `"epCount"` |  |
 | `"finder"` |  |
-| `"genre"` |  |
 | `"id"` |  |
-| `"image_path"` |  |
-| `"mal_score"` |  |
-| `"name"` |  |
-| `"premiered"` |  |
-| `"ratings_num"` |  |
-| `"status"` |  |
-| `"studio"` |  |
-| `"synonym"` |  |
 
 Operations: Load.
 
@@ -413,7 +413,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `"local"` |  |
+| `"ep"` |  |
+| `"link"` |  |
+| `"name"` |  |
 
 Operations: Load.
 
@@ -439,9 +441,9 @@ Create an instance: `anime := client.Anime(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `bool` |  |
-| `genre` | `any` |  |
-| `name` | `string` |  |
+| `Genre` | `any` |  |
+| `Name` | `string` |  |
+| `exists` | `bool` |  |
 
 #### Example: Load
 
@@ -457,8 +459,8 @@ fmt.Println(anime) // the loaded record
 
 ```go
 result, err := client.Anime(nil).Create(map[string]any{
-    "genre": "example_genre",
-    "name": "example_name",
+    "Genre": "example_Genre",
+    "Name": "example_Name",
 }, nil)
 if err != nil {
     panic(err)
@@ -510,7 +512,7 @@ Create an instance: `fullAnimeDetail := client.FullAnimeDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `[]any` |  |
+| `characters` | `[]any` |  |
 | `jikan` | `map[string]any` |  |
 | `local` | `map[string]any` |  |
 
@@ -539,22 +541,22 @@ Create an instance: `info := client.Info(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `[]any` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `[]any` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -582,24 +584,24 @@ Create an instance: `paginatedAnimeList := client.PaginatedAnimeList(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `current_page` | `int` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `[]any` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `currentPage` | `int` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `[]any` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
-| `whole_page` | `[]any` |  |
+| `wholePage` | `[]any` |  |
 
 #### Example: Load
 
@@ -636,22 +638,22 @@ Create an instance: `rating := client.Rating(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `[]any` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `[]any` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: List
 
@@ -678,22 +680,22 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `[]any` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `[]any` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -720,7 +722,9 @@ Create an instance: `streamingDetail := client.StreamingDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `map[string]any` |  |
+| `ep` | `[]any` |  |
+| `link` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -802,15 +806,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-anime := client.Anime(nil)
-anime.Load(nil, nil)
+rating := client.Rating(nil)
+rating.List(nil, nil)
 
-// anime.Data() now returns the anime data from the last load
-// anime.Match() returns the last match criteria
+// rating.Data() now returns the rating data from the last list
+// rating.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

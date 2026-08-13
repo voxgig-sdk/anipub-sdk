@@ -6,9 +6,19 @@ main: kit: entity: streaming_detail: {
 
   fields: [
     {
-      name: "local"
+      name: "ep"
       req: false
-      type: "`$OBJECT`"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "link"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
     }
   ]
 
@@ -45,7 +55,7 @@ main: kit: entity: streaming_detail: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.local`"
           }
         }
       ]

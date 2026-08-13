@@ -97,7 +97,7 @@ describe("PaginatedAnimeListEntity", function()
     }
     local paginated_anime_list_ref01_data_dt0_loaded, err = paginated_anime_list_ref01_ent:load(paginated_anime_list_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local paginated_anime_list_ref01_data_dt0_load_result = helpers.to_map(paginated_anime_list_ref01_data_dt0_loaded)
+    local paginated_anime_list_ref01_data_dt0_load_result = helpers.to_map(type(paginated_anime_list_ref01_data_dt0_loaded) == 'table' and paginated_anime_list_ref01_data_dt0_loaded.data_get and paginated_anime_list_ref01_data_dt0_loaded:data_get() or paginated_anime_list_ref01_data_dt0_loaded)
     assert.is_not_nil(paginated_anime_list_ref01_data_dt0_load_result)
     assert.are.equal(paginated_anime_list_ref01_data_dt0_load_result["id"], paginated_anime_list_ref01_data["id"])
 

@@ -6,19 +6,19 @@ main: kit: entity: anime: {
 
   fields: [
     {
-      name: "exist"
-      req: false
-      type: "`$BOOLEAN`"
-    }
-    {
-      name: "genre"
+      name: "Genre"
       req: true
       type: "`$ANY`"
     }
     {
-      name: "name"
+      name: "Name"
       req: true
       type: "`$STRING`"
+    }
+    {
+      name: "exists"
+      req: false
+      type: "`$BOOLEAN`"
     }
   ]
 

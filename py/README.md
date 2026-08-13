@@ -38,7 +38,7 @@ client = AnipubSDK()
 
 ### 3. Load an anime
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -51,8 +51,8 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.Anime().create({"genre": "example_genre", "name": "example_name"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.Anime().create({"Genre": "example_Genre", "Name": "example_Name"})
 
 ```
 
@@ -63,10 +63,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    anime = client.Anime().load()
-    print(anime)
+    ratings = client.Rating().list()
+    print(ratings)
 except Exception as err:
-    print(f"load failed: {err}")
+    print(f"list failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -130,9 +130,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AnipubSDK.test()
 
-# Entity ops return the bare record and raise on error.
-anime = client.Anime().load()
-# anime contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+rating = client.Rating().list()
+# rating contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -235,7 +236,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -257,9 +258,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `genre` |  |
-| `name` |  |
+| `Genre` |  |
+| `Name` |  |
+| `exists` |  |
 
 Operations: Create, Load.
 
@@ -281,7 +282,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `jikan` |  |
 | `local` |  |
 
@@ -293,22 +294,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -318,24 +319,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `current_page` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `currentPage` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
-| `whole_page` |  |
+| `wholePage` |  |
 
 Operations: List, Load.
 
@@ -345,22 +346,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: List.
 
@@ -370,22 +371,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -395,7 +396,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `local` |  |
+| `ep` |  |
+| `link` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -421,9 +424,9 @@ Create an instance: `anime = client.Anime()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `bool` |  |
-| `genre` | `Any` |  |
-| `name` | `str` |  |
+| `Genre` | `Any` |  |
+| `Name` | `str` |  |
+| `exists` | `bool` |  |
 
 #### Example: Load
 
@@ -435,8 +438,8 @@ anime = client.Anime().load()
 
 ```python
 anime = client.Anime().create({
-    "genre": "example_genre",  # Any
-    "name": "example_name",  # str
+    "Genre": "example_Genre",  # Any
+    "Name": "example_Name",  # str
 })
 ```
 
@@ -480,7 +483,7 @@ Create an instance: `full_anime_detail = client.FullAnimeDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `list` |  |
+| `characters` | `list` |  |
 | `jikan` | `dict` |  |
 | `local` | `dict` |  |
 
@@ -505,22 +508,22 @@ Create an instance: `info = client.Info()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `str` |  |
-| `cover` | `str` |  |
-| `descrip_tion` | `str` |  |
-| `duration` | `str` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `str` |  |
+| `Cover` | `str` |  |
+| `DescripTion` | `str` |  |
+| `Duration` | `str` |  |
+| `Genres` | `list` |  |
+| `ImagePath` | `str` |  |
+| `MALScore` | `str` |  |
+| `Name` | `str` |  |
+| `Premiered` | `str` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `str` |  |
+| `Studios` | `str` |  |
+| `Synonyms` | `str` |  |
+| `epCount` | `int` |  |
 | `finder` | `str` |  |
-| `genre` | `list` |  |
 | `id` | `int` |  |
-| `image_path` | `str` |  |
-| `mal_score` | `str` |  |
-| `name` | `str` |  |
-| `premiered` | `str` |  |
-| `ratings_num` | `int` |  |
-| `status` | `str` |  |
-| `studio` | `str` |  |
-| `synonym` | `str` |  |
 
 #### Example: Load
 
@@ -544,24 +547,24 @@ Create an instance: `paginated_anime_list = client.PaginatedAnimeList()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `str` |  |
-| `cover` | `str` |  |
-| `current_page` | `int` |  |
-| `descrip_tion` | `str` |  |
-| `duration` | `str` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `str` |  |
+| `Cover` | `str` |  |
+| `DescripTion` | `str` |  |
+| `Duration` | `str` |  |
+| `Genres` | `list` |  |
+| `ImagePath` | `str` |  |
+| `MALScore` | `str` |  |
+| `Name` | `str` |  |
+| `Premiered` | `str` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `str` |  |
+| `Studios` | `str` |  |
+| `Synonyms` | `str` |  |
+| `currentPage` | `int` |  |
+| `epCount` | `int` |  |
 | `finder` | `str` |  |
-| `genre` | `list` |  |
 | `id` | `int` |  |
-| `image_path` | `str` |  |
-| `mal_score` | `str` |  |
-| `name` | `str` |  |
-| `premiered` | `str` |  |
-| `ratings_num` | `int` |  |
-| `status` | `str` |  |
-| `studio` | `str` |  |
-| `synonym` | `str` |  |
-| `whole_page` | `list` |  |
+| `wholePage` | `list` |  |
 
 #### Example: Load
 
@@ -590,22 +593,22 @@ Create an instance: `rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `str` |  |
-| `cover` | `str` |  |
-| `descrip_tion` | `str` |  |
-| `duration` | `str` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `str` |  |
+| `Cover` | `str` |  |
+| `DescripTion` | `str` |  |
+| `Duration` | `str` |  |
+| `Genres` | `list` |  |
+| `ImagePath` | `str` |  |
+| `MALScore` | `str` |  |
+| `Name` | `str` |  |
+| `Premiered` | `str` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `str` |  |
+| `Studios` | `str` |  |
+| `Synonyms` | `str` |  |
+| `epCount` | `int` |  |
 | `finder` | `str` |  |
-| `genre` | `list` |  |
 | `id` | `int` |  |
-| `image_path` | `str` |  |
-| `mal_score` | `str` |  |
-| `name` | `str` |  |
-| `premiered` | `str` |  |
-| `ratings_num` | `int` |  |
-| `status` | `str` |  |
-| `studio` | `str` |  |
-| `synonym` | `str` |  |
 
 #### Example: List
 
@@ -628,22 +631,22 @@ Create an instance: `search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `str` |  |
-| `cover` | `str` |  |
-| `descrip_tion` | `str` |  |
-| `duration` | `str` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `str` |  |
+| `Cover` | `str` |  |
+| `DescripTion` | `str` |  |
+| `Duration` | `str` |  |
+| `Genres` | `list` |  |
+| `ImagePath` | `str` |  |
+| `MALScore` | `str` |  |
+| `Name` | `str` |  |
+| `Premiered` | `str` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `str` |  |
+| `Studios` | `str` |  |
+| `Synonyms` | `str` |  |
+| `epCount` | `int` |  |
 | `finder` | `str` |  |
-| `genre` | `list` |  |
 | `id` | `int` |  |
-| `image_path` | `str` |  |
-| `mal_score` | `str` |  |
-| `name` | `str` |  |
-| `premiered` | `str` |  |
-| `ratings_num` | `int` |  |
-| `status` | `str` |  |
-| `studio` | `str` |  |
-| `synonym` | `str` |  |
 
 #### Example: Load
 
@@ -666,7 +669,9 @@ Create an instance: `streaming_detail = client.StreamingDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `dict` |  |
+| `ep` | `list` |  |
+| `link` | `str` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -746,15 +751,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-anime = client.Anime()
-anime.load()
+rating = client.Rating()
+rating.list()
 
-# anime.data_get() now returns the anime data from the last load
-# anime.match_get() returns the last match criteria
+# rating.data_get() now returns the rating data from the last list
+# rating.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

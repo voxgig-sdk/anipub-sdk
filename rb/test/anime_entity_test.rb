@@ -37,7 +37,7 @@ class AnimeEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.anime"), "anime_ref01"))
 
     anime_ref01_data_result = anime_ref01_ent.create(anime_ref01_data, nil)
-    anime_ref01_data = Helpers.to_map(anime_ref01_data_result)
+    anime_ref01_data = Helpers.to_map(anime_ref01_data_result.respond_to?(:data_get) ? anime_ref01_data_result.data_get : anime_ref01_data_result)
     assert !anime_ref01_data.nil?
 
     # LOAD

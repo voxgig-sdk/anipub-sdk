@@ -128,7 +128,7 @@ func TestPaginatedAnimeListEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		paginatedAnimeListRef01DataDt0LoadResult := core.ToMapAny(paginatedAnimeListRef01DataDt0Loaded)
+		paginatedAnimeListRef01DataDt0LoadResult := core.ToMapAny(entityData(paginatedAnimeListRef01DataDt0Loaded))
 		if paginatedAnimeListRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

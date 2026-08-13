@@ -126,9 +126,9 @@ fmt.Println(anime.GetName()) // "anime"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `bool` | No |  |
-| `genre` | `any` | Yes |  |
-| `name` | `string` | Yes |  |
+| `Genre` | `any` | Yes |  |
+| `Name` | `string` | Yes |  |
+| `exists` | `bool` | No |  |
 
 ### Operations
 
@@ -150,8 +150,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Anime(nil).Create(map[string]any{
-    "genre": "example_genre",
-    "name": "example_name",
+    "Genre": "example_Genre",
+    "Name": "example_Name",
 }, nil)
 if err != nil {
     panic(err)
@@ -247,7 +247,7 @@ fmt.Println(fullAnimeDetail.GetName()) // "full_anime_detail"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `[]any` | No |  |
+| `characters` | `[]any` | No |  |
 | `jikan` | `map[string]any` | No |  |
 | `local` | `map[string]any` | No |  |
 
@@ -300,22 +300,22 @@ fmt.Println(info.GetName()) // "info"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `[]any` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -366,24 +366,24 @@ fmt.Println(paginatedAnimeList.GetName()) // "paginated_anime_list"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `current_page` | `int` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `[]any` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `currentPage` | `int` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
-| `whole_page` | `[]any` | No |  |
+| `wholePage` | `[]any` | No |  |
 
 ### Operations
 
@@ -446,22 +446,22 @@ fmt.Println(rating.GetName()) // "rating"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `[]any` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -512,22 +512,22 @@ fmt.Println(search.GetName()) // "search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `[]any` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -578,7 +578,9 @@ fmt.Println(streamingDetail.GetName()) // "streaming_detail"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `local` | `map[string]any` | No |  |
+| `ep` | `[]any` | No |  |
+| `link` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

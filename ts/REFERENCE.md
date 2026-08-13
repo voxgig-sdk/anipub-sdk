@@ -200,9 +200,9 @@ const anime = client.Anime()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `boolean` | No |  |
-| `genre` | `any` | Yes |  |
-| `name` | `string` | Yes |  |
+| `Genre` | `any` | Yes |  |
+| `Name` | `string` | Yes |  |
+| `exists` | `boolean` | No |  |
 
 ### Operations
 
@@ -212,8 +212,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Anime().create({
-  genre: 'example_genre',
-  name: 'example_name',
+  Genre: 'example_Genre',
+  Name: 'example_Name',
 })
 ```
 
@@ -315,7 +315,7 @@ const full_anime_detail = client.FullAnimeDetail()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `any[]` | No |  |
+| `characters` | `any[]` | No |  |
 | `jikan` | `Record<string, any>` | No |  |
 | `local` | `Record<string, any>` | No |  |
 
@@ -367,22 +367,22 @@ const info = client.Info()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `any[]` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `any[]` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -432,24 +432,24 @@ const paginated_anime_list = client.PaginatedAnimeList()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `current_page` | `number` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `any[]` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `currentPage` | `number` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `any[]` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
-| `whole_page` | `any[]` | No |  |
+| `wholePage` | `any[]` | No |  |
 
 ### Operations
 
@@ -507,22 +507,22 @@ const rating = client.Rating()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `any[]` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `any[]` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -572,22 +572,22 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `any[]` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `any[]` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -637,7 +637,9 @@ const streaming_detail = client.StreamingDetail()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `local` | `Record<string, any>` | No |  |
+| `ep` | `any[]` | No |  |
+| `link` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

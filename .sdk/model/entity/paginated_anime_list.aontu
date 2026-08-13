@@ -6,32 +6,77 @@ main: kit: entity: paginated_anime_list: {
 
   fields: [
     {
-      name: "aired"
+      name: "Aired"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "cover"
+      name: "Cover"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "current_page"
+      name: "DescripTion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Genres"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ImagePath"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "MALScore"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "RatingsNum"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "descrip_tion"
+      name: "Status"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "duration"
+      name: "Studios"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "ep_count"
+      name: "Synonyms"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "currentPage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "epCount"
       req: false
       type: "`$INTEGER`"
     }
@@ -41,57 +86,12 @@ main: kit: entity: paginated_anime_list: {
       type: "`$STRING`"
     }
     {
-      name: "genre"
-      req: false
-      type: "`$ARRAY`"
-    }
-    {
       name: "id"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "image_path"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "mal_score"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "name"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "premiered"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "ratings_num"
-      req: false
-      type: "`$INTEGER`"
-    }
-    {
-      name: "status"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "studio"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "synonym"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "whole_page"
+      name: "wholePage"
       req: false
       type: "`$ARRAY`"
     }
@@ -169,7 +169,7 @@ main: kit: entity: paginated_anime_list: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.wholePage`"
           }
         }
       ]

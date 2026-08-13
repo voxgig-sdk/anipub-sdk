@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from anipub_sdk.utility.voxgig_struct import voxgig_struct as vs
 from anipub_sdk import AnipubSDK
-from core import helpers
+from anipub_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,7 +42,7 @@ class TestPaginatedAnimeListEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
+        from anipub_sdk.config import make_config
         cfg = make_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = AnipubSDK.test(
@@ -92,7 +92,7 @@ class TestPaginatedAnimeListEntity:
             "id": paginated_anime_list_ref01_data["id"],
         }
         paginated_anime_list_ref01_data_dt0_loaded = paginated_anime_list_ref01_ent.load(paginated_anime_list_ref01_match_dt0, None)
-        paginated_anime_list_ref01_data_dt0_load_result = helpers.to_map(paginated_anime_list_ref01_data_dt0_loaded)
+        paginated_anime_list_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(paginated_anime_list_ref01_data_dt0_loaded))
         assert paginated_anime_list_ref01_data_dt0_load_result is not None
         assert paginated_anime_list_ref01_data_dt0_load_result["id"] == paginated_anime_list_ref01_data["id"]
 

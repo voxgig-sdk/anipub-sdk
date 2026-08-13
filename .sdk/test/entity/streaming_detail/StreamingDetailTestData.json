@@ -2,15 +2,21 @@
   "existing": {
     "streaming_detail": {
       "STREAMING_DETAIL00": {
-        "local": {},
+        "ep": [],
+        "link": "s1f",
+        "name": "s20",
         "id": "STREAMING_DETAIL00"
       },
       "STREAMING_DETAIL01": {
-        "local": {},
+        "ep": [],
+        "link": "s3d",
+        "name": "s3e",
         "id": "STREAMING_DETAIL01"
       },
       "STREAMING_DETAIL02": {
-        "local": {},
+        "ep": [],
+        "link": "s5b",
+        "name": "s5c",
         "id": "STREAMING_DETAIL02"
       }
     }
@@ -18,7 +24,9 @@
   "new": {
     "streaming_detail": {
       "streaming_detail_ref01": {
-        "local": {}
+        "ep": [],
+        "link": "s79",
+        "name": "s7a"
       }
     }
   }

@@ -15,25 +15,25 @@ declare(strict_types=1);
 /** Anime entity data model. */
 class Anime
 {
-    public ?bool $exist = null;
-    public mixed $genre;
-    public string $name;
+    public mixed $Genre;
+    public string $Name;
+    public ?bool $exists = null;
 }
 
 /** Request payload for Anime#load. */
 class AnimeLoadMatch
 {
-    public ?bool $exist = null;
-    public mixed $genre = null;
-    public ?string $name = null;
+    public mixed $Genre = null;
+    public ?string $Name = null;
+    public ?bool $exists = null;
 }
 
 /** Request payload for Anime#create. */
 class AnimeCreateData
 {
-    public ?bool $exist = null;
-    public mixed $genre;
-    public string $name;
+    public mixed $Genre;
+    public string $Name;
+    public ?bool $exists = null;
 }
 
 /** Find entity data model. */
@@ -53,7 +53,7 @@ class FindLoadMatch
 /** FullAnimeDetail entity data model. */
 class FullAnimeDetail
 {
-    public ?array $character = null;
+    public ?array $characters = null;
     public ?array $jikan = null;
     public ?array $local = null;
 }
@@ -67,22 +67,22 @@ class FullAnimeDetailLoadMatch
 /** Info entity data model. */
 class Info
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
 }
 
 /** Request payload for Info#load. */
@@ -94,24 +94,24 @@ class InfoLoadMatch
 /** PaginatedAnimeList entity data model. */
 class PaginatedAnimeList
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?int $current_page = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $currentPage = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
-    public ?array $whole_page = null;
+    public ?array $wholePage = null;
 }
 
 /** Request payload for PaginatedAnimeList#load. */
@@ -124,87 +124,87 @@ class PaginatedAnimeListLoadMatch
 /** Request payload for PaginatedAnimeList#list. */
 class PaginatedAnimeListListMatch
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?int $current_page = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $currentPage = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
-    public ?array $whole_page = null;
+    public ?array $wholePage = null;
 }
 
 /** Rating entity data model. */
 class Rating
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
 }
 
 /** Request payload for Rating#list. */
 class RatingListMatch
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
 }
 
 /** Search entity data model. */
 class Search
 {
-    public ?string $aired = null;
-    public ?string $cover = null;
-    public ?string $descrip_tion = null;
-    public ?string $duration = null;
-    public ?int $ep_count = null;
+    public ?string $Aired = null;
+    public ?string $Cover = null;
+    public ?string $DescripTion = null;
+    public ?string $Duration = null;
+    public ?array $Genres = null;
+    public ?string $ImagePath = null;
+    public ?string $MALScore = null;
+    public ?string $Name = null;
+    public ?string $Premiered = null;
+    public ?int $RatingsNum = null;
+    public ?string $Status = null;
+    public ?string $Studios = null;
+    public ?string $Synonyms = null;
+    public ?int $epCount = null;
     public ?string $finder = null;
-    public ?array $genre = null;
     public ?int $id = null;
-    public ?string $image_path = null;
-    public ?string $mal_score = null;
-    public ?string $name = null;
-    public ?string $premiered = null;
-    public ?int $ratings_num = null;
-    public ?string $status = null;
-    public ?string $studio = null;
-    public ?string $synonym = null;
 }
 
 /** Request payload for Search#load. */
@@ -216,7 +216,9 @@ class SearchLoadMatch
 /** StreamingDetail entity data model. */
 class StreamingDetail
 {
-    public ?array $local = null;
+    public ?array $ep = null;
+    public ?string $link = null;
+    public ?string $name = null;
 }
 
 /** Request payload for StreamingDetail#load. */

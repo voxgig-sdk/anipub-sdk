@@ -49,7 +49,7 @@ describe("FindEntity", function()
     }
     local find_ref01_data_dt0_loaded, err = find_ref01_ent:load(find_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local find_ref01_data_dt0_load_result = helpers.to_map(find_ref01_data_dt0_loaded)
+    local find_ref01_data_dt0_load_result = helpers.to_map(type(find_ref01_data_dt0_loaded) == 'table' and find_ref01_data_dt0_loaded.data_get and find_ref01_data_dt0_loaded:data_get() or find_ref01_data_dt0_loaded)
     assert.is_not_nil(find_ref01_data_dt0_load_result)
     assert.are.equal(find_ref01_data_dt0_load_result["id"], find_ref01_data["id"])
 

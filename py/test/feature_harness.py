@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AnipubControl
-from core.error import AnipubError
-from core.result import AnipubResult
-from core.spec import AnipubSpec
+from anipub_sdk.config import make_config
+from anipub_sdk.features import _make_feature
+from anipub_sdk.core.control import AnipubControl
+from anipub_sdk.core.error import AnipubError
+from anipub_sdk.core.result import AnipubResult
+from anipub_sdk.core.spec import AnipubSpec
 
 
 # True when this SDK was generated with the named feature.

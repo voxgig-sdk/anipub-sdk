@@ -58,7 +58,7 @@ func TestAnimeEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		animeRef01Data = core.ToMapAny(animeRef01DataResult)
+		animeRef01Data = core.ToMapAny(entityData(animeRef01DataResult))
 		if animeRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

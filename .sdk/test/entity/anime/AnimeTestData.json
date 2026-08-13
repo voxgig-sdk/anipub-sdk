@@ -2,21 +2,21 @@
   "existing": {
     "anime": {
       "ANIME00": {
-        "exist": true,
-        "genre": "s1f",
-        "name": "s20",
+        "Genre": "s1e",
+        "Name": "s1f",
+        "exists": true,
         "id": "ANIME00"
       },
       "ANIME01": {
-        "exist": true,
-        "genre": "s3d",
-        "name": "s3e",
+        "Genre": "s3c",
+        "Name": "s3d",
+        "exists": true,
         "id": "ANIME01"
       },
       "ANIME02": {
-        "exist": true,
-        "genre": "s5b",
-        "name": "s5c",
+        "Genre": "s5a",
+        "Name": "s5b",
+        "exists": true,
         "id": "ANIME02"
       }
     }
@@ -24,9 +24,9 @@
   "new": {
     "anime": {
       "anime_ref01": {
-        "exist": true,
-        "genre": "s79",
-        "name": "s7a"
+        "Genre": "s78",
+        "Name": "s79",
+        "exists": true
       }
     }
   }

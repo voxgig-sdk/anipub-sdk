@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from anipub_sdk.utility.voxgig_struct import voxgig_struct as vs
 from anipub_sdk import AnipubSDK
-from core import helpers
+from anipub_sdk.core import helpers
 from test import runner
 
 

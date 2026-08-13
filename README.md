@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AnipubSDK.test()
-const anime = await client.Anime().load()
-// anime is a bare Anime populated with mock data
-console.log(anime)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AnipubSDK.test({
+  entity: {
+    rating: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const ratings = await client.Rating().list()
+// ratings is an array of Rating entities, populated with mock data
+// — call ratings[0].data() for the record itself
+console.log(ratings)
 ```
 
 ### Python
 
 ```python
 client = AnipubSDK.test()
-anime = client.Anime().load()
-print(anime)
+ratings = client.Rating().list()
+print(ratings)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(anime)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = AnipubSDK::test([
-    "entity" => ["anime" => ["test01" => []]],
+    "entity" => ["rating" => ["test01" => []]],
 ]);
-$anime = $client->Anime()->load();
+$ratings = $client->Rating()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Anime(nil).Load(
+result, err := client.Rating(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Anime(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = AnipubSDK.test({
-  "entity" => { "anime" => { "test01" => {} } },
+  "entity" => { "rating" => { "test01" => {} } },
 })
-anime = client.Anime.load()
+ratings = client.Rating.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Anime():load()
+local results, err = client:Rating():list()
 ```
 
 ## Packages
@@ -153,7 +162,7 @@ The API exposes 8 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Anime** | The Anime entity (create, load). | `/api/check` |
+| **Anime** | The Anime entity (create, load). | `/api/getAll` |
 | **Find** | The Find entity (load). | `/api/find/{name}` |
 | **FullAnimeDetail** | The FullAnimeDetail entity (load). | `/anime/api/details/{id}` |
 | **Info** | The Info entity (load). | `/api/info/{id}` |
@@ -189,7 +198,7 @@ require_once 'anipub_sdk.php';
 $client = new AnipubSDK();
 
 
-// Load a specific anime (returns the bare record; throws on error)
+// Load a specific anime (returns the ENTITY; call data_get() for the record; throws on error)
 $anime = $client->Anime()->load();
 print_r($anime);
 ```
@@ -217,7 +226,7 @@ require_relative "Anipub_sdk"
 client = AnipubSDK.new
 
 
-# Load a specific anime (returns the bare record; raises on error)
+# Load a specific anime (returns the ENTITY; call data_get for the record)
 anime = client.Anime.load()
 puts anime
 ```
@@ -351,6 +360,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.anipub.xyz/](https://api.anipub.xyz/)
 

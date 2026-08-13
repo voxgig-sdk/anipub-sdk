@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from anipub_sdk.utility.voxgig_struct import voxgig_struct as vs
 from anipub_sdk import AnipubSDK
-from core import helpers
+from anipub_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -52,7 +52,7 @@ class TestInfoEntity:
             "id": info_ref01_data["id"],
         }
         info_ref01_data_dt0_loaded = info_ref01_ent.load(info_ref01_match_dt0, None)
-        info_ref01_data_dt0_load_result = helpers.to_map(info_ref01_data_dt0_loaded)
+        info_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(info_ref01_data_dt0_loaded))
         assert info_ref01_data_dt0_load_result is not None
         assert info_ref01_data_dt0_load_result["id"] == info_ref01_data["id"]
 

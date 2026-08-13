@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AnipubUtility.registrar = ->(u) {
   u.prepare_params = AnipubUtilities::PrepareParams
   u.prepare_path = AnipubUtilities::PreparePath
   u.prepare_query = AnipubUtilities::PrepareQuery
+  u.graphql_body = AnipubUtilities::GraphqlBody
+  u.graphql_errors = AnipubUtilities::GraphqlErrors
   u.result_basic = AnipubUtilities::ResultBasic
   u.result_body = AnipubUtilities::ResultBody
   u.result_headers = AnipubUtilities::ResultHeaders

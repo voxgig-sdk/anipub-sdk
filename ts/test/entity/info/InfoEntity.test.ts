@@ -63,7 +63,7 @@ describe('InfoEntity', async () => {
     const info_ref01_ent = client.Info()
     const info_ref01_match_dt0: any = {}
     info_ref01_match_dt0.id = info_ref01_data.id
-    const info_ref01_data_dt0 = await info_ref01_ent.load(info_ref01_match_dt0)
+    const info_ref01_data_dt0 = (await info_ref01_ent.load(info_ref01_match_dt0)).data()
     assert(info_ref01_data_dt0.id === info_ref01_data.id)
 
 

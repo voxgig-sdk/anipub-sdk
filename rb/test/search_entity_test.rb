@@ -45,7 +45,7 @@ class SearchEntityTest < Minitest::Test
       "id" => search_ref01_data["id"],
     }
     search_ref01_data_dt0_loaded = search_ref01_ent.load(search_ref01_match_dt0, nil)
-    search_ref01_data_dt0_load_result = Helpers.to_map(search_ref01_data_dt0_loaded)
+    search_ref01_data_dt0_load_result = Helpers.to_map(search_ref01_data_dt0_loaded.respond_to?(:data_get) ? search_ref01_data_dt0_loaded.data_get : search_ref01_data_dt0_loaded)
     assert !search_ref01_data_dt0_load_result.nil?
     assert_equal search_ref01_data_dt0_load_result["id"], search_ref01_data["id"]
 

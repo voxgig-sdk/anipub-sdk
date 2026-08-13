@@ -87,7 +87,7 @@ class PaginatedAnimeListEntityTest < Minitest::Test
       "id" => paginated_anime_list_ref01_data["id"],
     }
     paginated_anime_list_ref01_data_dt0_loaded = paginated_anime_list_ref01_ent.load(paginated_anime_list_ref01_match_dt0, nil)
-    paginated_anime_list_ref01_data_dt0_load_result = Helpers.to_map(paginated_anime_list_ref01_data_dt0_loaded)
+    paginated_anime_list_ref01_data_dt0_load_result = Helpers.to_map(paginated_anime_list_ref01_data_dt0_loaded.respond_to?(:data_get) ? paginated_anime_list_ref01_data_dt0_loaded.data_get : paginated_anime_list_ref01_data_dt0_loaded)
     assert !paginated_anime_list_ref01_data_dt0_load_result.nil?
     assert_equal paginated_anime_list_ref01_data_dt0_load_result["id"], paginated_anime_list_ref01_data["id"]
 

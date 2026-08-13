@@ -35,7 +35,7 @@ $client = new AnipubSDK();
 
 ```php
 try {
-    // load() returns the bare Anime record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Anime record (throws on error).
     $anime = $client->Anime()->load();
     print_r($anime);
 } catch (\Throwable $err) {
@@ -46,8 +46,8 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created Anime record.
-$created = $client->Anime()->create(["genre" => "example_genre", "name" => "example_name"]);
+// create() returns the ENTITY — call data_get() for the created Anime record.
+$created = $client->Anime()->create(["Genre" => "example_Genre", "Name" => "example_Name"]);
 
 ```
 
@@ -59,7 +59,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $anime = $client->Anime()->load();
+    $ratings = $client->Rating()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -131,9 +131,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AnipubSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$anime = $client->Anime()->load();
-print_r($anime);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$rating = $client->Rating()->list();
+print_r($rating);
 ```
 
 ### Use a custom fetch function
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -261,9 +262,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `genre` |  |
-| `name` |  |
+| `Genre` |  |
+| `Name` |  |
+| `exists` |  |
 
 Operations: Create, Load.
 
@@ -285,7 +286,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `jikan` |  |
 | `local` |  |
 
@@ -297,22 +298,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -322,24 +323,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `current_page` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `currentPage` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
-| `whole_page` |  |
+| `wholePage` |  |
 
 Operations: List, Load.
 
@@ -349,22 +350,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: List.
 
@@ -374,22 +375,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -399,7 +400,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `local` |  |
+| `ep` |  |
+| `link` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -425,14 +428,14 @@ Create an instance: `$anime = $client->Anime();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `bool` |  |
-| `genre` | `mixed` |  |
-| `name` | `string` |  |
+| `Genre` | `mixed` |  |
+| `Name` | `string` |  |
+| `exists` | `bool` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Anime record (throws on error).
+// load() returns the ENTITY — call data_get() for the Anime record (throws on error).
 $anime = $client->Anime()->load();
 ```
 
@@ -440,8 +443,8 @@ $anime = $client->Anime()->load();
 
 ```php
 $anime = $client->Anime()->create([
-    "genre" => null, // mixed
-    "name" => null, // string
+    "Genre" => null, // mixed
+    "Name" => null, // string
 ]);
 ```
 
@@ -467,7 +470,7 @@ Create an instance: `$find = $client->Find();`
 #### Example: Load
 
 ```php
-// load() returns the bare Find record (throws on error).
+// load() returns the ENTITY — call data_get() for the Find record (throws on error).
 $find = $client->Find()->load(["id" => "find_id"]);
 ```
 
@@ -486,14 +489,14 @@ Create an instance: `$full_anime_detail = $client->FullAnimeDetail();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `array` |  |
+| `characters` | `array` |  |
 | `jikan` | `array` |  |
 | `local` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare FullAnimeDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the FullAnimeDetail record (throws on error).
 $full_anime_detail = $client->FullAnimeDetail()->load(["id" => 1]);
 ```
 
@@ -512,27 +515,27 @@ Create an instance: `$info = $client->Info();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `array` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `array` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Info record (throws on error).
+// load() returns the ENTITY — call data_get() for the Info record (throws on error).
 $info = $client->Info()->load(["id" => "info_id"]);
 ```
 
@@ -552,29 +555,29 @@ Create an instance: `$paginated_anime_list = $client->PaginatedAnimeList();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `current_page` | `int` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `array` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `currentPage` | `int` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `array` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
-| `whole_page` | `array` |  |
+| `wholePage` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare PaginatedAnimeList record (throws on error).
+// load() returns the ENTITY — call data_get() for the PaginatedAnimeList record (throws on error).
 $paginated_anime_list = $client->PaginatedAnimeList()->load();
 ```
 
@@ -600,22 +603,22 @@ Create an instance: `$rating = $client->Rating();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `array` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `array` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: List
 
@@ -639,27 +642,27 @@ Create an instance: `$search = $client->Search();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `int` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `array` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `int` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `int` |  |
 | `finder` | `string` |  |
-| `genre` | `array` |  |
 | `id` | `int` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `int` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Search record (throws on error).
+// load() returns the ENTITY — call data_get() for the Search record (throws on error).
 $search = $client->Search()->load(["id" => "search_id"]);
 ```
 
@@ -678,12 +681,14 @@ Create an instance: `$streaming_detail = $client->StreamingDetail();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `array` |  |
+| `ep` | `array` |  |
+| `link` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare StreamingDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the StreamingDetail record (throws on error).
 $streaming_detail = $client->StreamingDetail()->load(["id" => 1]);
 ```
 
@@ -760,15 +765,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$anime = $client->Anime();
-$anime->load();
+$rating = $client->Rating();
+$rating->list();
 
-// $anime->data_get() now returns the anime data from the last load
-// $anime->match_get() returns the last match criteria
+// $rating->data_get() now returns the rating data from the last list
+// $rating->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

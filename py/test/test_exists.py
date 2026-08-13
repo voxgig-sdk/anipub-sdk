@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Anipub SDK exists test
 
 import pytest
 from anipub_sdk import AnipubSDK

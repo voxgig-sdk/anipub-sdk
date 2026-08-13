@@ -97,7 +97,7 @@ class PaginatedAnimeListEntityTest extends TestCase
             "id" => $paginated_anime_list_ref01_data["id"],
         ];
         $paginated_anime_list_ref01_data_dt0_loaded = $paginated_anime_list_ref01_ent->load($paginated_anime_list_ref01_match_dt0, null);
-        $paginated_anime_list_ref01_data_dt0_load_result = Helpers::to_map($paginated_anime_list_ref01_data_dt0_loaded);
+        $paginated_anime_list_ref01_data_dt0_load_result = Helpers::to_map(is_object($paginated_anime_list_ref01_data_dt0_loaded) && method_exists($paginated_anime_list_ref01_data_dt0_loaded, 'data_get') ? $paginated_anime_list_ref01_data_dt0_loaded->data_get() : $paginated_anime_list_ref01_data_dt0_loaded);
         $this->assertNotNull($paginated_anime_list_ref01_data_dt0_load_result);
         $this->assertEquals($paginated_anime_list_ref01_data_dt0_load_result["id"], $paginated_anime_list_ref01_data["id"]);
 

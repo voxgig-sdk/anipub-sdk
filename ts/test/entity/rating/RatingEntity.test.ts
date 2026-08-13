@@ -63,7 +63,7 @@ describe('RatingEntity', async () => {
     const rating_ref01_ent = client.Rating()
     const rating_ref01_match: any = {}
 
-    const rating_ref01_list = await rating_ref01_ent.list(rating_ref01_match)
+    const rating_ref01_list = (await rating_ref01_ent.list(rating_ref01_match)).map((e: any) => e.data())
 
 
   })

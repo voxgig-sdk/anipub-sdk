@@ -121,9 +121,9 @@ anime = client.Anime
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `Boolean` | No |  |
-| `genre` | `Object` | Yes |  |
-| `name` | `String` | Yes |  |
+| `Genre` | `Object` | Yes |  |
+| `Name` | `String` | Yes |  |
+| `exists` | `Boolean` | No |  |
 
 ### Operations
 
@@ -133,8 +133,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Anime.create({
-  "genre" => "example_genre", # Object
-  "name" => "example_name", # String
+  "Genre" => "example_Genre", # Object
+  "Name" => "example_Name", # String
 })
 ```
 
@@ -240,7 +240,7 @@ full_anime_detail = client.FullAnimeDetail
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `Array` | No |  |
+| `characters` | `Array` | No |  |
 | `jikan` | `Hash` | No |  |
 | `local` | `Hash` | No |  |
 
@@ -294,22 +294,22 @@ info = client.Info
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `String` | No |  |
-| `cover` | `String` | No |  |
-| `descrip_tion` | `String` | No |  |
-| `duration` | `String` | No |  |
-| `ep_count` | `Integer` | No |  |
+| `Aired` | `String` | No |  |
+| `Cover` | `String` | No |  |
+| `DescripTion` | `String` | No |  |
+| `Duration` | `String` | No |  |
+| `Genres` | `Array` | No |  |
+| `ImagePath` | `String` | No |  |
+| `MALScore` | `String` | No |  |
+| `Name` | `String` | No |  |
+| `Premiered` | `String` | No |  |
+| `RatingsNum` | `Integer` | No |  |
+| `Status` | `String` | No |  |
+| `Studios` | `String` | No |  |
+| `Synonyms` | `String` | No |  |
+| `epCount` | `Integer` | No |  |
 | `finder` | `String` | No |  |
-| `genre` | `Array` | No |  |
 | `id` | `Integer` | No |  |
-| `image_path` | `String` | No |  |
-| `mal_score` | `String` | No |  |
-| `name` | `String` | No |  |
-| `premiered` | `String` | No |  |
-| `ratings_num` | `Integer` | No |  |
-| `status` | `String` | No |  |
-| `studio` | `String` | No |  |
-| `synonym` | `String` | No |  |
 
 ### Operations
 
@@ -361,24 +361,24 @@ paginated_anime_list = client.PaginatedAnimeList
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `String` | No |  |
-| `cover` | `String` | No |  |
-| `current_page` | `Integer` | No |  |
-| `descrip_tion` | `String` | No |  |
-| `duration` | `String` | No |  |
-| `ep_count` | `Integer` | No |  |
+| `Aired` | `String` | No |  |
+| `Cover` | `String` | No |  |
+| `DescripTion` | `String` | No |  |
+| `Duration` | `String` | No |  |
+| `Genres` | `Array` | No |  |
+| `ImagePath` | `String` | No |  |
+| `MALScore` | `String` | No |  |
+| `Name` | `String` | No |  |
+| `Premiered` | `String` | No |  |
+| `RatingsNum` | `Integer` | No |  |
+| `Status` | `String` | No |  |
+| `Studios` | `String` | No |  |
+| `Synonyms` | `String` | No |  |
+| `currentPage` | `Integer` | No |  |
+| `epCount` | `Integer` | No |  |
 | `finder` | `String` | No |  |
-| `genre` | `Array` | No |  |
 | `id` | `Integer` | No |  |
-| `image_path` | `String` | No |  |
-| `mal_score` | `String` | No |  |
-| `name` | `String` | No |  |
-| `premiered` | `String` | No |  |
-| `ratings_num` | `Integer` | No |  |
-| `status` | `String` | No |  |
-| `studio` | `String` | No |  |
-| `synonym` | `String` | No |  |
-| `whole_page` | `Array` | No |  |
+| `wholePage` | `Array` | No |  |
 
 ### Operations
 
@@ -438,22 +438,22 @@ rating = client.Rating
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `String` | No |  |
-| `cover` | `String` | No |  |
-| `descrip_tion` | `String` | No |  |
-| `duration` | `String` | No |  |
-| `ep_count` | `Integer` | No |  |
+| `Aired` | `String` | No |  |
+| `Cover` | `String` | No |  |
+| `DescripTion` | `String` | No |  |
+| `Duration` | `String` | No |  |
+| `Genres` | `Array` | No |  |
+| `ImagePath` | `String` | No |  |
+| `MALScore` | `String` | No |  |
+| `Name` | `String` | No |  |
+| `Premiered` | `String` | No |  |
+| `RatingsNum` | `Integer` | No |  |
+| `Status` | `String` | No |  |
+| `Studios` | `String` | No |  |
+| `Synonyms` | `String` | No |  |
+| `epCount` | `Integer` | No |  |
 | `finder` | `String` | No |  |
-| `genre` | `Array` | No |  |
 | `id` | `Integer` | No |  |
-| `image_path` | `String` | No |  |
-| `mal_score` | `String` | No |  |
-| `name` | `String` | No |  |
-| `premiered` | `String` | No |  |
-| `ratings_num` | `Integer` | No |  |
-| `status` | `String` | No |  |
-| `studio` | `String` | No |  |
-| `synonym` | `String` | No |  |
 
 ### Operations
 
@@ -505,22 +505,22 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `String` | No |  |
-| `cover` | `String` | No |  |
-| `descrip_tion` | `String` | No |  |
-| `duration` | `String` | No |  |
-| `ep_count` | `Integer` | No |  |
+| `Aired` | `String` | No |  |
+| `Cover` | `String` | No |  |
+| `DescripTion` | `String` | No |  |
+| `Duration` | `String` | No |  |
+| `Genres` | `Array` | No |  |
+| `ImagePath` | `String` | No |  |
+| `MALScore` | `String` | No |  |
+| `Name` | `String` | No |  |
+| `Premiered` | `String` | No |  |
+| `RatingsNum` | `Integer` | No |  |
+| `Status` | `String` | No |  |
+| `Studios` | `String` | No |  |
+| `Synonyms` | `String` | No |  |
+| `epCount` | `Integer` | No |  |
 | `finder` | `String` | No |  |
-| `genre` | `Array` | No |  |
 | `id` | `Integer` | No |  |
-| `image_path` | `String` | No |  |
-| `mal_score` | `String` | No |  |
-| `name` | `String` | No |  |
-| `premiered` | `String` | No |  |
-| `ratings_num` | `Integer` | No |  |
-| `status` | `String` | No |  |
-| `studio` | `String` | No |  |
-| `synonym` | `String` | No |  |
 
 ### Operations
 
@@ -572,7 +572,9 @@ streaming_detail = client.StreamingDetail
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `local` | `Hash` | No |  |
+| `ep` | `Array` | No |  |
+| `link` | `String` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 

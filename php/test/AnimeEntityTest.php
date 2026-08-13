@@ -44,7 +44,7 @@ class AnimeEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.anime"), "anime_ref01"));
 
         $anime_ref01_data_result = $anime_ref01_ent->create($anime_ref01_data, null);
-        $anime_ref01_data = Helpers::to_map($anime_ref01_data_result);
+        $anime_ref01_data = Helpers::to_map(is_object($anime_ref01_data_result) && method_exists($anime_ref01_data_result, 'data_get') ? $anime_ref01_data_result->data_get() : $anime_ref01_data_result);
         $this->assertNotNull($anime_ref01_data);
 
         // LOAD

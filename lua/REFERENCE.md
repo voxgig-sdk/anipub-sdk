@@ -118,9 +118,9 @@ local anime = client:Anime(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `boolean` | No |  |
-| `genre` | `any` | Yes |  |
-| `name` | `string` | Yes |  |
+| `Genre` | `any` | Yes |  |
+| `Name` | `string` | Yes |  |
+| `exists` | `boolean` | No |  |
 
 ### Operations
 
@@ -130,8 +130,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Anime():create({
-  genre = --[[ any ]],
-  name = --[[ string ]],
+  Genre = --[[ any ]],
+  Name = --[[ string ]],
 })
 ```
 
@@ -237,7 +237,7 @@ local full_anime_detail = client:FullAnimeDetail(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `table` | No |  |
+| `characters` | `table` | No |  |
 | `jikan` | `table` | No |  |
 | `local` | `table` | No |  |
 
@@ -291,22 +291,22 @@ local info = client:Info(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `table` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `table` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -358,24 +358,24 @@ local paginated_anime_list = client:PaginatedAnimeList(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `current_page` | `number` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `table` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `currentPage` | `number` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `table` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
-| `whole_page` | `table` | No |  |
+| `wholePage` | `table` | No |  |
 
 ### Operations
 
@@ -435,22 +435,22 @@ local rating = client:Rating(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `table` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `table` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -502,22 +502,22 @@ local search = client:Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `number` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `table` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `number` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `number` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `table` | No |  |
 | `id` | `number` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `number` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -569,7 +569,9 @@ local streaming_detail = client:StreamingDetail(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `local` | `table` | No |  |
+| `ep` | `table` | No |  |
+| `link` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

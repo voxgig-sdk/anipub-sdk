@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "anime": {
           "active": true,
@@ -27,21 +32,21 @@
           "fields": [
             {
               "active": true,
-              "name": "exist",
-              "req": false,
-              "type": "`$BOOLEAN`"
-            },
-            {
-              "active": true,
-              "name": "genre",
+              "name": "Genre",
               "req": true,
               "type": "`$ANY`"
             },
             {
               "active": true,
-              "name": "name",
+              "name": "Name",
               "req": true,
               "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "exists",
+              "req": false,
+              "type": "`$BOOLEAN`"
             }
           ],
           "name": "anime",
@@ -53,6 +58,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/api/check",
                   "parts": [
@@ -74,6 +80,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/getAll",
                   "parts": [
@@ -89,6 +96,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/getlast",
                   "parts": [
@@ -158,6 +166,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/find/{name}",
                   "parts": [
@@ -195,7 +204,7 @@
           "fields": [
             {
               "active": true,
-              "name": "character",
+              "name": "characters",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -233,6 +242,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/anime/api/details/{id}",
                   "parts": [
@@ -266,31 +276,85 @@
           "fields": [
             {
               "active": true,
-              "name": "aired",
+              "name": "Aired",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cover",
+              "name": "Cover",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "descrip_tion",
+              "name": "DescripTion",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "duration",
+              "name": "Duration",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "ep_count",
+              "name": "Genres",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "ImagePath",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "MALScore",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Premiered",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "RatingsNum",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "Status",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Studios",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Synonyms",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "epCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -302,63 +366,9 @@
             },
             {
               "active": true,
-              "name": "genre",
-              "req": false,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
               "name": "id",
               "req": false,
               "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "image_path",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "mal_score",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "premiered",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "ratings_num",
-              "req": false,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "studio",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "synonym",
-              "req": false,
-              "type": "`$STRING`"
             }
           ],
           "id": {
@@ -386,6 +396,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/info/{id}",
                   "parts": [
@@ -418,37 +429,91 @@
           "fields": [
             {
               "active": true,
-              "name": "aired",
+              "name": "Aired",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cover",
+              "name": "Cover",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "current_page",
+              "name": "DescripTion",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Duration",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Genres",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "ImagePath",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "MALScore",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Premiered",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "RatingsNum",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "descrip_tion",
+              "name": "Status",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "duration",
+              "name": "Studios",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "ep_count",
+              "name": "Synonyms",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "currentPage",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "epCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -460,67 +525,13 @@
             },
             {
               "active": true,
-              "name": "genre",
-              "req": false,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
               "name": "id",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "image_path",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "mal_score",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "premiered",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "ratings_num",
-              "req": false,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "studio",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "synonym",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "whole_page",
+              "name": "wholePage",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -586,6 +597,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/sort",
                   "parts": [
@@ -603,7 +615,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.wholePage`"
                   }
                 }
               ]
@@ -638,6 +650,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/findbyGenre/{genre}",
                   "parts": [
@@ -681,6 +694,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/searchall/{name}",
                   "parts": [
@@ -721,31 +735,85 @@
           "fields": [
             {
               "active": true,
-              "name": "aired",
+              "name": "Aired",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cover",
+              "name": "Cover",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "descrip_tion",
+              "name": "DescripTion",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "duration",
+              "name": "Duration",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "ep_count",
+              "name": "Genres",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "ImagePath",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "MALScore",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Premiered",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "RatingsNum",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "Status",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Studios",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Synonyms",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "epCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -757,63 +825,9 @@
             },
             {
               "active": true,
-              "name": "genre",
-              "req": false,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
               "name": "id",
               "req": false,
               "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "image_path",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "mal_score",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "premiered",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "ratings_num",
-              "req": false,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "studio",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "synonym",
-              "req": false,
-              "type": "`$STRING`"
             }
           ],
           "id": {
@@ -841,6 +855,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/findbyrating",
                   "parts": [
@@ -854,7 +869,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.AniData`"
                   }
                 }
               ]
@@ -872,31 +887,85 @@
           "fields": [
             {
               "active": true,
-              "name": "aired",
+              "name": "Aired",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cover",
+              "name": "Cover",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "descrip_tion",
+              "name": "DescripTion",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "duration",
+              "name": "Duration",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "ep_count",
+              "name": "Genres",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "ImagePath",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "MALScore",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Premiered",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "RatingsNum",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "Status",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Studios",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "Synonyms",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "epCount",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -908,63 +977,9 @@
             },
             {
               "active": true,
-              "name": "genre",
-              "req": false,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
               "name": "id",
               "req": false,
               "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "image_path",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "mal_score",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "premiered",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "ratings_num",
-              "req": false,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "studio",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "synonym",
-              "req": false,
-              "type": "`$STRING`"
             }
           ],
           "id": {
@@ -991,6 +1006,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/search/{name}",
                   "parts": [
@@ -1028,9 +1044,21 @@
           "fields": [
             {
               "active": true,
-              "name": "local",
+              "name": "ep",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "link",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`"
             }
           ],
           "name": "streaming_detail",
@@ -1054,6 +1082,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/v1/api/details/{id}",
                   "parts": [
@@ -1069,7 +1098,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.local`"
                   }
                 }
               ]
@@ -1469,18 +1498,41 @@
         "website": "https://anipub.xyz"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1502,22 +1554,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1556,21 +1626,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1609,12 +1697,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1626,10 +1719,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1651,22 +1757,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1688,13 +1812,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1706,10 +1835,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1731,13 +1873,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1754,10 +1901,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1779,13 +1939,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1808,10 +1973,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "anipub"
+            "goversion": "",
+            "name": "anipub",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1833,9 +2011,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

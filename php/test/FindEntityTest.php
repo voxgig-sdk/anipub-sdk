@@ -52,7 +52,7 @@ class FindEntityTest extends TestCase
             "id" => $find_ref01_data["id"],
         ];
         $find_ref01_data_dt0_loaded = $find_ref01_ent->load($find_ref01_match_dt0, null);
-        $find_ref01_data_dt0_load_result = Helpers::to_map($find_ref01_data_dt0_loaded);
+        $find_ref01_data_dt0_load_result = Helpers::to_map(is_object($find_ref01_data_dt0_loaded) && method_exists($find_ref01_data_dt0_loaded, 'data_get') ? $find_ref01_data_dt0_loaded->data_get() : $find_ref01_data_dt0_loaded);
         $this->assertNotNull($find_ref01_data_dt0_load_result);
         $this->assertEquals($find_ref01_data_dt0_load_result["id"], $find_ref01_data["id"]);
 

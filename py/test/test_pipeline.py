@@ -16,11 +16,11 @@
 import pytest
 
 from anipub_sdk import AnipubSDK
-from core.error import AnipubError
-from core.result import AnipubResult
-from core.response import AnipubResponse
-from core.spec import AnipubSpec
-from feature.base_feature import AnipubBaseFeature
+from anipub_sdk.core.error import AnipubError
+from anipub_sdk.core.result import AnipubResult
+from anipub_sdk.core.response import AnipubResponse
+from anipub_sdk.core.spec import AnipubSpec
+from anipub_sdk.feature.base_feature import AnipubBaseFeature
 
 
 def _client():

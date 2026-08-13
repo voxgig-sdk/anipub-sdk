@@ -45,12 +45,14 @@ guide: {
     }
     path: "/api/sort": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.wholePage`")|top
     }
   }
 
   entity: rating: {
     path: "/api/findbyrating": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.AniData`")|top
     }
   }
 
@@ -64,6 +66,7 @@ guide: {
   entity: streaming_detail: {
     path: "/v1/api/details/{id}": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.local`")|top
     }
   }
 

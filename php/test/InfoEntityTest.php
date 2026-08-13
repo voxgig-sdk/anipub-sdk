@@ -52,7 +52,7 @@ class InfoEntityTest extends TestCase
             "id" => $info_ref01_data["id"],
         ];
         $info_ref01_data_dt0_loaded = $info_ref01_ent->load($info_ref01_match_dt0, null);
-        $info_ref01_data_dt0_load_result = Helpers::to_map($info_ref01_data_dt0_loaded);
+        $info_ref01_data_dt0_load_result = Helpers::to_map(is_object($info_ref01_data_dt0_loaded) && method_exists($info_ref01_data_dt0_loaded, 'data_get') ? $info_ref01_data_dt0_loaded->data_get() : $info_ref01_data_dt0_loaded);
         $this->assertNotNull($info_ref01_data_dt0_load_result);
         $this->assertEquals($info_ref01_data_dt0_load_result["id"], $info_ref01_data["id"]);
 

@@ -45,7 +45,7 @@ class InfoEntityTest < Minitest::Test
       "id" => info_ref01_data["id"],
     }
     info_ref01_data_dt0_loaded = info_ref01_ent.load(info_ref01_match_dt0, nil)
-    info_ref01_data_dt0_load_result = Helpers.to_map(info_ref01_data_dt0_loaded)
+    info_ref01_data_dt0_load_result = Helpers.to_map(info_ref01_data_dt0_loaded.respond_to?(:data_get) ? info_ref01_data_dt0_loaded.data_get : info_ref01_data_dt0_loaded)
     assert !info_ref01_data_dt0_load_result.nil?
     assert_equal info_ref01_data_dt0_load_result["id"], info_ref01_data["id"]
 

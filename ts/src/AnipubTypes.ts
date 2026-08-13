@@ -6,21 +6,21 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Anime {
-  exist?: boolean
-  genre: any
-  name: string
+  Genre: any
+  Name: string
+  exists?: boolean
 }
 
 export interface AnimeLoadMatch {
-  exist?: boolean
-  genre?: any
-  name?: string
+  Genre?: any
+  Name?: string
+  exists?: boolean
 }
 
 export interface AnimeCreateData {
-  exist?: boolean
-  genre: any
-  name: string
+  Genre: any
+  Name: string
+  exists?: boolean
 }
 
 export interface Find {
@@ -34,7 +34,7 @@ export interface FindLoadMatch {
 }
 
 export interface FullAnimeDetail {
-  character?: any[]
+  characters?: any[]
   jikan?: Record<string, any>
   local?: Record<string, any>
 }
@@ -44,22 +44,22 @@ export interface FullAnimeDetailLoadMatch {
 }
 
 export interface Info {
-  aired?: string
-  cover?: string
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
 }
 
 export interface InfoLoadMatch {
@@ -67,24 +67,24 @@ export interface InfoLoadMatch {
 }
 
 export interface PaginatedAnimeList {
-  aired?: string
-  cover?: string
-  current_page?: number
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  currentPage?: number
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
-  whole_page?: any[]
+  wholePage?: any[]
 }
 
 export interface PaginatedAnimeListLoadMatch {
@@ -93,81 +93,81 @@ export interface PaginatedAnimeListLoadMatch {
 }
 
 export interface PaginatedAnimeListListMatch {
-  aired?: string
-  cover?: string
-  current_page?: number
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  currentPage?: number
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
-  whole_page?: any[]
+  wholePage?: any[]
 }
 
 export interface Rating {
-  aired?: string
-  cover?: string
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
 }
 
 export interface RatingListMatch {
-  aired?: string
-  cover?: string
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
 }
 
 export interface Search {
-  aired?: string
-  cover?: string
-  descrip_tion?: string
-  duration?: string
-  ep_count?: number
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  epCount?: number
   finder?: string
-  genre?: any[]
   id?: number
-  image_path?: string
-  mal_score?: string
-  name?: string
-  premiered?: string
-  ratings_num?: number
-  status?: string
-  studio?: string
-  synonym?: string
 }
 
 export interface SearchLoadMatch {
@@ -175,7 +175,9 @@ export interface SearchLoadMatch {
 }
 
 export interface StreamingDetail {
-  local?: Record<string, any>
+  ep?: any[]
+  link?: string
+  name?: string
 }
 
 export interface StreamingDetailLoadMatch {

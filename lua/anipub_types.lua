@@ -7,19 +7,19 @@
 -- edit by hand.
 
 ---@class Anime
----@field exist? boolean
----@field genre any
----@field name string
+---@field Genre any
+---@field Name string
+---@field exists? boolean
 
 ---@class AnimeLoadMatch
----@field exist? boolean
----@field genre? any
----@field name? string
+---@field Genre? any
+---@field Name? string
+---@field exists? boolean
 
 ---@class AnimeCreateData
----@field exist? boolean
----@field genre any
----@field name string
+---@field Genre any
+---@field Name string
+---@field exists? boolean
 
 ---@class Find
 ---@field ep? number
@@ -30,7 +30,7 @@
 ---@field id string
 
 ---@class FullAnimeDetail
----@field character? table
+---@field characters? table
 ---@field jikan? table
 ---@field local? table
 
@@ -38,129 +38,131 @@
 ---@field id number
 
 ---@class Info
----@field aired? string
----@field cover? string
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
 
 ---@class InfoLoadMatch
 ---@field id string
 
 ---@class PaginatedAnimeList
----@field aired? string
----@field cover? string
----@field current_page? number
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field currentPage? number
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
----@field whole_page? table
+---@field wholePage? table
 
 ---@class PaginatedAnimeListLoadMatch
 ---@field genre? string
 ---@field name? string
 
 ---@class PaginatedAnimeListListMatch
----@field aired? string
----@field cover? string
----@field current_page? number
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field currentPage? number
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
----@field whole_page? table
+---@field wholePage? table
 
 ---@class Rating
----@field aired? string
----@field cover? string
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
 
 ---@class RatingListMatch
----@field aired? string
----@field cover? string
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
 
 ---@class Search
----@field aired? string
----@field cover? string
----@field descrip_tion? string
----@field duration? string
----@field ep_count? number
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field epCount? number
 ---@field finder? string
----@field genre? table
 ---@field id? number
----@field image_path? string
----@field mal_score? string
----@field name? string
----@field premiered? string
----@field ratings_num? number
----@field status? string
----@field studio? string
----@field synonym? string
 
 ---@class SearchLoadMatch
 ---@field id string
 
 ---@class StreamingDetail
----@field local? table
+---@field ep? table
+---@field link? string
+---@field name? string
 
 ---@class StreamingDetailLoadMatch
 ---@field id number

@@ -6,7 +6,7 @@ main: kit: entity: full_anime_detail: {
 
   fields: [
     {
-      name: "character"
+      name: "characters"
       req: false
       type: "`$ARRAY`"
     }

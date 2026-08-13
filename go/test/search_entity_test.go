@@ -68,7 +68,7 @@ func TestSearchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		searchRef01DataDt0LoadResult := core.ToMapAny(searchRef01DataDt0Loaded)
+		searchRef01DataDt0LoadResult := core.ToMapAny(entityData(searchRef01DataDt0Loaded))
 		if searchRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

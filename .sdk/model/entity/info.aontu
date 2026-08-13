@@ -6,27 +6,72 @@ main: kit: entity: info: {
 
   fields: [
     {
-      name: "aired"
+      name: "Aired"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "cover"
+      name: "Cover"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "descrip_tion"
+      name: "DescripTion"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "duration"
+      name: "Duration"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "ep_count"
+      name: "Genres"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ImagePath"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "MALScore"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Premiered"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "RatingsNum"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "Status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Studios"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "Synonyms"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "epCount"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,54 +81,9 @@ main: kit: entity: info: {
       type: "`$STRING`"
     }
     {
-      name: "genre"
-      req: false
-      type: "`$ARRAY`"
-    }
-    {
       name: "id"
       req: false
       type: "`$INTEGER`"
-    }
-    {
-      name: "image_path"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "mal_score"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "name"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "premiered"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "ratings_num"
-      req: false
-      type: "`$INTEGER`"
-    }
-    {
-      name: "status"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "studio"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "synonym"
-      req: false
-      type: "`$STRING`"
     }
   ]
 

@@ -34,7 +34,7 @@ client = AnipubSDK.new
 
 ```ruby
 begin
-  # load returns the bare Anime record (raises on error).
+  # load returns the ENTITY — call data_get for the Anime record (raises on error).
   anime = client.Anime.load()
   puts anime
 rescue => err
@@ -45,8 +45,8 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created Anime record.
-created = client.Anime.create({ "genre" => "example_genre", "name" => "example_name" })
+# create returns the ENTITY — call data_get for the created Anime record.
+created = client.Anime.create({ "Genre" => "example_Genre", "Name" => "example_Name" })
 
 ```
 
@@ -57,9 +57,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  anime = client.Anime.load()
+  ratings = client.Rating.list()
 rescue => err
-  warn "load failed: #{err}"
+  warn "list failed: #{err}"
 end
 ```
 
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AnipubSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-anime = client.Anime.load()
-puts anime
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+rating = client.Rating.list()
+puts rating
 ```
 
 ### Use a custom fetch function
@@ -251,9 +252,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `genre` |  |
-| `name` |  |
+| `Genre` |  |
+| `Name` |  |
+| `exists` |  |
 
 Operations: Create, Load.
 
@@ -275,7 +276,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `jikan` |  |
 | `local` |  |
 
@@ -287,22 +288,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -312,24 +313,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `current_page` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `currentPage` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
-| `whole_page` |  |
+| `wholePage` |  |
 
 Operations: List, Load.
 
@@ -339,22 +340,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: List.
 
@@ -364,22 +365,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -389,7 +390,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `local` |  |
+| `ep` |  |
+| `link` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -415,14 +418,14 @@ Create an instance: `anime = client.Anime`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `Boolean` |  |
-| `genre` | `Object` |  |
-| `name` | `String` |  |
+| `Genre` | `Object` |  |
+| `Name` | `String` |  |
+| `exists` | `Boolean` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Anime record (raises on error).
+# load returns the ENTITY — call data_get for the Anime record (raises on error).
 anime = client.Anime.load()
 ```
 
@@ -430,8 +433,8 @@ anime = client.Anime.load()
 
 ```ruby
 anime = client.Anime.create({
-  "genre" => "example_genre", # Object
-  "name" => "example_name", # String
+  "Genre" => "example_Genre", # Object
+  "Name" => "example_Name", # String
 })
 ```
 
@@ -457,7 +460,7 @@ Create an instance: `find = client.Find`
 #### Example: Load
 
 ```ruby
-# load returns the bare Find record (raises on error).
+# load returns the ENTITY — call data_get for the Find record (raises on error).
 find = client.Find.load({ "id" => "find_id" })
 ```
 
@@ -476,14 +479,14 @@ Create an instance: `full_anime_detail = client.FullAnimeDetail`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `Array` |  |
+| `characters` | `Array` |  |
 | `jikan` | `Hash` |  |
 | `local` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare FullAnimeDetail record (raises on error).
+# load returns the ENTITY — call data_get for the FullAnimeDetail record (raises on error).
 full_anime_detail = client.FullAnimeDetail.load({ "id" => 1 })
 ```
 
@@ -502,27 +505,27 @@ Create an instance: `info = client.Info`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `String` |  |
-| `cover` | `String` |  |
-| `descrip_tion` | `String` |  |
-| `duration` | `String` |  |
-| `ep_count` | `Integer` |  |
+| `Aired` | `String` |  |
+| `Cover` | `String` |  |
+| `DescripTion` | `String` |  |
+| `Duration` | `String` |  |
+| `Genres` | `Array` |  |
+| `ImagePath` | `String` |  |
+| `MALScore` | `String` |  |
+| `Name` | `String` |  |
+| `Premiered` | `String` |  |
+| `RatingsNum` | `Integer` |  |
+| `Status` | `String` |  |
+| `Studios` | `String` |  |
+| `Synonyms` | `String` |  |
+| `epCount` | `Integer` |  |
 | `finder` | `String` |  |
-| `genre` | `Array` |  |
 | `id` | `Integer` |  |
-| `image_path` | `String` |  |
-| `mal_score` | `String` |  |
-| `name` | `String` |  |
-| `premiered` | `String` |  |
-| `ratings_num` | `Integer` |  |
-| `status` | `String` |  |
-| `studio` | `String` |  |
-| `synonym` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Info record (raises on error).
+# load returns the ENTITY — call data_get for the Info record (raises on error).
 info = client.Info.load({ "id" => "info_id" })
 ```
 
@@ -542,29 +545,29 @@ Create an instance: `paginated_anime_list = client.PaginatedAnimeList`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `String` |  |
-| `cover` | `String` |  |
-| `current_page` | `Integer` |  |
-| `descrip_tion` | `String` |  |
-| `duration` | `String` |  |
-| `ep_count` | `Integer` |  |
+| `Aired` | `String` |  |
+| `Cover` | `String` |  |
+| `DescripTion` | `String` |  |
+| `Duration` | `String` |  |
+| `Genres` | `Array` |  |
+| `ImagePath` | `String` |  |
+| `MALScore` | `String` |  |
+| `Name` | `String` |  |
+| `Premiered` | `String` |  |
+| `RatingsNum` | `Integer` |  |
+| `Status` | `String` |  |
+| `Studios` | `String` |  |
+| `Synonyms` | `String` |  |
+| `currentPage` | `Integer` |  |
+| `epCount` | `Integer` |  |
 | `finder` | `String` |  |
-| `genre` | `Array` |  |
 | `id` | `Integer` |  |
-| `image_path` | `String` |  |
-| `mal_score` | `String` |  |
-| `name` | `String` |  |
-| `premiered` | `String` |  |
-| `ratings_num` | `Integer` |  |
-| `status` | `String` |  |
-| `studio` | `String` |  |
-| `synonym` | `String` |  |
-| `whole_page` | `Array` |  |
+| `wholePage` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare PaginatedAnimeList record (raises on error).
+# load returns the ENTITY — call data_get for the PaginatedAnimeList record (raises on error).
 paginated_anime_list = client.PaginatedAnimeList.load()
 ```
 
@@ -590,22 +593,22 @@ Create an instance: `rating = client.Rating`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `String` |  |
-| `cover` | `String` |  |
-| `descrip_tion` | `String` |  |
-| `duration` | `String` |  |
-| `ep_count` | `Integer` |  |
+| `Aired` | `String` |  |
+| `Cover` | `String` |  |
+| `DescripTion` | `String` |  |
+| `Duration` | `String` |  |
+| `Genres` | `Array` |  |
+| `ImagePath` | `String` |  |
+| `MALScore` | `String` |  |
+| `Name` | `String` |  |
+| `Premiered` | `String` |  |
+| `RatingsNum` | `Integer` |  |
+| `Status` | `String` |  |
+| `Studios` | `String` |  |
+| `Synonyms` | `String` |  |
+| `epCount` | `Integer` |  |
 | `finder` | `String` |  |
-| `genre` | `Array` |  |
 | `id` | `Integer` |  |
-| `image_path` | `String` |  |
-| `mal_score` | `String` |  |
-| `name` | `String` |  |
-| `premiered` | `String` |  |
-| `ratings_num` | `Integer` |  |
-| `status` | `String` |  |
-| `studio` | `String` |  |
-| `synonym` | `String` |  |
 
 #### Example: List
 
@@ -629,27 +632,27 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `String` |  |
-| `cover` | `String` |  |
-| `descrip_tion` | `String` |  |
-| `duration` | `String` |  |
-| `ep_count` | `Integer` |  |
+| `Aired` | `String` |  |
+| `Cover` | `String` |  |
+| `DescripTion` | `String` |  |
+| `Duration` | `String` |  |
+| `Genres` | `Array` |  |
+| `ImagePath` | `String` |  |
+| `MALScore` | `String` |  |
+| `Name` | `String` |  |
+| `Premiered` | `String` |  |
+| `RatingsNum` | `Integer` |  |
+| `Status` | `String` |  |
+| `Studios` | `String` |  |
+| `Synonyms` | `String` |  |
+| `epCount` | `Integer` |  |
 | `finder` | `String` |  |
-| `genre` | `Array` |  |
 | `id` | `Integer` |  |
-| `image_path` | `String` |  |
-| `mal_score` | `String` |  |
-| `name` | `String` |  |
-| `premiered` | `String` |  |
-| `ratings_num` | `Integer` |  |
-| `status` | `String` |  |
-| `studio` | `String` |  |
-| `synonym` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Search record (raises on error).
+# load returns the ENTITY — call data_get for the Search record (raises on error).
 search = client.Search.load({ "id" => "search_id" })
 ```
 
@@ -668,12 +671,14 @@ Create an instance: `streaming_detail = client.StreamingDetail`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `Hash` |  |
+| `ep` | `Array` |  |
+| `link` | `String` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare StreamingDetail record (raises on error).
+# load returns the ENTITY — call data_get for the StreamingDetail record (raises on error).
 streaming_detail = client.StreamingDetail.load({ "id" => 1 })
 ```
 
@@ -750,15 +755,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-anime = client.Anime
-anime.load()
+rating = client.Rating
+rating.list()
 
-# anime.data_get now returns the anime data from the last load
-# anime.match_get returns the last match criteria
+# rating.data_get now returns the rating data from the last list
+# rating.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

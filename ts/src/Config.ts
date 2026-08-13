@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Anipub',
   }
 
 
@@ -77,23 +77,23 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "exist",
-          "req": false,
-          "type": "`$BOOLEAN`",
+          "name": "Genre",
+          "req": true,
+          "type": "`$ANY`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "genre",
+          "name": "Name",
           "req": true,
-          "type": "`$ANY`",
+          "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "name",
-          "req": true,
-          "type": "`$STRING`",
+          "name": "exists",
+          "req": false,
+          "type": "`$BOOLEAN`",
           "index$": 2
         }
       ],
@@ -106,6 +106,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/check",
               "parts": [
@@ -129,6 +130,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/getAll",
               "parts": [
@@ -145,6 +147,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/getlast",
               "parts": [
@@ -212,6 +215,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/find/{name}",
               "parts": [
@@ -247,7 +251,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "character",
+          "name": "characters",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -289,6 +293,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/anime/api/details/{id}",
               "parts": [
@@ -320,114 +325,114 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "aired",
+          "name": "Aired",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "cover",
+          "name": "Cover",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "descrip_tion",
+          "name": "DescripTion",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "duration",
+          "name": "Duration",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "ep_count",
+          "name": "Genres",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "finder",
+          "name": "ImagePath",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "genre",
+          "name": "MALScore",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "id",
+          "name": "Name",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "image_path",
+          "name": "Premiered",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "mal_score",
+          "name": "RatingsNum",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "name",
+          "name": "Status",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "premiered",
+          "name": "Studios",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "ratings_num",
+          "name": "Synonyms",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "status",
+          "name": "epCount",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "studio",
+          "name": "finder",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "synonym",
+          "name": "id",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 15
         }
       ],
@@ -453,6 +458,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/info/{id}",
               "parts": [
@@ -483,126 +489,126 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "aired",
+          "name": "Aired",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "cover",
+          "name": "Cover",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "current_page",
+          "name": "DescripTion",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "descrip_tion",
+          "name": "Duration",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "duration",
+          "name": "Genres",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "ep_count",
+          "name": "ImagePath",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "finder",
+          "name": "MALScore",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "genre",
+          "name": "Name",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "id",
+          "name": "Premiered",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "image_path",
+          "name": "RatingsNum",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "mal_score",
+          "name": "Status",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "name",
+          "name": "Studios",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "premiered",
+          "name": "Synonyms",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "ratings_num",
+          "name": "currentPage",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "status",
+          "name": "epCount",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "studio",
+          "name": "finder",
           "req": false,
           "type": "`$STRING`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "synonym",
+          "name": "id",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "whole_page",
+          "name": "wholePage",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 17
@@ -665,6 +671,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/sort",
               "parts": [
@@ -682,7 +689,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.wholePage`"
               },
               "index$": 0
             }
@@ -720,6 +727,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/findbyGenre/{genre}",
               "parts": [
@@ -765,6 +773,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/searchall/{name}",
               "parts": [
@@ -803,114 +812,114 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "aired",
+          "name": "Aired",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "cover",
+          "name": "Cover",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "descrip_tion",
+          "name": "DescripTion",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "duration",
+          "name": "Duration",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "ep_count",
+          "name": "Genres",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "finder",
+          "name": "ImagePath",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "genre",
+          "name": "MALScore",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "id",
+          "name": "Name",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "image_path",
+          "name": "Premiered",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "mal_score",
+          "name": "RatingsNum",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "name",
+          "name": "Status",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "premiered",
+          "name": "Studios",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "ratings_num",
+          "name": "Synonyms",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "status",
+          "name": "epCount",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "studio",
+          "name": "finder",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "synonym",
+          "name": "id",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 15
         }
       ],
@@ -935,6 +944,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/findbyrating",
               "parts": [
@@ -948,7 +958,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.AniData`"
               },
               "index$": 0
             }
@@ -964,114 +974,114 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "aired",
+          "name": "Aired",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "cover",
+          "name": "Cover",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "descrip_tion",
+          "name": "DescripTion",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "duration",
+          "name": "Duration",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "ep_count",
+          "name": "Genres",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$ARRAY`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "finder",
+          "name": "ImagePath",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "genre",
+          "name": "MALScore",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "id",
+          "name": "Name",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "image_path",
+          "name": "Premiered",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "mal_score",
+          "name": "RatingsNum",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "name",
+          "name": "Status",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "premiered",
+          "name": "Studios",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "ratings_num",
+          "name": "Synonyms",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "status",
+          "name": "epCount",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "studio",
+          "name": "finder",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "synonym",
+          "name": "id",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 15
         }
       ],
@@ -1096,6 +1106,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/search/{name}",
               "parts": [
@@ -1131,10 +1142,24 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "local",
+          "name": "ep",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$ARRAY`",
           "index$": 0
+        },
+        {
+          "active": true,
+          "name": "link",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 1
+        },
+        {
+          "active": true,
+          "name": "name",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 2
         }
       ],
       "name": "streaming_detail",
@@ -1159,6 +1184,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/v1/api/details/{id}",
               "parts": [
@@ -1174,7 +1200,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.local`"
               },
               "index$": 0
             }

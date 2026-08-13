@@ -63,7 +63,7 @@ describe('SearchEntity', async () => {
     const search_ref01_ent = client.Search()
     const search_ref01_match_dt0: any = {}
     search_ref01_match_dt0.id = search_ref01_data.id
-    const search_ref01_data_dt0 = await search_ref01_ent.load(search_ref01_match_dt0)
+    const search_ref01_data_dt0 = (await search_ref01_ent.load(search_ref01_match_dt0)).data()
     assert(search_ref01_data_dt0.id === search_ref01_data.id)
 
 

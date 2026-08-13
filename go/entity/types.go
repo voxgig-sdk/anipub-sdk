@@ -6,27 +6,31 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/anipub-sdk/go/core"
+)
 
 // Anime is the typed data model for the anime entity.
 type Anime struct {
-	Exist *bool `json:"exist,omitempty"`
-	Genre any `json:"genre"`
-	Name string `json:"name"`
+	Genre any `json:"Genre"`
+	Name string `json:"Name"`
+	Exists *bool `json:"exists,omitempty"`
 }
 
 // AnimeLoadMatch is the typed request payload for Anime.LoadTyped.
 type AnimeLoadMatch struct {
-	Exist *bool `json:"exist,omitempty"`
-	Genre *any `json:"genre,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Genre *any `json:"Genre,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Exists *bool `json:"exists,omitempty"`
 }
 
 // AnimeCreateData is the typed request payload for Anime.CreateTyped.
 type AnimeCreateData struct {
-	Exist *bool `json:"exist,omitempty"`
-	Genre any `json:"genre"`
-	Name string `json:"name"`
+	Genre any `json:"Genre"`
+	Name string `json:"Name"`
+	Exists *bool `json:"exists,omitempty"`
 }
 
 // Find is the typed data model for the find entity.
@@ -43,7 +47,7 @@ type FindLoadMatch struct {
 
 // FullAnimeDetail is the typed data model for the full_anime_detail entity.
 type FullAnimeDetail struct {
-	Character *[]any `json:"character,omitempty"`
+	Characters *[]any `json:"characters,omitempty"`
 	Jikan *map[string]any `json:"jikan,omitempty"`
 	Local *map[string]any `json:"local,omitempty"`
 }
@@ -55,22 +59,22 @@ type FullAnimeDetailLoadMatch struct {
 
 // Info is the typed data model for the info entity.
 type Info struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
 }
 
 // InfoLoadMatch is the typed request payload for Info.LoadTyped.
@@ -80,24 +84,24 @@ type InfoLoadMatch struct {
 
 // PaginatedAnimeList is the typed data model for the paginated_anime_list entity.
 type PaginatedAnimeList struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	CurrentPage *int `json:"current_page,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	CurrentPage *int `json:"currentPage,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
-	WholePage *[]any `json:"whole_page,omitempty"`
+	WholePage *[]any `json:"wholePage,omitempty"`
 }
 
 // PaginatedAnimeListLoadMatch is the typed request payload for PaginatedAnimeList.LoadTyped.
@@ -108,84 +112,84 @@ type PaginatedAnimeListLoadMatch struct {
 
 // PaginatedAnimeListListMatch is the typed request payload for PaginatedAnimeList.ListTyped.
 type PaginatedAnimeListListMatch struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	CurrentPage *int `json:"current_page,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	CurrentPage *int `json:"currentPage,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
-	WholePage *[]any `json:"whole_page,omitempty"`
+	WholePage *[]any `json:"wholePage,omitempty"`
 }
 
 // Rating is the typed data model for the rating entity.
 type Rating struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
 }
 
 // RatingListMatch is the typed request payload for Rating.ListTyped.
 type RatingListMatch struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
 type Search struct {
-	Aired *string `json:"aired,omitempty"`
-	Cover *string `json:"cover,omitempty"`
-	DescripTion *string `json:"descrip_tion,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	EpCount *int `json:"ep_count,omitempty"`
+	Aired *string `json:"Aired,omitempty"`
+	Cover *string `json:"Cover,omitempty"`
+	DescripTion *string `json:"DescripTion,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Genres *[]any `json:"Genres,omitempty"`
+	ImagePath *string `json:"ImagePath,omitempty"`
+	MALScore *string `json:"MALScore,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	Premiered *string `json:"Premiered,omitempty"`
+	RatingsNum *int `json:"RatingsNum,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Studios *string `json:"Studios,omitempty"`
+	Synonyms *string `json:"Synonyms,omitempty"`
+	EpCount *int `json:"epCount,omitempty"`
 	Finder *string `json:"finder,omitempty"`
-	Genre *[]any `json:"genre,omitempty"`
 	Id *int `json:"id,omitempty"`
-	ImagePath *string `json:"image_path,omitempty"`
-	MalScore *string `json:"mal_score,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Premiered *string `json:"premiered,omitempty"`
-	RatingsNum *int `json:"ratings_num,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Studio *string `json:"studio,omitempty"`
-	Synonym *string `json:"synonym,omitempty"`
 }
 
 // SearchLoadMatch is the typed request payload for Search.LoadTyped.
@@ -195,7 +199,9 @@ type SearchLoadMatch struct {
 
 // StreamingDetail is the typed data model for the streaming_detail entity.
 type StreamingDetail struct {
-	Local *map[string]any `json:"local,omitempty"`
+	Ep *[]any `json:"ep,omitempty"`
+	Link *string `json:"link,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // StreamingDetailLoadMatch is the typed request payload for StreamingDetail.LoadTyped.
@@ -215,12 +221,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -232,12 +252,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

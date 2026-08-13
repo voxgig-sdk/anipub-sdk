@@ -49,10 +49,10 @@ try {
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created Anime
+// Create — returns the created Anime ENTITY (.data() for the record)
 const created = await client.Anime().create({
-  genre: 'example_genre',
-  name: 'example_name',
+  Genre: 'example_Genre',
+  Name: 'example_Name',
 })
 
 ```
@@ -64,10 +64,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const anime = await client.Anime().load()
-  console.log(anime)
+  const ratings = await client.Rating().list()
+  console.log(ratings)
 } catch (err) {
-  console.error('load failed:', err)
+  console.error('list failed:', err)
 }
 ```
 
@@ -131,9 +131,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AnipubSDK.test()
 
-const anime = await client.Anime().load()
-// anime is a bare entity populated with mock response data
-console.log(anime)
+const rating = await client.Rating().list()
+// rating is the entity, populated with mock response data
+// — call rating.data() for the record itself
+console.log(rating)
 ```
 
 You can also use the instance method:
@@ -148,14 +149,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Anime()
+const entity = client.Rating()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -306,9 +307,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `genre` |  |
-| `name` |  |
+| `Genre` |  |
+| `Name` |  |
+| `exists` |  |
 
 Operations: create, load.
 
@@ -330,7 +331,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `jikan` |  |
 | `local` |  |
 
@@ -342,22 +343,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: load.
 
@@ -367,24 +368,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `current_page` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `currentPage` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
-| `whole_page` |  |
+| `wholePage` |  |
 
 Operations: list, load.
 
@@ -394,22 +395,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: list.
 
@@ -419,22 +420,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: load.
 
@@ -444,7 +445,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `local` |  |
+| `ep` |  |
+| `link` |  |
+| `name` |  |
 
 Operations: load.
 
@@ -470,9 +473,9 @@ Create an instance: `const anime = client.Anime()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `boolean` |  |
-| `genre` | `any` |  |
-| `name` | `string` |  |
+| `Genre` | `any` |  |
+| `Name` | `string` |  |
+| `exists` | `boolean` |  |
 
 #### Example: Load
 
@@ -484,8 +487,8 @@ const anime = await client.Anime().load()
 
 ```ts
 const anime = await client.Anime().create({
-  genre: 'example_genre',
-  name: 'example_name',
+  Genre: 'example_Genre',
+  Name: 'example_Name',
 })
 ```
 
@@ -529,7 +532,7 @@ Create an instance: `const full_anime_detail = client.FullAnimeDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `any[]` |  |
+| `characters` | `any[]` |  |
 | `jikan` | `Record<string, any>` |  |
 | `local` | `Record<string, any>` |  |
 
@@ -554,22 +557,22 @@ Create an instance: `const info = client.Info()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `any[]` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `any[]` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -593,24 +596,24 @@ Create an instance: `const paginated_anime_list = client.PaginatedAnimeList()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `current_page` | `number` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `any[]` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `currentPage` | `number` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `any[]` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
-| `whole_page` | `any[]` |  |
+| `wholePage` | `any[]` |  |
 
 #### Example: Load
 
@@ -639,22 +642,22 @@ Create an instance: `const rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `any[]` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `any[]` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: List
 
@@ -677,22 +680,22 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `any[]` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `any[]` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -715,7 +718,9 @@ Create an instance: `const streaming_detail = client.StreamingDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `Record<string, any>` |  |
+| `ep` | `any[]` |  |
+| `link` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -788,16 +793,16 @@ import { AnipubSDK } from '@voxgig-sdk/anipub'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const anime = client.Anime()
-await anime.load()
+const rating = client.Rating()
+await rating.list()
 
-// anime.data() now returns the anime data from the last `load`
-// anime.match() returns the last match criteria
+// rating.data() now returns the rating data from the last `list`
+// rating.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

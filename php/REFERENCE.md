@@ -120,9 +120,9 @@ $anime = $client->Anime();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `bool` | No |  |
-| `genre` | `mixed` | Yes |  |
-| `name` | `string` | Yes |  |
+| `Genre` | `mixed` | Yes |  |
+| `Name` | `string` | Yes |  |
+| `exists` | `bool` | No |  |
 
 ### Operations
 
@@ -132,8 +132,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Anime()->create([
-  "genre" => null, // mixed
-  "name" => null, // string
+  "Genre" => null, // mixed
+  "Name" => null, // string
 ]);
 ```
 
@@ -239,7 +239,7 @@ $full_anime_detail = $client->FullAnimeDetail();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `array` | No |  |
+| `characters` | `array` | No |  |
 | `jikan` | `array` | No |  |
 | `local` | `array` | No |  |
 
@@ -293,22 +293,22 @@ $info = $client->Info();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `array` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `array` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -360,24 +360,24 @@ $paginated_anime_list = $client->PaginatedAnimeList();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `current_page` | `int` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `array` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `currentPage` | `int` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `array` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
-| `whole_page` | `array` | No |  |
+| `wholePage` | `array` | No |  |
 
 ### Operations
 
@@ -437,22 +437,22 @@ $rating = $client->Rating();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `array` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `array` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -504,22 +504,22 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aired` | `string` | No |  |
-| `cover` | `string` | No |  |
-| `descrip_tion` | `string` | No |  |
-| `duration` | `string` | No |  |
-| `ep_count` | `int` | No |  |
+| `Aired` | `string` | No |  |
+| `Cover` | `string` | No |  |
+| `DescripTion` | `string` | No |  |
+| `Duration` | `string` | No |  |
+| `Genres` | `array` | No |  |
+| `ImagePath` | `string` | No |  |
+| `MALScore` | `string` | No |  |
+| `Name` | `string` | No |  |
+| `Premiered` | `string` | No |  |
+| `RatingsNum` | `int` | No |  |
+| `Status` | `string` | No |  |
+| `Studios` | `string` | No |  |
+| `Synonyms` | `string` | No |  |
+| `epCount` | `int` | No |  |
 | `finder` | `string` | No |  |
-| `genre` | `array` | No |  |
 | `id` | `int` | No |  |
-| `image_path` | `string` | No |  |
-| `mal_score` | `string` | No |  |
-| `name` | `string` | No |  |
-| `premiered` | `string` | No |  |
-| `ratings_num` | `int` | No |  |
-| `status` | `string` | No |  |
-| `studio` | `string` | No |  |
-| `synonym` | `string` | No |  |
 
 ### Operations
 
@@ -571,7 +571,9 @@ $streaming_detail = $client->StreamingDetail();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `local` | `array` | No |  |
+| `ep` | `array` | No |  |
+| `link` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 

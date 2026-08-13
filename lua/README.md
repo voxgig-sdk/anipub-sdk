@@ -45,7 +45,7 @@ print(anime)
 
 ```lua
 -- Create
-local created, err = client:Anime():create({ genre = "example_genre", name = "example_name" })
+local created, err = client:Anime():create({ Genre = "example_Genre", Name = "example_Name" })
 if err then error(err) end
 
 ```
@@ -57,7 +57,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local anime, err = client:Anime():load()
+local ratings, err = client:Rating():list()
 if err then error(err) end
 ```
 
@@ -115,7 +115,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Anime():load()
+local result, err = client:Rating():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -244,9 +244,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `genre` |  |
-| `name` |  |
+| `Genre` |  |
+| `Name` |  |
+| `exists` |  |
 
 Operations: Create, Load.
 
@@ -268,7 +268,7 @@ API path: `/api/find/{name}`
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `jikan` |  |
 | `local` |  |
 
@@ -280,22 +280,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -305,24 +305,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `current_page` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `currentPage` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
-| `whole_page` |  |
+| `wholePage` |  |
 
 Operations: List, Load.
 
@@ -332,22 +332,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: List.
 
@@ -357,22 +357,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `aired` |  |
-| `cover` |  |
-| `descrip_tion` |  |
-| `duration` |  |
-| `ep_count` |  |
+| `Aired` |  |
+| `Cover` |  |
+| `DescripTion` |  |
+| `Duration` |  |
+| `Genres` |  |
+| `ImagePath` |  |
+| `MALScore` |  |
+| `Name` |  |
+| `Premiered` |  |
+| `RatingsNum` |  |
+| `Status` |  |
+| `Studios` |  |
+| `Synonyms` |  |
+| `epCount` |  |
 | `finder` |  |
-| `genre` |  |
 | `id` |  |
-| `image_path` |  |
-| `mal_score` |  |
-| `name` |  |
-| `premiered` |  |
-| `ratings_num` |  |
-| `status` |  |
-| `studio` |  |
-| `synonym` |  |
 
 Operations: Load.
 
@@ -382,7 +382,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `local` |  |
+| `ep` |  |
+| `link` |  |
+| `name` |  |
 
 Operations: Load.
 
@@ -408,9 +410,9 @@ Create an instance: `local anime = client:Anime(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `boolean` |  |
-| `genre` | `any` |  |
-| `name` | `string` |  |
+| `Genre` | `any` |  |
+| `Name` | `string` |  |
+| `exists` | `boolean` |  |
 
 #### Example: Load
 
@@ -422,8 +424,8 @@ local anime, err = client:Anime():load()
 
 ```lua
 local anime, err = client:Anime():create({
-  genre = "example_genre", -- any
-  name = "example_name", -- string
+  Genre = "example_Genre", -- any
+  Name = "example_Name", -- string
 })
 ```
 
@@ -467,7 +469,7 @@ Create an instance: `local full_anime_detail = client:FullAnimeDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `table` |  |
+| `characters` | `table` |  |
 | `jikan` | `table` |  |
 | `local` | `table` |  |
 
@@ -492,22 +494,22 @@ Create an instance: `local info = client:Info(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `table` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `table` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -531,24 +533,24 @@ Create an instance: `local paginated_anime_list = client:PaginatedAnimeList(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `current_page` | `number` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `table` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `currentPage` | `number` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `table` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
-| `whole_page` | `table` |  |
+| `wholePage` | `table` |  |
 
 #### Example: Load
 
@@ -577,22 +579,22 @@ Create an instance: `local rating = client:Rating(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `table` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `table` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: List
 
@@ -615,22 +617,22 @@ Create an instance: `local search = client:Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aired` | `string` |  |
-| `cover` | `string` |  |
-| `descrip_tion` | `string` |  |
-| `duration` | `string` |  |
-| `ep_count` | `number` |  |
+| `Aired` | `string` |  |
+| `Cover` | `string` |  |
+| `DescripTion` | `string` |  |
+| `Duration` | `string` |  |
+| `Genres` | `table` |  |
+| `ImagePath` | `string` |  |
+| `MALScore` | `string` |  |
+| `Name` | `string` |  |
+| `Premiered` | `string` |  |
+| `RatingsNum` | `number` |  |
+| `Status` | `string` |  |
+| `Studios` | `string` |  |
+| `Synonyms` | `string` |  |
+| `epCount` | `number` |  |
 | `finder` | `string` |  |
-| `genre` | `table` |  |
 | `id` | `number` |  |
-| `image_path` | `string` |  |
-| `mal_score` | `string` |  |
-| `name` | `string` |  |
-| `premiered` | `string` |  |
-| `ratings_num` | `number` |  |
-| `status` | `string` |  |
-| `studio` | `string` |  |
-| `synonym` | `string` |  |
 
 #### Example: Load
 
@@ -653,7 +655,9 @@ Create an instance: `local streaming_detail = client:StreamingDetail(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `local` | `table` |  |
+| `ep` | `table` |  |
+| `link` | `string` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -734,15 +738,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local anime = client:Anime()
-anime:load()
+local rating = client:Rating()
+rating:list()
 
--- anime:data_get() now returns the anime data from the last load
--- anime:match_get() returns the last match criteria
+-- rating:data_get() now returns the rating data from the last list
+-- rating:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

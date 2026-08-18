@@ -30,13 +30,15 @@ require_relative "Anipub_sdk"
 client = AnipubSDK.new
 ```
 
-### 3. Load an anime
+### 3. Load a paginatedanimelist
+
+PaginatedAnimeList is nested under genre, so provide the `genre`.
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Anime record (raises on error).
-  anime = client.Anime.load()
-  puts anime
+  # load returns the ENTITY — call data_get for the PaginatedAnimeList record (raises on error).
+  paginatedanimelist = client.PaginatedAnimeList.load({ "genre" => "example_genre" })
+  puts paginatedanimelist
 rescue => err
   warn "load failed: #{err}"
 end
@@ -568,7 +570,7 @@ Create an instance: `paginated_anime_list = client.PaginatedAnimeList`
 
 ```ruby
 # load returns the ENTITY — call data_get for the PaginatedAnimeList record (raises on error).
-paginated_anime_list = client.PaginatedAnimeList.load()
+paginated_anime_list = client.PaginatedAnimeList.load({ "genre" => "genre" })
 ```
 
 #### Example: List

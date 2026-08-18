@@ -606,7 +606,7 @@ Create an instance: `paginatedAnimeList := client.PaginatedAnimeList(nil)`
 #### Example: Load
 
 ```go
-paginatedAnimeList, err := client.PaginatedAnimeList(nil).Load(nil, nil)
+paginatedAnimeList, err := client.PaginatedAnimeList(nil).Load(map[string]any{"genre": "genre"}, nil)
 if err != nil {
     panic(err)
 }

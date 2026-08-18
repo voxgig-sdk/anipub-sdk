@@ -15,7 +15,7 @@ require_relative "../Anipub_sdk"
 module AnipubFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = AnipubConfig.make_config["feature"]
+    f = AnipubConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -31,13 +31,15 @@ require_once 'anipub_sdk.php';
 $client = new AnipubSDK();
 ```
 
-### 3. Load an anime
+### 3. Load a paginatedanimelist
+
+PaginatedAnimeList is nested under genre, so provide the `genre`.
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the Anime record (throws on error).
-    $anime = $client->Anime()->load();
-    print_r($anime);
+    // load() returns the ENTITY — call data_get() for the PaginatedAnimeList record (throws on error).
+    $paginatedanimelist = $client->PaginatedAnimeList()->load(["genre" => "example_genre"]);
+    print_r($paginatedanimelist);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -578,7 +580,7 @@ Create an instance: `$paginated_anime_list = $client->PaginatedAnimeList();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the PaginatedAnimeList record (throws on error).
-$paginated_anime_list = $client->PaginatedAnimeList()->load();
+$paginated_anime_list = $client->PaginatedAnimeList()->load(["genre" => "genre"]);
 ```
 
 #### Example: List

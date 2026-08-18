@@ -79,8 +79,7 @@
 ---@field wholePage? table
 
 ---@class PaginatedAnimeListLoadMatch
----@field genre? string
----@field name? string
+---@field genre string
 
 ---@class PaginatedAnimeListListMatch
 ---@field Aired? string

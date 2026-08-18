@@ -466,7 +466,7 @@ const results = await client.PaginatedAnimeList().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PaginatedAnimeList().load()
+const result = await client.PaginatedAnimeList().load({ genre: 'genre' })
 ```
 
 ### Common Methods

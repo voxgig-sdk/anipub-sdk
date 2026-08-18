@@ -33,12 +33,14 @@ local sdk = require("anipub_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load an anime
+### 3. Load a paginatedanimelist
+
+PaginatedAnimeList is nested under genre, so provide the `genre`.
 
 ```lua
-local anime, err = client:Anime():load()
+local paginatedanimelist, err = client:PaginatedAnimeList():load({ genre = "example_genre" })
 if err then error(err) end
-print(anime)
+print(paginatedanimelist)
 ```
 
 ### 4. Create, update, and remove
@@ -555,7 +557,7 @@ Create an instance: `local paginated_anime_list = client:PaginatedAnimeList(nil)
 #### Example: Load
 
 ```lua
-local paginated_anime_list, err = client:PaginatedAnimeList():load()
+local paginated_anime_list, err = client:PaginatedAnimeList():load({ genre = "genre" })
 ```
 
 #### Example: List

@@ -404,7 +404,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PaginatedAnimeList(nil).Load(nil, nil)
+result, err := client.PaginatedAnimeList(nil).Load(map[string]any{"genre": "genre"}, nil)
 if err != nil {
     panic(err)
 }

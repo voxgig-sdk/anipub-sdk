@@ -106,8 +106,7 @@ type PaginatedAnimeList struct {
 
 // PaginatedAnimeListLoadMatch is the typed request payload for PaginatedAnimeList.LoadTyped.
 type PaginatedAnimeListLoadMatch struct {
-	Genre *string `json:"genre,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Genre string `json:"genre"`
 }
 
 // PaginatedAnimeListListMatch is the typed request payload for PaginatedAnimeList.ListTyped.

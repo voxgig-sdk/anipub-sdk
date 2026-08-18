@@ -269,13 +269,9 @@ PaginatedAnimeList = Struct.new(
 # Request payload for PaginatedAnimeList#load.
 #
 # @!attribute [rw] genre
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
+#   @return [String]
 PaginatedAnimeListLoadMatch = Struct.new(
   :genre,
-  :name,
   keyword_init: true
 )
 

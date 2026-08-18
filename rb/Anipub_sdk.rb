@@ -28,7 +28,7 @@ class AnipubSDK
     utility = AnipubUtility.new
     @_utility = utility
 
-    config = AnipubConfig.make_config
+    config = AnipubConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

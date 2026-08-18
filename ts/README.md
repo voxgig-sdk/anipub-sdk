@@ -33,14 +33,17 @@ import { AnipubSDK } from '@voxgig-sdk/anipub'
 const client = new AnipubSDK()
 ```
 
-### 3. Load an anime
+### 3. Load a paginatedanimelist
 
+PaginatedAnimeList is nested under genre, so provide the `genre`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const anime = await client.Anime().load()
-  console.log(anime)
+  const paginatedanimelist = await client.PaginatedAnimeList().load({
+    genre: 'example_genre',
+  })
+  console.log(paginatedanimelist)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -618,7 +621,7 @@ Create an instance: `const paginated_anime_list = client.PaginatedAnimeList()`
 #### Example: Load
 
 ```ts
-const paginated_anime_list = await client.PaginatedAnimeList().load()
+const paginated_anime_list = await client.PaginatedAnimeList().load({ genre: 'genre' })
 ```
 
 #### Example: List

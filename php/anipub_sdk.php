@@ -40,7 +40,7 @@ class AnipubSDK
         $utility = new AnipubUtility();
         $this->_utility = $utility;
 
-        $config = AnipubConfig::make_config();
+        $config = AnipubConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

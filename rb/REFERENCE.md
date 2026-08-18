@@ -395,7 +395,7 @@ results = client.PaginatedAnimeList.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PaginatedAnimeList.load()
+result = client.PaginatedAnimeList.load({ "genre" => "genre" })
 ```
 
 ### Common Methods

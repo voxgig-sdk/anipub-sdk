@@ -119,9 +119,12 @@ import { AnipubSDK } from '@voxgig-sdk/anipub'
 
 const client = new AnipubSDK()
 
-// Load anime data (returns a Anime)
-const anime = await client.Anime().load()
-console.log(anime)
+
+// Load a specific paginatedanimelist (returns a PaginatedAnimeList)
+const paginatedanimelist = await client.PaginatedAnimeList().load({
+  genre: 'example_genre',
+})
+console.log(paginatedanimelist)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -210,12 +213,15 @@ import sdk "github.com/voxgig-sdk/anipub-sdk/go"
 
 client := sdk.New()
 
-// Load anime data
-anime, err := client.Anime(nil).Load(nil, nil)
+
+// Load a specific paginatedanimelist
+paginatedAnimeList, err := client.PaginatedAnimeList(nil).Load(
+    map[string]any{"genre": "example_genre"}, nil,
+)
 if err != nil {
     panic(err)
 }
-fmt.Println(anime)
+fmt.Println(paginatedAnimeList)
 ```
 
 ### Ruby

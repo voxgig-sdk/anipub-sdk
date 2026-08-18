@@ -392,7 +392,7 @@ local results, err = client:PaginatedAnimeList():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PaginatedAnimeList():load()
+local result, err = client:PaginatedAnimeList():load({ genre = "genre" })
 ```
 
 ### Common Methods

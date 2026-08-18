@@ -107,9 +107,8 @@ class PaginatedAnimeList(TypedDict, total=False):
     wholePage: list
 
 
-class PaginatedAnimeListLoadMatch(TypedDict, total=False):
+class PaginatedAnimeListLoadMatch(TypedDict):
     genre: str
-    name: str
 
 
 class PaginatedAnimeListListMatch(TypedDict, total=False):

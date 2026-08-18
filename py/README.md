@@ -36,14 +36,15 @@ from anipub_sdk import AnipubSDK
 client = AnipubSDK()
 ```
 
-### 3. Load an anime
+### 3. Load a paginatedanimelist
 
+PaginatedAnimeList is nested under genre, so provide the `genre`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    anime = client.Anime().load()
-    print(anime)
+    paginatedanimelist = client.PaginatedAnimeList().load({"genre": "example_genre"})
+    print(paginatedanimelist)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -569,7 +570,7 @@ Create an instance: `paginated_anime_list = client.PaginatedAnimeList()`
 #### Example: Load
 
 ```python
-paginated_anime_list = client.PaginatedAnimeList().load()
+paginated_anime_list = client.PaginatedAnimeList().load({"genre": "genre"})
 ```
 
 #### Example: List

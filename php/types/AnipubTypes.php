@@ -117,8 +117,7 @@ class PaginatedAnimeList
 /** Request payload for PaginatedAnimeList#load. */
 class PaginatedAnimeListLoadMatch
 {
-    public ?string $genre = null;
-    public ?string $name = null;
+    public string $genre;
 }
 
 /** Request payload for PaginatedAnimeList#list. */

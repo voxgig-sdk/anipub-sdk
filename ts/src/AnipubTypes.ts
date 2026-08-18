@@ -88,8 +88,7 @@ export interface PaginatedAnimeList {
 }
 
 export interface PaginatedAnimeListLoadMatch {
-  genre?: string
-  name?: string
+  genre: string
 }
 
 export interface PaginatedAnimeListListMatch {

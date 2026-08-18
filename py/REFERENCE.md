@@ -387,7 +387,7 @@ for paginated_anime_list in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PaginatedAnimeList().load()
+result = client.PaginatedAnimeList().load({"genre": "genre"})
 ```
 
 ### Common Methods

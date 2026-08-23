@@ -1,0 +1,79 @@
+# Entity: find
+
+main: kit: entity: find: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ep"
+      req: false
+      short: "Episode count if found"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "exist"
+      req: true
+      short: "Whether anime exists"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Anime ID if found"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "find"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "One Piece"
+                kind: "param"
+                name: "id"
+                orig: "name"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/find/{name}"
+          parts: [
+            "api"
+            "find"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              name: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

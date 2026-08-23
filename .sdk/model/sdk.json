@@ -36,6 +36,7 @@
               "active": true,
               "name": "Genre",
               "req": true,
+              "short": "Genre as string or array of strings",
               "type": "`$ANY`",
               "union": {
                 "branches": 2,
@@ -47,6 +48,7 @@
               "active": true,
               "name": "Name",
               "req": true,
+              "short": "Anime name to match",
               "type": "`$STRING`"
             },
             {
@@ -133,18 +135,21 @@
               "active": true,
               "name": "ep",
               "req": false,
+              "short": "Episode count if found",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "exist",
               "req": true,
+              "short": "Whether anime exists",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Anime ID if found",
               "type": "`$INTEGER`"
             }
           ],
@@ -219,6 +224,7 @@
               "active": true,
               "name": "jikan",
               "req": false,
+              "short": "MyAnimeList data from Jikan API",
               "type": "`$OBJECT`"
             },
             {
@@ -285,96 +291,112 @@
               "active": true,
               "name": "Aired",
               "req": false,
+              "short": "Air date range",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Cover",
               "req": false,
+              "short": "Cover image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "DescripTion",
               "req": false,
+              "short": "Anime description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Duration",
               "req": false,
+              "short": "Episode duration",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Genres",
               "req": false,
+              "short": "List of genres",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "ImagePath",
               "req": false,
+              "short": "Image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "MALScore",
               "req": false,
+              "short": "MyAnimeList score",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Name",
               "req": false,
+              "short": "Anime name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Premiered",
               "req": false,
+              "short": "Premiere season",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingsNum",
               "req": false,
+              "short": "Number of ratings",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "Status",
               "req": false,
+              "short": "Airing status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Studios",
               "req": false,
+              "short": "Production studio",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Synonyms",
               "req": false,
+              "short": "Alternative names",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "epCount",
               "req": false,
+              "short": "Episode count",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "finder",
               "req": false,
+              "short": "Slug identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Anime ID",
               "type": "`$INTEGER`"
             }
           ],
@@ -438,108 +460,126 @@
               "active": true,
               "name": "Aired",
               "req": false,
+              "short": "Air date range",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Cover",
               "req": false,
+              "short": "Cover image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "DescripTion",
               "req": false,
+              "short": "Anime description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Duration",
               "req": false,
+              "short": "Episode duration",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Genres",
               "req": false,
+              "short": "List of genres",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "ImagePath",
               "req": false,
+              "short": "Image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "MALScore",
               "req": false,
+              "short": "MyAnimeList score",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Name",
               "req": false,
+              "short": "Anime name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Premiered",
               "req": false,
+              "short": "Premiere season",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingsNum",
               "req": false,
+              "short": "Number of ratings",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "Status",
               "req": false,
+              "short": "Airing status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Studios",
               "req": false,
+              "short": "Production studio",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Synonyms",
               "req": false,
+              "short": "Alternative names",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "currentPage",
               "req": false,
+              "short": "Current page number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "epCount",
               "req": false,
+              "short": "Episode count",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "finder",
               "req": false,
+              "short": "Slug identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Anime ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "wholePage",
               "req": false,
+              "short": "Array of anime on current page",
               "type": "`$ARRAY`"
             }
           ],
@@ -744,96 +784,112 @@
               "active": true,
               "name": "Aired",
               "req": false,
+              "short": "Air date range",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Cover",
               "req": false,
+              "short": "Cover image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "DescripTion",
               "req": false,
+              "short": "Anime description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Duration",
               "req": false,
+              "short": "Episode duration",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Genres",
               "req": false,
+              "short": "List of genres",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "ImagePath",
               "req": false,
+              "short": "Image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "MALScore",
               "req": false,
+              "short": "MyAnimeList score",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Name",
               "req": false,
+              "short": "Anime name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Premiered",
               "req": false,
+              "short": "Premiere season",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingsNum",
               "req": false,
+              "short": "Number of ratings",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "Status",
               "req": false,
+              "short": "Airing status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Studios",
               "req": false,
+              "short": "Production studio",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Synonyms",
               "req": false,
+              "short": "Alternative names",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "epCount",
               "req": false,
+              "short": "Episode count",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "finder",
               "req": false,
+              "short": "Slug identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Anime ID",
               "type": "`$INTEGER`"
             }
           ],
@@ -896,96 +952,112 @@
               "active": true,
               "name": "Aired",
               "req": false,
+              "short": "Air date range",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Cover",
               "req": false,
+              "short": "Cover image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "DescripTion",
               "req": false,
+              "short": "Anime description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Duration",
               "req": false,
+              "short": "Episode duration",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Genres",
               "req": false,
+              "short": "List of genres",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "ImagePath",
               "req": false,
+              "short": "Image path or URL.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "MALScore",
               "req": false,
+              "short": "MyAnimeList score",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Name",
               "req": false,
+              "short": "Anime name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Premiered",
               "req": false,
+              "short": "Premiere season",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "RatingsNum",
               "req": false,
+              "short": "Number of ratings",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "Status",
               "req": false,
+              "short": "Airing status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Studios",
               "req": false,
+              "short": "Production studio",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "Synonyms",
               "req": false,
+              "short": "Alternative names",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "epCount",
               "req": false,
+              "short": "Episode count",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "finder",
               "req": false,
+              "short": "Slug identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Anime ID",
               "type": "`$INTEGER`"
             }
           ],
@@ -1053,18 +1125,21 @@
               "active": true,
               "name": "ep",
               "req": false,
+              "short": "Episodes 2+ streaming links",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "link",
               "req": false,
+              "short": "Episode 1 streaming link with src= prefix",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Anime name",
               "type": "`$STRING`"
             }
           ],

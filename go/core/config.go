@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Anipub",
+			"slug": "anipub",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -41,6 +44,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "Genre",
 						"req": true,
+						"short": "Genre as string or array of strings",
 						"type": "`$ANY`",
 						"union": map[string]any{
 							"branches": 2,
@@ -51,6 +55,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "Name",
 						"req": true,
+						"short": "Anime name to match",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -126,15 +131,18 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ep",
+						"short": "Episode count if found",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "exist",
 						"req": true,
+						"short": "Whether anime exists",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Anime ID if found",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -195,6 +203,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "jikan",
+						"short": "MyAnimeList data from Jikan API",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -251,66 +260,82 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
+						"short": "Air date range",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Cover",
+						"short": "Cover image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "DescripTion",
+						"short": "Anime description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Duration",
+						"short": "Episode duration",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Genres",
+						"short": "List of genres",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ImagePath",
+						"short": "Image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "MALScore",
+						"short": "MyAnimeList score",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Name",
+						"short": "Anime name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Premiered",
+						"short": "Premiere season",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingsNum",
+						"short": "Number of ratings",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "Status",
+						"short": "Airing status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Studios",
+						"short": "Production studio",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Synonyms",
+						"short": "Alternative names",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "epCount",
+						"short": "Episode count",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "finder",
+						"short": "Slug identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Anime ID",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -362,74 +387,92 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
+						"short": "Air date range",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Cover",
+						"short": "Cover image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "DescripTion",
+						"short": "Anime description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Duration",
+						"short": "Episode duration",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Genres",
+						"short": "List of genres",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ImagePath",
+						"short": "Image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "MALScore",
+						"short": "MyAnimeList score",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Name",
+						"short": "Anime name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Premiered",
+						"short": "Premiere season",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingsNum",
+						"short": "Number of ratings",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "Status",
+						"short": "Airing status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Studios",
+						"short": "Production studio",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Synonyms",
+						"short": "Alternative names",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "currentPage",
+						"short": "Current page number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "epCount",
+						"short": "Episode count",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "finder",
+						"short": "Slug identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Anime ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "wholePage",
+						"short": "Array of anime on current page",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -605,66 +648,82 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
+						"short": "Air date range",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Cover",
+						"short": "Cover image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "DescripTion",
+						"short": "Anime description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Duration",
+						"short": "Episode duration",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Genres",
+						"short": "List of genres",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ImagePath",
+						"short": "Image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "MALScore",
+						"short": "MyAnimeList score",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Name",
+						"short": "Anime name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Premiered",
+						"short": "Premiere season",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingsNum",
+						"short": "Number of ratings",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "Status",
+						"short": "Airing status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Studios",
+						"short": "Production studio",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Synonyms",
+						"short": "Alternative names",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "epCount",
+						"short": "Episode count",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "finder",
+						"short": "Slug identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Anime ID",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -714,66 +773,82 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
+						"short": "Air date range",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Cover",
+						"short": "Cover image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "DescripTion",
+						"short": "Anime description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Duration",
+						"short": "Episode duration",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Genres",
+						"short": "List of genres",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ImagePath",
+						"short": "Image path or URL.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "MALScore",
+						"short": "MyAnimeList score",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Name",
+						"short": "Anime name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Premiered",
+						"short": "Premiere season",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "RatingsNum",
+						"short": "Number of ratings",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "Status",
+						"short": "Airing status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Studios",
+						"short": "Production studio",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "Synonyms",
+						"short": "Alternative names",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "epCount",
+						"short": "Episode count",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "finder",
+						"short": "Slug identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Anime ID",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -829,14 +904,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ep",
+						"short": "Episodes 2+ streaming links",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "link",
+						"short": "Episode 1 streaming link with src= prefix",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Anime name",
 						"type": "`$STRING`",
 					},
 				},

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -310,8 +310,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `Genre` |  |
-| `Name` |  |
+| `Genre` | Genre as string or array of strings |
+| `Name` | Anime name to match |
 | `exists` |  |
 
 Operations: create, load.
@@ -322,9 +322,9 @@ API path: `/api/check`
 
 | Field | Description |
 | --- | --- |
-| `ep` |  |
-| `exist` |  |
-| `id` |  |
+| `ep` | Episode count if found |
+| `exist` | Whether anime exists |
+| `id` | Anime ID if found |
 
 Operations: load.
 
@@ -335,7 +335,7 @@ API path: `/api/find/{name}`
 | Field | Description |
 | --- | --- |
 | `characters` |  |
-| `jikan` |  |
+| `jikan` | MyAnimeList data from Jikan API |
 | `local` |  |
 
 Operations: load.
@@ -346,22 +346,22 @@ API path: `/anime/api/details/{id}`
 
 | Field | Description |
 | --- | --- |
-| `Aired` |  |
-| `Cover` |  |
-| `DescripTion` |  |
-| `Duration` |  |
-| `Genres` |  |
-| `ImagePath` |  |
-| `MALScore` |  |
-| `Name` |  |
-| `Premiered` |  |
-| `RatingsNum` |  |
-| `Status` |  |
-| `Studios` |  |
-| `Synonyms` |  |
-| `epCount` |  |
-| `finder` |  |
-| `id` |  |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
 
 Operations: load.
 
@@ -371,24 +371,24 @@ API path: `/api/info/{id}`
 
 | Field | Description |
 | --- | --- |
-| `Aired` |  |
-| `Cover` |  |
-| `DescripTion` |  |
-| `Duration` |  |
-| `Genres` |  |
-| `ImagePath` |  |
-| `MALScore` |  |
-| `Name` |  |
-| `Premiered` |  |
-| `RatingsNum` |  |
-| `Status` |  |
-| `Studios` |  |
-| `Synonyms` |  |
-| `currentPage` |  |
-| `epCount` |  |
-| `finder` |  |
-| `id` |  |
-| `wholePage` |  |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `currentPage` | Current page number |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+| `wholePage` | Array of anime on current page |
 
 Operations: list, load.
 
@@ -398,22 +398,22 @@ API path: `/api/sort`
 
 | Field | Description |
 | --- | --- |
-| `Aired` |  |
-| `Cover` |  |
-| `DescripTion` |  |
-| `Duration` |  |
-| `Genres` |  |
-| `ImagePath` |  |
-| `MALScore` |  |
-| `Name` |  |
-| `Premiered` |  |
-| `RatingsNum` |  |
-| `Status` |  |
-| `Studios` |  |
-| `Synonyms` |  |
-| `epCount` |  |
-| `finder` |  |
-| `id` |  |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
 
 Operations: list.
 
@@ -423,22 +423,22 @@ API path: `/api/findbyrating`
 
 | Field | Description |
 | --- | --- |
-| `Aired` |  |
-| `Cover` |  |
-| `DescripTion` |  |
-| `Duration` |  |
-| `Genres` |  |
-| `ImagePath` |  |
-| `MALScore` |  |
-| `Name` |  |
-| `Premiered` |  |
-| `RatingsNum` |  |
-| `Status` |  |
-| `Studios` |  |
-| `Synonyms` |  |
-| `epCount` |  |
-| `finder` |  |
-| `id` |  |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
 
 Operations: load.
 
@@ -448,9 +448,9 @@ API path: `/api/search/{name}`
 
 | Field | Description |
 | --- | --- |
-| `ep` |  |
-| `link` |  |
-| `name` |  |
+| `ep` | Episodes 2+ streaming links |
+| `link` | Episode 1 streaming link with src= prefix |
+| `name` | Anime name |
 
 Operations: load.
 
@@ -476,8 +476,8 @@ Create an instance: `const anime = client.Anime()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Genre` | `any` |  |
-| `Name` | `string` |  |
+| `Genre` | `any` | Genre as string or array of strings |
+| `Name` | `string` | Anime name to match |
 | `exists` | `boolean` |  |
 
 #### Example: Load
@@ -510,9 +510,9 @@ Create an instance: `const find = client.Find()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ep` | `number` |  |
-| `exist` | `boolean` |  |
-| `id` | `number` |  |
+| `ep` | `number` | Episode count if found |
+| `exist` | `boolean` | Whether anime exists |
+| `id` | `number` | Anime ID if found |
 
 #### Example: Load
 
@@ -536,7 +536,7 @@ Create an instance: `const full_anime_detail = client.FullAnimeDetail()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `characters` | `any[]` |  |
-| `jikan` | `Record<string, any>` |  |
+| `jikan` | `Record<string, any>` | MyAnimeList data from Jikan API |
 | `local` | `Record<string, any>` |  |
 
 #### Example: Load
@@ -560,22 +560,22 @@ Create an instance: `const info = client.Info()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Aired` | `string` |  |
-| `Cover` | `string` |  |
-| `DescripTion` | `string` |  |
-| `Duration` | `string` |  |
-| `Genres` | `any[]` |  |
-| `ImagePath` | `string` |  |
-| `MALScore` | `string` |  |
-| `Name` | `string` |  |
-| `Premiered` | `string` |  |
-| `RatingsNum` | `number` |  |
-| `Status` | `string` |  |
-| `Studios` | `string` |  |
-| `Synonyms` | `string` |  |
-| `epCount` | `number` |  |
-| `finder` | `string` |  |
-| `id` | `number` |  |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `any[]` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
 
 #### Example: Load
 
@@ -599,24 +599,24 @@ Create an instance: `const paginated_anime_list = client.PaginatedAnimeList()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Aired` | `string` |  |
-| `Cover` | `string` |  |
-| `DescripTion` | `string` |  |
-| `Duration` | `string` |  |
-| `Genres` | `any[]` |  |
-| `ImagePath` | `string` |  |
-| `MALScore` | `string` |  |
-| `Name` | `string` |  |
-| `Premiered` | `string` |  |
-| `RatingsNum` | `number` |  |
-| `Status` | `string` |  |
-| `Studios` | `string` |  |
-| `Synonyms` | `string` |  |
-| `currentPage` | `number` |  |
-| `epCount` | `number` |  |
-| `finder` | `string` |  |
-| `id` | `number` |  |
-| `wholePage` | `any[]` |  |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `any[]` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `currentPage` | `number` | Current page number |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
+| `wholePage` | `any[]` | Array of anime on current page |
 
 #### Example: Load
 
@@ -645,22 +645,22 @@ Create an instance: `const rating = client.Rating()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Aired` | `string` |  |
-| `Cover` | `string` |  |
-| `DescripTion` | `string` |  |
-| `Duration` | `string` |  |
-| `Genres` | `any[]` |  |
-| `ImagePath` | `string` |  |
-| `MALScore` | `string` |  |
-| `Name` | `string` |  |
-| `Premiered` | `string` |  |
-| `RatingsNum` | `number` |  |
-| `Status` | `string` |  |
-| `Studios` | `string` |  |
-| `Synonyms` | `string` |  |
-| `epCount` | `number` |  |
-| `finder` | `string` |  |
-| `id` | `number` |  |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `any[]` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
 
 #### Example: List
 
@@ -683,22 +683,22 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `Aired` | `string` |  |
-| `Cover` | `string` |  |
-| `DescripTion` | `string` |  |
-| `Duration` | `string` |  |
-| `Genres` | `any[]` |  |
-| `ImagePath` | `string` |  |
-| `MALScore` | `string` |  |
-| `Name` | `string` |  |
-| `Premiered` | `string` |  |
-| `RatingsNum` | `number` |  |
-| `Status` | `string` |  |
-| `Studios` | `string` |  |
-| `Synonyms` | `string` |  |
-| `epCount` | `number` |  |
-| `finder` | `string` |  |
-| `id` | `number` |  |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `any[]` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
 
 #### Example: Load
 
@@ -721,9 +721,9 @@ Create an instance: `const streaming_detail = client.StreamingDetail()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ep` | `any[]` |  |
-| `link` | `string` |  |
-| `name` | `string` |  |
+| `ep` | `any[]` | Episodes 2+ streaming links |
+| `link` | `string` | Episode 1 streaming link with src= prefix |
+| `name` | `string` | Anime name |
 
 #### Example: Load
 

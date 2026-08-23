@@ -126,8 +126,8 @@ fmt.Println(anime.GetName()) // "anime"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Genre` | `any` | Yes |  |
-| `Name` | `string` | Yes |  |
+| `Genre` | `any` | Yes | Genre as string or array of strings |
+| `Name` | `string` | Yes | Anime name to match |
 | `exists` | `bool` | No |  |
 
 ### Operations
@@ -194,9 +194,9 @@ fmt.Println(find.GetName()) // "find"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ep` | `int` | No |  |
-| `exist` | `bool` | Yes |  |
-| `id` | `int` | No |  |
+| `ep` | `int` | No | Episode count if found |
+| `exist` | `bool` | Yes | Whether anime exists |
+| `id` | `int` | No | Anime ID if found |
 
 ### Operations
 
@@ -248,7 +248,7 @@ fmt.Println(fullAnimeDetail.GetName()) // "full_anime_detail"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `[]any` | No |  |
-| `jikan` | `map[string]any` | No |  |
+| `jikan` | `map[string]any` | No | MyAnimeList data from Jikan API |
 | `local` | `map[string]any` | No |  |
 
 ### Operations
@@ -300,22 +300,22 @@ fmt.Println(info.GetName()) // "info"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `[]any` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `[]any` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -366,24 +366,24 @@ fmt.Println(paginatedAnimeList.GetName()) // "paginated_anime_list"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `[]any` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `currentPage` | `int` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
-| `wholePage` | `[]any` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `[]any` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `currentPage` | `int` | No | Current page number |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
+| `wholePage` | `[]any` | No | Array of anime on current page |
 
 ### Operations
 
@@ -446,22 +446,22 @@ fmt.Println(rating.GetName()) // "rating"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `[]any` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `[]any` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -512,22 +512,22 @@ fmt.Println(search.GetName()) // "search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `[]any` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `[]any` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -578,9 +578,9 @@ fmt.Println(streamingDetail.GetName()) // "streaming_detail"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ep` | `[]any` | No |  |
-| `link` | `string` | No |  |
-| `name` | `string` | No |  |
+| `ep` | `[]any` | No | Episodes 2+ streaming links |
+| `link` | `string` | No | Episode 1 streaming link with src= prefix |
+| `name` | `string` | No | Anime name |
 
 ### Operations
 

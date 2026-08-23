@@ -120,8 +120,8 @@ $anime = $client->Anime();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Genre` | `mixed` | Yes |  |
-| `Name` | `string` | Yes |  |
+| `Genre` | `mixed` | Yes | Genre as string or array of strings |
+| `Name` | `string` | Yes | Anime name to match |
 | `exists` | `bool` | No |  |
 
 ### Operations
@@ -185,9 +185,9 @@ $find = $client->Find();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ep` | `int` | No |  |
-| `exist` | `bool` | Yes |  |
-| `id` | `int` | No |  |
+| `ep` | `int` | No | Episode count if found |
+| `exist` | `bool` | Yes | Whether anime exists |
+| `id` | `int` | No | Anime ID if found |
 
 ### Operations
 
@@ -240,7 +240,7 @@ $full_anime_detail = $client->FullAnimeDetail();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `array` | No |  |
-| `jikan` | `array` | No |  |
+| `jikan` | `array` | No | MyAnimeList data from Jikan API |
 | `local` | `array` | No |  |
 
 ### Operations
@@ -293,22 +293,22 @@ $info = $client->Info();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `array` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `array` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -360,24 +360,24 @@ $paginated_anime_list = $client->PaginatedAnimeList();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `array` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `currentPage` | `int` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
-| `wholePage` | `array` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `array` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `currentPage` | `int` | No | Current page number |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
+| `wholePage` | `array` | No | Array of anime on current page |
 
 ### Operations
 
@@ -437,22 +437,22 @@ $rating = $client->Rating();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `array` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `array` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -504,22 +504,22 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `Aired` | `string` | No |  |
-| `Cover` | `string` | No |  |
-| `DescripTion` | `string` | No |  |
-| `Duration` | `string` | No |  |
-| `Genres` | `array` | No |  |
-| `ImagePath` | `string` | No |  |
-| `MALScore` | `string` | No |  |
-| `Name` | `string` | No |  |
-| `Premiered` | `string` | No |  |
-| `RatingsNum` | `int` | No |  |
-| `Status` | `string` | No |  |
-| `Studios` | `string` | No |  |
-| `Synonyms` | `string` | No |  |
-| `epCount` | `int` | No |  |
-| `finder` | `string` | No |  |
-| `id` | `int` | No |  |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `array` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
 
 ### Operations
 
@@ -571,9 +571,9 @@ $streaming_detail = $client->StreamingDetail();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ep` | `array` | No |  |
-| `link` | `string` | No |  |
-| `name` | `string` | No |  |
+| `ep` | `array` | No | Episodes 2+ streaming links |
+| `link` | `string` | No | Episode 1 streaming link with src= prefix |
+| `name` | `string` | No | Anime name |
 
 ### Operations
 

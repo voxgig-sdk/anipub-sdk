@@ -19,6 +19,9 @@ module AnipubConfig
     {
       "main" => {
         "name" => "Anipub",
+        "slug" => "anipub",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -49,6 +52,7 @@ module AnipubConfig
             {
               "name" => "Genre",
               "req" => true,
+              "short" => "Genre as string or array of strings",
               "type" => "`$ANY`",
               "union" => {
                 "branches" => 2,
@@ -59,6 +63,7 @@ module AnipubConfig
             {
               "name" => "Name",
               "req" => true,
+              "short" => "Anime name to match",
               "type" => "`$STRING`",
             },
             {
@@ -134,15 +139,18 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "ep",
+              "short" => "Episode count if found",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "exist",
               "req" => true,
+              "short" => "Whether anime exists",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "id",
+              "short" => "Anime ID if found",
               "type" => "`$INTEGER`",
             },
           ],
@@ -203,6 +211,7 @@ module AnipubConfig
             },
             {
               "name" => "jikan",
+              "short" => "MyAnimeList data from Jikan API",
               "type" => "`$OBJECT`",
             },
             {
@@ -259,66 +268,82 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "Aired",
+              "short" => "Air date range",
               "type" => "`$STRING`",
             },
             {
               "name" => "Cover",
+              "short" => "Cover image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "DescripTion",
+              "short" => "Anime description",
               "type" => "`$STRING`",
             },
             {
               "name" => "Duration",
+              "short" => "Episode duration",
               "type" => "`$STRING`",
             },
             {
               "name" => "Genres",
+              "short" => "List of genres",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "ImagePath",
+              "short" => "Image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "MALScore",
+              "short" => "MyAnimeList score",
               "type" => "`$STRING`",
             },
             {
               "name" => "Name",
+              "short" => "Anime name",
               "type" => "`$STRING`",
             },
             {
               "name" => "Premiered",
+              "short" => "Premiere season",
               "type" => "`$STRING`",
             },
             {
               "name" => "RatingsNum",
+              "short" => "Number of ratings",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "Status",
+              "short" => "Airing status",
               "type" => "`$STRING`",
             },
             {
               "name" => "Studios",
+              "short" => "Production studio",
               "type" => "`$STRING`",
             },
             {
               "name" => "Synonyms",
+              "short" => "Alternative names",
               "type" => "`$STRING`",
             },
             {
               "name" => "epCount",
+              "short" => "Episode count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "finder",
+              "short" => "Slug identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Anime ID",
               "type" => "`$INTEGER`",
             },
           ],
@@ -370,74 +395,92 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "Aired",
+              "short" => "Air date range",
               "type" => "`$STRING`",
             },
             {
               "name" => "Cover",
+              "short" => "Cover image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "DescripTion",
+              "short" => "Anime description",
               "type" => "`$STRING`",
             },
             {
               "name" => "Duration",
+              "short" => "Episode duration",
               "type" => "`$STRING`",
             },
             {
               "name" => "Genres",
+              "short" => "List of genres",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "ImagePath",
+              "short" => "Image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "MALScore",
+              "short" => "MyAnimeList score",
               "type" => "`$STRING`",
             },
             {
               "name" => "Name",
+              "short" => "Anime name",
               "type" => "`$STRING`",
             },
             {
               "name" => "Premiered",
+              "short" => "Premiere season",
               "type" => "`$STRING`",
             },
             {
               "name" => "RatingsNum",
+              "short" => "Number of ratings",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "Status",
+              "short" => "Airing status",
               "type" => "`$STRING`",
             },
             {
               "name" => "Studios",
+              "short" => "Production studio",
               "type" => "`$STRING`",
             },
             {
               "name" => "Synonyms",
+              "short" => "Alternative names",
               "type" => "`$STRING`",
             },
             {
               "name" => "currentPage",
+              "short" => "Current page number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "epCount",
+              "short" => "Episode count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "finder",
+              "short" => "Slug identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Anime ID",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "wholePage",
+              "short" => "Array of anime on current page",
               "type" => "`$ARRAY`",
             },
           ],
@@ -613,66 +656,82 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "Aired",
+              "short" => "Air date range",
               "type" => "`$STRING`",
             },
             {
               "name" => "Cover",
+              "short" => "Cover image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "DescripTion",
+              "short" => "Anime description",
               "type" => "`$STRING`",
             },
             {
               "name" => "Duration",
+              "short" => "Episode duration",
               "type" => "`$STRING`",
             },
             {
               "name" => "Genres",
+              "short" => "List of genres",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "ImagePath",
+              "short" => "Image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "MALScore",
+              "short" => "MyAnimeList score",
               "type" => "`$STRING`",
             },
             {
               "name" => "Name",
+              "short" => "Anime name",
               "type" => "`$STRING`",
             },
             {
               "name" => "Premiered",
+              "short" => "Premiere season",
               "type" => "`$STRING`",
             },
             {
               "name" => "RatingsNum",
+              "short" => "Number of ratings",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "Status",
+              "short" => "Airing status",
               "type" => "`$STRING`",
             },
             {
               "name" => "Studios",
+              "short" => "Production studio",
               "type" => "`$STRING`",
             },
             {
               "name" => "Synonyms",
+              "short" => "Alternative names",
               "type" => "`$STRING`",
             },
             {
               "name" => "epCount",
+              "short" => "Episode count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "finder",
+              "short" => "Slug identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Anime ID",
               "type" => "`$INTEGER`",
             },
           ],
@@ -722,66 +781,82 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "Aired",
+              "short" => "Air date range",
               "type" => "`$STRING`",
             },
             {
               "name" => "Cover",
+              "short" => "Cover image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "DescripTion",
+              "short" => "Anime description",
               "type" => "`$STRING`",
             },
             {
               "name" => "Duration",
+              "short" => "Episode duration",
               "type" => "`$STRING`",
             },
             {
               "name" => "Genres",
+              "short" => "List of genres",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "ImagePath",
+              "short" => "Image path or URL.",
               "type" => "`$STRING`",
             },
             {
               "name" => "MALScore",
+              "short" => "MyAnimeList score",
               "type" => "`$STRING`",
             },
             {
               "name" => "Name",
+              "short" => "Anime name",
               "type" => "`$STRING`",
             },
             {
               "name" => "Premiered",
+              "short" => "Premiere season",
               "type" => "`$STRING`",
             },
             {
               "name" => "RatingsNum",
+              "short" => "Number of ratings",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "Status",
+              "short" => "Airing status",
               "type" => "`$STRING`",
             },
             {
               "name" => "Studios",
+              "short" => "Production studio",
               "type" => "`$STRING`",
             },
             {
               "name" => "Synonyms",
+              "short" => "Alternative names",
               "type" => "`$STRING`",
             },
             {
               "name" => "epCount",
+              "short" => "Episode count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "finder",
+              "short" => "Slug identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Anime ID",
               "type" => "`$INTEGER`",
             },
           ],
@@ -837,14 +912,17 @@ module AnipubConfig
           "fields" => [
             {
               "name" => "ep",
+              "short" => "Episodes 2+ streaming links",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "link",
+              "short" => "Episode 1 streaming link with src= prefix",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Anime name",
               "type" => "`$STRING`",
             },
           ],

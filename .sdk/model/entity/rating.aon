@@ -1,0 +1,151 @@
+# Entity: rating
+
+main: kit: entity: rating: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "Aired"
+      req: false
+      short: "Air date range"
+      type: "`$STRING`"
+    }
+    {
+      name: "Cover"
+      req: false
+      short: "Cover image path or URL."
+      type: "`$STRING`"
+    }
+    {
+      name: "DescripTion"
+      req: false
+      short: "Anime description"
+      type: "`$STRING`"
+    }
+    {
+      name: "Duration"
+      req: false
+      short: "Episode duration"
+      type: "`$STRING`"
+    }
+    {
+      name: "Genres"
+      req: false
+      short: "List of genres"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ImagePath"
+      req: false
+      short: "Image path or URL."
+      type: "`$STRING`"
+    }
+    {
+      name: "MALScore"
+      req: false
+      short: "MyAnimeList score"
+      type: "`$STRING`"
+    }
+    {
+      name: "Name"
+      req: false
+      short: "Anime name"
+      type: "`$STRING`"
+    }
+    {
+      name: "Premiered"
+      req: false
+      short: "Premiere season"
+      type: "`$STRING`"
+    }
+    {
+      name: "RatingsNum"
+      req: false
+      short: "Number of ratings"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "Status"
+      req: false
+      short: "Airing status"
+      type: "`$STRING`"
+    }
+    {
+      name: "Studios"
+      req: false
+      short: "Production studio"
+      type: "`$STRING`"
+    }
+    {
+      name: "Synonyms"
+      req: false
+      short: "Alternative names"
+      type: "`$STRING`"
+    }
+    {
+      name: "epCount"
+      req: false
+      short: "Episode count"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "finder"
+      req: false
+      short: "Slug identifier"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Anime ID"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "rating"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/findbyrating"
+          parts: [
+            "api"
+            "findbyrating"
+          ]
+          select: {
+            exist: [
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.AniData`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

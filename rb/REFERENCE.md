@@ -241,6 +241,7 @@ full_anime_detail = client.FullAnimeDetail
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `Array` | No |  |
+| `id` | `String` | No |  |
 | `jikan` | `Hash` | No | MyAnimeList data from Jikan API |
 | `local` | `Hash` | No |  |
 
@@ -573,6 +574,7 @@ streaming_detail = client.StreamingDetail
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `ep` | `Array` | No | Episodes 2+ streaming links |
+| `id` | `String` | No |  |
 | `link` | `String` | No | Episode 1 streaming link with src= prefix |
 | `name` | `String` | No | Anime name |
 

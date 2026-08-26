@@ -55,6 +55,7 @@ class FindLoadMatch(TypedDict):
 
 class FullAnimeDetail(TypedDict, total=False):
     characters: list
+    id: str
     jikan: dict
     local: dict
 
@@ -195,6 +196,7 @@ class SearchLoadMatch(TypedDict):
 
 class StreamingDetail(TypedDict, total=False):
     ep: list
+    id: str
     link: str
     name: str
 

@@ -48,9 +48,13 @@ class FullAnimeDetailEntityTest extends TestCase
 
         // LOAD
         $full_anime_detail_ref01_ent = $client->FullAnimeDetail(null);
-        $full_anime_detail_ref01_match_dt0 = [];
+        $full_anime_detail_ref01_match_dt0 = [
+            "id" => $full_anime_detail_ref01_data["id"],
+        ];
         $full_anime_detail_ref01_data_dt0_loaded = $full_anime_detail_ref01_ent->load($full_anime_detail_ref01_match_dt0, null);
-        $this->assertNotNull($full_anime_detail_ref01_data_dt0_loaded);
+        $full_anime_detail_ref01_data_dt0_load_result = Helpers::to_map(is_object($full_anime_detail_ref01_data_dt0_loaded) && method_exists($full_anime_detail_ref01_data_dt0_loaded, 'data_get') ? $full_anime_detail_ref01_data_dt0_loaded->data_get() : $full_anime_detail_ref01_data_dt0_loaded);
+        $this->assertNotNull($full_anime_detail_ref01_data_dt0_load_result);
+        $this->assertEquals($full_anime_detail_ref01_data_dt0_load_result["id"], $full_anime_detail_ref01_data["id"]);
 
     }
 }

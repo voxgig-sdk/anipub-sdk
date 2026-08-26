@@ -48,6 +48,7 @@ type FindLoadMatch struct {
 // FullAnimeDetail is the typed data model for the full_anime_detail entity.
 type FullAnimeDetail struct {
 	Characters *[]any `json:"characters,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Jikan *map[string]any `json:"jikan,omitempty"`
 	Local *map[string]any `json:"local,omitempty"`
 }
@@ -199,6 +200,7 @@ type SearchLoadMatch struct {
 // StreamingDetail is the typed data model for the streaming_detail entity.
 type StreamingDetail struct {
 	Ep *[]any `json:"ep,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Link *string `json:"link,omitempty"`
 	Name *string `json:"name,omitempty"`
 }

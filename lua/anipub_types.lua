@@ -31,6 +31,7 @@
 
 ---@class FullAnimeDetail
 ---@field characters? table
+---@field id? string
 ---@field jikan? table
 ---@field local? table
 
@@ -160,6 +161,7 @@
 
 ---@class StreamingDetail
 ---@field ep? table
+---@field id? string
 ---@field link? string
 ---@field name? string
 

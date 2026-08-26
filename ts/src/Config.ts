@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -245,6 +246,10 @@ class Config {
         {
           "name": "characters",
           "type": "`$ARRAY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "jikan",
@@ -951,6 +956,10 @@ class Config {
           "name": "ep",
           "short": "Episodes 2+ streaming links",
           "type": "`$ARRAY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "link",

@@ -41,9 +41,13 @@ class FullAnimeDetailEntityTest < Minitest::Test
 
     # LOAD
     full_anime_detail_ref01_ent = client.FullAnimeDetail(nil)
-    full_anime_detail_ref01_match_dt0 = {}
+    full_anime_detail_ref01_match_dt0 = {
+      "id" => full_anime_detail_ref01_data["id"],
+    }
     full_anime_detail_ref01_data_dt0_loaded = full_anime_detail_ref01_ent.load(full_anime_detail_ref01_match_dt0, nil)
-    assert !full_anime_detail_ref01_data_dt0_loaded.nil?
+    full_anime_detail_ref01_data_dt0_load_result = Helpers.to_map(full_anime_detail_ref01_data_dt0_loaded.respond_to?(:data_get) ? full_anime_detail_ref01_data_dt0_loaded.data_get : full_anime_detail_ref01_data_dt0_loaded)
+    assert !full_anime_detail_ref01_data_dt0_load_result.nil?
+    assert_equal full_anime_detail_ref01_data_dt0_load_result["id"], full_anime_detail_ref01_data["id"]
 
   end
 end

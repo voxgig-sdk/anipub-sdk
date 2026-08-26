@@ -59,9 +59,12 @@ describe('FullAnimeDetailEntity', async () => {
 
     let full_anime_detail_ref01_data = Object.values(setup.data.existing.full_anime_detail)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const full_anime_detail_ref01_ent = client.FullAnimeDetail()
+    const full_anime_detail_ref01_match_dt0: any = {}
+    full_anime_detail_ref01_match_dt0.id = full_anime_detail_ref01_data.id
+    const full_anime_detail_ref01_data_dt0 = (await full_anime_detail_ref01_ent.load(full_anime_detail_ref01_match_dt0)).data()
+    assert(full_anime_detail_ref01_data_dt0.id === full_anime_detail_ref01_data.id)
 
 
   })

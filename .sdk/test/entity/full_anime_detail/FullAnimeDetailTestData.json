@@ -3,21 +3,21 @@
     "full_anime_detail": {
       "FULL_ANIME_DETAIL00": {
         "characters": [],
+        "id": "FULL_ANIME_DETAIL00",
         "jikan": {},
-        "local": {},
-        "id": "FULL_ANIME_DETAIL00"
+        "local": {}
       },
       "FULL_ANIME_DETAIL01": {
         "characters": [],
+        "id": "FULL_ANIME_DETAIL01",
         "jikan": {},
-        "local": {},
-        "id": "FULL_ANIME_DETAIL01"
+        "local": {}
       },
       "FULL_ANIME_DETAIL02": {
         "characters": [],
+        "id": "FULL_ANIME_DETAIL02",
         "jikan": {},
-        "local": {},
-        "id": "FULL_ANIME_DETAIL02"
+        "local": {}
       }
     }
   },

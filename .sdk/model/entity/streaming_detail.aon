@@ -12,6 +12,11 @@ main: kit: entity: streaming_detail: {
       type: "`$ARRAY`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "link"
       req: false
       short: "Episode 1 streaming link with src= prefix"
@@ -24,6 +29,11 @@ main: kit: entity: streaming_detail: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "streaming_detail"
   op: {

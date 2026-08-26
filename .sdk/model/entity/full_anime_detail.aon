@@ -11,6 +11,11 @@ main: kit: entity: full_anime_detail: {
       type: "`$ARRAY`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "jikan"
       req: false
       short: "MyAnimeList data from Jikan API"
@@ -22,6 +27,11 @@ main: kit: entity: full_anime_detail: {
       type: "`$OBJECT`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "full_anime_detail"
   op: {

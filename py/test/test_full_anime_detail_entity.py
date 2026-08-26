@@ -48,9 +48,13 @@ class TestFullAnimeDetailEntity:
 
         # LOAD
         full_anime_detail_ref01_ent = client.FullAnimeDetail(None)
-        full_anime_detail_ref01_match_dt0 = {}
+        full_anime_detail_ref01_match_dt0 = {
+            "id": full_anime_detail_ref01_data["id"],
+        }
         full_anime_detail_ref01_data_dt0_loaded = full_anime_detail_ref01_ent.load(full_anime_detail_ref01_match_dt0, None)
-        assert full_anime_detail_ref01_data_dt0_loaded is not None
+        full_anime_detail_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(full_anime_detail_ref01_data_dt0_loaded))
+        assert full_anime_detail_ref01_data_dt0_load_result is not None
+        assert full_anime_detail_ref01_data_dt0_load_result["id"] == full_anime_detail_ref01_data["id"]
 
 
 

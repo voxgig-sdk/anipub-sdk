@@ -61,13 +61,19 @@ func TestFullAnimeDetailEntity(t *testing.T) {
 
 		// LOAD
 		fullAnimeDetailRef01Ent := client.FullAnimeDetail(nil)
-		fullAnimeDetailRef01MatchDt0 := map[string]any{}
+		fullAnimeDetailRef01MatchDt0 := map[string]any{
+			"id": fullAnimeDetailRef01Data["id"],
+		}
 		fullAnimeDetailRef01DataDt0Loaded, err := fullAnimeDetailRef01Ent.Load(fullAnimeDetailRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if fullAnimeDetailRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		fullAnimeDetailRef01DataDt0LoadResult := core.ToMapAny(entityData(fullAnimeDetailRef01DataDt0Loaded))
+		if fullAnimeDetailRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if fullAnimeDetailRef01DataDt0LoadResult["id"] != fullAnimeDetailRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

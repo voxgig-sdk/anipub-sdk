@@ -279,6 +279,7 @@ API path: `/api/find/{name}`
 | Field | Description |
 | --- | --- |
 | `characters` |  |
+| `id` |  |
 | `jikan` | MyAnimeList data from Jikan API |
 | `local` |  |
 
@@ -393,6 +394,7 @@ API path: `/api/search/{name}`
 | Field | Description |
 | --- | --- |
 | `ep` | Episodes 2+ streaming links |
+| `id` |  |
 | `link` | Episode 1 streaming link with src= prefix |
 | `name` | Anime name |
 
@@ -482,6 +484,7 @@ Create an instance: `full_anime_detail = client.FullAnimeDetail`
 | Field | Type | Description |
 | --- | --- | --- |
 | `characters` | `Array` |  |
+| `id` | `String` |  |
 | `jikan` | `Hash` | MyAnimeList data from Jikan API |
 | `local` | `Hash` |  |
 
@@ -674,6 +677,7 @@ Create an instance: `streaming_detail = client.StreamingDetail`
 | Field | Type | Description |
 | --- | --- | --- |
 | `ep` | `Array` | Episodes 2+ streaming links |
+| `id` | `String` |  |
 | `link` | `String` | Episode 1 streaming link with src= prefix |
 | `name` | `String` | Anime name |
 

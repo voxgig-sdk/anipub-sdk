@@ -54,6 +54,7 @@ class FindLoadMatch
 class FullAnimeDetail
 {
     public ?array $characters = null;
+    public ?string $id = null;
     public ?array $jikan = null;
     public ?array $local = null;
 }
@@ -216,6 +217,7 @@ class SearchLoadMatch
 class StreamingDetail
 {
     public ?array $ep = null;
+    public ?string $id = null;
     public ?string $link = null;
     public ?string $name = null;
 }

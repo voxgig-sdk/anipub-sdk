@@ -28,6 +28,7 @@ module AnipubConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -208,6 +209,10 @@ module AnipubConfig
             {
               "name" => "characters",
               "type" => "`$ARRAY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "jikan",
@@ -914,6 +919,10 @@ module AnipubConfig
               "name" => "ep",
               "short" => "Episodes 2+ streaming links",
               "type" => "`$ARRAY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "link",

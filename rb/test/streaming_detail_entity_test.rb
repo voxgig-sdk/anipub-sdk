@@ -41,9 +41,13 @@ class StreamingDetailEntityTest < Minitest::Test
 
     # LOAD
     streaming_detail_ref01_ent = client.StreamingDetail(nil)
-    streaming_detail_ref01_match_dt0 = {}
+    streaming_detail_ref01_match_dt0 = {
+      "id" => streaming_detail_ref01_data["id"],
+    }
     streaming_detail_ref01_data_dt0_loaded = streaming_detail_ref01_ent.load(streaming_detail_ref01_match_dt0, nil)
-    assert !streaming_detail_ref01_data_dt0_loaded.nil?
+    streaming_detail_ref01_data_dt0_load_result = Helpers.to_map(streaming_detail_ref01_data_dt0_loaded.respond_to?(:data_get) ? streaming_detail_ref01_data_dt0_loaded.data_get : streaming_detail_ref01_data_dt0_loaded)
+    assert !streaming_detail_ref01_data_dt0_load_result.nil?
+    assert_equal streaming_detail_ref01_data_dt0_load_result["id"], streaming_detail_ref01_data["id"]
 
   end
 end

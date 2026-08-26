@@ -48,9 +48,13 @@ class StreamingDetailEntityTest extends TestCase
 
         // LOAD
         $streaming_detail_ref01_ent = $client->StreamingDetail(null);
-        $streaming_detail_ref01_match_dt0 = [];
+        $streaming_detail_ref01_match_dt0 = [
+            "id" => $streaming_detail_ref01_data["id"],
+        ];
         $streaming_detail_ref01_data_dt0_loaded = $streaming_detail_ref01_ent->load($streaming_detail_ref01_match_dt0, null);
-        $this->assertNotNull($streaming_detail_ref01_data_dt0_loaded);
+        $streaming_detail_ref01_data_dt0_load_result = Helpers::to_map(is_object($streaming_detail_ref01_data_dt0_loaded) && method_exists($streaming_detail_ref01_data_dt0_loaded, 'data_get') ? $streaming_detail_ref01_data_dt0_loaded->data_get() : $streaming_detail_ref01_data_dt0_loaded);
+        $this->assertNotNull($streaming_detail_ref01_data_dt0_load_result);
+        $this->assertEquals($streaming_detail_ref01_data_dt0_load_result["id"], $streaming_detail_ref01_data["id"]);
 
     }
 }

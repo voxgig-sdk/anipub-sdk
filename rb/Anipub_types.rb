@@ -90,6 +90,9 @@ FindLoadMatch = Struct.new(
 # @!attribute [rw] characters
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] jikan
 #   @return [Hash, nil]
 #
@@ -97,6 +100,7 @@ FindLoadMatch = Struct.new(
 #   @return [Hash, nil]
 FullAnimeDetail = Struct.new(
   :characters,
+  :id,
   :jikan,
   :local,
   keyword_init: true
@@ -573,6 +577,9 @@ SearchLoadMatch = Struct.new(
 # @!attribute [rw] ep
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] link
 #   @return [String, nil]
 #
@@ -580,6 +587,7 @@ SearchLoadMatch = Struct.new(
 #   @return [String, nil]
 StreamingDetail = Struct.new(
   :ep,
+  :id,
   :link,
   :name,
   keyword_init: true

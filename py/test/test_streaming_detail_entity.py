@@ -48,9 +48,13 @@ class TestStreamingDetailEntity:
 
         # LOAD
         streaming_detail_ref01_ent = client.StreamingDetail(None)
-        streaming_detail_ref01_match_dt0 = {}
+        streaming_detail_ref01_match_dt0 = {
+            "id": streaming_detail_ref01_data["id"],
+        }
         streaming_detail_ref01_data_dt0_loaded = streaming_detail_ref01_ent.load(streaming_detail_ref01_match_dt0, None)
-        assert streaming_detail_ref01_data_dt0_loaded is not None
+        streaming_detail_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(streaming_detail_ref01_data_dt0_loaded))
+        assert streaming_detail_ref01_data_dt0_load_result is not None
+        assert streaming_detail_ref01_data_dt0_load_result["id"] == streaming_detail_ref01_data["id"]
 
 
 

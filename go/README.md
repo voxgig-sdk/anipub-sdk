@@ -300,6 +300,7 @@ API path: `/api/find/{name}`
 | Field | Description |
 | --- | --- |
 | `"characters"` |  |
+| `"id"` |  |
 | `"jikan"` | MyAnimeList data from Jikan API |
 | `"local"` |  |
 
@@ -414,6 +415,7 @@ API path: `/api/search/{name}`
 | Field | Description |
 | --- | --- |
 | `"ep"` | Episodes 2+ streaming links |
+| `"id"` |  |
 | `"link"` | Episode 1 streaming link with src= prefix |
 | `"name"` | Anime name |
 
@@ -513,6 +515,7 @@ Create an instance: `fullAnimeDetail := client.FullAnimeDetail(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `characters` | `[]any` |  |
+| `id` | `string` |  |
 | `jikan` | `map[string]any` | MyAnimeList data from Jikan API |
 | `local` | `map[string]any` |  |
 
@@ -723,6 +726,7 @@ Create an instance: `streamingDetail := client.StreamingDetail(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `ep` | `[]any` | Episodes 2+ streaming links |
+| `id` | `string` |  |
 | `link` | `string` | Episode 1 streaming link with src= prefix |
 | `name` | `string` | Anime name |
 

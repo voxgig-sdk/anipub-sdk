@@ -240,6 +240,7 @@ $full_anime_detail = $client->FullAnimeDetail();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `array` | No |  |
+| `id` | `string` | No |  |
 | `jikan` | `array` | No | MyAnimeList data from Jikan API |
 | `local` | `array` | No |  |
 
@@ -572,6 +573,7 @@ $streaming_detail = $client->StreamingDetail();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `ep` | `array` | No | Episodes 2+ streaming links |
+| `id` | `string` | No |  |
 | `link` | `string` | No | Episode 1 streaming link with src= prefix |
 | `name` | `string` | No | Anime name |
 

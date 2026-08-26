@@ -44,10 +44,14 @@ describe("StreamingDetailEntity", function()
 
     -- LOAD
     local streaming_detail_ref01_ent = client:StreamingDetail(nil)
-    local streaming_detail_ref01_match_dt0 = {}
+    local streaming_detail_ref01_match_dt0 = {
+      id = streaming_detail_ref01_data["id"],
+    }
     local streaming_detail_ref01_data_dt0_loaded, err = streaming_detail_ref01_ent:load(streaming_detail_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(streaming_detail_ref01_data_dt0_loaded)
+    local streaming_detail_ref01_data_dt0_load_result = helpers.to_map(type(streaming_detail_ref01_data_dt0_loaded) == 'table' and streaming_detail_ref01_data_dt0_loaded.data_get and streaming_detail_ref01_data_dt0_loaded:data_get() or streaming_detail_ref01_data_dt0_loaded)
+    assert.is_not_nil(streaming_detail_ref01_data_dt0_load_result)
+    assert.are.equal(streaming_detail_ref01_data_dt0_load_result["id"], streaming_detail_ref01_data["id"])
 
   end)
 end)

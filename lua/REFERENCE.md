@@ -238,6 +238,7 @@ local full_anime_detail = client:FullAnimeDetail(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `table` | No |  |
+| `id` | `string` | No |  |
 | `jikan` | `table` | No | MyAnimeList data from Jikan API |
 | `local` | `table` | No |  |
 
@@ -570,6 +571,7 @@ local streaming_detail = client:StreamingDetail(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `ep` | `table` | No | Episodes 2+ streaming links |
+| `id` | `string` | No |  |
 | `link` | `string` | No | Episode 1 streaming link with src= prefix |
 | `name` | `string` | No | Anime name |
 

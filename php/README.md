@@ -289,6 +289,7 @@ API path: `/api/find/{name}`
 | Field | Description |
 | --- | --- |
 | `characters` |  |
+| `id` |  |
 | `jikan` | MyAnimeList data from Jikan API |
 | `local` |  |
 
@@ -403,6 +404,7 @@ API path: `/api/search/{name}`
 | Field | Description |
 | --- | --- |
 | `ep` | Episodes 2+ streaming links |
+| `id` |  |
 | `link` | Episode 1 streaming link with src= prefix |
 | `name` | Anime name |
 
@@ -492,6 +494,7 @@ Create an instance: `$full_anime_detail = $client->FullAnimeDetail();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `characters` | `array` |  |
+| `id` | `string` |  |
 | `jikan` | `array` | MyAnimeList data from Jikan API |
 | `local` | `array` |  |
 
@@ -684,6 +687,7 @@ Create an instance: `$streaming_detail = $client->StreamingDetail();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `ep` | `array` | Episodes 2+ streaming links |
+| `id` | `string` |  |
 | `link` | `string` | Episode 1 streaming link with src= prefix |
 | `name` | `string` | Anime name |
 

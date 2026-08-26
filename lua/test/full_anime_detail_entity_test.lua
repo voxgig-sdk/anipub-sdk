@@ -44,10 +44,14 @@ describe("FullAnimeDetailEntity", function()
 
     -- LOAD
     local full_anime_detail_ref01_ent = client:FullAnimeDetail(nil)
-    local full_anime_detail_ref01_match_dt0 = {}
+    local full_anime_detail_ref01_match_dt0 = {
+      id = full_anime_detail_ref01_data["id"],
+    }
     local full_anime_detail_ref01_data_dt0_loaded, err = full_anime_detail_ref01_ent:load(full_anime_detail_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(full_anime_detail_ref01_data_dt0_loaded)
+    local full_anime_detail_ref01_data_dt0_load_result = helpers.to_map(type(full_anime_detail_ref01_data_dt0_loaded) == 'table' and full_anime_detail_ref01_data_dt0_loaded.data_get and full_anime_detail_ref01_data_dt0_loaded:data_get() or full_anime_detail_ref01_data_dt0_loaded)
+    assert.is_not_nil(full_anime_detail_ref01_data_dt0_load_result)
+    assert.are.equal(full_anime_detail_ref01_data_dt0_load_result["id"], full_anime_detail_ref01_data["id"])
 
   end)
 end)

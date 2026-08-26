@@ -3,21 +3,21 @@
     "streaming_detail": {
       "STREAMING_DETAIL00": {
         "ep": [],
-        "link": "s1f",
-        "name": "s20",
-        "id": "STREAMING_DETAIL00"
+        "id": "STREAMING_DETAIL00",
+        "link": "s2a",
+        "name": "s2b"
       },
       "STREAMING_DETAIL01": {
         "ep": [],
-        "link": "s3d",
-        "name": "s3e",
-        "id": "STREAMING_DETAIL01"
+        "id": "STREAMING_DETAIL01",
+        "link": "s52",
+        "name": "s53"
       },
       "STREAMING_DETAIL02": {
         "ep": [],
-        "link": "s5b",
-        "name": "s5c",
-        "id": "STREAMING_DETAIL02"
+        "id": "STREAMING_DETAIL02",
+        "link": "s7a",
+        "name": "s7b"
       }
     }
   },
@@ -25,8 +25,8 @@
     "streaming_detail": {
       "streaming_detail_ref01": {
         "ep": [],
-        "link": "s79",
-        "name": "s7a"
+        "link": "sa2",
+        "name": "sa3"
       }
     }
   }

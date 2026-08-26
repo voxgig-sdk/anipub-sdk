@@ -42,6 +42,7 @@ class AnipubConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -222,6 +223,10 @@ class AnipubConfig
             [
               'name' => 'characters',
               'type' => '`$ARRAY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'jikan',
@@ -928,6 +933,10 @@ class AnipubConfig
               'name' => 'ep',
               'short' => 'Episodes 2+ streaming links',
               'type' => '`$ARRAY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'link',

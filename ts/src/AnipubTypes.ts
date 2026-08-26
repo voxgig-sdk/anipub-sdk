@@ -35,6 +35,7 @@ export interface FindLoadMatch {
 
 export interface FullAnimeDetail {
   characters?: any[]
+  id?: string
   jikan?: Record<string, any>
   local?: Record<string, any>
 }
@@ -175,6 +176,7 @@ export interface SearchLoadMatch {
 
 export interface StreamingDetail {
   ep?: any[]
+  id?: string
   link?: string
   name?: string
 }

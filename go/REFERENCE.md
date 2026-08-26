@@ -248,6 +248,7 @@ fmt.Println(fullAnimeDetail.GetName()) // "full_anime_detail"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `characters` | `[]any` | No |  |
+| `id` | `string` | No |  |
 | `jikan` | `map[string]any` | No | MyAnimeList data from Jikan API |
 | `local` | `map[string]any` | No |  |
 
@@ -579,6 +580,7 @@ fmt.Println(streamingDetail.GetName()) // "streaming_detail"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `ep` | `[]any` | No | Episodes 2+ streaming links |
+| `id` | `string` | No |  |
 | `link` | `string` | No | Episode 1 streaming link with src= prefix |
 | `name` | `string` | No | Anime name |
 

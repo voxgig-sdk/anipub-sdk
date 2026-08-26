@@ -61,13 +61,19 @@ func TestStreamingDetailEntity(t *testing.T) {
 
 		// LOAD
 		streamingDetailRef01Ent := client.StreamingDetail(nil)
-		streamingDetailRef01MatchDt0 := map[string]any{}
+		streamingDetailRef01MatchDt0 := map[string]any{
+			"id": streamingDetailRef01Data["id"],
+		}
 		streamingDetailRef01DataDt0Loaded, err := streamingDetailRef01Ent.Load(streamingDetailRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if streamingDetailRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		streamingDetailRef01DataDt0LoadResult := core.ToMapAny(entityData(streamingDetailRef01DataDt0Loaded))
+		if streamingDetailRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if streamingDetailRef01DataDt0LoadResult["id"] != streamingDetailRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

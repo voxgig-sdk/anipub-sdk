@@ -108,29 +108,20 @@ class PaginatedAnimeList(TypedDict, total=False):
     wholePage: list
 
 
-class PaginatedAnimeListLoadMatch(TypedDict):
+class PaginatedAnimeListLoadMatchRequired(TypedDict):
     genre: str
 
 
+class PaginatedAnimeListLoadMatch(PaginatedAnimeListLoadMatchRequired, total=False):
+    page: int
+
+
 class PaginatedAnimeListListMatch(TypedDict, total=False):
-    Aired: str
-    Cover: str
-    DescripTion: str
-    Duration: str
-    Genres: list
-    ImagePath: str
-    MALScore: str
-    Name: str
-    Premiered: str
-    RatingsNum: int
-    Status: str
-    Studios: str
-    Synonyms: str
-    currentPage: int
-    epCount: int
-    finder: str
-    id: int
-    wholePage: list
+    genre: str
+    name: str
+    page: int
+    ratefrom: float
+    rateto: float
 
 
 class Rating(TypedDict, total=False):
@@ -153,22 +144,7 @@ class Rating(TypedDict, total=False):
 
 
 class RatingListMatch(TypedDict, total=False):
-    Aired: str
-    Cover: str
-    DescripTion: str
-    Duration: str
-    Genres: list
-    ImagePath: str
-    MALScore: str
-    Name: str
-    Premiered: str
-    RatingsNum: int
-    Status: str
-    Studios: str
-    Synonyms: str
-    epCount: int
-    finder: str
-    id: int
+    page: int
 
 
 class Search(TypedDict, total=False):

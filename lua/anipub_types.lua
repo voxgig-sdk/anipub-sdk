@@ -81,26 +81,14 @@
 
 ---@class PaginatedAnimeListLoadMatch
 ---@field genre string
+---@field page? number
 
 ---@class PaginatedAnimeListListMatch
----@field Aired? string
----@field Cover? string
----@field DescripTion? string
----@field Duration? string
----@field Genres? table
----@field ImagePath? string
----@field MALScore? string
----@field Name? string
----@field Premiered? string
----@field RatingsNum? number
----@field Status? string
----@field Studios? string
----@field Synonyms? string
----@field currentPage? number
----@field epCount? number
----@field finder? string
----@field id? number
----@field wholePage? table
+---@field genre? string
+---@field name? string
+---@field page? number
+---@field ratefrom? number
+---@field rateto? number
 
 ---@class Rating
 ---@field Aired? string
@@ -121,22 +109,7 @@
 ---@field id? number
 
 ---@class RatingListMatch
----@field Aired? string
----@field Cover? string
----@field DescripTion? string
----@field Duration? string
----@field Genres? table
----@field ImagePath? string
----@field MALScore? string
----@field Name? string
----@field Premiered? string
----@field RatingsNum? number
----@field Status? string
----@field Studios? string
----@field Synonyms? string
----@field epCount? number
----@field finder? string
----@field id? number
+---@field page? number
 
 ---@class Search
 ---@field Aired? string

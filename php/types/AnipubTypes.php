@@ -119,29 +119,17 @@ class PaginatedAnimeList
 class PaginatedAnimeListLoadMatch
 {
     public string $genre;
+    public ?int $page = null;
 }
 
 /** Request payload for PaginatedAnimeList#list. */
 class PaginatedAnimeListListMatch
 {
-    public ?string $Aired = null;
-    public ?string $Cover = null;
-    public ?string $DescripTion = null;
-    public ?string $Duration = null;
-    public ?array $Genres = null;
-    public ?string $ImagePath = null;
-    public ?string $MALScore = null;
-    public ?string $Name = null;
-    public ?string $Premiered = null;
-    public ?int $RatingsNum = null;
-    public ?string $Status = null;
-    public ?string $Studios = null;
-    public ?string $Synonyms = null;
-    public ?int $currentPage = null;
-    public ?int $epCount = null;
-    public ?string $finder = null;
-    public ?int $id = null;
-    public ?array $wholePage = null;
+    public ?string $genre = null;
+    public ?string $name = null;
+    public ?int $page = null;
+    public ?float $ratefrom = null;
+    public ?float $rateto = null;
 }
 
 /** Rating entity data model. */
@@ -168,22 +156,7 @@ class Rating
 /** Request payload for Rating#list. */
 class RatingListMatch
 {
-    public ?string $Aired = null;
-    public ?string $Cover = null;
-    public ?string $DescripTion = null;
-    public ?string $Duration = null;
-    public ?array $Genres = null;
-    public ?string $ImagePath = null;
-    public ?string $MALScore = null;
-    public ?string $Name = null;
-    public ?string $Premiered = null;
-    public ?int $RatingsNum = null;
-    public ?string $Status = null;
-    public ?string $Studios = null;
-    public ?string $Synonyms = null;
-    public ?int $epCount = null;
-    public ?string $finder = null;
-    public ?int $id = null;
+    public ?int $page = null;
 }
 
 /** Search entity data model. */

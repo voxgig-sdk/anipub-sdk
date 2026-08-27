@@ -108,28 +108,16 @@ type PaginatedAnimeList struct {
 // PaginatedAnimeListLoadMatch is the typed request payload for PaginatedAnimeList.LoadTyped.
 type PaginatedAnimeListLoadMatch struct {
 	Genre string `json:"genre"`
+	Page *int `json:"page,omitempty"`
 }
 
 // PaginatedAnimeListListMatch is the typed request payload for PaginatedAnimeList.ListTyped.
 type PaginatedAnimeListListMatch struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	CurrentPage *int `json:"currentPage,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
-	WholePage *[]any `json:"wholePage,omitempty"`
+	Genre *string `json:"genre,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Ratefrom *float64 `json:"ratefrom,omitempty"`
+	Rateto *float64 `json:"rateto,omitempty"`
 }
 
 // Rating is the typed data model for the rating entity.
@@ -154,22 +142,7 @@ type Rating struct {
 
 // RatingListMatch is the typed request payload for Rating.ListTyped.
 type RatingListMatch struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Search is the typed data model for the search entity.

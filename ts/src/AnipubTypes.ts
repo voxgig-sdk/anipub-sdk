@@ -90,27 +90,15 @@ export interface PaginatedAnimeList {
 
 export interface PaginatedAnimeListLoadMatch {
   genre: string
+  page?: number
 }
 
 export interface PaginatedAnimeListListMatch {
-  Aired?: string
-  Cover?: string
-  DescripTion?: string
-  Duration?: string
-  Genres?: any[]
-  ImagePath?: string
-  MALScore?: string
-  Name?: string
-  Premiered?: string
-  RatingsNum?: number
-  Status?: string
-  Studios?: string
-  Synonyms?: string
-  currentPage?: number
-  epCount?: number
-  finder?: string
-  id?: number
-  wholePage?: any[]
+  genre?: string
+  name?: string
+  page?: number
+  ratefrom?: number
+  rateto?: number
 }
 
 export interface Rating {
@@ -133,22 +121,7 @@ export interface Rating {
 }
 
 export interface RatingListMatch {
-  Aired?: string
-  Cover?: string
-  DescripTion?: string
-  Duration?: string
-  Genres?: any[]
-  ImagePath?: string
-  MALScore?: string
-  Name?: string
-  Premiered?: string
-  RatingsNum?: number
-  Status?: string
-  Studios?: string
-  Synonyms?: string
-  epCount?: number
-  finder?: string
-  id?: number
+  page?: number
 }
 
 export interface Search {

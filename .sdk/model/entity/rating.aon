@@ -128,9 +128,13 @@ main: kit: entity: rating: {
           }
           method: "GET"
           orig: "/api/findbyrating"
-          parts: [
-            "api"
-            "findbyrating"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "findbyrating"
+            }
           ]
           select: {
             exist: [

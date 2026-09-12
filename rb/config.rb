@@ -83,15 +83,23 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/check",
-                  "parts" => [
-                    "api",
-                    "check",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "check",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "check",
+                  ],
                 },
               ],
             },
@@ -104,30 +112,46 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/getAll",
-                  "parts" => [
-                    "api",
-                    "getAll",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "getAll",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "getAll",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/getlast",
-                  "parts" => [
-                    "api",
-                    "getlast",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "getlast",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "getlast",
+                  ],
                 },
               ],
             },
@@ -155,6 +179,10 @@ module AnipubConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "find",
           "op" => {
             "load" => {
@@ -177,16 +205,22 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/find/{name}",
-                  "parts" => [
-                    "api",
-                    "find",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "name" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "find",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -196,6 +230,11 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "find",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -224,6 +263,10 @@ module AnipubConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "full_anime_detail",
           "op" => {
             "load" => {
@@ -246,11 +289,19 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/anime/api/details/{id}",
-                  "parts" => [
-                    "anime",
-                    "api",
-                    "details",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "anime",
+                    },
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -261,6 +312,12 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "anime",
+                    "api",
+                    "details",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -352,6 +409,10 @@ module AnipubConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "info",
           "op" => {
             "load" => {
@@ -374,10 +435,16 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/info/{id}",
-                  "parts" => [
-                    "api",
-                    "info",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "info",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -388,6 +455,11 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "info",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -489,6 +561,10 @@ module AnipubConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "paginated_anime_list",
           "op" => {
             "list" => {
@@ -538,9 +614,13 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/sort",
-                  "parts" => [
-                    "api",
-                    "sort",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "sort",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -555,6 +635,10 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body.wholePage`",
                   },
+                  "parts" => [
+                    "api",
+                    "sort",
+                  ],
                 },
               ],
             },
@@ -587,10 +671,16 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/findbyGenre/{genre}",
-                  "parts" => [
-                    "api",
-                    "findbyGenre",
-                    "{genre}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "findbyGenre",
+                    },
+                    {
+                      "var" => "genre",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -602,6 +692,11 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "findbyGenre",
+                    "{genre}",
+                  ],
                 },
                 {
                   "args" => {
@@ -627,10 +722,16 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/searchall/{name}",
-                  "parts" => [
-                    "api",
-                    "searchall",
-                    "{name}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "searchall",
+                    },
+                    {
+                      "var" => "name",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -642,6 +743,11 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "searchall",
+                    "{name}",
+                  ],
                 },
               ],
             },
@@ -740,6 +846,10 @@ module AnipubConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "rating",
           "op" => {
             "list" => {
@@ -761,9 +871,13 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/findbyrating",
-                  "parts" => [
-                    "api",
-                    "findbyrating",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "findbyrating",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -774,6 +888,10 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body.AniData`",
                   },
+                  "parts" => [
+                    "api",
+                    "findbyrating",
+                  ],
                 },
               ],
             },
@@ -865,6 +983,10 @@ module AnipubConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "search",
           "op" => {
             "load" => {
@@ -886,16 +1008,22 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/search/{name}",
-                  "parts" => [
-                    "api",
-                    "search",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "name" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "search",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -905,6 +1033,11 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "search",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -935,6 +1068,10 @@ module AnipubConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "streaming_detail",
           "op" => {
             "load" => {
@@ -957,11 +1094,19 @@ module AnipubConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/api/details/{id}",
-                  "parts" => [
-                    "v1",
-                    "api",
-                    "details",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -972,6 +1117,12 @@ module AnipubConfig
                     "req" => "`reqdata`",
                     "res" => "`body.local`",
                   },
+                  "parts" => [
+                    "v1",
+                    "api",
+                    "details",
+                    "{id}",
+                  ],
                 },
               ],
             },

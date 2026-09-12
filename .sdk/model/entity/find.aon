@@ -50,16 +50,22 @@ main: kit: entity: find: {
           }
           method: "GET"
           orig: "/api/find/{name}"
-          parts: [
-            "api"
-            "find"
-            "{id}"
-          ]
           rename: {
             param: {
               name: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "find"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

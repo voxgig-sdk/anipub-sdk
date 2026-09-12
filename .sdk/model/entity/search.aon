@@ -127,16 +127,22 @@ main: kit: entity: search: {
           }
           method: "GET"
           orig: "/api/search/{name}"
-          parts: [
-            "api"
-            "search"
-            "{id}"
-          ]
           rename: {
             param: {
               name: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "search"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

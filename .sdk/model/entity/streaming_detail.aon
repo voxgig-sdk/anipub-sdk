@@ -55,11 +55,19 @@ main: kit: entity: streaming_detail: {
           }
           method: "GET"
           orig: "/v1/api/details/{id}"
-          parts: [
-            "v1"
-            "api"
-            "details"
-            "{id}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "details"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

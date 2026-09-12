@@ -37,9 +37,13 @@ main: kit: entity: anime: {
         {
           method: "POST"
           orig: "/api/check"
-          parts: [
-            "api"
-            "check"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "check"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -54,9 +58,13 @@ main: kit: entity: anime: {
         {
           method: "GET"
           orig: "/api/getAll"
-          parts: [
-            "api"
-            "getAll"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "getAll"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -66,9 +74,13 @@ main: kit: entity: anime: {
         {
           method: "GET"
           orig: "/api/getlast"
-          parts: [
-            "api"
-            "getlast"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "getlast"
+            }
           ]
           transform: {
             req: "`reqdata`"

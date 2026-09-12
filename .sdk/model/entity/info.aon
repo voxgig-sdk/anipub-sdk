@@ -128,10 +128,16 @@ main: kit: entity: info: {
           }
           method: "GET"
           orig: "/api/info/{id}"
-          parts: [
-            "api"
-            "info"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "info"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

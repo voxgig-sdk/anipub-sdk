@@ -53,11 +53,19 @@ main: kit: entity: full_anime_detail: {
           }
           method: "GET"
           orig: "/anime/api/details/{id}"
-          parts: [
-            "anime"
-            "api"
-            "details"
-            "{id}"
+          segments: [
+            {
+              lit: "anime"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "details"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

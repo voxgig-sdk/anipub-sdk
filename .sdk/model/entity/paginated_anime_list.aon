@@ -172,9 +172,13 @@ main: kit: entity: paginated_anime_list: {
           }
           method: "GET"
           orig: "/api/sort"
-          parts: [
-            "api"
-            "sort"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "sort"
+            }
           ]
           select: {
             exist: [
@@ -220,10 +224,16 @@ main: kit: entity: paginated_anime_list: {
           }
           method: "GET"
           orig: "/api/findbyGenre/{genre}"
-          parts: [
-            "api"
-            "findbyGenre"
-            "{genre}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "findbyGenre"
+            }
+            {
+              var: "genre"
+            }
           ]
           select: {
             exist: [
@@ -260,10 +270,16 @@ main: kit: entity: paginated_anime_list: {
           }
           method: "GET"
           orig: "/api/searchall/{name}"
-          parts: [
-            "api"
-            "searchall"
-            "{name}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "searchall"
+            }
+            {
+              var: "name"
+            }
           ]
           select: {
             exist: [

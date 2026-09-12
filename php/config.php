@@ -97,14 +97,22 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/check',
-                  'parts' => [
-                    'api',
-                    'check',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'check',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'check',
                   ],
                 ],
               ],
@@ -118,14 +126,22 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/getAll',
-                  'parts' => [
-                    'api',
-                    'getAll',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'getAll',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'getAll',
                   ],
                 ],
                 [
@@ -133,14 +149,22 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/getlast',
-                  'parts' => [
-                    'api',
-                    'getlast',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'getlast',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'getlast',
                   ],
                 ],
               ],
@@ -169,6 +193,10 @@ class AnipubConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'find',
           'op' => [
             'load' => [
@@ -191,14 +219,20 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/find/{name}',
-                  'parts' => [
-                    'api',
-                    'find',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'name' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'find',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -209,6 +243,11 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'find',
+                    '{id}',
                   ],
                 ],
               ],
@@ -238,6 +277,10 @@ class AnipubConfig
               'type' => '`$OBJECT`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'full_anime_detail',
           'op' => [
             'load' => [
@@ -260,11 +303,19 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/anime/api/details/{id}',
-                  'parts' => [
-                    'anime',
-                    'api',
-                    'details',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'anime',
+                    ],
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'details',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -274,6 +325,12 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'anime',
+                    'api',
+                    'details',
+                    '{id}',
                   ],
                 ],
               ],
@@ -366,6 +423,10 @@ class AnipubConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'info',
           'op' => [
             'load' => [
@@ -388,10 +449,16 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/info/{id}',
-                  'parts' => [
-                    'api',
-                    'info',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'info',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -401,6 +468,11 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'info',
+                    '{id}',
                   ],
                 ],
               ],
@@ -503,6 +575,10 @@ class AnipubConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'paginated_anime_list',
           'op' => [
             'list' => [
@@ -552,9 +628,13 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/sort',
-                  'parts' => [
-                    'api',
-                    'sort',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'sort',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -568,6 +648,10 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.wholePage`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'sort',
                   ],
                 ],
               ],
@@ -601,10 +685,16 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/findbyGenre/{genre}',
-                  'parts' => [
-                    'api',
-                    'findbyGenre',
-                    '{genre}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'findbyGenre',
+                    ],
+                    [
+                      'var' => 'genre',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -615,6 +705,11 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'findbyGenre',
+                    '{genre}',
                   ],
                 ],
                 [
@@ -641,10 +736,16 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/searchall/{name}',
-                  'parts' => [
-                    'api',
-                    'searchall',
-                    '{name}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'searchall',
+                    ],
+                    [
+                      'var' => 'name',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -655,6 +756,11 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'searchall',
+                    '{name}',
                   ],
                 ],
               ],
@@ -754,6 +860,10 @@ class AnipubConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'rating',
           'op' => [
             'list' => [
@@ -775,9 +885,13 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/findbyrating',
-                  'parts' => [
-                    'api',
-                    'findbyrating',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'findbyrating',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -787,6 +901,10 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.AniData`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'findbyrating',
                   ],
                 ],
               ],
@@ -879,6 +997,10 @@ class AnipubConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'search',
           'op' => [
             'load' => [
@@ -900,14 +1022,20 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/search/{name}',
-                  'parts' => [
-                    'api',
-                    'search',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'name' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'search',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -918,6 +1046,11 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'search',
+                    '{id}',
                   ],
                 ],
               ],
@@ -949,6 +1082,10 @@ class AnipubConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'streaming_detail',
           'op' => [
             'load' => [
@@ -971,11 +1108,19 @@ class AnipubConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/api/details/{id}',
-                  'parts' => [
-                    'v1',
-                    'api',
-                    'details',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'details',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -985,6 +1130,12 @@ class AnipubConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.local`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'api',
+                    'details',
+                    '{id}',
                   ],
                 ],
               ],

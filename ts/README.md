@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AnipubSDK } from '@voxgig-sdk/anipub'
+import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 
 const client = new AnipubSDK()
 ```
@@ -818,7 +818,7 @@ anipub/
 Import the SDK from the package root:
 
 ```ts
-import { AnipubSDK } from '@voxgig-sdk/anipub'
+import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 ```
 
 ### Entity state

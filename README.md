@@ -105,7 +105,7 @@ local results, err = client:Rating():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
+| TypeScript | `@voxgig-sdk/anipub-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
 | Python | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
 | PHP | `voxgig-sdk/anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/anipub-sdk/go` | `go get github.com/voxgig-sdk/anipub-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Rating():list()
 ### TypeScript
 
 ```ts
-import { AnipubSDK } from '@voxgig-sdk/anipub'
+import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 
 const client = new AnipubSDK()
 

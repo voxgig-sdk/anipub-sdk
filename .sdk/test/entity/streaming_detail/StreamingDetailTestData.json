@@ -29,5 +29,121 @@
         "name": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /v1/api/details/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getStreamingLinks",
+        "parameters": [
+          {
+            "description": "Anime ID",
+            "example": 119,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "local": {
+                    "ep": [
+                      {
+                        "link": "src=https://..."
+                      },
+                      {
+                        "link": "src=https://..."
+                      }
+                    ],
+                    "link": "src=https://...",
+                    "name": "Black Clover"
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "local": {
+                      "properties": {
+                        "ep": {
+                          "description": "Episodes 2+ streaming links",
+                          "items": {
+                            "properties": {
+                              "link": {
+                                "description": "Episode streaming link with src= prefix. Array index 0 = Episode 2, index 1 = Episode 3, etc.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "link": {
+                          "description": "Episode 1 streaming link with src= prefix",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Anime name",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Streaming links for episodes"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Anime not found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

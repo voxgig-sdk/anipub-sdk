@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Anipub SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class AnipubFeatures
@@ -14,8 +17,14 @@ class AnipubFeatures
         switch ($name) {
             case "base":
                 return new AnipubBaseFeature();
+            case "ratelimit":
+                return new AnipubRatelimitFeature();
+            case "retry":
+                return new AnipubRetryFeature();
             case "test":
                 return new AnipubTestFeature();
+            case "timeout":
+                return new AnipubTimeoutFeature();
             default:
                 return new AnipubBaseFeature();
         }
@@ -31,7 +40,10 @@ class AnipubFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

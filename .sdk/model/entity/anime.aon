@@ -35,6 +35,12 @@ main: kit: entity: anime: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /api/check"
+            json: "{\"operationId\":\"checkAnime\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"multipleGenres\":{\"value\":{\"Genre\":[\"Action\",\"Drama\"],\"Name\":\"Jujutsu Kaisen\"}},\"singleGenre\":{\"value\":{\"Genre\":\"Action\",\"Name\":\"Black Clover\"}}},\"schema\":{\"properties\":{\"Genre\":{\"description\":\"Genre as string or array of strings\",\"oneOf\":[{\"type\":\"string\"},{\"items\":{\"type\":\"string\"},\"type\":\"array\"}]},\"Name\":{\"description\":\"Anime name to match\",\"type\":\"string\"}},\"required\":[\"Name\",\"Genre\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"exists\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Check result\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Invalid request body\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/api/check"
           segments: [
@@ -56,6 +62,12 @@ main: kit: entity: anime: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /api/getAll"
+            json: "{\"operationId\":\"getTotalCount\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":153,\"type\":\"integer\"}}},\"description\":\"Total number of anime in database\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/getAll"
           segments: [
@@ -72,6 +84,12 @@ main: kit: entity: anime: {
           }
         }
         {
+          contract: {
+            id: "GET /api/getlast"
+            json: "{\"operationId\":\"getLastId\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"integer\"}}},\"description\":\"Last document ID\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/getlast"
           segments: [

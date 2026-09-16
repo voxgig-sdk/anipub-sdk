@@ -48,6 +48,12 @@ main: kit: entity: find: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/find/{name}"
+            json: "{\"operationId\":\"findAnimeByName\",\"parameters\":[{\"description\":\"URL-encoded anime name — spaces as %20\",\"example\":\"One Piece\",\"in\":\"path\",\"name\":\"name\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"found\":{\"value\":{\"ep\":1155,\"exist\":true,\"id\":10}},\"notFound\":{\"value\":{\"exist\":false}}},\"schema\":{\"properties\":{\"ep\":{\"description\":\"Episode count if found\",\"type\":\"integer\"},\"exist\":{\"description\":\"Whether anime exists\",\"type\":\"boolean\"},\"id\":{\"description\":\"Anime ID if found\",\"type\":\"integer\"}},\"required\":[\"exist\"],\"type\":\"object\"}}},\"description\":\"Anime found or not found response\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/find/{name}"
           rename: {

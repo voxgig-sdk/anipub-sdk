@@ -1,12 +1,18 @@
 # Anipub SDK feature factory
 
 from anipub_sdk.feature.base_feature import AnipubBaseFeature
+from anipub_sdk.feature.ratelimit_feature import AnipubRatelimitFeature
+from anipub_sdk.feature.retry_feature import AnipubRetryFeature
 from anipub_sdk.feature.test_feature import AnipubTestFeature
+from anipub_sdk.feature.timeout_feature import AnipubTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AnipubBaseFeature(),
+    "ratelimit": lambda: AnipubRatelimitFeature(),
+    "retry": lambda: AnipubRetryFeature(),
     "test": lambda: AnipubTestFeature(),
+    "timeout": lambda: AnipubTimeoutFeature(),
 }
 
 

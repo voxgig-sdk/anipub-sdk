@@ -105,12 +105,12 @@ local results, err = client:Rating():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/anipub-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
-| Python | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
-| PHP | `voxgig-sdk/anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
+| TypeScript | `@voxgig-sdk/anipub-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/tags) |
+| Python | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/tags) |
+| PHP | `voxgig-sdk/anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/anipub-sdk/go` | `go get github.com/voxgig-sdk/anipub-sdk/go@latest` |
-| Ruby | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
-| Lua | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/releases) |
+| Ruby | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/tags) |
+| Lua | `voxgig-sdk-anipub` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anipub-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/anipub-sdk/go-cli` | `go install github.com/voxgig-sdk/anipub-sdk/go-cli/cmd/anipub@latest` |
 | Go MCP server | `github.com/voxgig-sdk/anipub-sdk/go-mcp` | `go get github.com/voxgig-sdk/anipub-sdk/go-mcp@latest` |
 

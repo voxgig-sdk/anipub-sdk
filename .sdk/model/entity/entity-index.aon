@@ -1,10 +1,10 @@
 # Entity Models
 
-@"anime.aon"
-@"find.aon"
-@"full_anime_detail.aon"
-@"info.aon"
-@"paginated_anime_list.aon"
-@"rating.aon"
-@"search.aon"
-@"streaming_detail.aon"
+@"./anime.aon"
+@"./find.aon"
+@"./full_anime_detail.aon"
+@"./info.aon"
+@"./paginated_anime_list.aon"
+@"./rating.aon"
+@"./search.aon"
+@"./streaming_detail.aon"

@@ -127,30 +127,30 @@ class Config {
 
     entity: {
       
-      anime: {
-      },
-
-      find: {
-      },
-
-      full_anime_detail: {
-      },
-
-      info: {
-      },
-
-      paginated_anime_list: {
-      },
-
-      rating: {
-      },
-
-      search: {
-      },
-
-      streaming_detail: {
-      },
-
+        anime: {
+        },
+  
+        find: {
+        },
+  
+        full_anime_detail: {
+        },
+  
+        info: {
+        },
+  
+        paginated_anime_list: {
+        },
+  
+        rating: {
+        },
+  
+        search: {
+        },
+  
+        streaming_detail: {
+        },
+  
     }
   }
 

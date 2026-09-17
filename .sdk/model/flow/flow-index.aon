@@ -1,10 +1,10 @@
 # Flows
 
-@"BasicAnimeFlow.aon"
-@"BasicFindFlow.aon"
-@"BasicFullAnimeDetailFlow.aon"
-@"BasicInfoFlow.aon"
-@"BasicPaginatedAnimeListFlow.aon"
-@"BasicRatingFlow.aon"
-@"BasicSearchFlow.aon"
-@"BasicStreamingDetailFlow.aon"
+@"./BasicAnimeFlow.aon"
+@"./BasicFindFlow.aon"
+@"./BasicFullAnimeDetailFlow.aon"
+@"./BasicInfoFlow.aon"
+@"./BasicPaginatedAnimeListFlow.aon"
+@"./BasicRatingFlow.aon"
+@"./BasicSearchFlow.aon"
+@"./BasicStreamingDetailFlow.aon"

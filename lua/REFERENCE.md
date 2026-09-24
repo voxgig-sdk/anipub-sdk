@@ -48,6 +48,10 @@ Create a new `Anime` entity instance. Pass `nil` for no initial data.
 
 Create a new `Find` entity instance. Pass `nil` for no initial data.
 
+#### `FindbyGenre(data)`
+
+Create a new `FindbyGenre` entity instance. Pass `nil` for no initial data.
+
 #### `FullAnimeDetail(data)`
 
 Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
@@ -56,10 +60,6 @@ Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
 
 Create a new `Info` entity instance. Pass `nil` for no initial data.
 
-#### `PaginatedAnimeList(data)`
-
-Create a new `PaginatedAnimeList` entity instance. Pass `nil` for no initial data.
-
 #### `Rating(data)`
 
 Create a new `Rating` entity instance. Pass `nil` for no initial data.
@@ -67,6 +67,14 @@ Create a new `Rating` entity instance. Pass `nil` for no initial data.
 #### `Search(data)`
 
 Create a new `Search` entity instance. Pass `nil` for no initial data.
+
+#### `Searchall(data)`
+
+Create a new `Searchall` entity instance. Pass `nil` for no initial data.
+
+#### `Sort(data)`
+
+Create a new `Sort` entity instance. Pass `nil` for no initial data.
 
 #### `StreamingDetail(data)`
 
@@ -227,6 +235,60 @@ Return the entity name.
 
 ---
 
+## FindbyGenreEntity
+
+```lua
+local findby_genre = client:FindbyGenre(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `number` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `table` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:FindbyGenre():load({ id = "findby_genre_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FindbyGenreEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```lua
@@ -340,83 +402,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `InfoEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```lua
-local paginated_anime_list = client:PaginatedAnimeList(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `string` | No | Air date range |
-| `Cover` | `string` | No | Cover image path or URL. |
-| `DescripTion` | `string` | No | Anime description |
-| `Duration` | `string` | No | Episode duration |
-| `Genres` | `table` | No | List of genres |
-| `ImagePath` | `string` | No | Image path or URL. |
-| `MALScore` | `string` | No | MyAnimeList score |
-| `Name` | `string` | No | Anime name |
-| `Premiered` | `string` | No | Premiere season |
-| `RatingsNum` | `number` | No | Number of ratings |
-| `Status` | `string` | No | Airing status |
-| `Studios` | `string` | No | Production studio |
-| `Synonyms` | `string` | No | Alternative names |
-| `currentPage` | `number` | No | Current page number |
-| `epCount` | `number` | No | Episode count |
-| `finder` | `string` | No | Slug identifier |
-| `id` | `number` | No | Anime ID |
-| `wholePage` | `table` | No | Array of anime on current page |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:PaginatedAnimeList():list()
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria.
-
-```lua
-local result, err = client:PaginatedAnimeList():load({ genre = "genre" })
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PaginatedAnimeListEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -551,6 +536,127 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SearchEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SearchallEntity
+
+```lua
+local searchall = client:Searchall(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `number` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `table` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:Searchall():load({ id = "searchall_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SearchallEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SortEntity
+
+```lua
+local sort = client:Sort(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `table` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `number` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `number` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `number` | No | Anime ID |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Sort():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SortEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

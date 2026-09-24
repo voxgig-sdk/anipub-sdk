@@ -33,14 +33,12 @@ local sdk = require("anipub_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a paginatedanimelist
-
-PaginatedAnimeList is nested under genre, so provide the `genre`.
+### 3. Load an anime
 
 ```lua
-local paginatedanimelist, err = client:PaginatedAnimeList():load({ genre = "example_genre" })
+local anime, err = client:Anime():load()
 if err then error(err) end
-print(paginatedanimelist)
+print(anime)
 ```
 
 ### 4. Create, update, and remove
@@ -59,7 +57,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local ratings, err = client:Rating():list()
+local anime, err = client:Anime():load()
 if err then error(err) end
 ```
 
@@ -117,7 +115,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Rating():list()
+local result, err = client:Anime():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -198,11 +196,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Anime` | `(data) -> AnimeEntity` | Create an Anime entity instance. |
 | `Find` | `(data) -> FindEntity` | Create a Find entity instance. |
+| `FindbyGenre` | `(data) -> FindbyGenreEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail` | `(data) -> FullAnimeDetailEntity` | Create a FullAnimeDetail entity instance. |
 | `Info` | `(data) -> InfoEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList` | `(data) -> PaginatedAnimeListEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
+| `Searchall` | `(data) -> SearchallEntity` | Create a Searchall entity instance. |
+| `Sort` | `(data) -> SortEntity` | Create a Sort entity instance. |
 | `StreamingDetail` | `(data) -> StreamingDetailEntity` | Create a StreamingDetail entity instance. |
 
 ### Entity interface
@@ -266,6 +266,18 @@ Operations: Load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -303,33 +315,6 @@ API path: `/anime/api/details/{id}`
 Operations: Load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `Aired` | Air date range |
-| `Cover` | Cover image path or URL. |
-| `DescripTion` | Anime description |
-| `Duration` | Episode duration |
-| `Genres` | List of genres |
-| `ImagePath` | Image path or URL. |
-| `MALScore` | MyAnimeList score |
-| `Name` | Anime name |
-| `Premiered` | Premiere season |
-| `RatingsNum` | Number of ratings |
-| `Status` | Airing status |
-| `Studios` | Production studio |
-| `Synonyms` | Alternative names |
-| `currentPage` | Current page number |
-| `epCount` | Episode count |
-| `finder` | Slug identifier |
-| `id` | Anime ID |
-| `wholePage` | Array of anime on current page |
-
-Operations: List, Load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -380,6 +365,43 @@ API path: `/api/findbyrating`
 Operations: Load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+
+Operations: List.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -459,6 +481,31 @@ local find, err = client:Find():load({ id = "find_id" })
 ```
 
 
+### FindbyGenre
+
+Create an instance: `local findby_genre = client:FindbyGenre(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `number` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `table` | Array of anime on current page |
+
+#### Example: Load
+
+```lua
+local findby_genre, err = client:FindbyGenre():load({ id = "findby_genre_id" })
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `local full_anime_detail = client:FullAnimeDetail(nil)`
@@ -520,53 +567,6 @@ Create an instance: `local info = client:Info(nil)`
 
 ```lua
 local info, err = client:Info():load({ id = "info_id" })
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `local paginated_anime_list = client:PaginatedAnimeList(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `string` | Air date range |
-| `Cover` | `string` | Cover image path or URL. |
-| `DescripTion` | `string` | Anime description |
-| `Duration` | `string` | Episode duration |
-| `Genres` | `table` | List of genres |
-| `ImagePath` | `string` | Image path or URL. |
-| `MALScore` | `string` | MyAnimeList score |
-| `Name` | `string` | Anime name |
-| `Premiered` | `string` | Premiere season |
-| `RatingsNum` | `number` | Number of ratings |
-| `Status` | `string` | Airing status |
-| `Studios` | `string` | Production studio |
-| `Synonyms` | `string` | Alternative names |
-| `currentPage` | `number` | Current page number |
-| `epCount` | `number` | Episode count |
-| `finder` | `string` | Slug identifier |
-| `id` | `number` | Anime ID |
-| `wholePage` | `table` | Array of anime on current page |
-
-#### Example: Load
-
-```lua
-local paginated_anime_list, err = client:PaginatedAnimeList():load({ genre = "genre" })
-```
-
-#### Example: List
-
-```lua
-local paginated_anime_lists, err = client:PaginatedAnimeList():list()
 ```
 
 
@@ -643,6 +643,69 @@ Create an instance: `local search = client:Search(nil)`
 
 ```lua
 local search, err = client:Search():load({ id = "search_id" })
+```
+
+
+### Searchall
+
+Create an instance: `local searchall = client:Searchall(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `number` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `table` | Array of anime on current page |
+
+#### Example: Load
+
+```lua
+local searchall, err = client:Searchall():load({ id = "searchall_id" })
+```
+
+
+### Sort
+
+Create an instance: `local sort = client:Sort(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `table` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
+
+#### Example: List
+
+```lua
+local sorts, err = client:Sort():list()
 ```
 
 
@@ -829,15 +892,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local rating = client:Rating()
-rating:list()
+local anime = client:Anime()
+anime:load()
 
--- rating:data_get() now returns the rating data from the last list
--- rating:match_get() returns the last match criteria
+-- anime:data_get() now returns the anime data from the last load
+-- anime:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

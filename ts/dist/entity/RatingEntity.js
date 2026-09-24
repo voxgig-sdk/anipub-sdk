@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RatingEntity = void 0;
 const AnipubEntityBase_1 = require("../AnipubEntityBase");
-// TODO: needs Entity superclass
 class RatingEntity extends AnipubEntityBase_1.AnipubEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

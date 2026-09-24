@@ -1,0 +1,12 @@
+# Flows
+
+@"./BasicAnimeFlow.aontu"
+@"./BasicFindFlow.aontu"
+@"./BasicFindbyGenreFlow.aontu"
+@"./BasicFullAnimeDetailFlow.aontu"
+@"./BasicInfoFlow.aontu"
+@"./BasicRatingFlow.aontu"
+@"./BasicSearchFlow.aontu"
+@"./BasicSearchallFlow.aontu"
+@"./BasicSortFlow.aontu"
+@"./BasicStreamingDetailFlow.aontu"

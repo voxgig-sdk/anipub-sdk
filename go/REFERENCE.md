@@ -55,6 +55,10 @@ Create a new `Anime` entity instance. Pass `nil` for no initial data.
 
 Create a new `Find` entity instance. Pass `nil` for no initial data.
 
+#### `FindbyGenre(data map[string]any) AnipubEntity`
+
+Create a new `FindbyGenre` entity instance. Pass `nil` for no initial data.
+
 #### `FullAnimeDetail(data map[string]any) AnipubEntity`
 
 Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
@@ -63,10 +67,6 @@ Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
 
 Create a new `Info` entity instance. Pass `nil` for no initial data.
 
-#### `PaginatedAnimeList(data map[string]any) AnipubEntity`
-
-Create a new `PaginatedAnimeList` entity instance. Pass `nil` for no initial data.
-
 #### `Rating(data map[string]any) AnipubEntity`
 
 Create a new `Rating` entity instance. Pass `nil` for no initial data.
@@ -74,6 +74,14 @@ Create a new `Rating` entity instance. Pass `nil` for no initial data.
 #### `Search(data map[string]any) AnipubEntity`
 
 Create a new `Search` entity instance. Pass `nil` for no initial data.
+
+#### `Searchall(data map[string]any) AnipubEntity`
+
+Create a new `Searchall` entity instance. Pass `nil` for no initial data.
+
+#### `Sort(data map[string]any) AnipubEntity`
+
+Create a new `Sort` entity instance. Pass `nil` for no initial data.
 
 #### `StreamingDetail(data map[string]any) AnipubEntity`
 
@@ -236,6 +244,59 @@ Return the entity name.
 
 ---
 
+## FindbyGenreEntity
+
+```go
+findbyGenre := client.FindbyGenre(nil)
+fmt.Println(findbyGenre.GetName()) // "findby_genre"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `[]any` | No | Array of anime on current page |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.FindbyGenre(nil).Load(map[string]any{"id": "findby_genre_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `FindbyGenreEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```go
@@ -347,86 +408,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `InfoEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```go
-paginatedAnimeList := client.PaginatedAnimeList(nil)
-fmt.Println(paginatedAnimeList.GetName()) // "paginated_anime_list"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `string` | No | Air date range |
-| `Cover` | `string` | No | Cover image path or URL. |
-| `DescripTion` | `string` | No | Anime description |
-| `Duration` | `string` | No | Episode duration |
-| `Genres` | `[]any` | No | List of genres |
-| `ImagePath` | `string` | No | Image path or URL. |
-| `MALScore` | `string` | No | MyAnimeList score |
-| `Name` | `string` | No | Anime name |
-| `Premiered` | `string` | No | Premiere season |
-| `RatingsNum` | `int` | No | Number of ratings |
-| `Status` | `string` | No | Airing status |
-| `Studios` | `string` | No | Production studio |
-| `Synonyms` | `string` | No | Alternative names |
-| `currentPage` | `int` | No | Current page number |
-| `epCount` | `int` | No | Episode count |
-| `finder` | `string` | No | Slug identifier |
-| `id` | `int` | No | Anime ID |
-| `wholePage` | `[]any` | No | Array of anime on current page |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.PaginatedAnimeList(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.PaginatedAnimeList(nil).Load(map[string]any{"genre": "genre"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `PaginatedAnimeListEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -559,6 +540,125 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `SearchEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## SearchallEntity
+
+```go
+searchall := client.Searchall(nil)
+fmt.Println(searchall.GetName()) // "searchall"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `[]any` | No | Array of anime on current page |
+
+### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.Searchall(nil).Load(map[string]any{"id": "searchall_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `SearchallEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## SortEntity
+
+```go
+sort := client.Sort(nil)
+fmt.Println(sort.GetName()) // "sort"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `[]any` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.Sort(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `SortEntity` instance with the same client and
 options.
 
 #### `GetName() string`

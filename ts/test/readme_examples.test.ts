@@ -37,7 +37,7 @@ const SDK_NAME = 'AnipubSDK'
 
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = {"entity":{"anime":{"test01":{"id":"test01"}},"find":{"test01":{"id":"test01"}},"full_anime_detail":{"test01":{"id":"test01"}},"info":{"test01":{"id":"test01"}},"paginated_anime_list":{"test01":{"id":"test01"}},"rating":{"test01":{"id":"test01"}},"search":{"test01":{"id":"test01"}},"streaming_detail":{"test01":{"id":"test01"}}}}
+const TEST_SEED = {"entity":{"anime":{"test01":{"id":"test01"}},"find":{"test01":{"id":"test01"}},"findby_genre":{"test01":{"id":"test01"}},"full_anime_detail":{"test01":{"id":"test01"}},"info":{"test01":{"id":"test01"}},"rating":{"test01":{"id":"test01"}},"search":{"test01":{"id":"test01"}},"searchall":{"test01":{"id":"test01"}},"sort":{"test01":{"id":"test01"}},"streaming_detail":{"test01":{"id":"test01"}}}}
 const SEED_ARG = JSON.stringify(TEST_SEED)
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')'
 

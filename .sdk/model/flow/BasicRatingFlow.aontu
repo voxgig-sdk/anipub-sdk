@@ -1,0 +1,22 @@
+# BasicRatingFlow
+
+main: kit: flow: BasicRatingFlow:
+{
+  entity: "rating",
+  kind: "basic",
+  name: "BasicRatingFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rating_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRatingFlow"
+}

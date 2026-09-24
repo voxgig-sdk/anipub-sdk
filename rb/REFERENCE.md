@@ -49,6 +49,10 @@ Create a new `Anime` entity instance. Pass `nil` for no initial data.
 
 Create a new `Find` entity instance. Pass `nil` for no initial data.
 
+#### `FindbyGenre(data = nil)`
+
+Create a new `FindbyGenre` entity instance. Pass `nil` for no initial data.
+
 #### `FullAnimeDetail(data = nil)`
 
 Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
@@ -57,10 +61,6 @@ Create a new `FullAnimeDetail` entity instance. Pass `nil` for no initial data.
 
 Create a new `Info` entity instance. Pass `nil` for no initial data.
 
-#### `PaginatedAnimeList(data = nil)`
-
-Create a new `PaginatedAnimeList` entity instance. Pass `nil` for no initial data.
-
 #### `Rating(data = nil)`
 
 Create a new `Rating` entity instance. Pass `nil` for no initial data.
@@ -68,6 +68,14 @@ Create a new `Rating` entity instance. Pass `nil` for no initial data.
 #### `Search(data = nil)`
 
 Create a new `Search` entity instance. Pass `nil` for no initial data.
+
+#### `Searchall(data = nil)`
+
+Create a new `Searchall` entity instance. Pass `nil` for no initial data.
+
+#### `Sort(data = nil)`
+
+Create a new `Sort` entity instance. Pass `nil` for no initial data.
 
 #### `StreamingDetail(data = nil)`
 
@@ -230,6 +238,60 @@ Return the entity name.
 
 ---
 
+## FindbyGenreEntity
+
+```ruby
+findby_genre = client.FindbyGenre
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `Integer` | No | Current page number |
+| `id` | `String` | No |  |
+| `wholePage` | `Array` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.FindbyGenre.load({ "id" => "findby_genre_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `FindbyGenreEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```ruby
@@ -343,83 +405,6 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `InfoEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```ruby
-paginated_anime_list = client.PaginatedAnimeList
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `String` | No | Air date range |
-| `Cover` | `String` | No | Cover image path or URL. |
-| `DescripTion` | `String` | No | Anime description |
-| `Duration` | `String` | No | Episode duration |
-| `Genres` | `Array` | No | List of genres |
-| `ImagePath` | `String` | No | Image path or URL. |
-| `MALScore` | `String` | No | MyAnimeList score |
-| `Name` | `String` | No | Anime name |
-| `Premiered` | `String` | No | Premiere season |
-| `RatingsNum` | `Integer` | No | Number of ratings |
-| `Status` | `String` | No | Airing status |
-| `Studios` | `String` | No | Production studio |
-| `Synonyms` | `String` | No | Alternative names |
-| `currentPage` | `Integer` | No | Current page number |
-| `epCount` | `Integer` | No | Episode count |
-| `finder` | `String` | No | Slug identifier |
-| `id` | `Integer` | No | Anime ID |
-| `wholePage` | `Array` | No | Array of anime on current page |
-
-### Operations
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
-
-```ruby
-results = client.PaginatedAnimeList.list
-```
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.PaginatedAnimeList.load({ "genre" => "genre" })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `PaginatedAnimeListEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -554,6 +539,127 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `SearchEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SearchallEntity
+
+```ruby
+searchall = client.Searchall
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `Integer` | No | Current page number |
+| `id` | `String` | No |  |
+| `wholePage` | `Array` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.Searchall.load({ "id" => "searchall_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SearchallEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SortEntity
+
+```ruby
+sort = client.Sort
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `String` | No | Air date range |
+| `Cover` | `String` | No | Cover image path or URL. |
+| `DescripTion` | `String` | No | Anime description |
+| `Duration` | `String` | No | Episode duration |
+| `Genres` | `Array` | No | List of genres |
+| `ImagePath` | `String` | No | Image path or URL. |
+| `MALScore` | `String` | No | MyAnimeList score |
+| `Name` | `String` | No | Anime name |
+| `Premiered` | `String` | No | Premiere season |
+| `RatingsNum` | `Integer` | No | Number of ratings |
+| `Status` | `String` | No | Airing status |
+| `Studios` | `String` | No | Production studio |
+| `Synonyms` | `String` | No | Alternative names |
+| `epCount` | `Integer` | No | Episode count |
+| `finder` | `String` | No | Slug identifier |
+| `id` | `Integer` | No | Anime ID |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+
+```ruby
+results = client.Sort.list
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SortEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

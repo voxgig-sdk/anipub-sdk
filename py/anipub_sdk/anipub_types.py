@@ -1,7 +1,7 @@
 # Typed models for the Anipub SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -53,6 +53,20 @@ class FindLoadMatch(TypedDict):
     id: str
 
 
+class FindbyGenre(TypedDict, total=False):
+    currentPage: int
+    id: str
+    wholePage: list
+
+
+class FindbyGenreLoadMatchRequired(TypedDict):
+    id: str
+
+
+class FindbyGenreLoadMatch(FindbyGenreLoadMatchRequired, total=False):
+    page: int
+
+
 class FullAnimeDetail(TypedDict, total=False):
     characters: list
     id: str
@@ -85,43 +99,6 @@ class Info(TypedDict, total=False):
 
 class InfoLoadMatch(TypedDict):
     id: str
-
-
-class PaginatedAnimeList(TypedDict, total=False):
-    Aired: str
-    Cover: str
-    DescripTion: str
-    Duration: str
-    Genres: list
-    ImagePath: str
-    MALScore: str
-    Name: str
-    Premiered: str
-    RatingsNum: int
-    Status: str
-    Studios: str
-    Synonyms: str
-    currentPage: int
-    epCount: int
-    finder: str
-    id: int
-    wholePage: list
-
-
-class PaginatedAnimeListLoadMatchRequired(TypedDict):
-    genre: str
-
-
-class PaginatedAnimeListLoadMatch(PaginatedAnimeListLoadMatchRequired, total=False):
-    page: int
-
-
-class PaginatedAnimeListListMatch(TypedDict, total=False):
-    genre: str
-    name: str
-    page: int
-    ratefrom: float
-    rateto: float
 
 
 class Rating(TypedDict, total=False):
@@ -168,6 +145,47 @@ class Search(TypedDict, total=False):
 
 class SearchLoadMatch(TypedDict):
     id: str
+
+
+class Searchall(TypedDict, total=False):
+    currentPage: int
+    id: str
+    wholePage: list
+
+
+class SearchallLoadMatchRequired(TypedDict):
+    id: str
+
+
+class SearchallLoadMatch(SearchallLoadMatchRequired, total=False):
+    page: int
+
+
+class Sort(TypedDict, total=False):
+    Aired: str
+    Cover: str
+    DescripTion: str
+    Duration: str
+    Genres: list
+    ImagePath: str
+    MALScore: str
+    Name: str
+    Premiered: str
+    RatingsNum: int
+    Status: str
+    Studios: str
+    Synonyms: str
+    epCount: int
+    finder: str
+    id: int
+
+
+class SortListMatch(TypedDict, total=False):
+    genre: str
+    name: str
+    page: int
+    ratefrom: float
+    rateto: float
 
 
 class StreamingDetail(TypedDict, total=False):

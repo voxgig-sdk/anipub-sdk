@@ -49,6 +49,10 @@ Create a new `AnimeEntity` instance. Pass `null` for no initial data.
 
 Create a new `FindEntity` instance. Pass `null` for no initial data.
 
+#### `FindbyGenre($data = null)`
+
+Create a new `FindbyGenreEntity` instance. Pass `null` for no initial data.
+
 #### `FullAnimeDetail($data = null)`
 
 Create a new `FullAnimeDetailEntity` instance. Pass `null` for no initial data.
@@ -57,10 +61,6 @@ Create a new `FullAnimeDetailEntity` instance. Pass `null` for no initial data.
 
 Create a new `InfoEntity` instance. Pass `null` for no initial data.
 
-#### `PaginatedAnimeList($data = null)`
-
-Create a new `PaginatedAnimeListEntity` instance. Pass `null` for no initial data.
-
 #### `Rating($data = null)`
 
 Create a new `RatingEntity` instance. Pass `null` for no initial data.
@@ -68,6 +68,14 @@ Create a new `RatingEntity` instance. Pass `null` for no initial data.
 #### `Search($data = null)`
 
 Create a new `SearchEntity` instance. Pass `null` for no initial data.
+
+#### `Searchall($data = null)`
+
+Create a new `SearchallEntity` instance. Pass `null` for no initial data.
+
+#### `Sort($data = null)`
+
+Create a new `SortEntity` instance. Pass `null` for no initial data.
 
 #### `StreamingDetail($data = null)`
 
@@ -229,6 +237,60 @@ Return the entity name.
 
 ---
 
+## FindbyGenreEntity
+
+```php
+$findby_genre = $client->FindbyGenre();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `array` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->FindbyGenre()->load(["id" => "findby_genre_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): FindbyGenreEntity`
+
+Create a new `FindbyGenreEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```php
@@ -342,83 +404,6 @@ Set the entity match criteria.
 #### `make(): InfoEntity`
 
 Create a new `InfoEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```php
-$paginated_anime_list = $client->PaginatedAnimeList();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `string` | No | Air date range |
-| `Cover` | `string` | No | Cover image path or URL. |
-| `DescripTion` | `string` | No | Anime description |
-| `Duration` | `string` | No | Episode duration |
-| `Genres` | `array` | No | List of genres |
-| `ImagePath` | `string` | No | Image path or URL. |
-| `MALScore` | `string` | No | MyAnimeList score |
-| `Name` | `string` | No | Anime name |
-| `Premiered` | `string` | No | Premiere season |
-| `RatingsNum` | `int` | No | Number of ratings |
-| `Status` | `string` | No | Airing status |
-| `Studios` | `string` | No | Production studio |
-| `Synonyms` | `string` | No | Alternative names |
-| `currentPage` | `int` | No | Current page number |
-| `epCount` | `int` | No | Episode count |
-| `finder` | `string` | No | Slug identifier |
-| `id` | `int` | No | Anime ID |
-| `wholePage` | `array` | No | Array of anime on current page |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->PaginatedAnimeList()->list();
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->PaginatedAnimeList()->load(["genre" => "genre"]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): PaginatedAnimeListEntity`
-
-Create a new `PaginatedAnimeListEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -553,6 +538,127 @@ Set the entity match criteria.
 #### `make(): SearchEntity`
 
 Create a new `SearchEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SearchallEntity
+
+```php
+$searchall = $client->Searchall();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `array` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->Searchall()->load(["id" => "searchall_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SearchallEntity`
+
+Create a new `SearchallEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SortEntity
+
+```php
+$sort = $client->Sort();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `array` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->Sort()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SortEntity`
+
+Create a new `SortEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

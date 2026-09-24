@@ -30,15 +30,13 @@ require_relative "Anipub_sdk"
 client = AnipubSDK.new
 ```
 
-### 3. Load a paginatedanimelist
-
-PaginatedAnimeList is nested under genre, so provide the `genre`.
+### 3. Load an anime
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the PaginatedAnimeList record (raises on error).
-  paginatedanimelist = client.PaginatedAnimeList.load({ "genre" => "example_genre" })
-  puts paginatedanimelist
+  # load returns the ENTITY — call data_get for the Anime record (raises on error).
+  anime = client.Anime.load()
+  puts anime
 rescue => err
   warn "load failed: #{err}"
 end
@@ -59,9 +57,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  ratings = client.Rating.list()
+  anime = client.Anime.load()
 rescue => err
-  warn "list failed: #{err}"
+  warn "load failed: #{err}"
 end
 ```
 
@@ -129,8 +127,8 @@ client = AnipubSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-rating = client.Rating.list()
-puts rating
+anime = client.Anime.load()
+puts anime
 ```
 
 ### Use a custom fetch function
@@ -208,11 +206,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Anime` | `(data) -> AnimeEntity` | Create an Anime entity instance. |
 | `Find` | `(data) -> FindEntity` | Create a Find entity instance. |
+| `FindbyGenre` | `(data) -> FindbyGenreEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail` | `(data) -> FullAnimeDetailEntity` | Create a FullAnimeDetail entity instance. |
 | `Info` | `(data) -> InfoEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList` | `(data) -> PaginatedAnimeListEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
+| `Searchall` | `(data) -> SearchallEntity` | Create a Searchall entity instance. |
+| `Sort` | `(data) -> SortEntity` | Create a Sort entity instance. |
 | `StreamingDetail` | `(data) -> StreamingDetailEntity` | Create a StreamingDetail entity instance. |
 
 ### Entity interface
@@ -274,6 +274,18 @@ Operations: Load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -311,33 +323,6 @@ API path: `/anime/api/details/{id}`
 Operations: Load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `Aired` | Air date range |
-| `Cover` | Cover image path or URL. |
-| `DescripTion` | Anime description |
-| `Duration` | Episode duration |
-| `Genres` | List of genres |
-| `ImagePath` | Image path or URL. |
-| `MALScore` | MyAnimeList score |
-| `Name` | Anime name |
-| `Premiered` | Premiere season |
-| `RatingsNum` | Number of ratings |
-| `Status` | Airing status |
-| `Studios` | Production studio |
-| `Synonyms` | Alternative names |
-| `currentPage` | Current page number |
-| `epCount` | Episode count |
-| `finder` | Slug identifier |
-| `id` | Anime ID |
-| `wholePage` | Array of anime on current page |
-
-Operations: List, Load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -388,6 +373,43 @@ API path: `/api/findbyrating`
 Operations: Load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+
+Operations: List.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -469,6 +491,32 @@ find = client.Find.load({ "id" => "find_id" })
 ```
 
 
+### FindbyGenre
+
+Create an instance: `findby_genre = client.FindbyGenre`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `Integer` | Current page number |
+| `id` | `String` |  |
+| `wholePage` | `Array` | Array of anime on current page |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the FindbyGenre record (raises on error).
+findby_genre = client.FindbyGenre.load({ "id" => "findby_genre_id" })
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `full_anime_detail = client.FullAnimeDetail`
@@ -532,55 +580,6 @@ Create an instance: `info = client.Info`
 ```ruby
 # load returns the ENTITY — call data_get for the Info record (raises on error).
 info = client.Info.load({ "id" => "info_id" })
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `paginated_anime_list = client.PaginatedAnimeList`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `String` | Air date range |
-| `Cover` | `String` | Cover image path or URL. |
-| `DescripTion` | `String` | Anime description |
-| `Duration` | `String` | Episode duration |
-| `Genres` | `Array` | List of genres |
-| `ImagePath` | `String` | Image path or URL. |
-| `MALScore` | `String` | MyAnimeList score |
-| `Name` | `String` | Anime name |
-| `Premiered` | `String` | Premiere season |
-| `RatingsNum` | `Integer` | Number of ratings |
-| `Status` | `String` | Airing status |
-| `Studios` | `String` | Production studio |
-| `Synonyms` | `String` | Alternative names |
-| `currentPage` | `Integer` | Current page number |
-| `epCount` | `Integer` | Episode count |
-| `finder` | `String` | Slug identifier |
-| `id` | `Integer` | Anime ID |
-| `wholePage` | `Array` | Array of anime on current page |
-
-#### Example: Load
-
-```ruby
-# load returns the ENTITY — call data_get for the PaginatedAnimeList record (raises on error).
-paginated_anime_list = client.PaginatedAnimeList.load({ "genre" => "genre" })
-```
-
-#### Example: List
-
-```ruby
-# list returns an Array of PaginatedAnimeList records (raises on error).
-paginated_anime_lists = client.PaginatedAnimeList.list
 ```
 
 
@@ -659,6 +658,71 @@ Create an instance: `search = client.Search`
 ```ruby
 # load returns the ENTITY — call data_get for the Search record (raises on error).
 search = client.Search.load({ "id" => "search_id" })
+```
+
+
+### Searchall
+
+Create an instance: `searchall = client.Searchall`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `Integer` | Current page number |
+| `id` | `String` |  |
+| `wholePage` | `Array` | Array of anime on current page |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Searchall record (raises on error).
+searchall = client.Searchall.load({ "id" => "searchall_id" })
+```
+
+
+### Sort
+
+Create an instance: `sort = client.Sort`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `String` | Air date range |
+| `Cover` | `String` | Cover image path or URL. |
+| `DescripTion` | `String` | Anime description |
+| `Duration` | `String` | Episode duration |
+| `Genres` | `Array` | List of genres |
+| `ImagePath` | `String` | Image path or URL. |
+| `MALScore` | `String` | MyAnimeList score |
+| `Name` | `String` | Anime name |
+| `Premiered` | `String` | Premiere season |
+| `RatingsNum` | `Integer` | Number of ratings |
+| `Status` | `String` | Airing status |
+| `Studios` | `String` | Production studio |
+| `Synonyms` | `String` | Alternative names |
+| `epCount` | `Integer` | Episode count |
+| `finder` | `String` | Slug identifier |
+| `id` | `Integer` | Anime ID |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Sort records (raises on error).
+sorts = client.Sort.list
 ```
 
 
@@ -846,15 +910,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-rating = client.Rating
-rating.list()
+anime = client.Anime
+anime.load()
 
-# rating.data_get now returns the rating data from the last list
-# rating.match_get returns the last match criteria
+# anime.data_get now returns the anime data from the last load
+# anime.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

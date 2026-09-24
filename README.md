@@ -14,13 +14,13 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **8 semantic entities** that you
+This SDK exposes the API as **10 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`, `create`):
@@ -46,23 +46,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = AnipubSDK.test({
   entity: {
-    rating: {
-      test01: { id: 'test01' },
+    anime: {
+      test01: { id: 'test01', Genre: 'example_Genre', Name: 'example_Name' },
     },
   },
 })
-const ratings = await client.Rating().list()
-// ratings is an array of Rating entities, populated with mock data
-// — call ratings[0].data() for the record itself
-console.log(ratings)
+const anime = await client.Anime().load()
+// anime is the Anime entity, populated with mock data
+// — call anime.data() for the record itself
+console.log(anime)
 ```
 
 ### Python
 
 ```python
 client = AnipubSDK.test()
-ratings = client.Rating().list()
-print(ratings)
+anime = client.Anime().load()
+print(anime)
 ```
 
 ### PHP
@@ -70,16 +70,16 @@ print(ratings)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = AnipubSDK::test([
-    "entity" => ["rating" => ["test01" => []]],
+    "entity" => ["anime" => ["test01" => []]],
 ]);
-$ratings = $client->Rating()->list();
+$anime = $client->Anime()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Rating(nil).List(
+result, err := client.Anime(nil).Load(
     nil, nil,
 )
 ```
@@ -89,16 +89,16 @@ result, err := client.Rating(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = AnipubSDK.test({
-  "entity" => { "rating" => { "test01" => {} } },
+  "entity" => { "anime" => { "test01" => {} } },
 })
-ratings = client.Rating.list()
+anime = client.Anime.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Rating():list()
+local result, err = client:Anime():load()
 ```
 
 ## Packages
@@ -123,12 +123,9 @@ import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 
 const client = new AnipubSDK()
 
-
-// Load a specific paginatedanimelist (returns a PaginatedAnimeList)
-const paginatedanimelist = await client.PaginatedAnimeList().load({
-  genre: 'example_genre',
-})
-console.log(paginatedanimelist)
+// Load anime data (returns a Anime)
+const anime = await client.Anime().load()
+console.log(anime)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -165,17 +162,19 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 8 entities:
+The API exposes 10 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Anime** | The Anime entity (create, load). | `/api/getAll` |
 | **Find** | The Find entity (load). | `/api/find/{name}` |
+| **FindbyGenre** | The FindbyGenre entity (load). | `/api/findbyGenre/{genre}` |
 | **FullAnimeDetail** | The FullAnimeDetail entity (load). | `/anime/api/details/{id}` |
 | **Info** | The Info entity (load). | `/api/info/{id}` |
-| **PaginatedAnimeList** | The PaginatedAnimeList entity (list, load). | `/api/sort` |
 | **Rating** | The Rating entity (list). | `/api/findbyrating` |
 | **Search** | The Search entity (load). | `/api/search/{name}` |
+| **Searchall** | The Searchall entity (load). | `/api/searchall/{name}` |
+| **Sort** | The Sort entity (list). | `/api/sort` |
 | **StreamingDetail** | The StreamingDetail entity (load). | `/v1/api/details/{id}` |
 
 The operations available across these entities are **load**, **list**, **create** — see each entity's
@@ -217,15 +216,12 @@ import sdk "github.com/voxgig-sdk/anipub-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific paginatedanimelist
-paginatedAnimeList, err := client.PaginatedAnimeList(nil).Load(
-    map[string]any{"genre": "example_genre"}, nil,
-)
+// Load anime data
+anime, err := client.Anime(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(paginatedAnimeList)
+fmt.Println(anime)
 ```
 
 ### Ruby

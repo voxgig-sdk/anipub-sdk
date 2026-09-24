@@ -1,0 +1,22 @@
+# BasicSortFlow
+
+main: kit: flow: BasicSortFlow:
+{
+  entity: "sort",
+  kind: "basic",
+  name: "BasicSortFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "sort_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSortFlow"
+}

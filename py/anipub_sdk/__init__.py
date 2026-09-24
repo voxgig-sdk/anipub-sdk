@@ -319,6 +319,12 @@ class AnipubSDK:
         return FindEntity(self, data)
 
 
+    def FindbyGenre(self, data=None) -> "FindbyGenreEntity":
+        """Entity factory: client.FindbyGenre().list() / client.FindbyGenre().load({"id": ...})."""
+        from anipub_sdk.entity.findby_genre_entity import FindbyGenreEntity
+        return FindbyGenreEntity(self, data)
+
+
     def FullAnimeDetail(self, data=None) -> "FullAnimeDetailEntity":
         """Entity factory: client.FullAnimeDetail().list() / client.FullAnimeDetail().load({"id": ...})."""
         from anipub_sdk.entity.full_anime_detail_entity import FullAnimeDetailEntity
@@ -331,12 +337,6 @@ class AnipubSDK:
         return InfoEntity(self, data)
 
 
-    def PaginatedAnimeList(self, data=None) -> "PaginatedAnimeListEntity":
-        """Entity factory: client.PaginatedAnimeList().list() / client.PaginatedAnimeList().load({"id": ...})."""
-        from anipub_sdk.entity.paginated_anime_list_entity import PaginatedAnimeListEntity
-        return PaginatedAnimeListEntity(self, data)
-
-
     def Rating(self, data=None) -> "RatingEntity":
         """Entity factory: client.Rating().list() / client.Rating().load({"id": ...})."""
         from anipub_sdk.entity.rating_entity import RatingEntity
@@ -347,6 +347,18 @@ class AnipubSDK:
         """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from anipub_sdk.entity.search_entity import SearchEntity
         return SearchEntity(self, data)
+
+
+    def Searchall(self, data=None) -> "SearchallEntity":
+        """Entity factory: client.Searchall().list() / client.Searchall().load({"id": ...})."""
+        from anipub_sdk.entity.searchall_entity import SearchallEntity
+        return SearchallEntity(self, data)
+
+
+    def Sort(self, data=None) -> "SortEntity":
+        """Entity factory: client.Sort().list() / client.Sort().load({"id": ...})."""
+        from anipub_sdk.entity.sort_entity import SortEntity
+        return SortEntity(self, data)
 
 
     def StreamingDetail(self, data=None) -> "StreamingDetailEntity":
@@ -384,9 +396,11 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from anipub_sdk.entity.anime_entity import AnimeEntity
     from anipub_sdk.entity.find_entity import FindEntity
+    from anipub_sdk.entity.findby_genre_entity import FindbyGenreEntity
     from anipub_sdk.entity.full_anime_detail_entity import FullAnimeDetailEntity
     from anipub_sdk.entity.info_entity import InfoEntity
-    from anipub_sdk.entity.paginated_anime_list_entity import PaginatedAnimeListEntity
     from anipub_sdk.entity.rating_entity import RatingEntity
     from anipub_sdk.entity.search_entity import SearchEntity
+    from anipub_sdk.entity.searchall_entity import SearchallEntity
+    from anipub_sdk.entity.sort_entity import SortEntity
     from anipub_sdk.entity.streaming_detail_entity import StreamingDetailEntity

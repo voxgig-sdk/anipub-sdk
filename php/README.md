@@ -31,15 +31,13 @@ require_once 'anipub_sdk.php';
 $client = new AnipubSDK();
 ```
 
-### 3. Load a paginatedanimelist
-
-PaginatedAnimeList is nested under genre, so provide the `genre`.
+### 3. Load an anime
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the PaginatedAnimeList record (throws on error).
-    $paginatedanimelist = $client->PaginatedAnimeList()->load(["genre" => "example_genre"]);
-    print_r($paginatedanimelist->data_get());
+    // load() returns the ENTITY — call data_get() for the Anime record (throws on error).
+    $anime = $client->Anime()->load();
+    print_r($anime->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -61,7 +59,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $ratings = $client->Rating()->list();
+    $anime = $client->Anime()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -133,13 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = AnipubSDK::test([
-    "entity" => ["find" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["searchall" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$find = $client->Find()->load(["id" => "test01"]);
-print_r($find->data_get());
+$searchall = $client->Searchall()->load(["id" => "test01"]);
+print_r($searchall->data_get());
 ```
 
 ### Use a custom fetch function
@@ -220,11 +218,13 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Anime` | `($data): AnimeEntity` | Create an Anime entity instance. |
 | `Find` | `($data): FindEntity` | Create a Find entity instance. |
+| `FindbyGenre` | `($data): FindbyGenreEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail` | `($data): FullAnimeDetailEntity` | Create a FullAnimeDetail entity instance. |
 | `Info` | `($data): InfoEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList` | `($data): PaginatedAnimeListEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating` | `($data): RatingEntity` | Create a Rating entity instance. |
 | `Search` | `($data): SearchEntity` | Create a Search entity instance. |
+| `Searchall` | `($data): SearchallEntity` | Create a Searchall entity instance. |
+| `Sort` | `($data): SortEntity` | Create a Sort entity instance. |
 | `StreamingDetail` | `($data): StreamingDetailEntity` | Create a StreamingDetail entity instance. |
 
 ### Entity interface
@@ -287,6 +287,18 @@ Operations: Load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -324,33 +336,6 @@ API path: `/anime/api/details/{id}`
 Operations: Load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `Aired` | Air date range |
-| `Cover` | Cover image path or URL. |
-| `DescripTion` | Anime description |
-| `Duration` | Episode duration |
-| `Genres` | List of genres |
-| `ImagePath` | Image path or URL. |
-| `MALScore` | MyAnimeList score |
-| `Name` | Anime name |
-| `Premiered` | Premiere season |
-| `RatingsNum` | Number of ratings |
-| `Status` | Airing status |
-| `Studios` | Production studio |
-| `Synonyms` | Alternative names |
-| `currentPage` | Current page number |
-| `epCount` | Episode count |
-| `finder` | Slug identifier |
-| `id` | Anime ID |
-| `wholePage` | Array of anime on current page |
-
-Operations: List, Load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -401,6 +386,43 @@ API path: `/api/findbyrating`
 Operations: Load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+
+Operations: List.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -482,6 +504,32 @@ $find = $client->Find()->load(["id" => "find_id"]);
 ```
 
 
+### FindbyGenre
+
+Create an instance: `$findby_genre = $client->FindbyGenre();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `array` | Array of anime on current page |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the FindbyGenre record (throws on error).
+$findby_genre = $client->FindbyGenre()->load(["id" => "findby_genre_id"]);
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `$full_anime_detail = $client->FullAnimeDetail();`
@@ -545,55 +593,6 @@ Create an instance: `$info = $client->Info();`
 ```php
 // load() returns the ENTITY — call data_get() for the Info record (throws on error).
 $info = $client->Info()->load(["id" => "info_id"]);
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `$paginated_anime_list = $client->PaginatedAnimeList();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `string` | Air date range |
-| `Cover` | `string` | Cover image path or URL. |
-| `DescripTion` | `string` | Anime description |
-| `Duration` | `string` | Episode duration |
-| `Genres` | `array` | List of genres |
-| `ImagePath` | `string` | Image path or URL. |
-| `MALScore` | `string` | MyAnimeList score |
-| `Name` | `string` | Anime name |
-| `Premiered` | `string` | Premiere season |
-| `RatingsNum` | `int` | Number of ratings |
-| `Status` | `string` | Airing status |
-| `Studios` | `string` | Production studio |
-| `Synonyms` | `string` | Alternative names |
-| `currentPage` | `int` | Current page number |
-| `epCount` | `int` | Episode count |
-| `finder` | `string` | Slug identifier |
-| `id` | `int` | Anime ID |
-| `wholePage` | `array` | Array of anime on current page |
-
-#### Example: Load
-
-```php
-// load() returns the ENTITY — call data_get() for the PaginatedAnimeList record (throws on error).
-$paginated_anime_list = $client->PaginatedAnimeList()->load(["genre" => "genre"]);
-```
-
-#### Example: List
-
-```php
-// list() returns an array of PaginatedAnimeList records (throws on error).
-$paginated_anime_lists = $client->PaginatedAnimeList()->list();
 ```
 
 
@@ -672,6 +671,71 @@ Create an instance: `$search = $client->Search();`
 ```php
 // load() returns the ENTITY — call data_get() for the Search record (throws on error).
 $search = $client->Search()->load(["id" => "search_id"]);
+```
+
+
+### Searchall
+
+Create an instance: `$searchall = $client->Searchall();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `array` | Array of anime on current page |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Searchall record (throws on error).
+$searchall = $client->Searchall()->load(["id" => "searchall_id"]);
+```
+
+
+### Sort
+
+Create an instance: `$sort = $client->Sort();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `array` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `int` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `int` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `int` | Anime ID |
+
+#### Example: List
+
+```php
+// list() returns an array of Sort records (throws on error).
+$sorts = $client->Sort()->list();
 ```
 
 
@@ -859,15 +923,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$rating = $client->Rating();
-$rating->list();
+$anime = $client->Anime();
+$anime->load();
 
-// $rating->data_get() now returns the rating data from the last list
-// $rating->match_get() returns the last match criteria
+// $anime->data_get() now returns the anime data from the last load
+// $anime->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

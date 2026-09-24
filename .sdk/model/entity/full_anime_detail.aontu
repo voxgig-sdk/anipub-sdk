@@ -1,0 +1,95 @@
+# Entity: full_anime_detail
+
+main: kit: entity: full_anime_detail: {
+
+  alias: field: {}
+
+  fields: {
+    characters: {
+      h: "Characters"
+      n: "characters"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    jikan: {
+      h: "Jikan"
+      n: "jikan"
+      r: false
+      sh: "MyAnimeList data from Jikan API"
+      t: "`$OBJECT`"
+    }
+    local: {
+      h: "Local"
+      n: "local"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "full_anime_detail"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /anime/api/details/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 119
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/anime/api/details/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "anime"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "details"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

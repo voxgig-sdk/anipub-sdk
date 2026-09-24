@@ -72,6 +72,18 @@ Create a new `Find` entity instance.
 
 **Returns:** `FindEntity` instance.
 
+#### `FindbyGenre(data?: object)`
+
+Create a new `FindbyGenre` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `FindbyGenreEntity` instance.
+
 #### `FullAnimeDetail(data?: object)`
 
 Create a new `FullAnimeDetail` entity instance.
@@ -96,18 +108,6 @@ Create a new `Info` entity instance.
 
 **Returns:** `InfoEntity` instance.
 
-#### `PaginatedAnimeList(data?: object)`
-
-Create a new `PaginatedAnimeList` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `PaginatedAnimeListEntity` instance.
-
 #### `Rating(data?: object)`
 
 Create a new `Rating` entity instance.
@@ -131,6 +131,30 @@ Create a new `Search` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `SearchEntity` instance.
+
+#### `Searchall(data?: object)`
+
+Create a new `Searchall` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SearchallEntity` instance.
+
+#### `Sort(data?: object)`
+
+Create a new `Sort` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SortEntity` instance.
 
 #### `StreamingDetail(data?: object)`
 
@@ -305,6 +329,58 @@ Return a copy of the entity options.
 
 ---
 
+## FindbyGenreEntity
+
+```ts
+const findby_genre = client.FindbyGenre()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `number` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `any[]` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.FindbyGenre().load({ id: 'findby_genre_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FindbyGenreEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `AnipubSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```ts
@@ -410,81 +486,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `InfoEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `AnipubSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```ts
-const paginated_anime_list = client.PaginatedAnimeList()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `string` | No | Air date range |
-| `Cover` | `string` | No | Cover image path or URL. |
-| `DescripTion` | `string` | No | Anime description |
-| `Duration` | `string` | No | Episode duration |
-| `Genres` | `any[]` | No | List of genres |
-| `ImagePath` | `string` | No | Image path or URL. |
-| `MALScore` | `string` | No | MyAnimeList score |
-| `Name` | `string` | No | Anime name |
-| `Premiered` | `string` | No | Premiere season |
-| `RatingsNum` | `number` | No | Number of ratings |
-| `Status` | `string` | No | Airing status |
-| `Studios` | `string` | No | Production studio |
-| `Synonyms` | `string` | No | Alternative names |
-| `currentPage` | `number` | No | Current page number |
-| `epCount` | `number` | No | Episode count |
-| `finder` | `string` | No | Slug identifier |
-| `id` | `number` | No | Anime ID |
-| `wholePage` | `any[]` | No | Array of anime on current page |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.PaginatedAnimeList().list()
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria.
-
-```ts
-const result = await client.PaginatedAnimeList().load({ genre: 'genre' })
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `PaginatedAnimeListEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -615,6 +616,123 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SearchEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `AnipubSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SearchallEntity
+
+```ts
+const searchall = client.Searchall()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `number` | No | Current page number |
+| `id` | `string` | No |  |
+| `wholePage` | `any[]` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.Searchall().load({ id: 'searchall_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SearchallEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `AnipubSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SortEntity
+
+```ts
+const sort = client.Sort()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `string` | No | Air date range |
+| `Cover` | `string` | No | Cover image path or URL. |
+| `DescripTion` | `string` | No | Anime description |
+| `Duration` | `string` | No | Episode duration |
+| `Genres` | `any[]` | No | List of genres |
+| `ImagePath` | `string` | No | Image path or URL. |
+| `MALScore` | `string` | No | MyAnimeList score |
+| `Name` | `string` | No | Anime name |
+| `Premiered` | `string` | No | Premiere season |
+| `RatingsNum` | `number` | No | Number of ratings |
+| `Status` | `string` | No | Airing status |
+| `Studios` | `string` | No | Production studio |
+| `Synonyms` | `string` | No | Alternative names |
+| `epCount` | `number` | No | Episode count |
+| `finder` | `string` | No | Slug identifier |
+| `id` | `number` | No | Anime ID |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Sort().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SortEntity` instance with the same client and
 options.
 
 #### `client()`

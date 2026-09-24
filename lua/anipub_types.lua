@@ -1,7 +1,7 @@
 -- Typed models for the Anipub SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -28,6 +28,15 @@
 
 ---@class FindLoadMatch
 ---@field id string
+
+---@class FindbyGenre
+---@field currentPage? number
+---@field id? string
+---@field wholePage? table
+
+---@class FindbyGenreLoadMatch
+---@field id string
+---@field page? number
 
 ---@class FullAnimeDetail
 ---@field characters? table
@@ -58,37 +67,6 @@
 
 ---@class InfoLoadMatch
 ---@field id string
-
----@class PaginatedAnimeList
----@field Aired? string
----@field Cover? string
----@field DescripTion? string
----@field Duration? string
----@field Genres? table
----@field ImagePath? string
----@field MALScore? string
----@field Name? string
----@field Premiered? string
----@field RatingsNum? number
----@field Status? string
----@field Studios? string
----@field Synonyms? string
----@field currentPage? number
----@field epCount? number
----@field finder? string
----@field id? number
----@field wholePage? table
-
----@class PaginatedAnimeListLoadMatch
----@field genre string
----@field page? number
-
----@class PaginatedAnimeListListMatch
----@field genre? string
----@field name? string
----@field page? number
----@field ratefrom? number
----@field rateto? number
 
 ---@class Rating
 ---@field Aired? string
@@ -131,6 +109,40 @@
 
 ---@class SearchLoadMatch
 ---@field id string
+
+---@class Searchall
+---@field currentPage? number
+---@field id? string
+---@field wholePage? table
+
+---@class SearchallLoadMatch
+---@field id string
+---@field page? number
+
+---@class Sort
+---@field Aired? string
+---@field Cover? string
+---@field DescripTion? string
+---@field Duration? string
+---@field Genres? table
+---@field ImagePath? string
+---@field MALScore? string
+---@field Name? string
+---@field Premiered? string
+---@field RatingsNum? number
+---@field Status? string
+---@field Studios? string
+---@field Synonyms? string
+---@field epCount? number
+---@field finder? string
+---@field id? number
+
+---@class SortListMatch
+---@field genre? string
+---@field name? string
+---@field page? number
+---@field ratefrom? number
+---@field rateto? number
 
 ---@class StreamingDetail
 ---@field ep? table

@@ -85,11 +85,13 @@ func MakeConfig() map[string]any {
 			"entity": map[string]any{
 				"anime": map[string]any{},
 				"find": map[string]any{},
+				"findby_genre": map[string]any{},
 				"full_anime_detail": map[string]any{},
 				"info": map[string]any{},
-				"paginated_anime_list": map[string]any{},
 				"rating": map[string]any{},
 				"search": map[string]any{},
+				"searchall": map[string]any{},
+				"sort": map[string]any{},
 				"streaming_detail": map[string]any{},
 			},
 		},
@@ -98,23 +100,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Genre",
+						"title": "Genre",
+						"type": "`$ANY`",
 						"req": true,
 						"short": "Genre as string or array of strings",
-						"type": "`$ANY`",
-						"union": map[string]any{
-							"branches": 2,
-							"count": 1,
-							"depth": 0,
-						},
 					},
 					map[string]any{
 						"name": "Name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Anime name to match",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "exists",
+						"title": "Exists",
 						"type": "`$BOOLEAN`",
 					},
 				},
@@ -125,7 +125,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/check",
@@ -137,15 +136,17 @@ func MakeConfig() map[string]any {
 										"lit": "check",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"check",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -154,7 +155,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/getAll",
@@ -166,18 +166,19 @@ func MakeConfig() map[string]any {
 										"lit": "getAll",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"getAll",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/getlast",
@@ -189,15 +190,17 @@ func MakeConfig() map[string]any {
 										"lit": "getlast",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"getlast",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -210,19 +213,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ep",
-						"short": "Episode count if found",
+						"title": "Ep",
 						"type": "`$INTEGER`",
+						"short": "Episode count if found",
 					},
 					map[string]any{
 						"name": "exist",
+						"title": "Exist",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether anime exists",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Anime ID if found",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Anime ID if found",
 					},
 				},
 				"id": map[string]any{
@@ -236,26 +242,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "One Piece",
-											"kind": "param",
-											"name": "id",
-											"orig": "name",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/find/{name}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"name": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -267,19 +256,130 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"api",
+									"find",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"name": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "One Piece",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"findby_genre": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "currentPage",
+						"title": "Current Page",
+						"type": "`$INTEGER`",
+						"short": "Current page number",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "wholePage",
+						"title": "Whole Page",
+						"type": "`$ARRAY`",
+						"short": "Array of anime on current page",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "findby_genre",
+				"op": map[string]any{
+					"load": map[string]any{
+						"input": "data",
+						"name": "load",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/findbyGenre/{genre}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "findbyGenre",
+									},
+									map[string]any{
+										"var": "id",
+									},
+								},
 								"parts": []any{
 									"api",
-									"find",
+									"findbyGenre",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"genre": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "genre",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "harem",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"page",
+									},
 								},
 							},
 						},
@@ -293,19 +393,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "characters",
+						"title": "Characters",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "jikan",
-						"short": "MyAnimeList data from Jikan API",
+						"title": "Jikan",
 						"type": "`$OBJECT`",
+						"short": "MyAnimeList data from Jikan API",
 					},
 					map[string]any{
 						"name": "local",
+						"title": "Local",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -320,18 +424,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 119,
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/anime/api/details/{id}",
@@ -349,20 +441,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"anime",
 									"api",
 									"details",
 									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 119,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -376,83 +481,99 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
-						"short": "Air date range",
+						"title": "Aired",
 						"type": "`$STRING`",
+						"short": "Air date range",
 					},
 					map[string]any{
 						"name": "Cover",
-						"short": "Cover image path or URL.",
+						"title": "Cover",
 						"type": "`$STRING`",
+						"short": "Cover image path or URL.",
 					},
 					map[string]any{
 						"name": "DescripTion",
-						"short": "Anime description",
+						"title": "Descrip Tion",
 						"type": "`$STRING`",
+						"short": "Anime description",
 					},
 					map[string]any{
 						"name": "Duration",
-						"short": "Episode duration",
+						"title": "Duration",
 						"type": "`$STRING`",
+						"short": "Episode duration",
 					},
 					map[string]any{
 						"name": "Genres",
-						"short": "List of genres",
+						"title": "Genres",
 						"type": "`$ARRAY`",
+						"short": "List of genres",
 					},
 					map[string]any{
 						"name": "ImagePath",
-						"short": "Image path or URL.",
+						"title": "Image Path",
 						"type": "`$STRING`",
+						"short": "Image path or URL.",
 					},
 					map[string]any{
 						"name": "MALScore",
-						"short": "MyAnimeList score",
+						"title": "Mal Score",
 						"type": "`$STRING`",
+						"short": "MyAnimeList score",
 					},
 					map[string]any{
 						"name": "Name",
-						"short": "Anime name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Anime name",
 					},
 					map[string]any{
 						"name": "Premiered",
-						"short": "Premiere season",
+						"title": "Premiered",
 						"type": "`$STRING`",
+						"short": "Premiere season",
 					},
 					map[string]any{
 						"name": "RatingsNum",
-						"short": "Number of ratings",
+						"title": "Ratings Num",
 						"type": "`$INTEGER`",
+						"short": "Number of ratings",
 					},
 					map[string]any{
 						"name": "Status",
-						"short": "Airing status",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "Airing status",
 					},
 					map[string]any{
 						"name": "Studios",
-						"short": "Production studio",
+						"title": "Studios",
 						"type": "`$STRING`",
+						"short": "Production studio",
 					},
 					map[string]any{
 						"name": "Synonyms",
-						"short": "Alternative names",
+						"title": "Synonyms",
 						"type": "`$STRING`",
+						"short": "Alternative names",
 					},
 					map[string]any{
 						"name": "epCount",
-						"short": "Episode count",
+						"title": "Ep Count",
 						"type": "`$INTEGER`",
+						"short": "Episode count",
 					},
 					map[string]any{
 						"name": "finder",
-						"short": "Slug identifier",
+						"title": "Finder",
 						"type": "`$STRING`",
+						"short": "Slug identifier",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Anime ID",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Anime ID",
 					},
 				},
 				"id": map[string]any{
@@ -466,18 +587,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "black-clover",
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/info/{id}",
@@ -492,19 +601,32 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"info",
 									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "black-clover",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -514,382 +636,103 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"paginated_anime_list": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "Aired",
-						"short": "Air date range",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Cover",
-						"short": "Cover image path or URL.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "DescripTion",
-						"short": "Anime description",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Duration",
-						"short": "Episode duration",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Genres",
-						"short": "List of genres",
-						"type": "`$ARRAY`",
-					},
-					map[string]any{
-						"name": "ImagePath",
-						"short": "Image path or URL.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "MALScore",
-						"short": "MyAnimeList score",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Name",
-						"short": "Anime name",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Premiered",
-						"short": "Premiere season",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "RatingsNum",
-						"short": "Number of ratings",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "Status",
-						"short": "Airing status",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Studios",
-						"short": "Production studio",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "Synonyms",
-						"short": "Alternative names",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "currentPage",
-						"short": "Current page number",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "epCount",
-						"short": "Episode count",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "finder",
-						"short": "Slug identifier",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"short": "Anime ID",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "wholePage",
-						"short": "Array of anime on current page",
-						"type": "`$ARRAY`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "paginated_anime_list",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "Action",
-											"kind": "query",
-											"name": "genre",
-											"orig": "genre",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "One Piece",
-											"kind": "query",
-											"name": "name",
-											"orig": "name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "ratefrom",
-											"orig": "ratefrom",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "rateto",
-											"orig": "rateto",
-											"type": "`$NUMBER`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/sort",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "sort",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"genre",
-										"name",
-										"page",
-										"ratefrom",
-										"rateto",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.wholePage`",
-								},
-								"parts": []any{
-									"api",
-									"sort",
-								},
-							},
-						},
-					},
-					"load": map[string]any{
-						"input": "data",
-						"name": "load",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "harem",
-											"kind": "param",
-											"name": "genre",
-											"orig": "genre",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/findbyGenre/{genre}",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "findbyGenre",
-									},
-									map[string]any{
-										"var": "genre",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"genre",
-										"page",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"findbyGenre",
-									"{genre}",
-								},
-							},
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "name",
-											"orig": "name",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/searchall/{name}",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "searchall",
-									},
-									map[string]any{
-										"var": "name",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"name",
-										"page",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"searchall",
-									"{name}",
-								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"findby_genre",
-						},
-						[]any{
-							"searchall",
-						},
-					},
-				},
-			},
 			"rating": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
-						"short": "Air date range",
+						"title": "Aired",
 						"type": "`$STRING`",
+						"short": "Air date range",
 					},
 					map[string]any{
 						"name": "Cover",
-						"short": "Cover image path or URL.",
+						"title": "Cover",
 						"type": "`$STRING`",
+						"short": "Cover image path or URL.",
 					},
 					map[string]any{
 						"name": "DescripTion",
-						"short": "Anime description",
+						"title": "Descrip Tion",
 						"type": "`$STRING`",
+						"short": "Anime description",
 					},
 					map[string]any{
 						"name": "Duration",
-						"short": "Episode duration",
+						"title": "Duration",
 						"type": "`$STRING`",
+						"short": "Episode duration",
 					},
 					map[string]any{
 						"name": "Genres",
-						"short": "List of genres",
+						"title": "Genres",
 						"type": "`$ARRAY`",
+						"short": "List of genres",
 					},
 					map[string]any{
 						"name": "ImagePath",
-						"short": "Image path or URL.",
+						"title": "Image Path",
 						"type": "`$STRING`",
+						"short": "Image path or URL.",
 					},
 					map[string]any{
 						"name": "MALScore",
-						"short": "MyAnimeList score",
+						"title": "Mal Score",
 						"type": "`$STRING`",
+						"short": "MyAnimeList score",
 					},
 					map[string]any{
 						"name": "Name",
-						"short": "Anime name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Anime name",
 					},
 					map[string]any{
 						"name": "Premiered",
-						"short": "Premiere season",
+						"title": "Premiered",
 						"type": "`$STRING`",
+						"short": "Premiere season",
 					},
 					map[string]any{
 						"name": "RatingsNum",
-						"short": "Number of ratings",
+						"title": "Ratings Num",
 						"type": "`$INTEGER`",
+						"short": "Number of ratings",
 					},
 					map[string]any{
 						"name": "Status",
-						"short": "Airing status",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "Airing status",
 					},
 					map[string]any{
 						"name": "Studios",
-						"short": "Production studio",
+						"title": "Studios",
 						"type": "`$STRING`",
+						"short": "Production studio",
 					},
 					map[string]any{
 						"name": "Synonyms",
-						"short": "Alternative names",
+						"title": "Synonyms",
 						"type": "`$STRING`",
+						"short": "Alternative names",
 					},
 					map[string]any{
 						"name": "epCount",
-						"short": "Episode count",
+						"title": "Ep Count",
 						"type": "`$INTEGER`",
+						"short": "Episode count",
 					},
 					map[string]any{
 						"name": "finder",
-						"short": "Slug identifier",
+						"title": "Finder",
 						"type": "`$STRING`",
+						"short": "Slug identifier",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Anime ID",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Anime ID",
 					},
 				},
 				"id": map[string]any{
@@ -903,17 +746,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/findbyrating",
@@ -925,18 +757,30 @@ func MakeConfig() map[string]any {
 										"lit": "findbyrating",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"page",
-									},
+								"parts": []any{
+									"api",
+									"findbyrating",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.AniData`",
 								},
-								"parts": []any{
-									"api",
-									"findbyrating",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"page",
+									},
 								},
 							},
 						},
@@ -950,83 +794,99 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "Aired",
-						"short": "Air date range",
+						"title": "Aired",
 						"type": "`$STRING`",
+						"short": "Air date range",
 					},
 					map[string]any{
 						"name": "Cover",
-						"short": "Cover image path or URL.",
+						"title": "Cover",
 						"type": "`$STRING`",
+						"short": "Cover image path or URL.",
 					},
 					map[string]any{
 						"name": "DescripTion",
-						"short": "Anime description",
+						"title": "Descrip Tion",
 						"type": "`$STRING`",
+						"short": "Anime description",
 					},
 					map[string]any{
 						"name": "Duration",
-						"short": "Episode duration",
+						"title": "Duration",
 						"type": "`$STRING`",
+						"short": "Episode duration",
 					},
 					map[string]any{
 						"name": "Genres",
-						"short": "List of genres",
+						"title": "Genres",
 						"type": "`$ARRAY`",
+						"short": "List of genres",
 					},
 					map[string]any{
 						"name": "ImagePath",
-						"short": "Image path or URL.",
+						"title": "Image Path",
 						"type": "`$STRING`",
+						"short": "Image path or URL.",
 					},
 					map[string]any{
 						"name": "MALScore",
-						"short": "MyAnimeList score",
+						"title": "Mal Score",
 						"type": "`$STRING`",
+						"short": "MyAnimeList score",
 					},
 					map[string]any{
 						"name": "Name",
-						"short": "Anime name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Anime name",
 					},
 					map[string]any{
 						"name": "Premiered",
-						"short": "Premiere season",
+						"title": "Premiered",
 						"type": "`$STRING`",
+						"short": "Premiere season",
 					},
 					map[string]any{
 						"name": "RatingsNum",
-						"short": "Number of ratings",
+						"title": "Ratings Num",
 						"type": "`$INTEGER`",
+						"short": "Number of ratings",
 					},
 					map[string]any{
 						"name": "Status",
-						"short": "Airing status",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "Airing status",
 					},
 					map[string]any{
 						"name": "Studios",
-						"short": "Production studio",
+						"title": "Studios",
 						"type": "`$STRING`",
+						"short": "Production studio",
 					},
 					map[string]any{
 						"name": "Synonyms",
-						"short": "Alternative names",
+						"title": "Synonyms",
 						"type": "`$STRING`",
+						"short": "Alternative names",
 					},
 					map[string]any{
 						"name": "epCount",
-						"short": "Episode count",
+						"title": "Ep Count",
 						"type": "`$INTEGER`",
+						"short": "Episode count",
 					},
 					map[string]any{
 						"name": "finder",
-						"short": "Slug identifier",
+						"title": "Finder",
 						"type": "`$STRING`",
+						"short": "Slug identifier",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Anime ID",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Anime ID",
 					},
 				},
 				"id": map[string]any{
@@ -1040,25 +900,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "name",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/search/{name}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"name": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -1070,19 +914,314 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"api",
+									"search",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"name": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"searchall": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "currentPage",
+						"title": "Current Page",
+						"type": "`$INTEGER`",
+						"short": "Current page number",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "wholePage",
+						"title": "Whole Page",
+						"type": "`$ARRAY`",
+						"short": "Array of anime on current page",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "searchall",
+				"op": map[string]any{
+					"load": map[string]any{
+						"input": "data",
+						"name": "load",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/searchall/{name}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "searchall",
+									},
+									map[string]any{
+										"var": "id",
+									},
+								},
 								"parts": []any{
 									"api",
-									"search",
+									"searchall",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"name": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"page",
+									},
+								},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"sort": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "Aired",
+						"title": "Aired",
+						"type": "`$STRING`",
+						"short": "Air date range",
+					},
+					map[string]any{
+						"name": "Cover",
+						"title": "Cover",
+						"type": "`$STRING`",
+						"short": "Cover image path or URL.",
+					},
+					map[string]any{
+						"name": "DescripTion",
+						"title": "Descrip Tion",
+						"type": "`$STRING`",
+						"short": "Anime description",
+					},
+					map[string]any{
+						"name": "Duration",
+						"title": "Duration",
+						"type": "`$STRING`",
+						"short": "Episode duration",
+					},
+					map[string]any{
+						"name": "Genres",
+						"title": "Genres",
+						"type": "`$ARRAY`",
+						"short": "List of genres",
+					},
+					map[string]any{
+						"name": "ImagePath",
+						"title": "Image Path",
+						"type": "`$STRING`",
+						"short": "Image path or URL.",
+					},
+					map[string]any{
+						"name": "MALScore",
+						"title": "Mal Score",
+						"type": "`$STRING`",
+						"short": "MyAnimeList score",
+					},
+					map[string]any{
+						"name": "Name",
+						"title": "Name",
+						"type": "`$STRING`",
+						"short": "Anime name",
+					},
+					map[string]any{
+						"name": "Premiered",
+						"title": "Premiered",
+						"type": "`$STRING`",
+						"short": "Premiere season",
+					},
+					map[string]any{
+						"name": "RatingsNum",
+						"title": "Ratings Num",
+						"type": "`$INTEGER`",
+						"short": "Number of ratings",
+					},
+					map[string]any{
+						"name": "Status",
+						"title": "Status",
+						"type": "`$STRING`",
+						"short": "Airing status",
+					},
+					map[string]any{
+						"name": "Studios",
+						"title": "Studios",
+						"type": "`$STRING`",
+						"short": "Production studio",
+					},
+					map[string]any{
+						"name": "Synonyms",
+						"title": "Synonyms",
+						"type": "`$STRING`",
+						"short": "Alternative names",
+					},
+					map[string]any{
+						"name": "epCount",
+						"title": "Ep Count",
+						"type": "`$INTEGER`",
+						"short": "Episode count",
+					},
+					map[string]any{
+						"name": "finder",
+						"title": "Finder",
+						"type": "`$STRING`",
+						"short": "Slug identifier",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$INTEGER`",
+						"short": "Anime ID",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "sort",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/sort",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "sort",
+									},
+								},
+								"parts": []any{
+									"api",
+									"sort",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.wholePage`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "genre",
+											"orig": "genre",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Action",
+										},
+										map[string]any{
+											"name": "name",
+											"orig": "name",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "One Piece",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "ratefrom",
+											"orig": "ratefrom",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "rateto",
+											"orig": "rateto",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 10,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"genre",
+										"name",
+										"page",
+										"ratefrom",
+										"rateto",
+									},
 								},
 							},
 						},
@@ -1096,22 +1235,26 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ep",
-						"short": "Episodes 2+ streaming links",
+						"title": "Ep",
 						"type": "`$ARRAY`",
+						"short": "Episodes 2+ streaming links",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "link",
-						"short": "Episode 1 streaming link with src= prefix",
+						"title": "Link",
 						"type": "`$STRING`",
+						"short": "Episode 1 streaming link with src= prefix",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Anime name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Anime name",
 					},
 				},
 				"id": map[string]any{
@@ -1125,18 +1268,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 119,
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/api/details/{id}",
@@ -1154,20 +1285,33 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.local`",
-								},
 								"parts": []any{
 									"v1",
 									"api",
 									"details",
 									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.local`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 119,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "sort": {
+      "SORT00": {
+        "Aired": "sa0",
+        "Cover": "sa1",
+        "DescripTion": "sa2",
+        "Duration": "sa3",
+        "Genres": [],
+        "ImagePath": "sa5",
+        "MALScore": "sa6",
+        "Name": "sa7",
+        "Premiered": "sa8",
+        "RatingsNum": 169,
+        "Status": "saa",
+        "Studios": "sab",
+        "Synonyms": "sac",
+        "epCount": 173,
+        "finder": "sae",
+        "id": "SORT00"
+      },
+      "SORT01": {
+        "Aired": "s140",
+        "Cover": "s141",
+        "DescripTion": "s142",
+        "Duration": "s143",
+        "Genres": [],
+        "ImagePath": "s145",
+        "MALScore": "s146",
+        "Name": "s147",
+        "Premiered": "s148",
+        "RatingsNum": 329,
+        "Status": "s14a",
+        "Studios": "s14b",
+        "Synonyms": "s14c",
+        "epCount": 333,
+        "finder": "s14e",
+        "id": "SORT01"
+      },
+      "SORT02": {
+        "Aired": "s1e0",
+        "Cover": "s1e1",
+        "DescripTion": "s1e2",
+        "Duration": "s1e3",
+        "Genres": [],
+        "ImagePath": "s1e5",
+        "MALScore": "s1e6",
+        "Name": "s1e7",
+        "Premiered": "s1e8",
+        "RatingsNum": 489,
+        "Status": "s1ea",
+        "Studios": "s1eb",
+        "Synonyms": "s1ec",
+        "epCount": 493,
+        "finder": "s1ee",
+        "id": "SORT02"
+      }
+    }
+  },
+  "new": {
+    "sort": {
+      "sort_ref01": {
+        "Aired": "s280",
+        "Cover": "s281",
+        "DescripTion": "s282",
+        "Duration": "s283",
+        "Genres": [],
+        "ImagePath": "s285",
+        "MALScore": "s286",
+        "Name": "s287",
+        "Premiered": "s288",
+        "RatingsNum": 649,
+        "Status": "s28a",
+        "Studios": "s28b",
+        "Synonyms": "s28c",
+        "epCount": 653,
+        "finder": "s28e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/sort": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

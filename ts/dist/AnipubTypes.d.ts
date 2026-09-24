@@ -21,6 +21,15 @@ export interface Find {
 export interface FindLoadMatch {
     id: string;
 }
+export interface FindbyGenre {
+    currentPage?: number;
+    id?: string;
+    wholePage?: any[];
+}
+export interface FindbyGenreLoadMatch {
+    id: string;
+    page?: number;
+}
 export interface FullAnimeDetail {
     characters?: any[];
     id?: string;
@@ -50,37 +59,6 @@ export interface Info {
 }
 export interface InfoLoadMatch {
     id: string;
-}
-export interface PaginatedAnimeList {
-    Aired?: string;
-    Cover?: string;
-    DescripTion?: string;
-    Duration?: string;
-    Genres?: any[];
-    ImagePath?: string;
-    MALScore?: string;
-    Name?: string;
-    Premiered?: string;
-    RatingsNum?: number;
-    Status?: string;
-    Studios?: string;
-    Synonyms?: string;
-    currentPage?: number;
-    epCount?: number;
-    finder?: string;
-    id?: number;
-    wholePage?: any[];
-}
-export interface PaginatedAnimeListLoadMatch {
-    genre: string;
-    page?: number;
-}
-export interface PaginatedAnimeListListMatch {
-    genre?: string;
-    name?: string;
-    page?: number;
-    ratefrom?: number;
-    rateto?: number;
 }
 export interface Rating {
     Aired?: string;
@@ -123,6 +101,40 @@ export interface Search {
 }
 export interface SearchLoadMatch {
     id: string;
+}
+export interface Searchall {
+    currentPage?: number;
+    id?: string;
+    wholePage?: any[];
+}
+export interface SearchallLoadMatch {
+    id: string;
+    page?: number;
+}
+export interface Sort {
+    Aired?: string;
+    Cover?: string;
+    DescripTion?: string;
+    Duration?: string;
+    Genres?: any[];
+    ImagePath?: string;
+    MALScore?: string;
+    Name?: string;
+    Premiered?: string;
+    RatingsNum?: number;
+    Status?: string;
+    Studios?: string;
+    Synonyms?: string;
+    epCount?: number;
+    finder?: string;
+    id?: number;
+}
+export interface SortListMatch {
+    genre?: string;
+    name?: string;
+    page?: number;
+    ratefrom?: number;
+    rateto?: number;
 }
 export interface StreamingDetail {
     ep?: any[];

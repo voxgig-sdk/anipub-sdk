@@ -107,7 +107,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 8 entities.
+below — this SDK exposes 10 entities.
 
 ## Reference
 
@@ -161,9 +161,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 8 entities this SDK exposes (any is valid as `<entity>`):
+The 10 entities this SDK exposes (any is valid as `<entity>`):
 
-anime find full_anime_detail info paginated_anime_list rating search streaming_detail
+anime find findby_genre full_anime_detail info rating search searchall sort streaming_detail
 
 ## Explanation
 

@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "findby_genre": {
+      "FINDBY_GENRE00": {
+        "currentPage": 30,
+        "id": "FINDBY_GENRE00",
+        "wholePage": []
+      },
+      "FINDBY_GENRE01": {
+        "currentPage": 60,
+        "id": "FINDBY_GENRE01",
+        "wholePage": []
+      },
+      "FINDBY_GENRE02": {
+        "currentPage": 90,
+        "id": "FINDBY_GENRE02",
+        "wholePage": []
+      }
+    }
+  },
+  "new": {
+    "findby_genre": {
+      "findby_genre_ref01": {
+        "currentPage": 120,
+        "wholePage": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/findbyGenre/{genre}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

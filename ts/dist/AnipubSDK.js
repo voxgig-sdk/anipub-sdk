@@ -4,11 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.AnipubSDK = exports.AnipubEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
 const AnimeEntity_1 = require("./entity/AnimeEntity");
 const FindEntity_1 = require("./entity/FindEntity");
+const FindbyGenreEntity_1 = require("./entity/FindbyGenreEntity");
 const FullAnimeDetailEntity_1 = require("./entity/FullAnimeDetailEntity");
 const InfoEntity_1 = require("./entity/InfoEntity");
-const PaginatedAnimeListEntity_1 = require("./entity/PaginatedAnimeListEntity");
 const RatingEntity_1 = require("./entity/RatingEntity");
 const SearchEntity_1 = require("./entity/SearchEntity");
+const SearchallEntity_1 = require("./entity/SearchallEntity");
+const SortEntity_1 = require("./entity/SortEntity");
 const StreamingDetailEntity_1 = require("./entity/StreamingDetailEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
@@ -91,7 +93,6 @@ class AnipubSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -105,14 +106,12 @@ class AnipubSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -187,18 +186,6 @@ class AnipubSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -246,6 +233,13 @@ class AnipubSDK {
         const self = this;
         return new FindEntity_1.FindEntity(self, entopts);
     }
+    // Entity access: `client.FindbyGenre().list()` / `client.FindbyGenre().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    FindbyGenre(entopts) {
+        const self = this;
+        return new FindbyGenreEntity_1.FindbyGenreEntity(self, entopts);
+    }
     // Entity access: `client.FullAnimeDetail().list()` / `client.FullAnimeDetail().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -260,13 +254,6 @@ class AnipubSDK {
         const self = this;
         return new InfoEntity_1.InfoEntity(self, entopts);
     }
-    // Entity access: `client.PaginatedAnimeList().list()` / `client.PaginatedAnimeList().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PaginatedAnimeList(entopts) {
-        const self = this;
-        return new PaginatedAnimeListEntity_1.PaginatedAnimeListEntity(self, entopts);
-    }
     // Entity access: `client.Rating().list()` / `client.Rating().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -280,6 +267,20 @@ class AnipubSDK {
     Search(entopts) {
         const self = this;
         return new SearchEntity_1.SearchEntity(self, entopts);
+    }
+    // Entity access: `client.Searchall().list()` / `client.Searchall().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Searchall(entopts) {
+        const self = this;
+        return new SearchallEntity_1.SearchallEntity(self, entopts);
+    }
+    // Entity access: `client.Sort().list()` / `client.Sort().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Sort(entopts) {
+        const self = this;
+        return new SortEntity_1.SortEntity(self, entopts);
     }
     // Entity access: `client.StreamingDetail().list()` / `client.StreamingDetail().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

@@ -16,15 +16,19 @@ var NewAnimeEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEnt
 
 var NewFindEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 
+var NewFindbyGenreEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
+
 var NewFullAnimeDetailEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 
 var NewInfoEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 
-var NewPaginatedAnimeListEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
-
 var NewRatingEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 
 var NewSearchEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
+
+var NewSearchallEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
+
+var NewSortEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 
 var NewStreamingDetailEntityFunc func(client *AnipubSDK, entopts map[string]any) AnipubEntity
 

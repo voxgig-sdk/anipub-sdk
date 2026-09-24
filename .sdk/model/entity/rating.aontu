@@ -1,0 +1,176 @@
+# Entity: rating
+
+main: kit: entity: rating: {
+
+  alias: field: {}
+
+  fields: {
+    Aired: {
+      h: "Aired"
+      n: "Aired"
+      r: false
+      sh: "Air date range"
+      t: "`$STRING`"
+    }
+    Cover: {
+      h: "Cover"
+      n: "Cover"
+      r: false
+      sh: "Cover image path or URL."
+      t: "`$STRING`"
+    }
+    DescripTion: {
+      h: "Descrip Tion"
+      n: "DescripTion"
+      r: false
+      sh: "Anime description"
+      t: "`$STRING`"
+    }
+    Duration: {
+      h: "Duration"
+      n: "Duration"
+      r: false
+      sh: "Episode duration"
+      t: "`$STRING`"
+    }
+    Genres: {
+      h: "Genres"
+      n: "Genres"
+      r: false
+      sh: "List of genres"
+      t: "`$ARRAY`"
+    }
+    ImagePath: {
+      h: "Image Path"
+      n: "ImagePath"
+      r: false
+      sh: "Image path or URL."
+      t: "`$STRING`"
+    }
+    MALScore: {
+      h: "Mal Score"
+      n: "MALScore"
+      r: false
+      sh: "MyAnimeList score"
+      t: "`$STRING`"
+    }
+    Name: {
+      h: "Name"
+      n: "Name"
+      r: false
+      sh: "Anime name"
+      t: "`$STRING`"
+    }
+    Premiered: {
+      h: "Premiered"
+      n: "Premiered"
+      r: false
+      sh: "Premiere season"
+      t: "`$STRING`"
+    }
+    RatingsNum: {
+      h: "Ratings Num"
+      n: "RatingsNum"
+      r: false
+      sh: "Number of ratings"
+      t: "`$INTEGER`"
+    }
+    Status: {
+      h: "Status"
+      n: "Status"
+      r: false
+      sh: "Airing status"
+      t: "`$STRING`"
+    }
+    Studios: {
+      h: "Studios"
+      n: "Studios"
+      r: false
+      sh: "Production studio"
+      t: "`$STRING`"
+    }
+    Synonyms: {
+      h: "Synonyms"
+      n: "Synonyms"
+      r: false
+      sh: "Alternative names"
+      t: "`$STRING`"
+    }
+    epCount: {
+      h: "Ep Count"
+      n: "epCount"
+      r: false
+      sh: "Episode count"
+      t: "`$INTEGER`"
+    }
+    finder: {
+      h: "Finder"
+      n: "finder"
+      r: false
+      sh: "Slug identifier"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Anime ID"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "rating"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/findbyrating"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/findbyrating"
+          q: {
+            exist: [
+              "page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "findbyrating"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.AniData`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,12 @@
+# Entity Models
+
+@"./anime.aontu"
+@"./find.aontu"
+@"./findby_genre.aontu"
+@"./full_anime_detail.aontu"
+@"./info.aontu"
+@"./rating.aontu"
+@"./search.aontu"
+@"./searchall.aontu"
+@"./sort.aontu"
+@"./streaming_detail.aontu"

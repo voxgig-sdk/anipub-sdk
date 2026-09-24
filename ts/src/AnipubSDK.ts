@@ -2,11 +2,13 @@
 
 import { AnimeEntity } from './entity/AnimeEntity'
 import { FindEntity } from './entity/FindEntity'
+import { FindbyGenreEntity } from './entity/FindbyGenreEntity'
 import { FullAnimeDetailEntity } from './entity/FullAnimeDetailEntity'
 import { InfoEntity } from './entity/InfoEntity'
-import { PaginatedAnimeListEntity } from './entity/PaginatedAnimeListEntity'
 import { RatingEntity } from './entity/RatingEntity'
 import { SearchEntity } from './entity/SearchEntity'
+import { SearchallEntity } from './entity/SearchallEntity'
+import { SortEntity } from './entity/SortEntity'
 import { StreamingDetailEntity } from './entity/StreamingDetailEntity'
 
 export type * from './AnipubTypes'
@@ -131,7 +133,6 @@ class AnipubSDK {
 
     const options = this._options
 
-    // Build spec directly from SDK options + user-provided fetch args.
     const spec: any = {
       base: options.base,
       prefix: options.prefix,
@@ -147,7 +148,6 @@ class AnipubSDK {
 
     ctx.spec = spec
 
-    // Merge user-provided headers over SDK defaults.
     if (fetchargs.headers) {
       const uheaders = fetchargs.headers
       for (let key in uheaders) {
@@ -157,7 +157,6 @@ class AnipubSDK {
 
     
 
-    // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
     if (authResult instanceof Error) {
       return authResult
@@ -250,18 +249,6 @@ class AnipubSDK {
 
 
 
-  // Raw GraphQL access: the pressure valve that makes the generated
-  // surface's deliberate omissions (per-call selection sets, typed filter
-  // builders, batching, subscriptions) livable — the whole schema stays
-  // reachable.
-  //
-  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-  // HTTP 200 as a top-level `errors` array, so status alone would report a
-  // failed query as ok.
-  //
-  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-  // ratelimit or paging features apply.
   async graphql(query: string, variables?: any, ctrl?: any) {
     const options = this._options
 
@@ -322,6 +309,15 @@ class AnipubSDK {
   }
 
 
+  // Entity access: `client.FindbyGenre().list()` / `client.FindbyGenre().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FindbyGenre(entopts?: Record<string, any>) {
+    const self = this
+    return new FindbyGenreEntity(self, entopts)
+  }
+
+
   // Entity access: `client.FullAnimeDetail().list()` / `client.FullAnimeDetail().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -340,15 +336,6 @@ class AnipubSDK {
   }
 
 
-  // Entity access: `client.PaginatedAnimeList().list()` / `client.PaginatedAnimeList().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  PaginatedAnimeList(entopts?: Record<string, any>) {
-    const self = this
-    return new PaginatedAnimeListEntity(self, entopts)
-  }
-
-
   // Entity access: `client.Rating().list()` / `client.Rating().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -364,6 +351,24 @@ class AnipubSDK {
   Search(entopts?: Record<string, any>) {
     const self = this
     return new SearchEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Searchall().list()` / `client.Searchall().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Searchall(entopts?: Record<string, any>) {
+    const self = this
+    return new SearchallEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Sort().list()` / `client.Sort().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Sort(entopts?: Record<string, any>) {
+    const self = this
+    return new SortEntity(self, entopts)
   }
 
 

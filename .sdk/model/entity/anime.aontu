@@ -1,0 +1,114 @@
+# Entity: anime
+
+main: kit: entity: anime: {
+
+  alias: field: {}
+
+  fields: {
+    Genre: {
+      h: "Genre"
+      n: "Genre"
+      r: true
+      sh: "Genre as string or array of strings"
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    Name: {
+      h: "Name"
+      n: "Name"
+      r: true
+      sh: "Anime name to match"
+      t: "`$STRING`"
+    }
+    exists: {
+      h: "Exists"
+      n: "exists"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "anime"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/check"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/check"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "check"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/getAll"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/getAll"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "getAll"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/getlast"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/getlast"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "getlast"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

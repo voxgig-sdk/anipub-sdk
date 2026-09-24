@@ -36,15 +36,14 @@ from anipub_sdk import AnipubSDK
 client = AnipubSDK()
 ```
 
-### 3. Load a paginatedanimelist
+### 3. Load an anime
 
-PaginatedAnimeList is nested under genre, so provide the `genre`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    paginatedanimelist = client.PaginatedAnimeList().load({"genre": "example_genre"})
-    print(paginatedanimelist)
+    anime = client.Anime().load()
+    print(anime)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -64,10 +63,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    ratings = client.Rating().list()
-    print(ratings)
+    anime = client.Anime().load()
+    print(anime)
 except Exception as err:
-    print(f"list failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -133,8 +132,8 @@ client = AnipubSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-rating = client.Rating().list()
-# rating contains the mock response record
+anime = client.Anime().load()
+# anime contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -212,11 +211,13 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Anime` | `(data) -> AnimeEntity` | Create an Anime entity instance. |
 | `Find` | `(data) -> FindEntity` | Create a Find entity instance. |
+| `FindbyGenre` | `(data) -> FindbyGenreEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail` | `(data) -> FullAnimeDetailEntity` | Create a FullAnimeDetail entity instance. |
 | `Info` | `(data) -> InfoEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList` | `(data) -> PaginatedAnimeListEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating` | `(data) -> RatingEntity` | Create a Rating entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
+| `Searchall` | `(data) -> SearchallEntity` | Create a Searchall entity instance. |
+| `Sort` | `(data) -> SortEntity` | Create a Sort entity instance. |
 | `StreamingDetail` | `(data) -> StreamingDetailEntity` | Create a StreamingDetail entity instance. |
 
 ### Entity interface
@@ -279,6 +280,18 @@ Operations: Load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -316,33 +329,6 @@ API path: `/anime/api/details/{id}`
 Operations: Load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `Aired` | Air date range |
-| `Cover` | Cover image path or URL. |
-| `DescripTion` | Anime description |
-| `Duration` | Episode duration |
-| `Genres` | List of genres |
-| `ImagePath` | Image path or URL. |
-| `MALScore` | MyAnimeList score |
-| `Name` | Anime name |
-| `Premiered` | Premiere season |
-| `RatingsNum` | Number of ratings |
-| `Status` | Airing status |
-| `Studios` | Production studio |
-| `Synonyms` | Alternative names |
-| `currentPage` | Current page number |
-| `epCount` | Episode count |
-| `finder` | Slug identifier |
-| `id` | Anime ID |
-| `wholePage` | Array of anime on current page |
-
-Operations: List, Load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -393,6 +379,43 @@ API path: `/api/findbyrating`
 Operations: Load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+
+Operations: List.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -472,6 +495,31 @@ find = client.Find().load({"id": "find_id"})
 ```
 
 
+### FindbyGenre
+
+Create an instance: `findby_genre = client.FindbyGenre()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `str` |  |
+| `wholePage` | `list` | Array of anime on current page |
+
+#### Example: Load
+
+```python
+findby_genre = client.FindbyGenre().load({"id": "findby_genre_id"})
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `full_anime_detail = client.FullAnimeDetail()`
@@ -533,53 +581,6 @@ Create an instance: `info = client.Info()`
 
 ```python
 info = client.Info().load({"id": "info_id"})
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `paginated_anime_list = client.PaginatedAnimeList()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `str` | Air date range |
-| `Cover` | `str` | Cover image path or URL. |
-| `DescripTion` | `str` | Anime description |
-| `Duration` | `str` | Episode duration |
-| `Genres` | `list` | List of genres |
-| `ImagePath` | `str` | Image path or URL. |
-| `MALScore` | `str` | MyAnimeList score |
-| `Name` | `str` | Anime name |
-| `Premiered` | `str` | Premiere season |
-| `RatingsNum` | `int` | Number of ratings |
-| `Status` | `str` | Airing status |
-| `Studios` | `str` | Production studio |
-| `Synonyms` | `str` | Alternative names |
-| `currentPage` | `int` | Current page number |
-| `epCount` | `int` | Episode count |
-| `finder` | `str` | Slug identifier |
-| `id` | `int` | Anime ID |
-| `wholePage` | `list` | Array of anime on current page |
-
-#### Example: Load
-
-```python
-paginated_anime_list = client.PaginatedAnimeList().load({"genre": "genre"})
-```
-
-#### Example: List
-
-```python
-paginated_anime_lists = client.PaginatedAnimeList().list()
 ```
 
 
@@ -656,6 +657,69 @@ Create an instance: `search = client.Search()`
 
 ```python
 search = client.Search().load({"id": "search_id"})
+```
+
+
+### Searchall
+
+Create an instance: `searchall = client.Searchall()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `str` |  |
+| `wholePage` | `list` | Array of anime on current page |
+
+#### Example: Load
+
+```python
+searchall = client.Searchall().load({"id": "searchall_id"})
+```
+
+
+### Sort
+
+Create an instance: `sort = client.Sort()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list()` | List entities, optionally matching the given criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `str` | Air date range |
+| `Cover` | `str` | Cover image path or URL. |
+| `DescripTion` | `str` | Anime description |
+| `Duration` | `str` | Episode duration |
+| `Genres` | `list` | List of genres |
+| `ImagePath` | `str` | Image path or URL. |
+| `MALScore` | `str` | MyAnimeList score |
+| `Name` | `str` | Anime name |
+| `Premiered` | `str` | Premiere season |
+| `RatingsNum` | `int` | Number of ratings |
+| `Status` | `str` | Airing status |
+| `Studios` | `str` | Production studio |
+| `Synonyms` | `str` | Alternative names |
+| `epCount` | `int` | Episode count |
+| `finder` | `str` | Slug identifier |
+| `id` | `int` | Anime ID |
+
+#### Example: List
+
+```python
+sorts = client.Sort().list()
 ```
 
 
@@ -841,15 +905,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-rating = client.Rating()
-rating.list()
+anime = client.Anime()
+anime.load()
 
-# rating.data_get() now returns the rating data from the last list
-# rating.match_get() returns the last match criteria
+# anime.data_get() now returns the anime data from the last load
+# anime.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

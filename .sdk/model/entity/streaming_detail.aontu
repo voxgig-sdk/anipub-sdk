@@ -1,0 +1,97 @@
+# Entity: streaming_detail
+
+main: kit: entity: streaming_detail: {
+
+  alias: field: {}
+
+  fields: {
+    ep: {
+      h: "Ep"
+      n: "ep"
+      r: false
+      sh: "Episodes 2+ streaming links"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    link: {
+      h: "Link"
+      n: "link"
+      r: false
+      sh: "Episode 1 streaming link with src= prefix"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Anime name"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "streaming_detail"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/api/details/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 119
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/api/details/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "details"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.local`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

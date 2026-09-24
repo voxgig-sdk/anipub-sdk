@@ -1,0 +1,32 @@
+# BasicFindbyGenreFlow
+
+main: kit: flow: BasicFindbyGenreFlow:
+{
+  entity: "findby_genre",
+  kind: "basic",
+  name: "BasicFindbyGenreFlow",
+  step: [
+    {
+      i: {
+        ref: "findby_genre_ref01",
+        srcdatavar: "findby_genre_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "findby_genre01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-findby_genre_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFindbyGenreFlow"
+}

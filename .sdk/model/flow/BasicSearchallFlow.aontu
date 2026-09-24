@@ -1,0 +1,32 @@
+# BasicSearchallFlow
+
+main: kit: flow: BasicSearchallFlow:
+{
+  entity: "searchall",
+  kind: "basic",
+  name: "BasicSearchallFlow",
+  step: [
+    {
+      i: {
+        ref: "searchall_ref01",
+        srcdatavar: "searchall_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "searchall01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-searchall_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSearchallFlow"
+}

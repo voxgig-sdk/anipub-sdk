@@ -27,8 +27,8 @@ Tool-call arguments (what an agent sends):
 
 ```jsonc
 // anipub_list: first page of records
-{ "entity": "paginated_anime_list" }
-{ "entity": "paginated_anime_list", "query": { } }
+{ "entity": "rating" }
+{ "entity": "rating", "query": { } }
 
 // anipub_load: one record by id
 { "entity": "anime", "query": { "id": 1 } }
@@ -60,8 +60,8 @@ Tool-call arguments (what an agent sends):
    ```
 
 4. **Restart Claude Code.** The `anipub_list` and `anipub_load` tools now appear
-   in new sessions. Ask the agent to *"list paginated_anime_list using anipub"*
-   and it calls `anipub_list` with `{"entity":"paginated_anime_list"}`.
+   in new sessions. Ask the agent to *"list rating using anipub"*
+   and it calls `anipub_list` with `{"entity":"rating"}`.
 
 ## How-to guides
 
@@ -92,7 +92,7 @@ Args: `entity` (required), `query` (optional filter map). Returns the first
 page of records as JSON:
 
 ```jsonc
-{ "entity": "paginated_anime_list" }
+{ "entity": "rating" }
 ```
 
 ### Call the `anipub_load` tool
@@ -129,7 +129,7 @@ Both tools take the same argument object:
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `entity` | string | One of the 8 supported entities (see below). |
+| `entity` | string | One of the 10 supported entities (see below). |
 | `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
 
 JSON schemas are emitted by the SDK from the `Args` struct's `json` /
@@ -151,9 +151,9 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 ### Entities
 
-The 8 entities valid as the `entity` argument:
+The 10 entities valid as the `entity` argument:
 
-anime | find | full_anime_detail | info | paginated_anime_list | rating | search | streaming_detail
+anime | find | findby_genre | full_anime_detail | info | rating | search | searchall | sort | streaming_detail
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

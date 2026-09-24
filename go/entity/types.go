@@ -1,7 +1,7 @@
 // Typed models for the Anipub SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,9 +14,6 @@ import (
 
 // Anime is the typed data model for the anime entity.
 type Anime struct {
-	Genre any `json:"Genre"`
-	Name string `json:"Name"`
-	Exists *bool `json:"exists,omitempty"`
 }
 
 // AnimeLoadMatch is the typed request payload for Anime.LoadTyped.
@@ -35,9 +32,6 @@ type AnimeCreateData struct {
 
 // Find is the typed data model for the find entity.
 type Find struct {
-	Ep *int `json:"ep,omitempty"`
-	Exist bool `json:"exist"`
-	Id *int `json:"id,omitempty"`
 }
 
 // FindLoadMatch is the typed request payload for Find.LoadTyped.
@@ -45,12 +39,18 @@ type FindLoadMatch struct {
 	Id string `json:"id"`
 }
 
+// FindbyGenre is the typed data model for the findby_genre entity.
+type FindbyGenre struct {
+}
+
+// FindbyGenreLoadMatch is the typed request payload for FindbyGenre.LoadTyped.
+type FindbyGenreLoadMatch struct {
+	Id string `json:"id"`
+	Page *int `json:"page,omitempty"`
+}
+
 // FullAnimeDetail is the typed data model for the full_anime_detail entity.
 type FullAnimeDetail struct {
-	Characters *[]any `json:"characters,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Jikan *map[string]any `json:"jikan,omitempty"`
-	Local *map[string]any `json:"local,omitempty"`
 }
 
 // FullAnimeDetailLoadMatch is the typed request payload for FullAnimeDetail.LoadTyped.
@@ -60,22 +60,6 @@ type FullAnimeDetailLoadMatch struct {
 
 // Info is the typed data model for the info entity.
 type Info struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
 }
 
 // InfoLoadMatch is the typed request payload for Info.LoadTyped.
@@ -83,61 +67,8 @@ type InfoLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// PaginatedAnimeList is the typed data model for the paginated_anime_list entity.
-type PaginatedAnimeList struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	CurrentPage *int `json:"currentPage,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
-	WholePage *[]any `json:"wholePage,omitempty"`
-}
-
-// PaginatedAnimeListLoadMatch is the typed request payload for PaginatedAnimeList.LoadTyped.
-type PaginatedAnimeListLoadMatch struct {
-	Genre string `json:"genre"`
-	Page *int `json:"page,omitempty"`
-}
-
-// PaginatedAnimeListListMatch is the typed request payload for PaginatedAnimeList.ListTyped.
-type PaginatedAnimeListListMatch struct {
-	Genre *string `json:"genre,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Page *int `json:"page,omitempty"`
-	Ratefrom *float64 `json:"ratefrom,omitempty"`
-	Rateto *float64 `json:"rateto,omitempty"`
-}
-
 // Rating is the typed data model for the rating entity.
 type Rating struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
 }
 
 // RatingListMatch is the typed request payload for Rating.ListTyped.
@@ -147,22 +78,6 @@ type RatingListMatch struct {
 
 // Search is the typed data model for the search entity.
 type Search struct {
-	Aired *string `json:"Aired,omitempty"`
-	Cover *string `json:"Cover,omitempty"`
-	DescripTion *string `json:"DescripTion,omitempty"`
-	Duration *string `json:"Duration,omitempty"`
-	Genres *[]any `json:"Genres,omitempty"`
-	ImagePath *string `json:"ImagePath,omitempty"`
-	MALScore *string `json:"MALScore,omitempty"`
-	Name *string `json:"Name,omitempty"`
-	Premiered *string `json:"Premiered,omitempty"`
-	RatingsNum *int `json:"RatingsNum,omitempty"`
-	Status *string `json:"Status,omitempty"`
-	Studios *string `json:"Studios,omitempty"`
-	Synonyms *string `json:"Synonyms,omitempty"`
-	EpCount *int `json:"epCount,omitempty"`
-	Finder *string `json:"finder,omitempty"`
-	Id *int `json:"id,omitempty"`
 }
 
 // SearchLoadMatch is the typed request payload for Search.LoadTyped.
@@ -170,12 +85,31 @@ type SearchLoadMatch struct {
 	Id string `json:"id"`
 }
 
+// Searchall is the typed data model for the searchall entity.
+type Searchall struct {
+}
+
+// SearchallLoadMatch is the typed request payload for Searchall.LoadTyped.
+type SearchallLoadMatch struct {
+	Id string `json:"id"`
+	Page *int `json:"page,omitempty"`
+}
+
+// Sort is the typed data model for the sort entity.
+type Sort struct {
+}
+
+// SortListMatch is the typed request payload for Sort.ListTyped.
+type SortListMatch struct {
+	Genre *string `json:"genre,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Ratefrom *float64 `json:"ratefrom,omitempty"`
+	Rateto *float64 `json:"rateto,omitempty"`
+}
+
 // StreamingDetail is the typed data model for the streaming_detail entity.
 type StreamingDetail struct {
-	Ep *[]any `json:"ep,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Link *string `json:"link,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // StreamingDetailLoadMatch is the typed request payload for StreamingDetail.LoadTyped.

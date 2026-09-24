@@ -1,0 +1,84 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 10
+  metrics: count: path: 12
+  metrics: count: method: 12
+
+  entity: anime: {
+    path: "/api/check": {
+      op: create: method: *POST
+    }
+    path: "/api/getAll": {
+      op: load: method: *GET
+    }
+    path: "/api/getlast": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: find: {
+    path: "/api/find/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: findby_genre: {
+    path: "/api/findbyGenre/{genre}": {
+      rename: param: "genre": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: full_anime_detail: {
+    path: "/anime/api/details/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: info: {
+    path: "/api/info/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: rating: {
+    path: "/api/findbyrating": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.AniData`")|top
+    }
+  }
+
+  entity: search: {
+    path: "/api/search/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: searchall: {
+    path: "/api/searchall/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: sort: {
+    path: "/api/sort": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.wholePage`")|top
+    }
+  }
+
+  entity: streaming_detail: {
+    path: "/v1/api/details/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.local`")|top
+    }
+  }
+
+}

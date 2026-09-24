@@ -1,7 +1,7 @@
 // Typed models for the Anipub SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
@@ -31,6 +31,17 @@ export interface Find {
 
 export interface FindLoadMatch {
   id: string
+}
+
+export interface FindbyGenre {
+  currentPage?: number
+  id?: string
+  wholePage?: any[]
+}
+
+export interface FindbyGenreLoadMatch {
+  id: string
+  page?: number
 }
 
 export interface FullAnimeDetail {
@@ -65,40 +76,6 @@ export interface Info {
 
 export interface InfoLoadMatch {
   id: string
-}
-
-export interface PaginatedAnimeList {
-  Aired?: string
-  Cover?: string
-  DescripTion?: string
-  Duration?: string
-  Genres?: any[]
-  ImagePath?: string
-  MALScore?: string
-  Name?: string
-  Premiered?: string
-  RatingsNum?: number
-  Status?: string
-  Studios?: string
-  Synonyms?: string
-  currentPage?: number
-  epCount?: number
-  finder?: string
-  id?: number
-  wholePage?: any[]
-}
-
-export interface PaginatedAnimeListLoadMatch {
-  genre: string
-  page?: number
-}
-
-export interface PaginatedAnimeListListMatch {
-  genre?: string
-  name?: string
-  page?: number
-  ratefrom?: number
-  rateto?: number
 }
 
 export interface Rating {
@@ -145,6 +122,44 @@ export interface Search {
 
 export interface SearchLoadMatch {
   id: string
+}
+
+export interface Searchall {
+  currentPage?: number
+  id?: string
+  wholePage?: any[]
+}
+
+export interface SearchallLoadMatch {
+  id: string
+  page?: number
+}
+
+export interface Sort {
+  Aired?: string
+  Cover?: string
+  DescripTion?: string
+  Duration?: string
+  Genres?: any[]
+  ImagePath?: string
+  MALScore?: string
+  Name?: string
+  Premiered?: string
+  RatingsNum?: number
+  Status?: string
+  Studios?: string
+  Synonyms?: string
+  epCount?: number
+  finder?: string
+  id?: number
+}
+
+export interface SortListMatch {
+  genre?: string
+  name?: string
+  page?: number
+  ratefrom?: number
+  rateto?: number
 }
 
 export interface StreamingDetail {

@@ -24,39 +24,108 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "anime": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "Genre",
-              "req": true,
-              "short": "Genre as string or array of strings",
-              "type": "`$ANY`",
+          "fields": {
+            "Genre": {
+              "a": true,
+              "h": "Genre",
+              "n": "Genre",
+              "r": true,
+              "sh": "Genre as string or array of strings",
+              "t": "`$ANY`",
               "union": {
                 "branches": 2,
                 "count": 1,
                 "depth": 0
               }
             },
-            {
-              "active": true,
-              "name": "Name",
-              "req": true,
-              "short": "Anime name to match",
-              "type": "`$STRING`"
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": true,
+              "sh": "Anime name to match",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "exists",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "exists": {
+              "a": true,
+              "h": "Exists",
+              "n": "exists",
+              "r": false,
+              "t": "`$BOOLEAN`"
             }
-          ],
+          },
           "name": "anime",
           "op": {
             "create": {
@@ -64,18 +133,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/check",
-                    "json": "{\"operationId\":\"checkAnime\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"examples\":{\"multipleGenres\":{\"value\":{\"Genre\":[\"Action\",\"Drama\"],\"Name\":\"Jujutsu Kaisen\"}},\"singleGenre\":{\"value\":{\"Genre\":\"Action\",\"Name\":\"Black Clover\"}}},\"schema\":{\"properties\":{\"Genre\":{\"description\":\"Genre as string or array of strings\",\"oneOf\":[{\"type\":\"string\"},{\"items\":{\"type\":\"string\"},\"type\":\"array\"}]},\"Name\":{\"description\":\"Anime name to match\",\"type\":\"string\"}},\"required\":[\"Name\",\"Genre\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"exists\":{\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Check result\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Invalid request body\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/check",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/check",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -83,8 +153,7 @@
                       "lit": "check"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -96,18 +165,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/getAll",
-                    "json": "{\"operationId\":\"getTotalCount\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":153,\"type\":\"integer\"}}},\"description\":\"Total number of anime in database\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/getAll",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/getAll",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -115,25 +185,25 @@
                       "lit": "getAll"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/getlast",
-                    "json": "{\"operationId\":\"getLastId\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"integer\"}}},\"description\":\"Last document ID\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/getlast",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/getlast",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -141,8 +211,7 @@
                       "lit": "getlast"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -159,29 +228,32 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ep",
-              "req": false,
-              "short": "Episode count if found",
-              "type": "`$INTEGER`"
+          "fields": {
+            "ep": {
+              "a": true,
+              "h": "Ep",
+              "n": "ep",
+              "r": false,
+              "sh": "Episode count if found",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "exist",
-              "req": true,
-              "short": "Whether anime exists",
-              "type": "`$BOOLEAN`"
+            "exist": {
+              "a": true,
+              "h": "Exist",
+              "n": "exist",
+              "r": true,
+              "sh": "Whether anime exists",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Anime ID if found",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Anime ID if found",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -193,35 +265,39 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/find/{name}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "One Piece",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "name",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "One Piece",
+                        "k": "param",
+                        "n": "id",
+                        "or": "name",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/find/{name}",
-                    "json": "{\"operationId\":\"findAnimeByName\",\"parameters\":[{\"description\":\"URL-encoded anime name — spaces as %20\",\"example\":\"One Piece\",\"in\":\"path\",\"name\":\"name\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"found\":{\"value\":{\"ep\":1155,\"exist\":true,\"id\":10}},\"notFound\":{\"value\":{\"exist\":false}}},\"schema\":{\"properties\":{\"ep\":{\"description\":\"Episode count if found\",\"type\":\"integer\"},\"exist\":{\"description\":\"Whether anime exists\",\"type\":\"boolean\"},\"id\":{\"description\":\"Anime ID if found\",\"type\":\"integer\"}},\"required\":[\"exist\"],\"type\":\"object\"}}},\"description\":\"Anime found or not found response\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/find/{name}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/find/{name}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "name": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -232,12 +308,115 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "findby_genre": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "currentPage": {
+              "a": true,
+              "h": "Current Page",
+              "n": "currentPage",
+              "r": false,
+              "sh": "Current page number",
+              "t": "`$INTEGER`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "wholePage": {
+              "a": true,
+              "h": "Whole Page",
+              "n": "wholePage",
+              "r": false,
+              "sh": "Array of anime on current page",
+              "t": "`$ARRAY`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "findby_genre",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/findbyGenre/{genre}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "harem",
+                        "k": "param",
+                        "n": "id",
+                        "or": "genre",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
                     ]
                   },
-                  "transform": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/findbyGenre/{genre}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "page"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "genre": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "findbyGenre"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -254,33 +433,37 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "characters",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "characters": {
+              "a": true,
+              "h": "Characters",
+              "n": "characters",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "jikan",
-              "req": false,
-              "short": "MyAnimeList data from Jikan API",
-              "type": "`$OBJECT`"
+            "jikan": {
+              "a": true,
+              "h": "Jikan",
+              "n": "jikan",
+              "r": false,
+              "sh": "MyAnimeList data from Jikan API",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "local",
-              "req": false,
-              "type": "`$OBJECT`"
+            "local": {
+              "a": true,
+              "h": "Local",
+              "n": "local",
+              "r": false,
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -292,30 +475,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /anime/api/details/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 119,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 119,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /anime/api/details/{id}",
-                    "json": "{\"operationId\":\"getFullDetails\",\"parameters\":[{\"description\":\"Anime ID\",\"example\":119,\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"characters\":{\"items\":{\"properties\":{\"character\":{\"properties\":{\"image_url\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"role\":{\"description\":\"Character role (e.g., Main, Supporting)\",\"type\":\"string\"},\"voice_actors\":{\"items\":{\"properties\":{\"language\":{\"type\":\"string\"},\"person\":{\"properties\":{\"image_url\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"},\"jikan\":{\"description\":\"MyAnimeList data from Jikan API\",\"properties\":{\"popularity\":{\"type\":\"integer\"},\"rank\":{\"type\":\"integer\"},\"score\":{\"type\":\"number\"},\"scored_by\":{\"type\":\"integer\"},\"synopsis\":{\"type\":\"string\"}},\"type\":\"object\"},\"local\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Full anime details including MAL data and characters\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Anime not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/anime/api/details/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/anime/api/details/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "anime"
                     },
@@ -329,12 +517,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -351,120 +534,136 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "Aired",
-              "req": false,
-              "short": "Air date range",
-              "type": "`$STRING`"
+          "fields": {
+            "Aired": {
+              "a": true,
+              "h": "Aired",
+              "n": "Aired",
+              "r": false,
+              "sh": "Air date range",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Cover",
-              "req": false,
-              "short": "Cover image path or URL.",
-              "type": "`$STRING`"
+            "Cover": {
+              "a": true,
+              "h": "Cover",
+              "n": "Cover",
+              "r": false,
+              "sh": "Cover image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "DescripTion",
-              "req": false,
-              "short": "Anime description",
-              "type": "`$STRING`"
+            "DescripTion": {
+              "a": true,
+              "h": "Descrip Tion",
+              "n": "DescripTion",
+              "r": false,
+              "sh": "Anime description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Duration",
-              "req": false,
-              "short": "Episode duration",
-              "type": "`$STRING`"
+            "Duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "Duration",
+              "r": false,
+              "sh": "Episode duration",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Genres",
-              "req": false,
-              "short": "List of genres",
-              "type": "`$ARRAY`"
+            "Genres": {
+              "a": true,
+              "h": "Genres",
+              "n": "Genres",
+              "r": false,
+              "sh": "List of genres",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "ImagePath",
-              "req": false,
-              "short": "Image path or URL.",
-              "type": "`$STRING`"
+            "ImagePath": {
+              "a": true,
+              "h": "Image Path",
+              "n": "ImagePath",
+              "r": false,
+              "sh": "Image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "MALScore",
-              "req": false,
-              "short": "MyAnimeList score",
-              "type": "`$STRING`"
+            "MALScore": {
+              "a": true,
+              "h": "Mal Score",
+              "n": "MALScore",
+              "r": false,
+              "sh": "MyAnimeList score",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Name",
-              "req": false,
-              "short": "Anime name",
-              "type": "`$STRING`"
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": false,
+              "sh": "Anime name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Premiered",
-              "req": false,
-              "short": "Premiere season",
-              "type": "`$STRING`"
+            "Premiered": {
+              "a": true,
+              "h": "Premiered",
+              "n": "Premiered",
+              "r": false,
+              "sh": "Premiere season",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RatingsNum",
-              "req": false,
-              "short": "Number of ratings",
-              "type": "`$INTEGER`"
+            "RatingsNum": {
+              "a": true,
+              "h": "Ratings Num",
+              "n": "RatingsNum",
+              "r": false,
+              "sh": "Number of ratings",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "Status",
-              "req": false,
-              "short": "Airing status",
-              "type": "`$STRING`"
+            "Status": {
+              "a": true,
+              "h": "Status",
+              "n": "Status",
+              "r": false,
+              "sh": "Airing status",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Studios",
-              "req": false,
-              "short": "Production studio",
-              "type": "`$STRING`"
+            "Studios": {
+              "a": true,
+              "h": "Studios",
+              "n": "Studios",
+              "r": false,
+              "sh": "Production studio",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Synonyms",
-              "req": false,
-              "short": "Alternative names",
-              "type": "`$STRING`"
+            "Synonyms": {
+              "a": true,
+              "h": "Synonyms",
+              "n": "Synonyms",
+              "r": false,
+              "sh": "Alternative names",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "epCount",
-              "req": false,
-              "short": "Episode count",
-              "type": "`$INTEGER`"
+            "epCount": {
+              "a": true,
+              "h": "Ep Count",
+              "n": "epCount",
+              "r": false,
+              "sh": "Episode count",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "finder",
-              "req": false,
-              "short": "Slug identifier",
-              "type": "`$STRING`"
+            "finder": {
+              "a": true,
+              "h": "Finder",
+              "n": "finder",
+              "r": false,
+              "sh": "Slug identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Anime ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Anime ID",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -476,30 +675,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/info/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "black-clover",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "black-clover",
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/info/{id}",
-                    "json": "{\"operationId\":\"getAnimeInfo\",\"parameters\":[{\"description\":\"Numeric ID like 61 or slug like black-clover, one-piece, high-school-dxd\",\"example\":\"black-clover\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"Aired\":\"Oct 3, 2017 to Mar 30, 2021\",\"Cover\":\"https://...\",\"DescripTion\":\"...\",\"Duration\":\"25m\",\"Genres\":[\"action\",\"fantasy\",\"magic\"],\"ImagePath\":\"https://...\",\"MALScore\":\"8.88\",\"Name\":\"Black Clover\",\"Premiered\":\"Fall 2017\",\"RatingsNum\":45,\"Status\":\"Finished Airing\",\"Studios\":\"Pierrot\",\"Synonyms\":\"...\",\"_id\":61,\"epCount\":170},\"schema\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with anime metadata\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"No anime with that ID or name\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/info/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/info/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -510,12 +714,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -527,483 +726,141 @@
             "ancestors": []
           }
         },
-        "paginated_anime_list": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "Aired",
-              "req": false,
-              "short": "Air date range",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Cover",
-              "req": false,
-              "short": "Cover image path or URL.",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "DescripTion",
-              "req": false,
-              "short": "Anime description",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Duration",
-              "req": false,
-              "short": "Episode duration",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Genres",
-              "req": false,
-              "short": "List of genres",
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "ImagePath",
-              "req": false,
-              "short": "Image path or URL.",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "MALScore",
-              "req": false,
-              "short": "MyAnimeList score",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Name",
-              "req": false,
-              "short": "Anime name",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Premiered",
-              "req": false,
-              "short": "Premiere season",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "RatingsNum",
-              "req": false,
-              "short": "Number of ratings",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "Status",
-              "req": false,
-              "short": "Airing status",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Studios",
-              "req": false,
-              "short": "Production studio",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "Synonyms",
-              "req": false,
-              "short": "Alternative names",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "currentPage",
-              "req": false,
-              "short": "Current page number",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "epCount",
-              "req": false,
-              "short": "Episode count",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "finder",
-              "req": false,
-              "short": "Slug identifier",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Anime ID",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "wholePage",
-              "req": false,
-              "short": "Array of anime on current page",
-              "type": "`$ARRAY`"
-            }
-          ],
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "paginated_anime_list",
-          "op": {
-            "list": {
-              "input": "data",
-              "name": "list",
-              "points": [
-                {
-                  "active": true,
-                  "args": {
-                    "query": [
-                      {
-                        "active": true,
-                        "example": "Action",
-                        "kind": "query",
-                        "name": "genre",
-                        "orig": "genre",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "example": "One Piece",
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
-                      },
-                      {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
-                      },
-                      {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "ratefrom",
-                        "orig": "ratefrom",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
-                      },
-                      {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "rateto",
-                        "orig": "rateto",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /api/sort",
-                    "json": "{\"operationId\":\"sortAnime\",\"parameters\":[{\"description\":\"Anime name filter\",\"example\":\"One Piece\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Genre filter\",\"example\":\"Action\",\"in\":\"query\",\"name\":\"genre\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Minimum rating\",\"example\":0,\"in\":\"query\",\"name\":\"ratefrom\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":0,\"type\":\"number\"}},{\"description\":\"Maximum rating\",\"example\":10,\"in\":\"query\",\"name\":\"rateto\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":0,\"type\":\"number\"}},{\"description\":\"Page number\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currentPage\":{\"description\":\"Current page number\",\"type\":\"integer\"},\"wholePage\":{\"description\":\"Array of anime on current page\",\"items\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Filtered and sorted anime list\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/sort",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "sort"
-                    }
-                  ],
-                  "select": {
-                    "exist": [
-                      "genre",
-                      "name",
-                      "page",
-                      "ratefrom",
-                      "rateto"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body.wholePage`"
-                  }
-                }
-              ]
-            },
-            "load": {
-              "input": "data",
-              "name": "load",
-              "points": [
-                {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "example": "harem",
-                        "kind": "param",
-                        "name": "genre",
-                        "orig": "genre",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /api/findbyGenre/{genre}",
-                    "json": "{\"operationId\":\"findByGenre\",\"parameters\":[{\"description\":\"Genre name (e.g., harem, action, romance)\",\"example\":\"harem\",\"in\":\"path\",\"name\":\"genre\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number, default 1\",\"in\":\"query\",\"name\":\"Page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currentPage\":{\"description\":\"Current page number\",\"type\":\"integer\"},\"wholePage\":{\"description\":\"Array of anime on current page\",\"items\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Paginated list of anime by genre\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/findbyGenre/{genre}",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "findbyGenre"
-                    },
-                    {
-                      "var": "genre"
-                    }
-                  ],
-                  "select": {
-                    "exist": [
-                      "genre",
-                      "page"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "active": true,
-                  "args": {
-                    "params": [
-                      {
-                        "active": true,
-                        "kind": "param",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": true,
-                        "type": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "contract": {
-                    "id": "GET /api/searchall/{name}",
-                    "json": "{\"operationId\":\"searchAll\",\"parameters\":[{\"description\":\"Search query\",\"in\":\"path\",\"name\":\"name\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Page number, default 1\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currentPage\":{\"description\":\"Current page number\",\"type\":\"integer\"},\"wholePage\":{\"description\":\"Array of anime on current page\",\"items\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Paginated search results\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/searchall/{name}",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "searchall"
-                    },
-                    {
-                      "var": "name"
-                    }
-                  ],
-                  "select": {
-                    "exist": [
-                      "name",
-                      "page"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "findby_genre"
-              ],
-              [
-                "searchall"
-              ]
-            ]
-          }
-        },
         "rating": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "Aired",
-              "req": false,
-              "short": "Air date range",
-              "type": "`$STRING`"
+          "fields": {
+            "Aired": {
+              "a": true,
+              "h": "Aired",
+              "n": "Aired",
+              "r": false,
+              "sh": "Air date range",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Cover",
-              "req": false,
-              "short": "Cover image path or URL.",
-              "type": "`$STRING`"
+            "Cover": {
+              "a": true,
+              "h": "Cover",
+              "n": "Cover",
+              "r": false,
+              "sh": "Cover image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "DescripTion",
-              "req": false,
-              "short": "Anime description",
-              "type": "`$STRING`"
+            "DescripTion": {
+              "a": true,
+              "h": "Descrip Tion",
+              "n": "DescripTion",
+              "r": false,
+              "sh": "Anime description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Duration",
-              "req": false,
-              "short": "Episode duration",
-              "type": "`$STRING`"
+            "Duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "Duration",
+              "r": false,
+              "sh": "Episode duration",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Genres",
-              "req": false,
-              "short": "List of genres",
-              "type": "`$ARRAY`"
+            "Genres": {
+              "a": true,
+              "h": "Genres",
+              "n": "Genres",
+              "r": false,
+              "sh": "List of genres",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "ImagePath",
-              "req": false,
-              "short": "Image path or URL.",
-              "type": "`$STRING`"
+            "ImagePath": {
+              "a": true,
+              "h": "Image Path",
+              "n": "ImagePath",
+              "r": false,
+              "sh": "Image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "MALScore",
-              "req": false,
-              "short": "MyAnimeList score",
-              "type": "`$STRING`"
+            "MALScore": {
+              "a": true,
+              "h": "Mal Score",
+              "n": "MALScore",
+              "r": false,
+              "sh": "MyAnimeList score",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Name",
-              "req": false,
-              "short": "Anime name",
-              "type": "`$STRING`"
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": false,
+              "sh": "Anime name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Premiered",
-              "req": false,
-              "short": "Premiere season",
-              "type": "`$STRING`"
+            "Premiered": {
+              "a": true,
+              "h": "Premiered",
+              "n": "Premiered",
+              "r": false,
+              "sh": "Premiere season",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RatingsNum",
-              "req": false,
-              "short": "Number of ratings",
-              "type": "`$INTEGER`"
+            "RatingsNum": {
+              "a": true,
+              "h": "Ratings Num",
+              "n": "RatingsNum",
+              "r": false,
+              "sh": "Number of ratings",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "Status",
-              "req": false,
-              "short": "Airing status",
-              "type": "`$STRING`"
+            "Status": {
+              "a": true,
+              "h": "Status",
+              "n": "Status",
+              "r": false,
+              "sh": "Airing status",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Studios",
-              "req": false,
-              "short": "Production studio",
-              "type": "`$STRING`"
+            "Studios": {
+              "a": true,
+              "h": "Studios",
+              "n": "Studios",
+              "r": false,
+              "sh": "Production studio",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Synonyms",
-              "req": false,
-              "short": "Alternative names",
-              "type": "`$STRING`"
+            "Synonyms": {
+              "a": true,
+              "h": "Synonyms",
+              "n": "Synonyms",
+              "r": false,
+              "sh": "Alternative names",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "epCount",
-              "req": false,
-              "short": "Episode count",
-              "type": "`$INTEGER`"
+            "epCount": {
+              "a": true,
+              "h": "Ep Count",
+              "n": "epCount",
+              "r": false,
+              "sh": "Episode count",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "finder",
-              "req": false,
-              "short": "Slug identifier",
-              "type": "`$STRING`"
+            "finder": {
+              "a": true,
+              "h": "Finder",
+              "n": "finder",
+              "r": false,
+              "sh": "Slug identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Anime ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Anime ID",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1015,30 +872,35 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/findbyrating",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/findbyrating",
-                    "json": "{\"operationId\":\"findByRating\",\"parameters\":[{\"description\":\"Page number, default 1\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"AniData\":[{\"DescripTion\":\"...\",\"ImagePath\":\"https://...\",\"MALScore\":\"9.36\",\"Name\":\"Frieren: Beyond Journey's End\",\"RatingsNum\":50,\"_id\":2454,\"finder\":\"frieren-beyond-journeys-end\"}],\"currentPage\":1},\"schema\":{\"properties\":{\"AniData\":{\"description\":\"Array of top-rated anime\",\"items\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"currentPage\":{\"description\":\"Current page number\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Paginated list of top-rated anime\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/findbyrating",
+                  "q": {
+                    "exist": [
+                      "page"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/findbyrating",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1046,12 +908,7 @@
                       "lit": "findbyrating"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "page"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.AniData`"
                   }
@@ -1068,120 +925,136 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "Aired",
-              "req": false,
-              "short": "Air date range",
-              "type": "`$STRING`"
+          "fields": {
+            "Aired": {
+              "a": true,
+              "h": "Aired",
+              "n": "Aired",
+              "r": false,
+              "sh": "Air date range",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Cover",
-              "req": false,
-              "short": "Cover image path or URL.",
-              "type": "`$STRING`"
+            "Cover": {
+              "a": true,
+              "h": "Cover",
+              "n": "Cover",
+              "r": false,
+              "sh": "Cover image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "DescripTion",
-              "req": false,
-              "short": "Anime description",
-              "type": "`$STRING`"
+            "DescripTion": {
+              "a": true,
+              "h": "Descrip Tion",
+              "n": "DescripTion",
+              "r": false,
+              "sh": "Anime description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Duration",
-              "req": false,
-              "short": "Episode duration",
-              "type": "`$STRING`"
+            "Duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "Duration",
+              "r": false,
+              "sh": "Episode duration",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Genres",
-              "req": false,
-              "short": "List of genres",
-              "type": "`$ARRAY`"
+            "Genres": {
+              "a": true,
+              "h": "Genres",
+              "n": "Genres",
+              "r": false,
+              "sh": "List of genres",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "ImagePath",
-              "req": false,
-              "short": "Image path or URL.",
-              "type": "`$STRING`"
+            "ImagePath": {
+              "a": true,
+              "h": "Image Path",
+              "n": "ImagePath",
+              "r": false,
+              "sh": "Image path or URL.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "MALScore",
-              "req": false,
-              "short": "MyAnimeList score",
-              "type": "`$STRING`"
+            "MALScore": {
+              "a": true,
+              "h": "Mal Score",
+              "n": "MALScore",
+              "r": false,
+              "sh": "MyAnimeList score",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Name",
-              "req": false,
-              "short": "Anime name",
-              "type": "`$STRING`"
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": false,
+              "sh": "Anime name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Premiered",
-              "req": false,
-              "short": "Premiere season",
-              "type": "`$STRING`"
+            "Premiered": {
+              "a": true,
+              "h": "Premiered",
+              "n": "Premiered",
+              "r": false,
+              "sh": "Premiere season",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "RatingsNum",
-              "req": false,
-              "short": "Number of ratings",
-              "type": "`$INTEGER`"
+            "RatingsNum": {
+              "a": true,
+              "h": "Ratings Num",
+              "n": "RatingsNum",
+              "r": false,
+              "sh": "Number of ratings",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "Status",
-              "req": false,
-              "short": "Airing status",
-              "type": "`$STRING`"
+            "Status": {
+              "a": true,
+              "h": "Status",
+              "n": "Status",
+              "r": false,
+              "sh": "Airing status",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Studios",
-              "req": false,
-              "short": "Production studio",
-              "type": "`$STRING`"
+            "Studios": {
+              "a": true,
+              "h": "Studios",
+              "n": "Studios",
+              "r": false,
+              "sh": "Production studio",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "Synonyms",
-              "req": false,
-              "short": "Alternative names",
-              "type": "`$STRING`"
+            "Synonyms": {
+              "a": true,
+              "h": "Synonyms",
+              "n": "Synonyms",
+              "r": false,
+              "sh": "Alternative names",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "epCount",
-              "req": false,
-              "short": "Episode count",
-              "type": "`$INTEGER`"
+            "epCount": {
+              "a": true,
+              "h": "Ep Count",
+              "n": "epCount",
+              "r": false,
+              "sh": "Episode count",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "finder",
-              "req": false,
-              "short": "Slug identifier",
-              "type": "`$STRING`"
+            "finder": {
+              "a": true,
+              "h": "Finder",
+              "n": "finder",
+              "r": false,
+              "sh": "Slug identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Anime ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Anime ID",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1193,34 +1066,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/search/{name}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "name",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "name",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/search/{name}",
-                    "json": "{\"operationId\":\"quickSearch\",\"parameters\":[{\"description\":\"Search query — URL-encode spaces as %20\",\"in\":\"path\",\"name\":\"name\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"Aired\":{\"description\":\"Air date range\",\"type\":\"string\"},\"Cover\":{\"description\":\"Cover image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"DescripTion\":{\"description\":\"Anime description\",\"type\":\"string\"},\"Duration\":{\"description\":\"Episode duration\",\"type\":\"string\"},\"Genres\":{\"description\":\"List of genres\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ImagePath\":{\"description\":\"Image path or URL. Prepend https://anipub.xyz/ if relative\",\"type\":\"string\"},\"MALScore\":{\"description\":\"MyAnimeList score\",\"type\":\"string\"},\"Name\":{\"description\":\"Anime name\",\"type\":\"string\"},\"Premiered\":{\"description\":\"Premiere season\",\"type\":\"string\"},\"RatingsNum\":{\"description\":\"Number of ratings\",\"type\":\"integer\"},\"Status\":{\"description\":\"Airing status\",\"type\":\"string\"},\"Studios\":{\"description\":\"Production studio\",\"type\":\"string\"},\"Synonyms\":{\"description\":\"Alternative names\",\"type\":\"string\"},\"_id\":{\"description\":\"Anime ID\",\"type\":\"integer\"},\"epCount\":{\"description\":\"Episode count\",\"type\":\"integer\"},\"finder\":{\"description\":\"Slug identifier\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Array of matching anime\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/search/{name}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/search/{name}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "name": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1231,14 +1108,350 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "searchall": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "currentPage": {
+              "a": true,
+              "h": "Current Page",
+              "n": "currentPage",
+              "r": false,
+              "sh": "Current page number",
+              "t": "`$INTEGER`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "wholePage": {
+              "a": true,
+              "h": "Whole Page",
+              "n": "wholePage",
+              "r": false,
+              "sh": "Array of anime on current page",
+              "t": "`$ARRAY`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "searchall",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/searchall/{name}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "name",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/searchall/{name}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "page"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "name": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "searchall"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "sort": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "Aired": {
+              "a": true,
+              "h": "Aired",
+              "n": "Aired",
+              "r": false,
+              "sh": "Air date range",
+              "t": "`$STRING`"
+            },
+            "Cover": {
+              "a": true,
+              "h": "Cover",
+              "n": "Cover",
+              "r": false,
+              "sh": "Cover image path or URL.",
+              "t": "`$STRING`"
+            },
+            "DescripTion": {
+              "a": true,
+              "h": "Descrip Tion",
+              "n": "DescripTion",
+              "r": false,
+              "sh": "Anime description",
+              "t": "`$STRING`"
+            },
+            "Duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "Duration",
+              "r": false,
+              "sh": "Episode duration",
+              "t": "`$STRING`"
+            },
+            "Genres": {
+              "a": true,
+              "h": "Genres",
+              "n": "Genres",
+              "r": false,
+              "sh": "List of genres",
+              "t": "`$ARRAY`"
+            },
+            "ImagePath": {
+              "a": true,
+              "h": "Image Path",
+              "n": "ImagePath",
+              "r": false,
+              "sh": "Image path or URL.",
+              "t": "`$STRING`"
+            },
+            "MALScore": {
+              "a": true,
+              "h": "Mal Score",
+              "n": "MALScore",
+              "r": false,
+              "sh": "MyAnimeList score",
+              "t": "`$STRING`"
+            },
+            "Name": {
+              "a": true,
+              "h": "Name",
+              "n": "Name",
+              "r": false,
+              "sh": "Anime name",
+              "t": "`$STRING`"
+            },
+            "Premiered": {
+              "a": true,
+              "h": "Premiered",
+              "n": "Premiered",
+              "r": false,
+              "sh": "Premiere season",
+              "t": "`$STRING`"
+            },
+            "RatingsNum": {
+              "a": true,
+              "h": "Ratings Num",
+              "n": "RatingsNum",
+              "r": false,
+              "sh": "Number of ratings",
+              "t": "`$INTEGER`"
+            },
+            "Status": {
+              "a": true,
+              "h": "Status",
+              "n": "Status",
+              "r": false,
+              "sh": "Airing status",
+              "t": "`$STRING`"
+            },
+            "Studios": {
+              "a": true,
+              "h": "Studios",
+              "n": "Studios",
+              "r": false,
+              "sh": "Production studio",
+              "t": "`$STRING`"
+            },
+            "Synonyms": {
+              "a": true,
+              "h": "Synonyms",
+              "n": "Synonyms",
+              "r": false,
+              "sh": "Alternative names",
+              "t": "`$STRING`"
+            },
+            "epCount": {
+              "a": true,
+              "h": "Ep Count",
+              "n": "epCount",
+              "r": false,
+              "sh": "Episode count",
+              "t": "`$INTEGER`"
+            },
+            "finder": {
+              "a": true,
+              "h": "Finder",
+              "n": "finder",
+              "r": false,
+              "sh": "Slug identifier",
+              "t": "`$STRING`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Anime ID",
+              "t": "`$INTEGER`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "sort",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/sort",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "Action",
+                        "k": "query",
+                        "n": "genre",
+                        "or": "genre",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "One Piece",
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "ratefrom",
+                        "or": "ratefrom",
+                        "r": false,
+                        "t": "`$NUMBER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "rateto",
+                        "or": "rateto",
+                        "r": false,
+                        "t": "`$NUMBER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/sort",
+                  "q": {
+                    "exist": [
+                      "genre",
+                      "name",
+                      "page",
+                      "ratefrom",
+                      "rateto"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "sort"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.wholePage`"
                   }
                 }
               ]
@@ -1253,35 +1466,39 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ep",
-              "req": false,
-              "short": "Episodes 2+ streaming links",
-              "type": "`$ARRAY`"
+          "fields": {
+            "ep": {
+              "a": true,
+              "h": "Ep",
+              "n": "ep",
+              "r": false,
+              "sh": "Episodes 2+ streaming links",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "link",
-              "req": false,
-              "short": "Episode 1 streaming link with src= prefix",
-              "type": "`$STRING`"
+            "link": {
+              "a": true,
+              "h": "Link",
+              "n": "link",
+              "r": false,
+              "sh": "Episode 1 streaming link with src= prefix",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Anime name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Anime name",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1293,30 +1510,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v1/api/details/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 119,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 119,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /v1/api/details/{id}",
-                    "json": "{\"operationId\":\"getStreamingLinks\",\"parameters\":[{\"description\":\"Anime ID\",\"example\":119,\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"local\":{\"ep\":[{\"link\":\"src=https://...\"},{\"link\":\"src=https://...\"}],\"link\":\"src=https://...\",\"name\":\"Black Clover\"}},\"schema\":{\"properties\":{\"local\":{\"properties\":{\"ep\":{\"description\":\"Episodes 2+ streaming links\",\"items\":{\"properties\":{\"link\":{\"description\":\"Episode streaming link with src= prefix. Array index 0 = Episode 2, index 1 = Episode 3, etc.\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"link\":{\"description\":\"Episode 1 streaming link with src= prefix\",\"type\":\"string\"},\"name\":{\"description\":\"Anime name\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Streaming links for episodes\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Anime not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v1/api/details/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/v1/api/details/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "v1"
                     },
@@ -1330,12 +1552,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.local`"
                   }
@@ -1764,28 +1981,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "anime_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "anime_ref01",
                 "srcdatavar": "anime_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1805,23 +2022,55 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "find_ref01",
                 "srcdatavar": "find_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "find01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
                     "mark": "Mark01-find_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicFindbyGenreFlow": {
+          "active": true,
+          "entity": "findby_genre",
+          "key$": "BasicFindbyGenreFlow",
+          "kind": "basic",
+          "name": "BasicFindbyGenreFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "findby_genre_ref01",
+                "srcdatavar": "findby_genre_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "findby_genre01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-findby_genre_ref01"
                   }
                 }
               ]
@@ -1837,19 +2086,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "full_anime_detail_ref01",
                 "srcdatavar": "full_anime_detail_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "full_anime_detail01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1869,71 +2118,23 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "info_ref01",
                 "srcdatavar": "info_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "info01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
                     "mark": "Mark01-info_ref01"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "BasicPaginatedAnimeListFlow": {
-          "active": true,
-          "entity": "paginated_anime_list",
-          "key$": "BasicPaginatedAnimeListFlow",
-          "kind": "basic",
-          "name": "BasicPaginatedAnimeListFlow",
-          "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "paginated_anime_list_ref01"
-                  }
-                }
-              ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "paginated_anime_list_ref01",
-                "srcdatavar": "paginated_anime_list_ref01_data",
-                "suffix": "_dt0"
-              },
-              "match": {
-                "id": "paginated_anime_list01"
-              },
-              "op": "load",
-              "spec": [],
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-paginated_anime_list_ref01"
                   }
                 }
               ]
@@ -1949,13 +2150,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1975,23 +2176,81 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "search_ref01",
                 "srcdatavar": "search_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "search01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
                     "mark": "Mark01-search_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSearchallFlow": {
+          "active": true,
+          "entity": "searchall",
+          "key$": "BasicSearchallFlow",
+          "kind": "basic",
+          "name": "BasicSearchallFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "searchall_ref01",
+                "srcdatavar": "searchall_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "searchall01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-searchall_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSortFlow": {
+          "active": true,
+          "entity": "sort",
+          "key$": "BasicSortFlow",
+          "kind": "basic",
+          "name": "BasicSortFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "sort_ref01"
                   }
                 }
               ]
@@ -2007,19 +2266,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "streaming_detail_ref01",
                 "srcdatavar": "streaming_detail_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "streaming_detail01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

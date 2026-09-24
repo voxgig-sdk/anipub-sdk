@@ -1,0 +1,32 @@
+# BasicInfoFlow
+
+main: kit: flow: BasicInfoFlow:
+{
+  entity: "info",
+  kind: "basic",
+  name: "BasicInfoFlow",
+  step: [
+    {
+      i: {
+        ref: "info_ref01",
+        srcdatavar: "info_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "info01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-info_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInfoFlow"
+}

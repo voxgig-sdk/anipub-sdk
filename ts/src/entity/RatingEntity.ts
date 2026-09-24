@@ -19,7 +19,6 @@ import type {
   RatingListMatch,
 } from '../AnipubTypes'
 
-// TODO: needs Entity superclass
 class RatingEntity extends AnipubEntityBase<Rating> {
 
   constructor(client: AnipubSDK, entopts: any) {

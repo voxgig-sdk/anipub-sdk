@@ -73,12 +73,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-ratings, err := client.Rating(nil).List(nil, nil)
+anime, err := client.Anime(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = ratings
+_ = anime
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -142,13 +142,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-rating, err := client.Rating(nil).List(
+anime, err := client.Anime(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(rating) // the returned mock data
+fmt.Println(anime) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -227,11 +227,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Anime` | `(data map[string]any) AnipubEntity` | Create an Anime entity instance. |
 | `Find` | `(data map[string]any) AnipubEntity` | Create a Find entity instance. |
+| `FindbyGenre` | `(data map[string]any) AnipubEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail` | `(data map[string]any) AnipubEntity` | Create a FullAnimeDetail entity instance. |
 | `Info` | `(data map[string]any) AnipubEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList` | `(data map[string]any) AnipubEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating` | `(data map[string]any) AnipubEntity` | Create a Rating entity instance. |
 | `Search` | `(data map[string]any) AnipubEntity` | Create a Search entity instance. |
+| `Searchall` | `(data map[string]any) AnipubEntity` | Create a Searchall entity instance. |
+| `Sort` | `(data map[string]any) AnipubEntity` | Create a Sort entity instance. |
 | `StreamingDetail` | `(data map[string]any) AnipubEntity` | Create a StreamingDetail entity instance. |
 
 ### Entity interface (AnipubEntity)
@@ -295,6 +297,18 @@ Operations: Load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `"currentPage"` | Current page number |
+| `"id"` |  |
+| `"wholePage"` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -332,33 +346,6 @@ API path: `/anime/api/details/{id}`
 Operations: Load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `"Aired"` | Air date range |
-| `"Cover"` | Cover image path or URL. |
-| `"DescripTion"` | Anime description |
-| `"Duration"` | Episode duration |
-| `"Genres"` | List of genres |
-| `"ImagePath"` | Image path or URL. |
-| `"MALScore"` | MyAnimeList score |
-| `"Name"` | Anime name |
-| `"Premiered"` | Premiere season |
-| `"RatingsNum"` | Number of ratings |
-| `"Status"` | Airing status |
-| `"Studios"` | Production studio |
-| `"Synonyms"` | Alternative names |
-| `"currentPage"` | Current page number |
-| `"epCount"` | Episode count |
-| `"finder"` | Slug identifier |
-| `"id"` | Anime ID |
-| `"wholePage"` | Array of anime on current page |
-
-Operations: List, Load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -409,6 +396,43 @@ API path: `/api/findbyrating`
 Operations: Load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `"currentPage"` | Current page number |
+| `"id"` |  |
+| `"wholePage"` | Array of anime on current page |
+
+Operations: Load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `"Aired"` | Air date range |
+| `"Cover"` | Cover image path or URL. |
+| `"DescripTion"` | Anime description |
+| `"Duration"` | Episode duration |
+| `"Genres"` | List of genres |
+| `"ImagePath"` | Image path or URL. |
+| `"MALScore"` | MyAnimeList score |
+| `"Name"` | Anime name |
+| `"Premiered"` | Premiere season |
+| `"RatingsNum"` | Number of ratings |
+| `"Status"` | Airing status |
+| `"Studios"` | Production studio |
+| `"Synonyms"` | Alternative names |
+| `"epCount"` | Episode count |
+| `"finder"` | Slug identifier |
+| `"id"` | Anime ID |
+
+Operations: List.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -500,6 +524,35 @@ fmt.Println(find) // the loaded record
 ```
 
 
+### FindbyGenre
+
+Create an instance: `findbyGenre := client.FindbyGenre(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `[]any` | Array of anime on current page |
+
+#### Example: Load
+
+```go
+findbyGenre, err := client.FindbyGenre(nil).Load(map[string]any{"id": "findby_genre_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(findbyGenre) // the loaded record
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `fullAnimeDetail := client.FullAnimeDetail(nil)`
@@ -569,61 +622,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(info) // the loaded record
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `paginatedAnimeList := client.PaginatedAnimeList(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `string` | Air date range |
-| `Cover` | `string` | Cover image path or URL. |
-| `DescripTion` | `string` | Anime description |
-| `Duration` | `string` | Episode duration |
-| `Genres` | `[]any` | List of genres |
-| `ImagePath` | `string` | Image path or URL. |
-| `MALScore` | `string` | MyAnimeList score |
-| `Name` | `string` | Anime name |
-| `Premiered` | `string` | Premiere season |
-| `RatingsNum` | `int` | Number of ratings |
-| `Status` | `string` | Airing status |
-| `Studios` | `string` | Production studio |
-| `Synonyms` | `string` | Alternative names |
-| `currentPage` | `int` | Current page number |
-| `epCount` | `int` | Episode count |
-| `finder` | `string` | Slug identifier |
-| `id` | `int` | Anime ID |
-| `wholePage` | `[]any` | Array of anime on current page |
-
-#### Example: Load
-
-```go
-paginatedAnimeList, err := client.PaginatedAnimeList(nil).Load(map[string]any{"genre": "genre"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(paginatedAnimeList) // the loaded record
-```
-
-#### Example: List
-
-```go
-paginatedAnimeLists, err := client.PaginatedAnimeList(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(paginatedAnimeLists) // the array of records
 ```
 
 
@@ -708,6 +706,77 @@ if err != nil {
     panic(err)
 }
 fmt.Println(search) // the loaded record
+```
+
+
+### Searchall
+
+Create an instance: `searchall := client.Searchall(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `int` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `[]any` | Array of anime on current page |
+
+#### Example: Load
+
+```go
+searchall, err := client.Searchall(nil).Load(map[string]any{"id": "searchall_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(searchall) // the loaded record
+```
+
+
+### Sort
+
+Create an instance: `sort := client.Sort(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `[]any` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `int` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `int` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `int` | Anime ID |
+
+#### Example: List
+
+```go
+sorts, err := client.Sort(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(sorts) // the array of records
 ```
 
 
@@ -894,15 +963,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `List`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-rating := client.Rating(nil)
-rating.List(nil, nil)
+anime := client.Anime(nil)
+anime.Load(nil, nil)
 
-// rating.Data() now returns the rating data from the last list
-// rating.Match() returns the last match criteria
+// anime.Data() now returns the anime data from the last load
+// anime.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

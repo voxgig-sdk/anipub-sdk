@@ -33,17 +33,14 @@ import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 const client = new AnipubSDK()
 ```
 
-### 3. Load a paginatedanimelist
+### 3. Load an anime
 
-PaginatedAnimeList is nested under genre, so provide the `genre`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const paginatedanimelist = await client.PaginatedAnimeList().load({
-    genre: 'example_genre',
-  })
-  console.log(paginatedanimelist)
+  const anime = await client.Anime().load()
+  console.log(anime)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -67,10 +64,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const ratings = await client.Rating().list()
-  console.log(ratings)
+  const anime = await client.Anime().load()
+  console.log(anime)
 } catch (err) {
-  console.error('list failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -134,10 +131,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AnipubSDK.test()
 
-const rating = await client.Rating().list()
-// rating is the entity, populated with mock response data
-// — call rating.data() for the record itself
-console.log(rating)
+const anime = await client.Anime().load()
+// anime is the entity, populated with mock response data
+// — call anime.data() for the record itself
+console.log(anime)
 ```
 
 You can also use the instance method:
@@ -152,14 +149,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Rating()
+const entity = client.Anime()
 
 // First call runs the operation and stores its result
-await entity.list()
+await entity.load()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -237,11 +234,13 @@ new AnipubSDK(options?: {
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Anime(data?)` | `AnimeEntity` | Create an Anime entity instance. |
 | `Find(data?)` | `FindEntity` | Create a Find entity instance. |
+| `FindbyGenre(data?)` | `FindbyGenreEntity` | Create a FindbyGenre entity instance. |
 | `FullAnimeDetail(data?)` | `FullAnimeDetailEntity` | Create a FullAnimeDetail entity instance. |
 | `Info(data?)` | `InfoEntity` | Create an Info entity instance. |
-| `PaginatedAnimeList(data?)` | `PaginatedAnimeListEntity` | Create a PaginatedAnimeList entity instance. |
 | `Rating(data?)` | `RatingEntity` | Create a Rating entity instance. |
 | `Search(data?)` | `SearchEntity` | Create a Search entity instance. |
+| `Searchall(data?)` | `SearchallEntity` | Create a Searchall entity instance. |
+| `Sort(data?)` | `SortEntity` | Create a Sort entity instance. |
 | `StreamingDetail(data?)` | `StreamingDetailEntity` | Create a StreamingDetail entity instance. |
 | `tester(testopts?, sdkopts?)` | `AnipubSDK` | Create a test-mode client instance. |
 
@@ -335,6 +334,18 @@ Operations: load.
 
 API path: `/api/find/{name}`
 
+#### FindbyGenre
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: load.
+
+API path: `/api/findbyGenre/{genre}`
+
 #### FullAnimeDetail
 
 | Field | Description |
@@ -372,33 +383,6 @@ API path: `/anime/api/details/{id}`
 Operations: load.
 
 API path: `/api/info/{id}`
-
-#### PaginatedAnimeList
-
-| Field | Description |
-| --- | --- |
-| `Aired` | Air date range |
-| `Cover` | Cover image path or URL. |
-| `DescripTion` | Anime description |
-| `Duration` | Episode duration |
-| `Genres` | List of genres |
-| `ImagePath` | Image path or URL. |
-| `MALScore` | MyAnimeList score |
-| `Name` | Anime name |
-| `Premiered` | Premiere season |
-| `RatingsNum` | Number of ratings |
-| `Status` | Airing status |
-| `Studios` | Production studio |
-| `Synonyms` | Alternative names |
-| `currentPage` | Current page number |
-| `epCount` | Episode count |
-| `finder` | Slug identifier |
-| `id` | Anime ID |
-| `wholePage` | Array of anime on current page |
-
-Operations: list, load.
-
-API path: `/api/sort`
 
 #### Rating
 
@@ -449,6 +433,43 @@ API path: `/api/findbyrating`
 Operations: load.
 
 API path: `/api/search/{name}`
+
+#### Searchall
+
+| Field | Description |
+| --- | --- |
+| `currentPage` | Current page number |
+| `id` |  |
+| `wholePage` | Array of anime on current page |
+
+Operations: load.
+
+API path: `/api/searchall/{name}`
+
+#### Sort
+
+| Field | Description |
+| --- | --- |
+| `Aired` | Air date range |
+| `Cover` | Cover image path or URL. |
+| `DescripTion` | Anime description |
+| `Duration` | Episode duration |
+| `Genres` | List of genres |
+| `ImagePath` | Image path or URL. |
+| `MALScore` | MyAnimeList score |
+| `Name` | Anime name |
+| `Premiered` | Premiere season |
+| `RatingsNum` | Number of ratings |
+| `Status` | Airing status |
+| `Studios` | Production studio |
+| `Synonyms` | Alternative names |
+| `epCount` | Episode count |
+| `finder` | Slug identifier |
+| `id` | Anime ID |
+
+Operations: list.
+
+API path: `/api/sort`
 
 #### StreamingDetail
 
@@ -528,6 +549,31 @@ const find = await client.Find().load({ id: 'find_id' })
 ```
 
 
+### FindbyGenre
+
+Create an instance: `const findby_genre = client.FindbyGenre()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `number` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `any[]` | Array of anime on current page |
+
+#### Example: Load
+
+```ts
+const findby_genre = await client.FindbyGenre().load({ id: 'findby_genre_id' })
+```
+
+
 ### FullAnimeDetail
 
 Create an instance: `const full_anime_detail = client.FullAnimeDetail()`
@@ -589,53 +635,6 @@ Create an instance: `const info = client.Info()`
 
 ```ts
 const info = await client.Info().load({ id: 'info_id' })
-```
-
-
-### PaginatedAnimeList
-
-Create an instance: `const paginated_anime_list = client.PaginatedAnimeList()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-| `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `Aired` | `string` | Air date range |
-| `Cover` | `string` | Cover image path or URL. |
-| `DescripTion` | `string` | Anime description |
-| `Duration` | `string` | Episode duration |
-| `Genres` | `any[]` | List of genres |
-| `ImagePath` | `string` | Image path or URL. |
-| `MALScore` | `string` | MyAnimeList score |
-| `Name` | `string` | Anime name |
-| `Premiered` | `string` | Premiere season |
-| `RatingsNum` | `number` | Number of ratings |
-| `Status` | `string` | Airing status |
-| `Studios` | `string` | Production studio |
-| `Synonyms` | `string` | Alternative names |
-| `currentPage` | `number` | Current page number |
-| `epCount` | `number` | Episode count |
-| `finder` | `string` | Slug identifier |
-| `id` | `number` | Anime ID |
-| `wholePage` | `any[]` | Array of anime on current page |
-
-#### Example: Load
-
-```ts
-const paginated_anime_list = await client.PaginatedAnimeList().load({ genre: 'genre' })
-```
-
-#### Example: List
-
-```ts
-const paginated_anime_lists = await client.PaginatedAnimeList().list()
 ```
 
 
@@ -712,6 +711,69 @@ Create an instance: `const search = client.Search()`
 
 ```ts
 const search = await client.Search().load({ id: 'search_id' })
+```
+
+
+### Searchall
+
+Create an instance: `const searchall = client.Searchall()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currentPage` | `number` | Current page number |
+| `id` | `string` |  |
+| `wholePage` | `any[]` | Array of anime on current page |
+
+#### Example: Load
+
+```ts
+const searchall = await client.Searchall().load({ id: 'searchall_id' })
+```
+
+
+### Sort
+
+Create an instance: `const sort = client.Sort()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `Aired` | `string` | Air date range |
+| `Cover` | `string` | Cover image path or URL. |
+| `DescripTion` | `string` | Anime description |
+| `Duration` | `string` | Episode duration |
+| `Genres` | `any[]` | List of genres |
+| `ImagePath` | `string` | Image path or URL. |
+| `MALScore` | `string` | MyAnimeList score |
+| `Name` | `string` | Anime name |
+| `Premiered` | `string` | Premiere season |
+| `RatingsNum` | `number` | Number of ratings |
+| `Status` | `string` | Airing status |
+| `Studios` | `string` | Production studio |
+| `Synonyms` | `string` | Alternative names |
+| `epCount` | `number` | Episode count |
+| `finder` | `string` | Slug identifier |
+| `id` | `number` | Anime ID |
+
+#### Example: List
+
+```ts
+const sorts = await client.Sort().list()
 ```
 
 
@@ -889,16 +951,16 @@ import { AnipubSDK } from '@voxgig-sdk/anipub-sdk'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const rating = client.Rating()
-await rating.list()
+const anime = client.Anime()
+await anime.load()
 
-// rating.data() now returns the rating data from the last `list`
-// rating.match() returns the last match criteria
+// anime.data() now returns the anime data from the last `load`
+// anime.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

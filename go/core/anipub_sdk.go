@@ -264,7 +264,6 @@ func (sdk *AnipubSDK) rawRequest(fetchargs map[string]any) (map[string]any, erro
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *AnipubSDK) rawRequest(fetchargs map[string]any) (map[string]any, erro
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *AnipubSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -354,6 +342,14 @@ func (sdk *AnipubSDK) Find(data map[string]any) AnipubEntity {
 }
 
 
+// FindbyGenre returns a FindbyGenre entity bound to this client.
+// Idiomatic usage: client.FindbyGenre(nil).List(nil, nil) or
+// client.FindbyGenre(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *AnipubSDK) FindbyGenre(data map[string]any) AnipubEntity {
+	return NewFindbyGenreEntityFunc(sdk, data)
+}
+
+
 // FullAnimeDetail returns a FullAnimeDetail entity bound to this client.
 // Idiomatic usage: client.FullAnimeDetail(nil).List(nil, nil) or
 // client.FullAnimeDetail(nil).Load(map[string]any{"id": ...}, nil).
@@ -370,14 +366,6 @@ func (sdk *AnipubSDK) Info(data map[string]any) AnipubEntity {
 }
 
 
-// PaginatedAnimeList returns a PaginatedAnimeList entity bound to this client.
-// Idiomatic usage: client.PaginatedAnimeList(nil).List(nil, nil) or
-// client.PaginatedAnimeList(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *AnipubSDK) PaginatedAnimeList(data map[string]any) AnipubEntity {
-	return NewPaginatedAnimeListEntityFunc(sdk, data)
-}
-
-
 // Rating returns a Rating entity bound to this client.
 // Idiomatic usage: client.Rating(nil).List(nil, nil) or
 // client.Rating(nil).Load(map[string]any{"id": ...}, nil).
@@ -391,6 +379,22 @@ func (sdk *AnipubSDK) Rating(data map[string]any) AnipubEntity {
 // client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AnipubSDK) Search(data map[string]any) AnipubEntity {
 	return NewSearchEntityFunc(sdk, data)
+}
+
+
+// Searchall returns a Searchall entity bound to this client.
+// Idiomatic usage: client.Searchall(nil).List(nil, nil) or
+// client.Searchall(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *AnipubSDK) Searchall(data map[string]any) AnipubEntity {
+	return NewSearchallEntityFunc(sdk, data)
+}
+
+
+// Sort returns a Sort entity bound to this client.
+// Idiomatic usage: client.Sort(nil).List(nil, nil) or
+// client.Sort(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *AnipubSDK) Sort(data map[string]any) AnipubEntity {
+	return NewSortEntityFunc(sdk, data)
 }
 
 

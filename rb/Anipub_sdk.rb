@@ -303,6 +303,13 @@ class AnipubSDK
   end
 
 
+  # Canonical facade: client.FindbyGenre.list / client.FindbyGenre.load({ "id" => ... })
+  def FindbyGenre(data = nil)
+    require_relative 'entity/findby_genre_entity'
+    FindbyGenreEntity.new(self, data)
+  end
+
+
   # Canonical facade: client.FullAnimeDetail.list / client.FullAnimeDetail.load({ "id" => ... })
   def FullAnimeDetail(data = nil)
     require_relative 'entity/full_anime_detail_entity'
@@ -317,13 +324,6 @@ class AnipubSDK
   end
 
 
-  # Canonical facade: client.PaginatedAnimeList.list / client.PaginatedAnimeList.load({ "id" => ... })
-  def PaginatedAnimeList(data = nil)
-    require_relative 'entity/paginated_anime_list_entity'
-    PaginatedAnimeListEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.Rating.list / client.Rating.load({ "id" => ... })
   def Rating(data = nil)
     require_relative 'entity/rating_entity'
@@ -335,6 +335,20 @@ class AnipubSDK
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.Searchall.list / client.Searchall.load({ "id" => ... })
+  def Searchall(data = nil)
+    require_relative 'entity/searchall_entity'
+    SearchallEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.Sort.list / client.Sort.load({ "id" => ... })
+  def Sort(data = nil)
+    require_relative 'entity/sort_entity'
+    SortEntity.new(self, data)
   end
 
 

@@ -110,11 +110,13 @@ def make_config():
             "entity": {
                 "anime": {},
                 "find": {},
+                "findby_genre": {},
                 "full_anime_detail": {},
                 "info": {},
-                "paginated_anime_list": {},
                 "rating": {},
                 "search": {},
+                "searchall": {},
+                "sort": {},
                 "streaming_detail": {},
             },
         },
@@ -123,23 +125,21 @@ def make_config():
         "fields": [
           {
             "name": "Genre",
+            "title": "Genre",
+            "type": "`$ANY`",
             "req": True,
             "short": "Genre as string or array of strings",
-            "type": "`$ANY`",
-            "union": {
-              "branches": 2,
-              "count": 1,
-              "depth": 0,
-            },
           },
           {
             "name": "Name",
+            "title": "Name",
+            "type": "`$STRING`",
             "req": True,
             "short": "Anime name to match",
-            "type": "`$STRING`",
           },
           {
             "name": "exists",
+            "title": "Exists",
             "type": "`$BOOLEAN`",
           },
         ],
@@ -150,7 +150,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/check",
@@ -162,15 +161,17 @@ def make_config():
                     "lit": "check",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "check",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -179,7 +180,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/getAll",
@@ -191,18 +191,19 @@ def make_config():
                     "lit": "getAll",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "getAll",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/getlast",
@@ -214,15 +215,17 @@ def make_config():
                     "lit": "getlast",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "getlast",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -235,19 +238,22 @@ def make_config():
         "fields": [
           {
             "name": "ep",
-            "short": "Episode count if found",
+            "title": "Ep",
             "type": "`$INTEGER`",
+            "short": "Episode count if found",
           },
           {
             "name": "exist",
+            "title": "Exist",
+            "type": "`$BOOLEAN`",
             "req": True,
             "short": "Whether anime exists",
-            "type": "`$BOOLEAN`",
           },
           {
             "name": "id",
-            "short": "Anime ID if found",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Anime ID if found",
           },
         ],
         "id": {
@@ -261,26 +267,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "One Piece",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/find/{name}",
-                "rename": {
-                  "param": {
-                    "name": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -292,20 +281,131 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "find",
                   "{id}",
                 ],
+                "rename": {
+                  "param": {
+                    "name": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "One Piece",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        "relations": {
+          "ancestors": [],
+        },
+      },
+      "findby_genre": {
+        "fields": [
+          {
+            "name": "currentPage",
+            "title": "Current Page",
+            "type": "`$INTEGER`",
+            "short": "Current page number",
+          },
+          {
+            "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "wholePage",
+            "title": "Whole Page",
+            "type": "`$ARRAY`",
+            "short": "Array of anime on current page",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
+        "name": "findby_genre",
+        "op": {
+          "load": {
+            "input": "data",
+            "name": "load",
+            "points": [
+              {
+                "kind": "http",
+                "method": "GET",
+                "orig": "/api/findbyGenre/{genre}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "findbyGenre",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
+                "parts": [
+                  "api",
+                  "findbyGenre",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "genre": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "genre",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "harem",
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                    "page",
+                  ],
+                },
               },
             ],
           },
@@ -318,19 +418,23 @@ def make_config():
         "fields": [
           {
             "name": "characters",
+            "title": "Characters",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "jikan",
-            "short": "MyAnimeList data from Jikan API",
+            "title": "Jikan",
             "type": "`$OBJECT`",
+            "short": "MyAnimeList data from Jikan API",
           },
           {
             "name": "local",
+            "title": "Local",
             "type": "`$OBJECT`",
           },
         ],
@@ -345,18 +449,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": 119,
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/anime/api/details/{id}",
@@ -374,21 +466,34 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "anime",
                   "api",
                   "details",
                   "{id}",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": 119,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -401,83 +506,99 @@ def make_config():
         "fields": [
           {
             "name": "Aired",
-            "short": "Air date range",
+            "title": "Aired",
             "type": "`$STRING`",
+            "short": "Air date range",
           },
           {
             "name": "Cover",
-            "short": "Cover image path or URL.",
+            "title": "Cover",
             "type": "`$STRING`",
+            "short": "Cover image path or URL.",
           },
           {
             "name": "DescripTion",
-            "short": "Anime description",
+            "title": "Descrip Tion",
             "type": "`$STRING`",
+            "short": "Anime description",
           },
           {
             "name": "Duration",
-            "short": "Episode duration",
+            "title": "Duration",
             "type": "`$STRING`",
+            "short": "Episode duration",
           },
           {
             "name": "Genres",
-            "short": "List of genres",
+            "title": "Genres",
             "type": "`$ARRAY`",
+            "short": "List of genres",
           },
           {
             "name": "ImagePath",
-            "short": "Image path or URL.",
+            "title": "Image Path",
             "type": "`$STRING`",
+            "short": "Image path or URL.",
           },
           {
             "name": "MALScore",
-            "short": "MyAnimeList score",
+            "title": "Mal Score",
             "type": "`$STRING`",
+            "short": "MyAnimeList score",
           },
           {
             "name": "Name",
-            "short": "Anime name",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Anime name",
           },
           {
             "name": "Premiered",
-            "short": "Premiere season",
+            "title": "Premiered",
             "type": "`$STRING`",
+            "short": "Premiere season",
           },
           {
             "name": "RatingsNum",
-            "short": "Number of ratings",
+            "title": "Ratings Num",
             "type": "`$INTEGER`",
+            "short": "Number of ratings",
           },
           {
             "name": "Status",
-            "short": "Airing status",
+            "title": "Status",
             "type": "`$STRING`",
+            "short": "Airing status",
           },
           {
             "name": "Studios",
-            "short": "Production studio",
+            "title": "Studios",
             "type": "`$STRING`",
+            "short": "Production studio",
           },
           {
             "name": "Synonyms",
-            "short": "Alternative names",
+            "title": "Synonyms",
             "type": "`$STRING`",
+            "short": "Alternative names",
           },
           {
             "name": "epCount",
-            "short": "Episode count",
+            "title": "Ep Count",
             "type": "`$INTEGER`",
+            "short": "Episode count",
           },
           {
             "name": "finder",
-            "short": "Slug identifier",
+            "title": "Finder",
             "type": "`$STRING`",
+            "short": "Slug identifier",
           },
           {
             "name": "id",
-            "short": "Anime ID",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Anime ID",
           },
         ],
         "id": {
@@ -491,18 +612,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "black-clover",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/info/{id}",
@@ -517,20 +626,33 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "info",
                   "{id}",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "black-clover",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -539,382 +661,103 @@ def make_config():
           "ancestors": [],
         },
       },
-      "paginated_anime_list": {
-        "fields": [
-          {
-            "name": "Aired",
-            "short": "Air date range",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Cover",
-            "short": "Cover image path or URL.",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "DescripTion",
-            "short": "Anime description",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Duration",
-            "short": "Episode duration",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Genres",
-            "short": "List of genres",
-            "type": "`$ARRAY`",
-          },
-          {
-            "name": "ImagePath",
-            "short": "Image path or URL.",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "MALScore",
-            "short": "MyAnimeList score",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Name",
-            "short": "Anime name",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Premiered",
-            "short": "Premiere season",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "RatingsNum",
-            "short": "Number of ratings",
-            "type": "`$INTEGER`",
-          },
-          {
-            "name": "Status",
-            "short": "Airing status",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Studios",
-            "short": "Production studio",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "Synonyms",
-            "short": "Alternative names",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "currentPage",
-            "short": "Current page number",
-            "type": "`$INTEGER`",
-          },
-          {
-            "name": "epCount",
-            "short": "Episode count",
-            "type": "`$INTEGER`",
-          },
-          {
-            "name": "finder",
-            "short": "Slug identifier",
-            "type": "`$STRING`",
-          },
-          {
-            "name": "id",
-            "short": "Anime ID",
-            "type": "`$INTEGER`",
-          },
-          {
-            "name": "wholePage",
-            "short": "Array of anime on current page",
-            "type": "`$ARRAY`",
-          },
-        ],
-        "id": {
-          "field": "id",
-          "name": "id",
-        },
-        "name": "paginated_anime_list",
-        "op": {
-          "list": {
-            "input": "data",
-            "name": "list",
-            "points": [
-              {
-                "args": {
-                  "query": [
-                    {
-                      "example": "Action",
-                      "kind": "query",
-                      "name": "genre",
-                      "orig": "genre",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "One Piece",
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "ratefrom",
-                      "orig": "ratefrom",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "rateto",
-                      "orig": "rateto",
-                      "type": "`$NUMBER`",
-                    },
-                  ],
-                },
-                "kind": "http",
-                "method": "GET",
-                "orig": "/api/sort",
-                "segments": [
-                  {
-                    "lit": "api",
-                  },
-                  {
-                    "lit": "sort",
-                  },
-                ],
-                "select": {
-                  "exist": [
-                    "genre",
-                    "name",
-                    "page",
-                    "ratefrom",
-                    "rateto",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.wholePage`",
-                },
-                "parts": [
-                  "api",
-                  "sort",
-                ],
-              },
-            ],
-          },
-          "load": {
-            "input": "data",
-            "name": "load",
-            "points": [
-              {
-                "args": {
-                  "params": [
-                    {
-                      "example": "harem",
-                      "kind": "param",
-                      "name": "genre",
-                      "orig": "genre",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
-                "kind": "http",
-                "method": "GET",
-                "orig": "/api/findbyGenre/{genre}",
-                "segments": [
-                  {
-                    "lit": "api",
-                  },
-                  {
-                    "lit": "findbyGenre",
-                  },
-                  {
-                    "var": "genre",
-                  },
-                ],
-                "select": {
-                  "exist": [
-                    "genre",
-                    "page",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "findbyGenre",
-                  "{genre}",
-                ],
-              },
-              {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "name",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
-                "kind": "http",
-                "method": "GET",
-                "orig": "/api/searchall/{name}",
-                "segments": [
-                  {
-                    "lit": "api",
-                  },
-                  {
-                    "lit": "searchall",
-                  },
-                  {
-                    "var": "name",
-                  },
-                ],
-                "select": {
-                  "exist": [
-                    "name",
-                    "page",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "searchall",
-                  "{name}",
-                ],
-              },
-            ],
-          },
-        },
-        "relations": {
-          "ancestors": [
-            [
-              "findby_genre",
-            ],
-            [
-              "searchall",
-            ],
-          ],
-        },
-      },
       "rating": {
         "fields": [
           {
             "name": "Aired",
-            "short": "Air date range",
+            "title": "Aired",
             "type": "`$STRING`",
+            "short": "Air date range",
           },
           {
             "name": "Cover",
-            "short": "Cover image path or URL.",
+            "title": "Cover",
             "type": "`$STRING`",
+            "short": "Cover image path or URL.",
           },
           {
             "name": "DescripTion",
-            "short": "Anime description",
+            "title": "Descrip Tion",
             "type": "`$STRING`",
+            "short": "Anime description",
           },
           {
             "name": "Duration",
-            "short": "Episode duration",
+            "title": "Duration",
             "type": "`$STRING`",
+            "short": "Episode duration",
           },
           {
             "name": "Genres",
-            "short": "List of genres",
+            "title": "Genres",
             "type": "`$ARRAY`",
+            "short": "List of genres",
           },
           {
             "name": "ImagePath",
-            "short": "Image path or URL.",
+            "title": "Image Path",
             "type": "`$STRING`",
+            "short": "Image path or URL.",
           },
           {
             "name": "MALScore",
-            "short": "MyAnimeList score",
+            "title": "Mal Score",
             "type": "`$STRING`",
+            "short": "MyAnimeList score",
           },
           {
             "name": "Name",
-            "short": "Anime name",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Anime name",
           },
           {
             "name": "Premiered",
-            "short": "Premiere season",
+            "title": "Premiered",
             "type": "`$STRING`",
+            "short": "Premiere season",
           },
           {
             "name": "RatingsNum",
-            "short": "Number of ratings",
+            "title": "Ratings Num",
             "type": "`$INTEGER`",
+            "short": "Number of ratings",
           },
           {
             "name": "Status",
-            "short": "Airing status",
+            "title": "Status",
             "type": "`$STRING`",
+            "short": "Airing status",
           },
           {
             "name": "Studios",
-            "short": "Production studio",
+            "title": "Studios",
             "type": "`$STRING`",
+            "short": "Production studio",
           },
           {
             "name": "Synonyms",
-            "short": "Alternative names",
+            "title": "Synonyms",
             "type": "`$STRING`",
+            "short": "Alternative names",
           },
           {
             "name": "epCount",
-            "short": "Episode count",
+            "title": "Ep Count",
             "type": "`$INTEGER`",
+            "short": "Episode count",
           },
           {
             "name": "finder",
-            "short": "Slug identifier",
+            "title": "Finder",
             "type": "`$STRING`",
+            "short": "Slug identifier",
           },
           {
             "name": "id",
-            "short": "Anime ID",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Anime ID",
           },
         ],
         "id": {
@@ -928,17 +771,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/findbyrating",
@@ -950,19 +782,31 @@ def make_config():
                     "lit": "findbyrating",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "findbyrating",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.AniData`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.AniData`",
-                },
-                "parts": [
-                  "api",
-                  "findbyrating",
-                ],
               },
             ],
           },
@@ -975,83 +819,99 @@ def make_config():
         "fields": [
           {
             "name": "Aired",
-            "short": "Air date range",
+            "title": "Aired",
             "type": "`$STRING`",
+            "short": "Air date range",
           },
           {
             "name": "Cover",
-            "short": "Cover image path or URL.",
+            "title": "Cover",
             "type": "`$STRING`",
+            "short": "Cover image path or URL.",
           },
           {
             "name": "DescripTion",
-            "short": "Anime description",
+            "title": "Descrip Tion",
             "type": "`$STRING`",
+            "short": "Anime description",
           },
           {
             "name": "Duration",
-            "short": "Episode duration",
+            "title": "Duration",
             "type": "`$STRING`",
+            "short": "Episode duration",
           },
           {
             "name": "Genres",
-            "short": "List of genres",
+            "title": "Genres",
             "type": "`$ARRAY`",
+            "short": "List of genres",
           },
           {
             "name": "ImagePath",
-            "short": "Image path or URL.",
+            "title": "Image Path",
             "type": "`$STRING`",
+            "short": "Image path or URL.",
           },
           {
             "name": "MALScore",
-            "short": "MyAnimeList score",
+            "title": "Mal Score",
             "type": "`$STRING`",
+            "short": "MyAnimeList score",
           },
           {
             "name": "Name",
-            "short": "Anime name",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Anime name",
           },
           {
             "name": "Premiered",
-            "short": "Premiere season",
+            "title": "Premiered",
             "type": "`$STRING`",
+            "short": "Premiere season",
           },
           {
             "name": "RatingsNum",
-            "short": "Number of ratings",
+            "title": "Ratings Num",
             "type": "`$INTEGER`",
+            "short": "Number of ratings",
           },
           {
             "name": "Status",
-            "short": "Airing status",
+            "title": "Status",
             "type": "`$STRING`",
+            "short": "Airing status",
           },
           {
             "name": "Studios",
-            "short": "Production studio",
+            "title": "Studios",
             "type": "`$STRING`",
+            "short": "Production studio",
           },
           {
             "name": "Synonyms",
-            "short": "Alternative names",
+            "title": "Synonyms",
             "type": "`$STRING`",
+            "short": "Alternative names",
           },
           {
             "name": "epCount",
-            "short": "Episode count",
+            "title": "Ep Count",
             "type": "`$INTEGER`",
+            "short": "Episode count",
           },
           {
             "name": "finder",
-            "short": "Slug identifier",
+            "title": "Finder",
             "type": "`$STRING`",
+            "short": "Slug identifier",
           },
           {
             "name": "id",
-            "short": "Anime ID",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Anime ID",
           },
         ],
         "id": {
@@ -1065,25 +925,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "name",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/search/{name}",
-                "rename": {
-                  "param": {
-                    "name": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -1095,20 +939,315 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "search",
                   "{id}",
                 ],
+                "rename": {
+                  "param": {
+                    "name": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        "relations": {
+          "ancestors": [],
+        },
+      },
+      "searchall": {
+        "fields": [
+          {
+            "name": "currentPage",
+            "title": "Current Page",
+            "type": "`$INTEGER`",
+            "short": "Current page number",
+          },
+          {
+            "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "wholePage",
+            "title": "Whole Page",
+            "type": "`$ARRAY`",
+            "short": "Array of anime on current page",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
+        "name": "searchall",
+        "op": {
+          "load": {
+            "input": "data",
+            "name": "load",
+            "points": [
+              {
+                "kind": "http",
+                "method": "GET",
+                "orig": "/api/searchall/{name}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "searchall",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
+                "parts": [
+                  "api",
+                  "searchall",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "name": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                    "page",
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        "relations": {
+          "ancestors": [],
+        },
+      },
+      "sort": {
+        "fields": [
+          {
+            "name": "Aired",
+            "title": "Aired",
+            "type": "`$STRING`",
+            "short": "Air date range",
+          },
+          {
+            "name": "Cover",
+            "title": "Cover",
+            "type": "`$STRING`",
+            "short": "Cover image path or URL.",
+          },
+          {
+            "name": "DescripTion",
+            "title": "Descrip Tion",
+            "type": "`$STRING`",
+            "short": "Anime description",
+          },
+          {
+            "name": "Duration",
+            "title": "Duration",
+            "type": "`$STRING`",
+            "short": "Episode duration",
+          },
+          {
+            "name": "Genres",
+            "title": "Genres",
+            "type": "`$ARRAY`",
+            "short": "List of genres",
+          },
+          {
+            "name": "ImagePath",
+            "title": "Image Path",
+            "type": "`$STRING`",
+            "short": "Image path or URL.",
+          },
+          {
+            "name": "MALScore",
+            "title": "Mal Score",
+            "type": "`$STRING`",
+            "short": "MyAnimeList score",
+          },
+          {
+            "name": "Name",
+            "title": "Name",
+            "type": "`$STRING`",
+            "short": "Anime name",
+          },
+          {
+            "name": "Premiered",
+            "title": "Premiered",
+            "type": "`$STRING`",
+            "short": "Premiere season",
+          },
+          {
+            "name": "RatingsNum",
+            "title": "Ratings Num",
+            "type": "`$INTEGER`",
+            "short": "Number of ratings",
+          },
+          {
+            "name": "Status",
+            "title": "Status",
+            "type": "`$STRING`",
+            "short": "Airing status",
+          },
+          {
+            "name": "Studios",
+            "title": "Studios",
+            "type": "`$STRING`",
+            "short": "Production studio",
+          },
+          {
+            "name": "Synonyms",
+            "title": "Synonyms",
+            "type": "`$STRING`",
+            "short": "Alternative names",
+          },
+          {
+            "name": "epCount",
+            "title": "Ep Count",
+            "type": "`$INTEGER`",
+            "short": "Episode count",
+          },
+          {
+            "name": "finder",
+            "title": "Finder",
+            "type": "`$STRING`",
+            "short": "Slug identifier",
+          },
+          {
+            "name": "id",
+            "title": "Id",
+            "type": "`$INTEGER`",
+            "short": "Anime ID",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
+        "name": "sort",
+        "op": {
+          "list": {
+            "input": "data",
+            "name": "list",
+            "points": [
+              {
+                "kind": "http",
+                "method": "GET",
+                "orig": "/api/sort",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "sort",
+                  },
+                ],
+                "parts": [
+                  "api",
+                  "sort",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.wholePage`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "genre",
+                      "orig": "genre",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "Action",
+                    },
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "One Piece",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "ratefrom",
+                      "orig": "ratefrom",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "rateto",
+                      "orig": "rateto",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "genre",
+                    "name",
+                    "page",
+                    "ratefrom",
+                    "rateto",
+                  ],
+                },
               },
             ],
           },
@@ -1121,22 +1260,26 @@ def make_config():
         "fields": [
           {
             "name": "ep",
-            "short": "Episodes 2+ streaming links",
+            "title": "Ep",
             "type": "`$ARRAY`",
+            "short": "Episodes 2+ streaming links",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "link",
-            "short": "Episode 1 streaming link with src= prefix",
+            "title": "Link",
             "type": "`$STRING`",
+            "short": "Episode 1 streaming link with src= prefix",
           },
           {
             "name": "name",
-            "short": "Anime name",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Anime name",
           },
         ],
         "id": {
@@ -1150,18 +1293,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": 119,
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v1/api/details/{id}",
@@ -1179,21 +1310,34 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.local`",
-                },
                 "parts": [
                   "v1",
                   "api",
                   "details",
                   "{id}",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.local`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": 119,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },

@@ -377,6 +377,20 @@ function AnipubSDK:Find(data)
 end
 
 
+-- Idiomatic facade: client:FindbyGenre():list() / client:FindbyGenre():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AnipubSDK:FindbyGenre(data)
+  local EntityMod = require("entity.findby_genre_entity")
+  if data == nil then
+    if self._findby_genre == nil then
+      self._findby_genre = EntityMod.new(self, nil)
+    end
+    return self._findby_genre
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:FullAnimeDetail():list() / client:FullAnimeDetail():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function AnipubSDK:FullAnimeDetail(data)
@@ -405,20 +419,6 @@ function AnipubSDK:Info(data)
 end
 
 
--- Idiomatic facade: client:PaginatedAnimeList():list() / client:PaginatedAnimeList():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function AnipubSDK:PaginatedAnimeList(data)
-  local EntityMod = require("entity.paginated_anime_list_entity")
-  if data == nil then
-    if self._paginated_anime_list == nil then
-      self._paginated_anime_list = EntityMod.new(self, nil)
-    end
-    return self._paginated_anime_list
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:Rating():list() / client:Rating():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function AnipubSDK:Rating(data)
@@ -442,6 +442,34 @@ function AnipubSDK:Search(data)
       self._search = EntityMod.new(self, nil)
     end
     return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Searchall():list() / client:Searchall():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AnipubSDK:Searchall(data)
+  local EntityMod = require("entity.searchall_entity")
+  if data == nil then
+    if self._searchall == nil then
+      self._searchall = EntityMod.new(self, nil)
+    end
+    return self._searchall
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Sort():list() / client:Sort():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AnipubSDK:Sort(data)
+  local EntityMod = require("entity.sort_entity")
+  if data == nil then
+    if self._sort == nil then
+      self._sort = EntityMod.new(self, nil)
+    end
+    return self._sort
   end
   return EntityMod.new(self, data)
 end

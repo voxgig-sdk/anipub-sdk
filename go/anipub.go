@@ -47,20 +47,26 @@ func init() {
 	core.NewFindEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewFindEntity(client, entopts)
 	}
+	core.NewFindbyGenreEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
+		return entity.NewFindbyGenreEntity(client, entopts)
+	}
 	core.NewFullAnimeDetailEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewFullAnimeDetailEntity(client, entopts)
 	}
 	core.NewInfoEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewInfoEntity(client, entopts)
 	}
-	core.NewPaginatedAnimeListEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
-		return entity.NewPaginatedAnimeListEntity(client, entopts)
-	}
 	core.NewRatingEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewRatingEntity(client, entopts)
 	}
 	core.NewSearchEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewSearchEntity(client, entopts)
+	}
+	core.NewSearchallEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
+		return entity.NewSearchallEntity(client, entopts)
+	}
+	core.NewSortEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
+		return entity.NewSortEntity(client, entopts)
 	}
 	core.NewStreamingDetailEntityFunc = func(client *core.AnipubSDK, entopts map[string]any) core.AnipubEntity {
 		return entity.NewStreamingDetailEntity(client, entopts)

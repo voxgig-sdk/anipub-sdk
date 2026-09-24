@@ -20,7 +20,7 @@ import (
 const prompt = "anipub"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "anime find full_anime_detail info paginated_anime_list rating search streaming_detail"
+const entitiesHelp = "anime find findby_genre full_anime_detail info rating search searchall sort streaming_detail"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

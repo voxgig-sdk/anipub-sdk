@@ -2,8 +2,8 @@
 
 # Typed models for the Anipub SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -82,6 +82,36 @@ Find = Struct.new(
 #   @return [String]
 FindLoadMatch = Struct.new(
   :id,
+  keyword_init: true
+)
+
+# FindbyGenre entity data model.
+#
+# @!attribute [rw] currentPage
+#   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] wholePage
+#   @return [Array, nil]
+FindbyGenre = Struct.new(
+  :currentPage,
+  :id,
+  :wholePage,
+  keyword_init: true
+)
+
+# Request payload for FindbyGenre#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+FindbyGenreLoadMatch = Struct.new(
+  :id,
+  :page,
   keyword_init: true
 )
 
@@ -190,121 +220,6 @@ Info = Struct.new(
 #   @return [String]
 InfoLoadMatch = Struct.new(
   :id,
-  keyword_init: true
-)
-
-# PaginatedAnimeList entity data model.
-#
-# @!attribute [rw] Aired
-#   @return [String, nil]
-#
-# @!attribute [rw] Cover
-#   @return [String, nil]
-#
-# @!attribute [rw] DescripTion
-#   @return [String, nil]
-#
-# @!attribute [rw] Duration
-#   @return [String, nil]
-#
-# @!attribute [rw] Genres
-#   @return [Array, nil]
-#
-# @!attribute [rw] ImagePath
-#   @return [String, nil]
-#
-# @!attribute [rw] MALScore
-#   @return [String, nil]
-#
-# @!attribute [rw] Name
-#   @return [String, nil]
-#
-# @!attribute [rw] Premiered
-#   @return [String, nil]
-#
-# @!attribute [rw] RatingsNum
-#   @return [Integer, nil]
-#
-# @!attribute [rw] Status
-#   @return [String, nil]
-#
-# @!attribute [rw] Studios
-#   @return [String, nil]
-#
-# @!attribute [rw] Synonyms
-#   @return [String, nil]
-#
-# @!attribute [rw] currentPage
-#   @return [Integer, nil]
-#
-# @!attribute [rw] epCount
-#   @return [Integer, nil]
-#
-# @!attribute [rw] finder
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] wholePage
-#   @return [Array, nil]
-PaginatedAnimeList = Struct.new(
-  :Aired,
-  :Cover,
-  :DescripTion,
-  :Duration,
-  :Genres,
-  :ImagePath,
-  :MALScore,
-  :Name,
-  :Premiered,
-  :RatingsNum,
-  :Status,
-  :Studios,
-  :Synonyms,
-  :currentPage,
-  :epCount,
-  :finder,
-  :id,
-  :wholePage,
-  keyword_init: true
-)
-
-# Request payload for PaginatedAnimeList#load.
-#
-# @!attribute [rw] genre
-#   @return [String]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-PaginatedAnimeListLoadMatch = Struct.new(
-  :genre,
-  :page,
-  keyword_init: true
-)
-
-# Request payload for PaginatedAnimeList#list.
-#
-# @!attribute [rw] genre
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] page
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ratefrom
-#   @return [Float, nil]
-#
-# @!attribute [rw] rateto
-#   @return [Float, nil]
-PaginatedAnimeListListMatch = Struct.new(
-  :genre,
-  :name,
-  :page,
-  :ratefrom,
-  :rateto,
   keyword_init: true
 )
 
@@ -461,6 +376,130 @@ Search = Struct.new(
 #   @return [String]
 SearchLoadMatch = Struct.new(
   :id,
+  keyword_init: true
+)
+
+# Searchall entity data model.
+#
+# @!attribute [rw] currentPage
+#   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] wholePage
+#   @return [Array, nil]
+Searchall = Struct.new(
+  :currentPage,
+  :id,
+  :wholePage,
+  keyword_init: true
+)
+
+# Request payload for Searchall#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+SearchallLoadMatch = Struct.new(
+  :id,
+  :page,
+  keyword_init: true
+)
+
+# Sort entity data model.
+#
+# @!attribute [rw] Aired
+#   @return [String, nil]
+#
+# @!attribute [rw] Cover
+#   @return [String, nil]
+#
+# @!attribute [rw] DescripTion
+#   @return [String, nil]
+#
+# @!attribute [rw] Duration
+#   @return [String, nil]
+#
+# @!attribute [rw] Genres
+#   @return [Array, nil]
+#
+# @!attribute [rw] ImagePath
+#   @return [String, nil]
+#
+# @!attribute [rw] MALScore
+#   @return [String, nil]
+#
+# @!attribute [rw] Name
+#   @return [String, nil]
+#
+# @!attribute [rw] Premiered
+#   @return [String, nil]
+#
+# @!attribute [rw] RatingsNum
+#   @return [Integer, nil]
+#
+# @!attribute [rw] Status
+#   @return [String, nil]
+#
+# @!attribute [rw] Studios
+#   @return [String, nil]
+#
+# @!attribute [rw] Synonyms
+#   @return [String, nil]
+#
+# @!attribute [rw] epCount
+#   @return [Integer, nil]
+#
+# @!attribute [rw] finder
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+Sort = Struct.new(
+  :Aired,
+  :Cover,
+  :DescripTion,
+  :Duration,
+  :Genres,
+  :ImagePath,
+  :MALScore,
+  :Name,
+  :Premiered,
+  :RatingsNum,
+  :Status,
+  :Studios,
+  :Synonyms,
+  :epCount,
+  :finder,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Sort#list.
+#
+# @!attribute [rw] genre
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ratefrom
+#   @return [Float, nil]
+#
+# @!attribute [rw] rateto
+#   @return [Float, nil]
+SortListMatch = Struct.new(
+  :genre,
+  :name,
+  :page,
+  :ratefrom,
+  :rateto,
   keyword_init: true
 )
 

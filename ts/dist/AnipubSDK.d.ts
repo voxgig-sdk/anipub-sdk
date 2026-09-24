@@ -1,10 +1,12 @@
 import { AnimeEntity } from './entity/AnimeEntity';
 import { FindEntity } from './entity/FindEntity';
+import { FindbyGenreEntity } from './entity/FindbyGenreEntity';
 import { FullAnimeDetailEntity } from './entity/FullAnimeDetailEntity';
 import { InfoEntity } from './entity/InfoEntity';
-import { PaginatedAnimeListEntity } from './entity/PaginatedAnimeListEntity';
 import { RatingEntity } from './entity/RatingEntity';
 import { SearchEntity } from './entity/SearchEntity';
+import { SearchallEntity } from './entity/SearchallEntity';
+import { SortEntity } from './entity/SortEntity';
 import { StreamingDetailEntity } from './entity/StreamingDetailEntity';
 export type * from './AnipubTypes';
 import { inspect } from 'node:util';
@@ -53,11 +55,13 @@ declare class AnipubSDK {
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Anime(entopts?: Record<string, any>): AnimeEntity;
     Find(entopts?: Record<string, any>): FindEntity;
+    FindbyGenre(entopts?: Record<string, any>): FindbyGenreEntity;
     FullAnimeDetail(entopts?: Record<string, any>): FullAnimeDetailEntity;
     Info(entopts?: Record<string, any>): InfoEntity;
-    PaginatedAnimeList(entopts?: Record<string, any>): PaginatedAnimeListEntity;
     Rating(entopts?: Record<string, any>): RatingEntity;
     Search(entopts?: Record<string, any>): SearchEntity;
+    Searchall(entopts?: Record<string, any>): SearchallEntity;
+    Sort(entopts?: Record<string, any>): SortEntity;
     StreamingDetail(entopts?: Record<string, any>): StreamingDetailEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): AnipubSDK;
     tester(testopts?: any, sdkopts?: any): AnipubSDK;

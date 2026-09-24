@@ -377,6 +377,24 @@ class AnipubSDK
     }
 
 
+    private $_findby_genre = null;
+
+    // Canonical facade: $client->FindbyGenre()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->findby_genre()
+    // resolves here too.
+    public function FindbyGenre($data = null)
+    {
+        require_once __DIR__ . '/entity/findby_genre_entity.php';
+        if ($data === null) {
+            if ($this->_findby_genre === null) {
+                $this->_findby_genre = new FindbyGenreEntity($this, null);
+            }
+            return $this->_findby_genre;
+        }
+        return new FindbyGenreEntity($this, $data);
+    }
+
+
     private $_full_anime_detail = null;
 
     // Canonical facade: $client->FullAnimeDetail()->list() / ->load(["id" => ...]).
@@ -413,24 +431,6 @@ class AnipubSDK
     }
 
 
-    private $_paginated_anime_list = null;
-
-    // Canonical facade: $client->PaginatedAnimeList()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->paginated_anime_list()
-    // resolves here too.
-    public function PaginatedAnimeList($data = null)
-    {
-        require_once __DIR__ . '/entity/paginated_anime_list_entity.php';
-        if ($data === null) {
-            if ($this->_paginated_anime_list === null) {
-                $this->_paginated_anime_list = new PaginatedAnimeListEntity($this, null);
-            }
-            return $this->_paginated_anime_list;
-        }
-        return new PaginatedAnimeListEntity($this, $data);
-    }
-
-
     private $_rating = null;
 
     // Canonical facade: $client->Rating()->list() / ->load(["id" => ...]).
@@ -464,6 +464,42 @@ class AnipubSDK
             return $this->_search;
         }
         return new SearchEntity($this, $data);
+    }
+
+
+    private $_searchall = null;
+
+    // Canonical facade: $client->Searchall()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->searchall()
+    // resolves here too.
+    public function Searchall($data = null)
+    {
+        require_once __DIR__ . '/entity/searchall_entity.php';
+        if ($data === null) {
+            if ($this->_searchall === null) {
+                $this->_searchall = new SearchallEntity($this, null);
+            }
+            return $this->_searchall;
+        }
+        return new SearchallEntity($this, $data);
+    }
+
+
+    private $_sort = null;
+
+    // Canonical facade: $client->Sort()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->sort()
+    // resolves here too.
+    public function Sort($data = null)
+    {
+        require_once __DIR__ . '/entity/sort_entity.php';
+        if ($data === null) {
+            if ($this->_sort === null) {
+                $this->_sort = new SortEntity($this, null);
+            }
+            return $this->_sort;
+        }
+        return new SortEntity($this, $data);
     }
 
 

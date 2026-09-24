@@ -78,11 +78,13 @@ _CLIENT_VARS = ("client", "sdk")
 _ENTITIES = {
     "Anime": "anime",
     "Find": "find",
+    "FindbyGenre": "findby_genre",
     "FullAnimeDetail": "full_anime_detail",
     "Info": "info",
-    "PaginatedAnimeList": "paginated_anime_list",
     "Rating": "rating",
     "Search": "search",
+    "Searchall": "searchall",
+    "Sort": "sort",
     "StreamingDetail": "streaming_detail",
 }
 

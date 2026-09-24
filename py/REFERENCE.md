@@ -49,6 +49,10 @@ Create a new `AnimeEntity` instance. Pass `None` for no initial data.
 
 Create a new `FindEntity` instance. Pass `None` for no initial data.
 
+#### `FindbyGenre(data=None)`
+
+Create a new `FindbyGenreEntity` instance. Pass `None` for no initial data.
+
 #### `FullAnimeDetail(data=None)`
 
 Create a new `FullAnimeDetailEntity` instance. Pass `None` for no initial data.
@@ -57,10 +61,6 @@ Create a new `FullAnimeDetailEntity` instance. Pass `None` for no initial data.
 
 Create a new `InfoEntity` instance. Pass `None` for no initial data.
 
-#### `PaginatedAnimeList(data=None)`
-
-Create a new `PaginatedAnimeListEntity` instance. Pass `None` for no initial data.
-
 #### `Rating(data=None)`
 
 Create a new `RatingEntity` instance. Pass `None` for no initial data.
@@ -68,6 +68,14 @@ Create a new `RatingEntity` instance. Pass `None` for no initial data.
 #### `Search(data=None)`
 
 Create a new `SearchEntity` instance. Pass `None` for no initial data.
+
+#### `Searchall(data=None)`
+
+Create a new `SearchallEntity` instance. Pass `None` for no initial data.
+
+#### `Sort(data=None)`
+
+Create a new `SortEntity` instance. Pass `None` for no initial data.
 
 #### `StreamingDetail(data=None)`
 
@@ -222,6 +230,59 @@ Return the entity name.
 
 ---
 
+## FindbyGenreEntity
+
+```python
+findby_genre = client.FindbyGenre()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `str` | No |  |
+| `wholePage` | `list` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.FindbyGenre().load({"id": "findby_genre_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FindbyGenreEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## FullAnimeDetailEntity
 
 ```python
@@ -334,84 +395,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `InfoEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## PaginatedAnimeListEntity
-
-```python
-paginated_anime_list = client.PaginatedAnimeList()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `Aired` | `str` | No | Air date range |
-| `Cover` | `str` | No | Cover image path or URL. |
-| `DescripTion` | `str` | No | Anime description |
-| `Duration` | `str` | No | Episode duration |
-| `Genres` | `list` | No | List of genres |
-| `ImagePath` | `str` | No | Image path or URL. |
-| `MALScore` | `str` | No | MyAnimeList score |
-| `Name` | `str` | No | Anime name |
-| `Premiered` | `str` | No | Premiere season |
-| `RatingsNum` | `int` | No | Number of ratings |
-| `Status` | `str` | No | Airing status |
-| `Studios` | `str` | No | Production studio |
-| `Synonyms` | `str` | No | Alternative names |
-| `currentPage` | `int` | No | Current page number |
-| `epCount` | `int` | No | Episode count |
-| `finder` | `str` | No | Slug identifier |
-| `id` | `int` | No | Anime ID |
-| `wholePage` | `list` | No | Array of anime on current page |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.PaginatedAnimeList().list()
-for paginated_anime_list in results:
-    print(paginated_anime_list)
-```
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.PaginatedAnimeList().load({"genre": "genre"})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PaginatedAnimeListEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -546,6 +529,127 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SearchEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SearchallEntity
+
+```python
+searchall = client.Searchall()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currentPage` | `int` | No | Current page number |
+| `id` | `str` | No |  |
+| `wholePage` | `list` | No | Array of anime on current page |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.Searchall().load({"id": "searchall_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SearchallEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SortEntity
+
+```python
+sort = client.Sort()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `Aired` | `str` | No | Air date range |
+| `Cover` | `str` | No | Cover image path or URL. |
+| `DescripTion` | `str` | No | Anime description |
+| `Duration` | `str` | No | Episode duration |
+| `Genres` | `list` | No | List of genres |
+| `ImagePath` | `str` | No | Image path or URL. |
+| `MALScore` | `str` | No | MyAnimeList score |
+| `Name` | `str` | No | Anime name |
+| `Premiered` | `str` | No | Premiere season |
+| `RatingsNum` | `int` | No | Number of ratings |
+| `Status` | `str` | No | Airing status |
+| `Studios` | `str` | No | Production studio |
+| `Synonyms` | `str` | No | Alternative names |
+| `epCount` | `int` | No | Episode count |
+| `finder` | `str` | No | Slug identifier |
+| `id` | `int` | No | Anime ID |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.Sort().list()
+for sort in results:
+    print(sort)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SortEntity` instance with the same options.
 
 #### `get_name() -> str`
 
